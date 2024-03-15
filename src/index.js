@@ -1,11 +1,3 @@
-import './style.css';
-
-function component() {
-    const element = document.createElement('p');
-
-    element.innerText = "Hy! I am a para!"
-    
-    return element;
+export default function printMe() {
+    console.log('Watch me');
 }
-
-document.body.appendChild(component());

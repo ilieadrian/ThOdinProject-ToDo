@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'main';
+    font-family: 'main-font';
     src: url('./fonts/OpenSans_Condensed-Regular.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
@@ -21,7 +21,7 @@ html {
 body {
     min-height: 100vh;
     height: 100vh;
-    font-family: 'main';
+    font-family: 'main-font';
     background-color: #F9FBFC;
     display: flex;
     flex-direction: column;
