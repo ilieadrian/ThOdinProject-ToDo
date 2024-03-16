@@ -1,5 +1,7 @@
 import './style.css';
-import printMe from './index.js';
+
+
+import printMe from './modules/projects.js';
 
 function component() {
     const element = document.createElement('p');
