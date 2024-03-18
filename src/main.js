@@ -1,6 +1,4 @@
 import './style.css';
-
-
 import printMe from './modules/projects.js';
 
 function component() {
