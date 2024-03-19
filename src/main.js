@@ -1,19 +1,19 @@
 import './style.css';
-import printMe from './modules/projects.js';
+// import printMe from './modules/projects.js';
 
-function component() {
-    const element = document.createElement('p');
+// function component() {
+//     const element = document.createElement('p');
 
-    element.innerText = "Hy! I am a para!"
+//     element.innerText = "Hy! I am a para!"
     
     
 
-    const btn = document.createElement('button');
-    btn.innerHTML = 'Click me and check the console!';
-    btn.onclick = printMe;
+//     const btn = document.createElement('button');
+//     btn.innerHTML = 'Click me and check the console!';
+//     btn.onclick = printMe;
 
-    element.appendChild(btn);
-    return element;
-}
+//     element.appendChild(btn);
+//     return element;
+// }
 
-document.body.appendChild(component());
+// document.body.appendChild(component());
