@@ -9,6 +9,9 @@ class Todo {
         this.priority = priority;
         this.status = status;
         this.project = project; 
+        this.checked = false;
+        this.id = `${(title || '_').toLowerCase().split(" ").join("_")}`
+        // this.id = `${(title || '_').toLowerCase().split(" ").join("_")}-${Date.now()}`
 
         Todo.todos.push(this);
     }
@@ -27,6 +30,23 @@ class Todo {
 
     static getAllTodos() {
         return Todo.todos;
+    }
+
+    getTitle() {
+        return this.title
+    }
+
+    getId() {
+        return this.id
+    }
+
+    setChecked(check) {
+        this.checked = true;
+        console.log(this.getTitle() + ' was checked! ' + this.checked + check)
+    }
+
+    isChecked() {
+        return this.checked
     }
 
 }
@@ -58,7 +78,9 @@ const defaultValues  = (function () {
     console.table(Todo.getAllTodos());
     console.log(Todo.getProject());
 
-    console.log(defaultProject)
+    console.log(newToDo.setChecked())
+    console.table(Todo.getAllTodos());
+    
 })();
 
 
