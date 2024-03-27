@@ -57,10 +57,6 @@ class Project {
     }   
 }
 
-
-
-
-
 const defaultValues  = (function () {
     const defaultProject = new Project('Default');
     let newToDo;
@@ -78,7 +74,6 @@ const defaultValues  = (function () {
     console.table(Todo.getAllTodos());
     console.log(Todo.getProject());
 
-    console.log(newToDo.setChecked())
     console.table(Todo.getAllTodos());
     
 })();
