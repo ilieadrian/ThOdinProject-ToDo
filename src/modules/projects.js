@@ -75,7 +75,6 @@ const defaultValues  = (function () {
     // newToDo = Todo.create('TheOdinProject chapter 2', 'Finish theOdinProject chapter 2', '2024-03-15', 'Normal', 'Finished', 'Home');
 
     // console.table(Todo.getAllTodos());
-    // console.log(Todo.getProject());
 
     // console.table(Todo.getAllTodos());
     
