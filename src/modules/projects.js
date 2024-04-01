@@ -1,49 +1,26 @@
 class Todo {
-
-    // static todos = [];
-
-    constructor(title, description, dueDate, priority, status, project) {
+    constructor(title, description, dueDate, priority, status, project, isChecked) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
         this.status = status;
         this.project = project; 
-        this.checked = false;
-        // this.id = `${(title || '_').toLowerCase().split(" ").join("_")}`
-        // this.id = `${(title || '_').toLowerCase().split(" ").join("_")}-${Date.now()}`
-
-        Todo.todos.push(this);
+        this.checked = isChecked;
     }
 
-    // static create(title, description, dueDate, priority, status, project) {
-    //     return new Todo(title, description, dueDate, priority, status, project);
-    // }
-
-    // static getProject() {
-    //     // return this.project;
-    //     const projects = new Set(); // Using Set to store unique project names
-    //     Todo.todos.forEach(todo => projects.add(todo.project)); // Extracting project names
-    //     return Array.from(projects); // Converting Set back to an array
-
-    // }
-
-    // static getAllTodos() {
-    //     return Todo.todos;
-    // }
+    getProject() {
+        return this.project;
+    }
 
     getTitle() {
-        return this.title
+        return this.title;
     }
 
-    // getId() {
-    //     return this.id
-    // }
-
-    // setChecked(check) {
-    //     this.checked = true;
-    //     console.log(this.getTitle() + ' was checked! ' + this.checked + check)
-    // }
+    set setchecked(value) {
+        this.checked = value;
+        // console.log(this.getTitle() + ' was checked! ' + this.checked + check)
+    }
 
     isChecked() {
         return this.checked;
@@ -58,26 +35,31 @@ class Project {
 }
 
 const defaultValues  = (function () {
-    //Semy global task and project list aproach    
     const taskList = [];
     const projectList = [];
-    // const defaultProject = new Project('Default');
-    // let newToDo;
 
-    // newToDo = Todo.create('Read daily a pattern', 'https://www.patterns.dev/vanilla/import-on-interaction', '2024-03-20', 'High', 'Unfinished', 'Learing');
+    newToDo = new Todo('Read daily a pattern', 'https://www.patterns.dev/vanilla/import-on-interaction', '2024-03-20', 'High', 'Unfinished', 'Learing', false);
+    projectList.push(newToDo);
 
-    // newToDo = Todo.create('Write on blog', 'Write about last part from TicTacToe game', '2024-03-21', 'Low', 'Unfinished', 'Learing');
+    newToDo = new Todo('Write on blog', 'Write about last part from TicTacToe game', '2024-03-21', 'Low', 'Unfinished', 'Learing', false);
+    projectList.push(newToDo);
 
-    // newToDo = Todo.create('New Odin Chapter', 'Start a new OdinProjectChapter', '2024-04-15', 'Normal', 'Unfinished', 'Learing');
+    newToDo = new Todo('New Odin Chapter', 'Start a new OdinProjectChapter', '2024-04-15', 'Normal', 'Finished', 'Learing', true);
+    projectList.push(newToDo);
 
-    // newToDo = Todo.create('Repair blog', 'Fix social links on blog header', '2024-03-29', 'High', 'Unfinished', 'Learing');
+    newToDo = new Todo('Repair blog', 'Fix social links on blog header', '2024-03-29', 'High', 'Unfinished', 'Learing', true);
+    projectList.push(newToDo)
 
-    // newToDo = Todo.create('TheOdinProject chapter 2', 'Finish theOdinProject chapter 2', '2024-03-15', 'Normal', 'Finished', 'Home');
-
+    newToDo = new Todo('TheOdinProject chapter 2', 'Finish theOdinProject chapter 2', '2024-03-15', 'Normal', 'Finished', 'Home', false);
+    projectList.push(newToDo)
     // console.table(Todo.getAllTodos());
 
     // console.table(Todo.getAllTodos());
-    
+
+    console.table(projectList)
+    console.log(projectList[3].getProject())
 })();
+
+
 
 
