@@ -17,15 +17,13 @@ class Todo {
         return this.title;
     }
 
-    set setchecked(value) {
+    setchecked(value) {
         this.checked = value;
-        // console.log(this.getTitle() + ' was checked! ' + this.checked + check)
     }
 
     isChecked() {
         return this.checked;
     }
-
 }
 
 class Project {
@@ -52,12 +50,12 @@ const defaultValues  = (function () {
 
     newToDo = new Todo('TheOdinProject chapter 2', 'Finish theOdinProject chapter 2', '2024-03-15', 'Normal', 'Finished', 'Home', false);
     projectList.push(newToDo)
-    // console.table(Todo.getAllTodos());
 
-    // console.table(Todo.getAllTodos());
 
     console.table(projectList)
-    console.log(projectList[3].getProject())
+    // console.log(projectList[3].getProject())
+    console.log(projectList[1].setchecked(true))
+    console.table(projectList)
 })();
 
 
