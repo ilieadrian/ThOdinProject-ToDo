@@ -1,52 +1,16 @@
-class Todo {
-    constructor(title, description, dueDate, priority, status, project, isChecked) {
-        this.title = title;
-        this.description = description;
-        this.dueDate = dueDate;
-        this.priority = priority;
-        this.status = status;
-        this.project = project; 
-        this.checked = isChecked;
-    }
-
-    getProject() {
-        return this.project;
-    }
-
-    getTitle() {
-        return this.title;
-    }
-
-    setchecked(value) {
-        this.checked = value;
-    }
-
-    isChecked() {
-        return this.checked;
-    }
-}
-
-class Project {
-    constructor(name) {
-        this.name = name;
-    }   
-
-    getName() {
-        return this.name;
-    }
-
-    editName(value) {
-        return this.name = value;
-    }
-}
+import Todo from './todo';
+import Project from './project';
 
 const defaultValues  = (function () {
+
+    console.log("bau")
     const taskList = [];
     const projectList = [];
     let newToDo;
     let defaultProject;
 
     defaultProject = new Project("default")
+    projectList.push(defaultProject);
 
     newToDo = new Todo('Read daily a pattern', 'https://www.patterns.dev/vanilla/import-on-interaction', '2024-03-20', 'High', 'Unfinished', 'Learing', false);
     taskList.push(newToDo);
@@ -71,6 +35,4 @@ const defaultValues  = (function () {
     console.table(defaultProject.getName())
 })();
 
-
-
-
+export default defaultValues;

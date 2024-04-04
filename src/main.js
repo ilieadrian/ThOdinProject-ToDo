@@ -1,4 +1,7 @@
 import './style.css';
+import defaultValues from './modules/startup';
+
+
 // import printMe from './modules/projects.js';
 
 // function component() {
