@@ -3,7 +3,6 @@ import Project from './project';
 
 const defaultValues  = (function () {
 
-    console.log("bau")
     const taskList = [];
     const projectList = [];
     let newToDo;
@@ -31,8 +30,12 @@ const defaultValues  = (function () {
     console.table(taskList)
     // console.log(taskList[3].getProject())
     console.table(defaultProject.getName())
-    defaultProject.editName("Learning")
-    console.table(defaultProject.getName())
+    // defaultProject.editName("Learning")
+    // console.table(defaultProject.getName())
 })();
 
-export default defaultValues;
+export default {
+    taskList,
+    projectList,
+    defaultProject
+};
