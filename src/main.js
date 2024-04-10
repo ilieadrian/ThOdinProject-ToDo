@@ -1,8 +1,8 @@
 import './style.css';
 // import defaultValues from './modules/startup';
 
-import Todo from './todo';
-import Project from './project';
+import Todo from './modules/todo';
+import Project from './modules/project';
 
 const defaultValues  = (function () {
 
@@ -32,10 +32,14 @@ const defaultValues  = (function () {
 
     console.table(taskList);
     // console.log(taskList[3].getProject())
-    console.table(defaultProject.getName());
+    // console.table(defaultProject.getName());
+
+    console.log(taskList.getIndex("Repair blog"))
+
     // defaultProject.editName("Learning")
     // console.table(defaultProject.getName())
 })();
+
 
 
 // import printMe from './modules/projects.js';
