@@ -29,15 +29,20 @@ const defaultValues  = (function () {
     newToDo = new Todo('TheOdinProject chapter 2', 'Finish theOdinProject chapter 2', '2024-03-15', 'Normal', 'Finished', 'Home', false);
     taskList.push(newToDo);
 
+    
+
 
     console.table(taskList);
     // console.log(taskList[3].getProject())
     // console.table(defaultProject.getName());
 
-    console.log(taskList.getIndex("Repair blog"))
-
+console.log(defaultValues.taskList.getIndex("Repair blog"));
+console.log(defaultValues.taskList.getIndex("Repair blog"));
     // defaultProject.editName("Learning")
     // console.table(defaultProject.getName())
+
+    return { taskList };
+
 })();
 
 

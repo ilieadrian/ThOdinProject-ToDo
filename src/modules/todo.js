@@ -25,13 +25,14 @@ export default class Todo {
         return this.checked;
     }
 
-    getIndex(param){
-        return index = Data.map(e => e.title).indexOf(param);
-        //https://stackoverflow.com/questions/7176908/how-can-i-get-the-index-of-an-object-by-its-property-in-javascript
+    getIndex(param) {
+        return this.taskList.findIndex(e => e.title === param);
     }
 
-    removeItem() {
-        // console.log(taskList[i].indexof([i]))
-        // return taskList.splice(2, 1);
+    removeItem(param) {
+        const index = this.getIndex(param);
+        if (index !== -1) {
+            this.taskList.splice(index, 1);
+        }
     }
 }
