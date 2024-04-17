@@ -1,3 +1,7 @@
+import taskList from "./main";
+
+console.table(taskList);
+
 export default class Todo {
     constructor(title, description, dueDate, priority, status, project, isChecked, taskList) {
         this.title = title;

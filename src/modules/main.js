@@ -44,11 +44,11 @@
 // })();
 
 
-import './style.css';
+import '../style.css';
 // import defaultValues from './modules/startup';
 
-import Todo from './modules/todo';
-import Project from './modules/project';
+import Todo from './todo';
+import Project from './project';
 
 const defaultValues  = (function () {
 
@@ -75,9 +75,10 @@ const defaultValues  = (function () {
     newToDo = new Todo('TheOdinProject chapter 2', 'Finish theOdinProject chapter 2', '2024-03-15', 'Normal', 'Finished', 'Home', false);
     taskList.push(newToDo);
 
-    console.table(taskList);
+    // console.table(taskList);
     return { taskList }; // Expose taskList
 })();
 
-console.log(defaultValues.taskList[0].getIndex("Repair blog"));
-defaultValues.taskList[0].removeItem("Repair blog");
+export default taskList;
+// console.log(defaultValues.taskList[0].getIndex("Repair blog"));
+// defaultValues.taskList[0].removeItem("Repair blog");

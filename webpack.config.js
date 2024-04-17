@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-        main: './src/main.js',
-        index: './src/index.js',
+        index: './src/modules/index.js',
+        main: './src/modules/main.js',
         todo: './src/modules/todo.js',
         project: './src/modules/project.js',
         startup: './src/modules/startup.js',
