@@ -1,5 +1,8 @@
-// import Todo from './todo.js';
-// import Project from './project';
+import defaultValues from './main';
 
+const { taskList, projectList } = defaultValues;
+
+console.table(taskList);
+console.log(projectList[0].getName());
 
 

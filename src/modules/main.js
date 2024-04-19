@@ -29,9 +29,7 @@ const defaultValues  = (function () {
     newToDo = new Todo('TheOdinProject chapter 2', 'Finish theOdinProject chapter 2', '2024-03-15', 'Normal', 'Finished', 'Home', false);
     taskList.push(newToDo);
 
-    console.table(taskList);
-
-      
+    
     // console.log(taskList[2].getIndex(7))
     // console.table(defaultProject.getName());
 
@@ -46,5 +44,14 @@ const defaultValues  = (function () {
     // console.log("Selected item: ", selectedItem); 
     // console.log(selectedItem['dueDate'])
 
+    // Return an object containing the variables you want to export
+    return {
+        taskList,
+        projectList,
+        // You can include more variables if needed
+    };
+    
+
 })();
 
+export default defaultValues;
