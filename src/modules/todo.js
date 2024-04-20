@@ -10,20 +10,36 @@ export default class Todo {
         this.checked = isChecked;
     }
 
-    getProject() {
-        return this.project;
-    }
-
     getTitle() {
         return this.title;
     }
 
-    setchecked(value) {
-        this.checked = value;
+    getDescription() {
+        return this.description;
+    }
+
+    getDueDate() {
+        return this.dueDate;
+    }
+
+    getPrority() {
+        return this.priority;
+    }
+
+    getStatus() {
+        return this.status;
+    }
+
+    getProject() {
+        return this.project;
     }
 
     isChecked() {
         return this.checked;
+    }
+
+    setShecked(value) {
+        this.checked = value;
     }
 
     getIndex(param) {
@@ -39,7 +55,10 @@ export default class Todo {
 
 }
 
-
+// https://github.com/Belayne/todo/blob/main/src/model.js
+// https://github.com/Ioannis-Bfg/Todo-List/blob/main/src/assets/domproject.js
+// https://github.com/youssefKetata/todoist-clone/blob/main/js/project-dialog.js
+// https://github.com/Valentin-Sosa/Todo-List/blob/main/src/logic.js
 
 
 

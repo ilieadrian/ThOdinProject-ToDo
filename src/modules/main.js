@@ -48,7 +48,6 @@ const defaultValues  = (function () {
     return {
         taskList,
         projectList,
-        // You can include more variables if needed
     };
     
 
