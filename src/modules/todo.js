@@ -1,4 +1,3 @@
-
 export default class Todo {
     constructor(title, description, dueDate, priority, status, project, isChecked) {
         this.title = title;
@@ -42,7 +41,14 @@ export default class Todo {
         this.checked = value;
     }
 
-    getIndex(param) {
+    getItemsByProject(taskList, project){
+        var result = taskList.filter(obj => {
+            return obj.project === project;
+        })
+        return result;
+    }
+
+        getIndex(param) {
         return this.taskList.findIndex(e => e.title === param);
     }
 

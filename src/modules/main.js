@@ -5,7 +5,6 @@ import Todo from './todo';
 import Project from './project';
 
 const defaultValues  = (function () {
-
     const taskList = [];
     const projectList = [];
     let newToDo;
@@ -17,7 +16,7 @@ const defaultValues  = (function () {
     newToDo = new Todo('Read daily a pattern', 'https://www.patterns.dev/vanilla/import-on-interaction', '2024-03-20', 'High', 'Unfinished', 'Learing', false);
     taskList.push(newToDo);
 
-    newToDo = new Todo('Write on blog', 'Write about last part from TicTacToe game', '2024-03-21', 'Low', 'Unfinished', 'Learing', false);
+    newToDo = new Todo('Write on blog', 'Write about last part from TicTacToe game', '2024-03-21', 'Low', 'Unfinished', 'Home', false);
     taskList.push(newToDo);
 
     newToDo = new Todo('New Odin Chapter', 'Start a new OdinProjectChapter', '2024-04-15', 'Normal', 'Finished', 'Learing', true);
@@ -30,27 +29,14 @@ const defaultValues  = (function () {
     taskList.push(newToDo);
 
     
-    // console.log(taskList[2].getIndex(7))
-    // console.table(defaultProject.getName());
 
-
-    // defaultProject.editName("Learning")
-    // console.table(defaultProject.getName())
-
-
-    // Acces a specific object in the array an store it
-    //  const selectedItem = taskList[1];
-    // console.log("typeof selectedItem: ", typeof selectedItem)
-    // console.log("Selected item: ", selectedItem); 
-    // console.log(selectedItem['dueDate'])
-
-    // Return an object containing the variables you want to export
     return {
         taskList,
         projectList,
     };
     
-
 })();
+
+
 
 export default defaultValues;
