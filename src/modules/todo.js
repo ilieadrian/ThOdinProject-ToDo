@@ -1,44 +1,44 @@
 export default class Todo {
-    constructor(title, description, dueDate, priority, status, project, isChecked) {
-        this.title = title;
-        this.description = description;
-        this.dueDate = dueDate;
-        this.priority = priority;
-        this.status = status;
-        this.project = project; 
-        this.checked = isChecked;
+    constructor(title, description, dueDate, priority, status, project, checked) {
+        this._title = title;
+        this._description = description;
+        this._dueDate = dueDate;
+        this._priority = priority;
+        this._status = status;
+        this._project = project; 
+        this._checked = checked;
     }
 
-    getTitle() {
-        return this.title;
+    get title() {
+        return this._title;
     }
 
-    getDescription() {
-        return this.description;
+    get description() {
+        return this._description;
     }
 
-    getDueDate() {
-        return this.dueDate;
+    get dueDate() {
+        return this._dueDate;
     }
 
-    getPrority() {
-        return this.priority;
+    get prority() {
+        return this._priority;
     }
 
-    getStatus() {
-        return this.status;
+    get status() {
+        return this._status;
     }
 
-    getProject() {
-        return this.project;
+    get project() {
+        return this._project;
     }
 
-    isChecked() {
-        return this.checked;
+    get status() {
+        return this._checked;
     }
 
-    setShecked(value) {
-        this.checked = value;
+    set status(value) {
+        this._checked = value;
     }
 
     getItemsByProject(taskList, project){
