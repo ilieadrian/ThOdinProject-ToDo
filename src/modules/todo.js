@@ -40,7 +40,6 @@ export default class Todo {
     set status(value) {
         this._checked = value;
     }
-
     getItemsByProject(taskList, project){
         var result = taskList.filter(obj => {
             return obj.project === project;

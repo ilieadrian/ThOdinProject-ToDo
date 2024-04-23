@@ -10,6 +10,19 @@ console.log(taskList[3].status);
 // console.log(taskList[1].isChecked());
 // console.table(projectList)
 
+function getTodosByProject(taskList, project) {
+    return taskList.filter(todo => todo.project === project);
+}
+
+// Get todos for the "Home" project
+const homeTodos = getTodosByProject(taskList, 'Home');
+console.table('Home Todos:', homeTodos);
+
+// Get todos for the "Learning" project
+const learningTodos = getTodosByProject(taskList, 'Learning');
+console.log('Learning Todos:', learningTodos);
+
+
 
 
 
