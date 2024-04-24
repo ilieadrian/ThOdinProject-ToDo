@@ -2,6 +2,7 @@ import '../style.css';
 
 import Todo from './todo';
 import Project from './project';
+import handleProject from './handleproject';
 
 const defaultValues  = (function () {
     const taskList = [];
@@ -40,16 +41,8 @@ const defaultValues  = (function () {
 
 const { taskList, projectsList } = defaultValues;
 
-function handleProject(){
-    const liveProjetList = [...new Set(taskList.map(project => {
-        return project["project"];
-    }))];
 
-
-    console.log("Live Project List", liveProjetList);
-}
-
-handleProject();
+handleProject(taskList);
 
 function getTodosByProject(taskList, project) {
     return taskList.filter(todo => todo.project === project);
@@ -71,4 +64,5 @@ console.table(projectsList)
 // taskList[1].setShecked(true);
 // console.log(taskList[1].isChecked());
 // console.table(projectList)
+
 

@@ -1,3 +1,14 @@
+function handleProject(taskList){
+    const liveProjetList = [...new Set(taskList.map(project => {
+        return project["project"];
+    }))];
+
+    console.log("Live Project List", liveProjetList);
+}
+
+export default handleProject;
+
+
 // import defaultValues from './modules/startup';
 
 // import '../style.css';

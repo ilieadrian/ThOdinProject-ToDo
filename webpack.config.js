@@ -7,8 +7,8 @@ module.exports = {
         index: './src/modules/index.js',
         todo: './src/modules/todo.js',
         project: './src/modules/project.js',
+        handleproject: './src/modules/handleproject.js',
         startup: './src/modules/startup.js',
-        main: './src/modules/main.js',
     },
     devtool: 'inline-source-map',
     plugins: [
