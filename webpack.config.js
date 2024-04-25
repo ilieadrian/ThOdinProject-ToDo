@@ -5,10 +5,11 @@ module.exports = {
     mode: 'development',
     entry: {
         index: './src/modules/index.js',
+        startup: './src/modules/startup.js',
         todo: './src/modules/todo.js',
+        handletodos: './src/modules/handletodos.js',
         project: './src/modules/project.js',
         handleproject: './src/modules/handleproject.js',
-        startup: './src/modules/startup.js',
     },
     devtool: 'inline-source-map',
     plugins: [

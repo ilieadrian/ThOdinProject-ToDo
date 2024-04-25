@@ -4,6 +4,8 @@ import Todo from './todo';
 import Project from './project';
 import handleProject from './handleproject';
 
+console.log("hello from the beggining of startup")
+
 const defaultValues  = (function () {
     const taskList = [];
     const projectsList = [];
@@ -37,7 +39,6 @@ const defaultValues  = (function () {
     taskList.push(newToDo);
     handleProject(newToDo, projectsList);
 
-    console.log("Project list from STARTUP:")
     console.table(projectsList)
     return {
         taskList,
@@ -46,28 +47,10 @@ const defaultValues  = (function () {
     
 })();
 
-const { taskList, projectsList } = defaultValues;
+export default defaultValues;
+//https://www.google.com/search?q=webpack+import+default+executed+twice&client=firefox-b-d&sca_esv=f753c9bfe240238f&sca_upv=1&ei=8IUqZviXEcCTi-gP6bm-yAY&udm=&ved=0ahUKEwj4z_bR5d2FAxXAyQIHHemcD2kQ4dUDCBA&uact=5&oq=webpack+import+default+executed+twice&gs_lp=Egxnd3Mtd2l6LXNlcnAiJXdlYnBhY2sgaW1wb3J0IGRlZmF1bHQgZXhlY3V0ZWQgdHdpY2UyCBAAGIAEGKIEMggQABiABBiiBDIIEAAYgAQYogRI8XNQAFiCRHAEeAGQAQCYAZ0BoAG3A6oBAzAuM7gBA8gBAPgBAfgBApgCB6ACwwPCAgkQABiABBgTGA3CAggQABgTGA0YHsICCBAAGBMYFhgewgIKEAAYExgKGA0YHsICChAAGBMYCBgNGB6YAwCSBwM0LjOgB-MR&sclient=gws-wiz-serp
 
-function getTodosByProject(taskList, project) {
-    return taskList.filter(todo => todo.project === project);
-}
-
-// Get todos for the "Home" project
-const homeTodos = getTodosByProject(taskList, 'Home');
-// console.log('Home Todos:', homeTodos);
-
-// Get todos for the "Learning" project
-const learningTodos = getTodosByProject(taskList, 'Learning');
-// console.log('Learning Todos:', learningTodos);
-
-// console.table(taskList);
-// console.table(projectsList)
-// console.log(taskList[3].status);
-// taskList[3].status = false;
-// console.log(taskList[3].status);
-// taskList[1].setShecked(true);
-// console.log(taskList[1].isChecked());
-// console.table(projectList)
+// https://github.com/webpack/webpack/issues/14768
 
 
 
