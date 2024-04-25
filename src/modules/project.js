@@ -4,10 +4,10 @@ export default class Project {
     }   
 
     get name() {
-        return this.name;
+        return this._name;
     }
 
     set name(value) {
-        return this.name = value;
+        return this._name = value;
     }
 }
