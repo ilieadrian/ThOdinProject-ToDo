@@ -1,9 +1,27 @@
-function handleProject(taskList){
-    const liveProjetList = [...new Set(taskList.map(project => {
-        return project["project"];
-    }))];
+// function handleProject(taskList){
+//     const liveProjetList = [...new Set(taskList.map(project => {
+//         return project["project"];
+//     }))];
 
-    console.log("Live Project List", liveProjetList);
+//     console.log("Live Project List", liveProjetList);
+// }
+
+
+function handleProject(newToDo, projectList){
+    // const projectsList = projectsList;
+    console.log("New todo", newToDo);
+
+
+    if (projectList.includes(newToDo.project)){
+        return
+    } else{
+        projectList.push(newToDo.project);
+    }
+
+    // projectList.push(newToDo.project);
+    console.log("Project list from HANDLEPROJECT:")
+    console.table(projectList)
+
 }
 
 export default handleProject;

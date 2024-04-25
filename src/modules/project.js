@@ -1,13 +1,13 @@
 export default class Project {
     constructor(name) {
-        this.name = name;
+        this._name = name;
     }   
 
-    getName() {
+    get name() {
         return this.name;
     }
 
-    editName(value) {
+    set name(value) {
         return this.name = value;
     }
 }
