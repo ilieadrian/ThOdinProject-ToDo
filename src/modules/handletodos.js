@@ -1,6 +1,8 @@
-// import defaultValues from './startup';
-console.table(taskList);
-console.table(projectsList);
+function handleTodos(taskList, projectsList) {
+    console.table(taskList);
+    console.table(projectsList);
+}
+export default handleTodos;
 
 // console.log(taskList, projectsList)
 
