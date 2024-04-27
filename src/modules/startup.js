@@ -1,11 +1,8 @@
-import '../style.css';
-
 import Todo from './todo';
 import Project from './project';
 import handleProject from './handleproject';
-import handleTodos from './handletodos';
-
-console.log("hello from the beggining of startup")
+import {handleTodos} from './handletodos';
+import {getTodosByProject} from './handletodos';
 
 const defaultValues  = (function () {
     const taskList = [];
@@ -42,13 +39,13 @@ const defaultValues  = (function () {
 
     handleTodos(taskList, projectsList);
 
-    console.table(projectsList)
     return {
         taskList,
         projectsList,
     };
     
 })();
+
 
 export default defaultValues;
 
