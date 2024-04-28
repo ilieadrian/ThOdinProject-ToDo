@@ -2,3 +2,7 @@ import '../style.css';
 // import Todo from './todo';
 // import Project from './project';
 // import handleProject from './handleproject';
+
+const h1 = document.createElement("h1");
+h1.textContent = "Test H1";
+document.body.appendChild(h1);
