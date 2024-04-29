@@ -14,7 +14,7 @@ module.exports = {
     devtool: 'inline-source-map',
     plugins: [
         new HtmlWebpackPlugin({
-        title: 'ToDo List - TheOdinProject',
+        title: 'ToDo List - TheOdinProject &#9745;',
         }),
     ],
     output: {
