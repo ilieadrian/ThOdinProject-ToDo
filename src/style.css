@@ -14,10 +14,16 @@
     margin: 0;
 }
 
-html {
+img {
+    max-width: 25px;
+    height: auto;
+}
+
+/* html {
     overflow-y: scroll;
     overflow-x: hidden; 
-}
+} */
+
 body {
     min-height: 100vh;
     height: 100vh;
@@ -30,7 +36,7 @@ body {
     text-align: center;
 }
 
-.button {
+button {
     min-width: 190px;
     font-size: 1rem;
     font-weight: 400;
@@ -41,7 +47,7 @@ body {
     border-radius: 3px;
 }
 
-.button:hover {
+button:hover {
     border: none;
     cursor: pointer;
     background-color: rgba(62, 76, 117, 0.8);
