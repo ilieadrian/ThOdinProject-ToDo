@@ -20,17 +20,16 @@
     </section>
     <div class="content-container">
         <section class="menu">
-            <ul class="todos-due">
-                <li>Home</li>
-                <li>Due Today</li>
-                <li>Due These Week</li>
+            <ul id="todos-due" class="menu-links">
+                <li><a href="#">Home</a><span class="number-of-tasks">7</span></li>
+                <li><a href="#">Due Today</a><span class="number-of-tasks">2</span></li>
+                <li><a href="#">Due These Week</a><span class="number-of-tasks">1</span></li>
             </ul>
 
             <h2>Projects</h2>
-            <ul class="projects">
-                    <li>Random generated</li>
-                    <li>Somehow also random generated</li>
-                
+            <ul id="projects" class="menu-links">
+                <li><a href="#">Random generated</a><span class="number-of-tasks">3</span></li>
+                <li><a href="#">Somehow also random generated</a><span class="number-of-tasks">1</span></li>
             </ul>
             <div class="addtodo"><img src="src/images/add-plus-circle.svg" alt="" srcset=""> New To do</div>
             <div class="addproject"><img src="src/images/add-plus-circle.svg" alt="" srcset=""> New Project</div>
@@ -133,6 +132,6 @@
 
     
     <p class="attribution">Coded by<a href="http://ilieadrian.com">Ilie Adrian</a></p>
-    <script src="./src/index.js"></script>
+    <script src="./dist/index.bundle.js"></script>
 </body>
 </html>

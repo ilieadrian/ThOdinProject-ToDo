@@ -10,6 +10,7 @@ module.exports = {
         project: './src/modules/project.js',
         handletodos: './src/modules/handletodos.js',
         handleproject: './src/modules/handleproject.js',
+        domneffects: './src/modules/domeffects.js'
     },
     devtool: 'inline-source-map',
     plugins: [

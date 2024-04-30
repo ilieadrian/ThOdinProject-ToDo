@@ -1,7 +1,12 @@
 @font-face {
     font-family: 'main-font';
     src: url('./fonts/OpenSans_Condensed-Regular.ttf') format('truetype');
-    /* font-weight: 600; */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'bold-font';
+    src: url(./fonts/OpenSans_SemiCondensed-Bold.ttf) format('truetype');
     font-style: normal;
 }
 
@@ -60,33 +65,94 @@ button:hover {
 /* End of general styles */
 
 .container {
-    width: 1028px;
+    width: 1280px;
     display: flex;
     flex-direction: column;
     background-color: #F7F7F7;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 }
-
 .header {
     background-color: #C38D9E;
     color: #F7F7F7;;
     padding: 0.5rem;
     font-size: 2rem;
-    font-weight: 900;
+    font-family: bold-font;
     display: flex;
     align-items: center;
     justify-content: left;
     letter-spacing: 0.3rem;
     gap: 1rem;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
 .header img {
     max-width: 50px;
-    /* filter: invert(55%) sepia(100%) saturate(600%) hue-rotate(180deg); */
 }
 
 .content-container {
     display: flex;
 }
+
+.menu {
+    flex: 1;
+    background-color: #EEEEEE;
+    border-right: 0.5px solid #B9B9B9;
+    padding: 2rem;
+    text-align: left;
+    border-bottom-left-radius: 5px;
+}
+
+.todo-container {
+    flex: 4;
+}
+
+.menu-links li {
+    margin-bottom: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.number-of-tasks {
+    background-color: #C38D9E;
+    font-size: 0.8rem;
+    width: 1.5rem; 
+    height: 1.5rem; 
+    font-family: bold-font;
+    color: #F7F7EE;
+    padding: 0.5rem;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-links li a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #141414;
+}
+
+.menu-links .active,
+.menu-links a:hover {
+    font-family: bold-font;
+    color: #501F3A;
+}
+
+.menu-links .active::before,
+.menu-links a:hover::before {
+    content: '// ';
+}
+
+.content-container h2 {
+    color: #141414;
+    margin-bottom: 1rem;
+}
+
+
 
 
 
