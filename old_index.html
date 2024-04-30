@@ -13,67 +13,70 @@
 <body>
 
 
- <!-- <div class="container">
+<div class="container">
     <section class="header">
-        <h1>//To do <img src="src/images/to-do-list.svg" alt="" srcset=""></h1>
+        <h1>// To do</h1> 
+        <img src="src/images/to-do-list.svg" alt="" srcset="">
     </section>
-    <section class="side-menu">
-        <ul class="todos-due">
-            <li>Home</li>
-            <li>Due Today</li>
-            <li>Due These Week</li>
-        </ul>
+    <div class="content-container">
+        <section class="menu">
+            <ul class="todos-due">
+                <li>Home</li>
+                <li>Due Today</li>
+                <li>Due These Week</li>
+            </ul>
 
-        <h2>Projects</h2>
-        <ul class="projects">
-                <li>Random generated</li>
-                <li>Somehow also random generated</li>
-            
-        </ul>
-        <div class="addtodo"><img src="src/images/add-plus-circle.svg" alt="" srcset=""> New To do</div>
-        <div class="addproject"><img src="src/images/add-plus-circle.svg" alt="" srcset=""> New Project</div>
-    </section>
-    <section class="todo-container">
-        <ul class="items-list">
-            <li class="item">
-                <div class="priority"></div>
-                <input type="checkbox"/>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, cumque.</p>
-                <button>Details <img src="src/images/view.svg" alt="" srcset=""></button>
-                <p id="due-date">Jun 9th</p>
-                <button><img src="src/images/edit.svg" alt="" srcset=""></button>
-                <button><img src="src/images/delete.svg" alt="" srcset=""></button>
-            </li>
-            <li class="item">
-                <div class="priority"></div>
-                <input type="checkbox"/>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, cumque.</p>
-                <button>Details <img src="src/images/view.svg" alt="" srcset=""></button>
-                <p id="due-date">Jun 9th</p>
-                <button><img src="src/images/edit.svg" alt="" srcset=""></button>
-                <button><img src="src/images/delete.svg" alt="" srcset=""></button>
-            </li>
-            <li class="item">
-                <div class="priority"></div>
-                <input type="checkbox"/>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, cumque.</p>
-                <button>Details <img src="src/images/view.svg" alt="" srcset=""></button>
-                <p id="due-date">Jun 9th</p>
-                <button><img src="src/images/edit.svg" alt="" srcset=""></button>
-                <button><img src="src/images/delete.svg" alt="" srcset=""></button>
-            </li>
+            <h2>Projects</h2>
+            <ul class="projects">
+                    <li>Random generated</li>
+                    <li>Somehow also random generated</li>
+                
+            </ul>
+            <div class="addtodo"><img src="src/images/add-plus-circle.svg" alt="" srcset=""> New To do</div>
+            <div class="addproject"><img src="src/images/add-plus-circle.svg" alt="" srcset=""> New Project</div>
+        </section>
+        <section class="todo-container">
+            <ul class="items-list">
+                <li class="item">
+                    <div class="priority"></div>
+                    <input type="checkbox"/>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, cumque.</p>
+                    <button>Details <img src="src/images/view.svg" alt="" srcset=""></button>
+                    <p id="due-date">Jun 9th</p>
+                    <button><img src="src/images/edit.svg" alt="" srcset=""></button>
+                    <button><img src="src/images/delete.svg" alt="" srcset=""></button>
+                </li>
+                <li class="item">
+                    <div class="priority"></div>
+                    <input type="checkbox"/>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, cumque.</p>
+                    <button>Details <img src="src/images/view.svg" alt="" srcset=""></button>
+                    <p id="due-date">Jun 9th</p>
+                    <button><img src="src/images/edit.svg" alt="" srcset=""></button>
+                    <button><img src="src/images/delete.svg" alt="" srcset=""></button>
+                </li>
+                <li class="item">
+                    <div class="priority"></div>
+                    <input type="checkbox"/>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, cumque.</p>
+                    <button>Details <img src="src/images/view.svg" alt="" srcset=""></button>
+                    <p id="due-date">Jun 9th</p>
+                    <button><img src="src/images/edit.svg" alt="" srcset=""></button>
+                    <button><img src="src/images/delete.svg" alt="" srcset=""></button>
+                </li>
 
-            <li class="item">
-                <input type="checkbox"/>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, cumque.</p>
-                <button>Details <img src="src/images/view.svg" alt="" srcset=""></button>
-                <p id="due-date">Jun 9th</p>
-                <button><img src="src/images/edit.svg" alt="" srcset=""></button>
-                <button><img src="src/images/delete.svg" alt="" srcset=""></button>
-            </li>
-        </ul>
-    </section>
-</div> -->
+                <li class="item">
+                    <input type="checkbox"/>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, cumque.</p>
+                    <button>Details <img src="src/images/view.svg" alt="" srcset=""></button>
+                    <p id="due-date">Jun 9th</p>
+                    <button><img src="src/images/edit.svg" alt="" srcset=""></button>
+                    <button><img src="src/images/delete.svg" alt="" srcset=""></button>
+                </li>
+            </ul>
+        </section>
+    </div>
+</div>
 
     <!-- <div id="view-modal">
         <img src="src/images/close-ellipse.svg" alt="">
@@ -96,7 +99,7 @@
         <button>Create project</button>
     </div> -->
 
-    <div id="edit-modal-todo" class="edit-modal">
+    <!-- <div id="edit-modal-todo" class="edit-modal">
         <div class="modal-header">
             <p>Create a new To Do</p>
             <img src="src/images/close-ellipse.svg" alt="">
@@ -126,7 +129,7 @@
             
         </form>
         <button>Create project</button>
-    </div>
+    </div> -->
 
     
     <p class="attribution">Coded by<a href="http://ilieadrian.com">Ilie Adrian</a></p>

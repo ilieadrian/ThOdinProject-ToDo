@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'main-font';
     src: url('./fonts/OpenSans_Condensed-Regular.ttf') format('truetype');
-    font-weight: 600;
+    /* font-weight: 600; */
     font-style: normal;
 }
 
@@ -14,11 +14,6 @@
     margin: 0;
 }
 
-img {
-    max-width: 25px;
-    height: auto;
-}
-
 /* html {
     overflow-y: scroll;
     overflow-x: hidden; 
@@ -28,12 +23,21 @@ body {
     min-height: 100vh;
     height: 100vh;
     font-family: 'main-font';
-    background-color: #F9FBFC;
+    background-color: #2a9d8f;
     display: flex;
-    flex-direction: column;
-    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
     position: relative;
     text-align: center;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    max-width: 25px;
+    height: auto;
 }
 
 button {
@@ -52,6 +56,41 @@ button:hover {
     cursor: pointer;
     background-color: rgba(62, 76, 117, 0.8);
 }
+
+/* End of general styles */
+
+.container {
+    width: 1028px;
+    display: flex;
+    flex-direction: column;
+    background-color: #F7F7F7;
+}
+
+.header {
+    background-color: #C38D9E;
+    color: #F7F7F7;;
+    padding: 0.5rem;
+    font-size: 2rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    letter-spacing: 0.3rem;
+    gap: 1rem;
+}
+
+.header img {
+    max-width: 50px;
+    /* filter: invert(55%) sepia(100%) saturate(600%) hue-rotate(180deg); */
+}
+
+.content-container {
+    display: flex;
+}
+
+
+
+
 
 /* Footer */
 .attribution {
