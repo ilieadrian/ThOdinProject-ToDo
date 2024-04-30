@@ -13,7 +13,7 @@
 <body>
 
 
- <div class="container">
+ <!-- <div class="container">
     <section class="header">
         <h1>//To do <img src="src/images/to-do-list.svg" alt="" srcset=""></h1>
     </section>
@@ -36,6 +36,7 @@
     <section class="todo-container">
         <ul class="items-list">
             <li class="item">
+                <div class="priority"></div>
                 <input type="checkbox"/>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, cumque.</p>
                 <button>Details <img src="src/images/view.svg" alt="" srcset=""></button>
@@ -44,6 +45,7 @@
                 <button><img src="src/images/delete.svg" alt="" srcset=""></button>
             </li>
             <li class="item">
+                <div class="priority"></div>
                 <input type="checkbox"/>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, cumque.</p>
                 <button>Details <img src="src/images/view.svg" alt="" srcset=""></button>
@@ -52,6 +54,7 @@
                 <button><img src="src/images/delete.svg" alt="" srcset=""></button>
             </li>
             <li class="item">
+                <div class="priority"></div>
                 <input type="checkbox"/>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, cumque.</p>
                 <button>Details <img src="src/images/view.svg" alt="" srcset=""></button>
@@ -70,9 +73,16 @@
             </li>
         </ul>
     </section>
-</div>
+</div> -->
 
-    <div class="modal"></div>
+    <div id="view-modal">
+        <img src="src/images/close-ellipse.svg" alt="">
+        <h2>Project title</h2>
+        <p class="detail">Project: Learning</p>
+        <p class="detail">Priority: High</p>
+        <p class="detail">Due Date:June 9th, 2024</p>
+        <p class="detail">Details: Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi veritatis et nam voluptatem debitis? Sit provident facilis atque et. Explicabo?</p>
+    </div>
 
     
     <p class="attribution">Coded by<a href="http://ilieadrian.com">Ilie Adrian</a></p>
