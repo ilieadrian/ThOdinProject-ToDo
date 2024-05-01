@@ -99,6 +99,8 @@ button:hover {
     flex: 1;
     background-color: #EEEEEE;
     border-right: 0.5px solid #B9B9B9;
+    display: flex;
+    flex-direction: column;
     padding: 2rem;
     text-align: left;
     border-bottom-left-radius: 5px;
@@ -147,9 +149,54 @@ button:hover {
     content: '// ';
 }
 
+.menu-links {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-bottom: 0.5px solid #B9B9B9;
+    overflow-y: auto; 
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: #C38D9E #EEEEEE;
+    height: 250px;
+}
+
 .content-container h2 {
     color: #141414;
     margin-bottom: 1rem;
+    
+}
+
+.addtodo,
+.addproject {
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.addtodo p,
+.addproject p {
+    color: #C38D9E;
+    font-family: bold-font;
+    font-size: 1.2rem;
+}
+
+.addtodo p {
+    color: #501F3A;
+}
+
+.addtodo img,
+.addproject img {
+    max-width: 60px;
+    height: auto;
+    margin-right: 2rem;
+}
+
+.buttons-container {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
 }
 
 
