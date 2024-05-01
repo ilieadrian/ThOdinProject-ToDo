@@ -126,6 +126,7 @@ button:hover {
     font-family: bold-font;
     color: #F7F7EE;
     padding: 0.5rem;
+    margin-right: 0.5rem;
     border-radius: 100%;
     display: flex;
     justify-content: center;
@@ -199,9 +200,30 @@ button:hover {
     justify-content: center;
 }
 
+.items-list {
+    padding: 3rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    overflow-y: auto; 
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: #C38D9E #EEEEEE;
+}
 
+.item {
+    background-color: #EEEEEE;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-
+.item button {
+    min-width: 1px;
+    padding: 1px;
+}
 
 
 
