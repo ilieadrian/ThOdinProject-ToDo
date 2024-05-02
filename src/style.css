@@ -322,6 +322,62 @@ input[type="checkbox"]:checked::before {
     opacity: 0.6;
 }
 
+/* Modal Styles */
+.modal {
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);    
+    z-index: 1;
+}
+
+.modal-content {
+    color: #501F3A;
+    background-color: #EEEEEE;
+    padding: 2rem;
+    width: 80%;
+    max-width: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 3px 3px 20px 10px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.modal-content h2 {
+    margin-bottom: 1rem;
+}
+
+.details {
+    display: flex;
+}
+
+.detail p {
+    display: inline-block;
+}
+
+
+.detail-title {
+    font-weight: bold;
+}
+
+
+.close-modal-button {
+    z-index: 1;
+    cursor: pointer;
+    position: absolute;
+    top: 0; 
+    right:0; /* Position the button horizontally at the center */
+    transform: translate(-20%, 20%);
+}
+
 /* Footer */
 .attribution {
     text-align: center;
