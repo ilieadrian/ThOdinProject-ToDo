@@ -324,7 +324,7 @@ input[type="checkbox"]:checked::before {
 
 /* Modal Styles */
 .modal {
-    /* display: none; */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -332,6 +332,10 @@ input[type="checkbox"]:checked::before {
     height: 100%;
     backdrop-filter: blur(8px);    
     z-index: 1;
+}
+
+.modal.active{
+    display: block;
 }
 
 .modal-content {
@@ -347,7 +351,6 @@ input[type="checkbox"]:checked::before {
     box-shadow: 3px 3px 20px 10px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     text-align: left;
 }
 
@@ -355,19 +358,33 @@ input[type="checkbox"]:checked::before {
     margin-bottom: 1rem;
 }
 
-.details {
+.detail {
     display: flex;
 }
 
 .detail p {
     display: inline-block;
 }
+.detail:first-of-type .detail-title{
+    margin-right: 1.1rem;
+}
 
+.detail:nth-of-type(2) .detail-title{
+    margin-right: 0.95rem;
+}
+
+.detail:nth-of-type(3) .detail-title{
+    margin-right: 0.35rem;
+}
+
+.detail:last-of-type .detail-title{
+    
+    margin-right: 1.2rem;
+}
 
 .detail-title {
     font-weight: bold;
 }
-
 
 .close-modal-button {
     z-index: 1;

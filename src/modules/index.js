@@ -1,5 +1,5 @@
 import '../style.css';
-import domeffects from './domeffects';
+import dominteraction from './dominteraction';
 // import Todo from './todo';
 // import Project from './project';
 // import handleProject from './handleproject';
