@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"> 
     <script src="https://unpkg.com/lodash@4.17.20"></script>
     <link rel="stylesheet" href="src/style.css">
-    <title>TheOdinProject - Todo List &#9745;</title>
+    <title>TheOdinProject - Todo List</title>
 </head>
 <body>
 
@@ -130,22 +130,25 @@
         </div>    
     </div>
 
-    <div id="edit-modal-project" class="edit-modal modal">
-        <div class="modal-header">
-            <p>Create a new Project</p>
-            <img src="src/images/close-ellipse.svg" alt="">
+    <div id="add-modal-project" class="modal active">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p>Create a new Project</p>
+                <img src="src/images/close-ellipse-white-bg.svg" alt="">
+            </div>
+            <form action="">
+                <label for="name">Name</label>
+                <input type="text" id="name">
+                <button>Create project</button>
+            </form>
+            
         </div>
-        <form action="">
-            <label for="name">Name</label>
-            <input type="text" id="name">
-        </form>
-        <button>Create project</button>
     </div>
 
-    <div id="edit-modal-todo" class="edit-modal modal active">
+    <!-- <div id="edit-modal-todo" class="edit-modal modal active">
         <div class="modal-header">
             <p>Create a new To Do</p>
-            <img src="src/images/close-ellipse.svg" alt="">
+            <img src="src/images/close-ellipse-white-bg.svg" alt="">
         </div>
         <form action="">
             <ul>
@@ -172,7 +175,7 @@
             
         </form>
         <button>Create project</button>
-    </div>
+    </div> -->
 
     
     <p class="attribution">Coded by<a href="http://ilieadrian.com">Ilie Adrian</a></p>

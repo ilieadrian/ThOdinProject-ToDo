@@ -322,7 +322,7 @@ input[type="checkbox"]:checked::before {
     opacity: 0.6;
 }
 
-/* Modal Styles */
+/* Genaral & View Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -391,9 +391,32 @@ input[type="checkbox"]:checked::before {
     cursor: pointer;
     position: absolute;
     top: 0; 
-    right:0; /* Position the button horizontally at the center */
+    right:0; 
     transform: translate(-20%, 20%);
 }
+
+.modal-header {
+    margin: -2rem -2rem 0 -2rem;
+    padding: 1rem;
+    background-color: #C38D9E;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-header p {
+    color: #F7F7F7;
+    font-size: 1.5rem;
+    font-family: bold-font;
+}
+
+/* //!!!!!!!!!!!!!!! */
+/* Project modal */
+#add-modal-project {
+    height: 40rem;
+    width: 80rem;
+}
+/* //!!!!!!!!!!!!!!! */
+
 
 /* Footer */
 .attribution {
