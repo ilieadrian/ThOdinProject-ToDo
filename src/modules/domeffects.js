@@ -1,3 +1,19 @@
+// export default (function () {
+//     document.addEventListener("DOMContentLoaded", function() {
+//         const menuLinks = document.querySelectorAll(".menu-links a");
+
+//         menuLinks.forEach(function(link) {
+//             link.addEventListener("click", function(event) {
+//                 menuLinks.forEach(function(link) {
+//                     link.classList.remove("active");
+//                 });
+
+//                 this.classList.add("active");
+//             });
+//         });
+//     });
+// })();
+
 export default (function () {
     document.addEventListener("DOMContentLoaded", function() {
         //Menu links interaction
@@ -31,13 +47,12 @@ export default (function () {
         viewButtons.forEach(function(viewButton) {
             viewButton.addEventListener('click', openModal);
         });
-            closeButton.addEventListener('click', closeModal);
+        
+        closeButton.addEventListener('click', closeModal);
+        
+        // 
         });
 
-
-        // Add modal
-
-    
 
 })();
 

@@ -1,8 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { default: dominteraction } = require('./src/modules/dominteraction');
-
 module.exports = {
+    
     mode: 'development',
     entry: {
         index: './src/modules/index.js',
@@ -11,7 +10,7 @@ module.exports = {
         project: './src/modules/project.js',
         handletodos: './src/modules/handletodos.js',
         handleproject: './src/modules/handleproject.js',
-        dominteraction: './src/modules/dominteraction.js'
+        domneffects: './src/modules/domeffects.js',
     },
     devtool: 'inline-source-map',
     plugins: [

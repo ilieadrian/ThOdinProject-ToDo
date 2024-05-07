@@ -1,6 +1,7 @@
 import '../style.css';
-import dominteraction from './dominteraction';
+import domeffects from './domeffects';
 // import Todo from './todo';
+
 // import Project from './project';
 // import handleProject from './handleproject';
 
