@@ -18,7 +18,9 @@ export default (function () {
 
         let modal = document.getElementById('view-modal');
         let addProjectBTN = document.querySelector('.addproject');
+        let addToDoBTN = document.querySelector('.addtodo');
         let addProjectModal = document.getElementById('add-project-modal');
+        let addToDoModal = document.getElementById('add-modal-todo');
         let closeButton = document.querySelector('.close-modal-button');
         let viewButtons = document.querySelectorAll('.view-btn');
 
@@ -28,6 +30,10 @@ export default (function () {
 
         function openProjectModal() {
             addProjectModal.classList.add('active');
+        }
+
+        function openToDOModal() {
+            addToDoModal.classList.add('active');
         }
 
         function closeModal() {
@@ -41,6 +47,8 @@ export default (function () {
         closeButton.addEventListener('click', closeModal);
 
         addProjectBTN.addEventListener('click', openProjectModal);
+
+        addToDoBTN.addEventListener('click', openToDOModal);
         
         
         });
