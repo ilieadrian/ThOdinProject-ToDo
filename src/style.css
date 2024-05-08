@@ -19,10 +19,9 @@
     margin: 0;
 }
 
-/* html {
-    overflow-y: scroll;
-    overflow-x: hidden; 
-} */
+html {
+    overflow: hidden; 
+}
 
 body {
     min-height: 100vh;
@@ -34,7 +33,6 @@ body {
     justify-content: center;
     position: relative;
     text-align: center;
-    overflow: scroll;
 
 }
 
@@ -395,7 +393,7 @@ input[type="checkbox"]:checked::before {
     transform: translate(-20%, 20%);
 }
 
-/* Add project modal */
+/* Add project modal & Todo modal*/
 
 .modal-header {
     margin: -2rem -2rem 0 -2rem;
@@ -412,13 +410,15 @@ input[type="checkbox"]:checked::before {
     font-family: bold-font;
 }
 
-#add-project-modal > .modal-content{
+#add-project-modal > .modal-content,
+#add-modal-todo > .modal-content {
     height: 30rem;
     max-width: 50rem;
     background-color: #F7F7F7;
 }
 
-#add-project-modal form {
+#add-project-modal form,
+#add-modal-todo form {
     padding: 1rem;
     height: 100%;
     display: flex;
@@ -435,7 +435,13 @@ input[type="checkbox"]:checked::before {
     color: #141414;
 }
 
-#add-project-modal form input[type=text] {
+#add-modal-todo .input-container {
+    align-items: flex-start;
+}
+
+#add-project-modal form input[type=text],
+#add-modal-todo form input[type=text],
+form input[type=date] {
     font-family: main-font;
     font-size: 1rem;
     border: none;
@@ -445,7 +451,17 @@ input[type="checkbox"]:checked::before {
     color: #141414;
 }
 
-#add-project-modal form button {
+#add-modal-todo ul li {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+#add-modal-todo ul li input {
+    margin-top: 0.3rem;
+}
+
+#add-project-modal form button,
+#add-modal-todo form button {
     font-family: bold-font;
     max-width: 8rem;
     border: 1px solid #2a9d8f;
@@ -454,9 +470,45 @@ input[type="checkbox"]:checked::before {
     background-color: #F7F7F7;
 }
 
-#add-project-modal form button:hover {
+#add-project-modal form button:hover,
+#add-modal-todo  form button:hover {
     color: #F7F7F7;
     background-color: #2a9d8f;
+}
+
+#add-modal-todo .button-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#add-modal-todo .priority-btn-grup {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.priority-btn-grup button {
+    min-width: 4.5rem;
+}
+
+.priority-btn-grup #medium {
+    color: #FFA500;
+    border-color: #FFA500;
+}
+
+.priority-btn-grup #medium:hover {
+    background-color: #FFA500;
+}
+
+.priority-btn-grup #high {
+    color: #FF0000;
+    border-color: #FF0000;
+}
+
+.priority-btn-grup #high:hover {
+    background-color: #FF0000;
 }
 
 /* Footer */
