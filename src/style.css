@@ -411,14 +411,16 @@ input[type="checkbox"]:checked::before {
 }
 
 #add-project-modal > .modal-content,
-#add-modal-todo > .modal-content {
+#add-modal-todo > .modal-content,
+#edit-modal-todo > .modal-content {
     height: 30rem;
     max-width: 50rem;
     background-color: #F7F7F7;
 }
 
 #add-project-modal form,
-#add-modal-todo form {
+#add-modal-todo form,
+#edit-modal-todo form {
     padding: 1rem;
     height: 100%;
     display: flex;
@@ -435,12 +437,14 @@ input[type="checkbox"]:checked::before {
     color: #141414;
 }
 
-#add-modal-todo .input-container {
+#add-modal-todo .input-container,
+#edit-modal-todo .input-container  {
     align-items: flex-start;
 }
 
 #add-project-modal form input[type=text],
 #add-modal-todo form input[type=text],
+#edit-modal-todo form input[type=text],
 form input[type=date] {
     font-family: main-font;
     font-size: 1rem;
@@ -451,17 +455,20 @@ form input[type=date] {
     color: #141414;
 }
 
-#add-modal-todo ul li {
+#add-modal-todo ul li,
+#edit-modal-todo ul li {
     width: 100%;
     margin-top: 0.5rem;
 }
 
-#add-modal-todo ul li input {
+#add-modal-todo ul li input,
+#edit-modal-todo ul li input {
     margin-top: 0.3rem;
 }
 
 #add-project-modal form button,
-#add-modal-todo form button {
+#add-modal-todo form button,
+#edit-modal-todo form button {
     font-family: bold-font;
     max-width: 8rem;
     border: 1px solid #2a9d8f;
@@ -471,18 +478,21 @@ form input[type=date] {
 }
 
 #add-project-modal form button:hover,
-#add-modal-todo  form button:hover {
+#add-modal-todo form button:hover,
+#edit-modal-todo form button:hover {
     color: #F7F7F7;
     background-color: #2a9d8f;
 }
 
-#add-modal-todo .button-container {
+#add-modal-todo .button-container,
+#edit-modal-todo .button-container  {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-#add-modal-todo .priority-btn-grup {
+#add-modal-todo .priority-btn-grup,
+#edit-modal-todo .priority-btn-grup {
     display: flex;
     gap: 0.8rem;
     align-items: center;

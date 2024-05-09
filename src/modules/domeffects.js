@@ -14,41 +14,56 @@ export default (function () {
             });
         });
 
-        // View modal
+        // Add project and ToDo modals
 
-        let modal = document.getElementById('view-modal');
         let addProjectBTN = document.querySelector('.addproject');
         let addToDoBTN = document.querySelector('.addtodo');
+        let viewModal = document.getElementById('view-modal');
         let addProjectModal = document.getElementById('add-project-modal');
         let addToDoModal = document.getElementById('add-modal-todo');
-        let closeButton = document.querySelector('.close-modal-button');
         let viewButtons = document.querySelectorAll('.view-btn');
+        let closeButton = document.querySelector('.close-modal-button');
+
+        // View modal
 
         function openModal() {
-            modal.classList.add('active');
+            viewModal.classList.add('active');
         }
+
+        function closeModal() {
+            viewModal.classList.remove('active');
+        }
+
+        closeButton.addEventListener('click', closeModal);
+
+        viewButtons.forEach(function(viewButton) {
+            viewButton.addEventListener('click', openModal);
+        });
+
+        // Add project modal
 
         function openProjectModal() {
             addProjectModal.classList.add('active');
         }
 
+        addProjectBTN.addEventListener('click', openProjectModal);
+
+
+        // Add todo modal
+
         function openToDOModal() {
             addToDoModal.classList.add('active');
         }
 
-        function closeModal() {
-            modal.classList.remove('active');
-        }
-
-        viewButtons.forEach(function(viewButton) {
-            viewButton.addEventListener('click', openModal);
-        });
-        
-        closeButton.addEventListener('click', closeModal);
-
-        addProjectBTN.addEventListener('click', openProjectModal);
-
         addToDoBTN.addEventListener('click', openToDOModal);
+
+        // Event listeners modal
+        
+        
+        
+
+
+        
         
         
         });
