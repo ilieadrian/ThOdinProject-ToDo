@@ -14,73 +14,58 @@ export default (function () {
             });
         });
 
-        // Add project and ToDo modals
-        let addProjectBTN = document.querySelector('.addproject');
-        let addToDoBTN = document.querySelector('.addtodo');
-        let viewModal = document.getElementById('view-modal');
-        let addProjectModal = document.getElementById('add-project-modal');
-        let addToDoModal = document.getElementById('add-modal-todo');
-        let editModalTodo = document.getElementById('edit-modal-todo');
-        let viewButtons = document.querySelectorAll('.view-btn');
-        let editButtons = document.querySelectorAll('.edit-btn');
-        let closeButton = document.querySelector('.close-modal-button');
-        let editModalCloseButton = document.querySelector('.close-edit-modal-button');
+        // Selecting elements
+        const addProjectBTN = document.querySelector('.addproject');
+        const addToDoBTN = document.querySelector('.addtodo');
+        const viewModal = document.getElementById('view-modal');
+        const addProjectModal = document.getElementById('add-project-modal');
+        const addToDoModal = document.getElementById('add-modal-todo');
+        const editModalTodo = document.getElementById('edit-modal-todo');
+        const closeButton = document.querySelector('.close-modal-button');
+        const projectModalCloseButton = document.querySelector('.close-project-modal-button');
+        const todoModalCloseButton = document.querySelector('.close-todo-modal-button');
+        const editModalCloseButton = document.querySelector('.close-edit-modal-button');
+        const viewButtons = document.querySelectorAll('.view-btn');
+        const editButtons = document.querySelectorAll('.edit-btn');
 
-        // View modal
-
-        function openModal() {
-            viewModal.classList.add('active');
+        // Function to toggle modal
+        function toggleModal(modal) {
+            modal.classList.toggle('active');
         }
 
-        function closeModal() {
+        // Function to close all modals
+        function closeAllModals() {
             viewModal.classList.remove('active');
+            addProjectModal.classList.remove('active');
+            addToDoModal.classList.remove('active');
             editModalTodo.classList.remove('active');
         }
 
-        closeButton.addEventListener('click', closeModal);
+        // Event listeners for close buttons
+        closeButton.addEventListener('click', closeAllModals);
+        projectModalCloseButton.addEventListener('click', () => toggleModal(addProjectModal));
+        todoModalCloseButton.addEventListener('click', () => toggleModal(addToDoModal));
+        editModalCloseButton.addEventListener('click', () => toggleModal(editModalTodo));
 
-        viewButtons.forEach(function(viewButton) {
-            viewButton.addEventListener('click', openModal);
+        // Event listeners for view buttons
+        viewButtons.forEach(viewButton => {
+            viewButton.addEventListener('click', () => toggleModal(viewModal));
         });
 
-        // Add project modal
+        // Event listener for add project button
+        addProjectBTN.addEventListener('click', () => toggleModal(addProjectModal));
 
-        function openProjectModal() {
-            addProjectModal.classList.add('active');
-        }
+        // Event listener for add todo button
+        addToDoBTN.addEventListener('click', () => toggleModal(addToDoModal));
 
-        addProjectBTN.addEventListener('click', openProjectModal);
-
-
-        // Add todo modal
-
-        function openToDOModal() {
-            addToDoModal.classList.add('active');
-        }
-
-        addToDoBTN.addEventListener('click', openToDOModal);
-
-        // Edit todo modal
-
-
-        function openEditModal() {
-            editModalTodo.classList.add('active');
-        }
-
-        function closeEditModal() {
-            editModalTodo.classList.remove('active');
-        }
-
-        editModalCloseButton.addEventListener('click', closeEditModal);
-        
-                editButtons.forEach(function(editButton) {
-            editButton.addEventListener('click', openEditModal);
+        // Event listeners for edit buttons
+        editButtons.forEach(editButton => {
+            editButton.addEventListener('click', () => {
+                toggleModal(editModalTodo);
+                // Additional code to populate edit form with data if needed
+            });
         });
-
-
-        
-        
-        
+        //        
         });
 
 })();
