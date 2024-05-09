@@ -15,14 +15,16 @@ export default (function () {
         });
 
         // Add project and ToDo modals
-
         let addProjectBTN = document.querySelector('.addproject');
         let addToDoBTN = document.querySelector('.addtodo');
         let viewModal = document.getElementById('view-modal');
         let addProjectModal = document.getElementById('add-project-modal');
         let addToDoModal = document.getElementById('add-modal-todo');
+        let editModalTodo = document.getElementById('edit-modal-todo');
         let viewButtons = document.querySelectorAll('.view-btn');
+        let editButtons = document.querySelectorAll('.edit-btn');
         let closeButton = document.querySelector('.close-modal-button');
+        let editModalCloseButton = document.querySelector('.close-edit-modal-button');
 
         // View modal
 
@@ -32,6 +34,7 @@ export default (function () {
 
         function closeModal() {
             viewModal.classList.remove('active');
+            editModalTodo.classList.remove('active');
         }
 
         closeButton.addEventListener('click', closeModal);
@@ -57,10 +60,22 @@ export default (function () {
 
         addToDoBTN.addEventListener('click', openToDOModal);
 
-        // Event listeners modal
+        // Edit todo modal
+
+
+        function openEditModal() {
+            editModalTodo.classList.add('active');
+        }
+
+        function closeEditModal() {
+            editModalTodo.classList.remove('active');
+        }
+
+        editModalCloseButton.addEventListener('click', closeEditModal);
         
-        
-        
+                editButtons.forEach(function(editButton) {
+            editButton.addEventListener('click', openEditModal);
+        });
 
 
         
