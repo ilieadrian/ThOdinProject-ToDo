@@ -10,12 +10,13 @@ module.exports = {
         project: './src/modules/project.js',
         handletodos: './src/modules/handletodos.js',
         handleproject: './src/modules/handleproject.js',
+        generateDOM: './src/modules/generateDOM.js', 
         domneffects: './src/modules/domeffects.js',
     },
     devtool: 'inline-source-map',
     plugins: [
         new HtmlWebpackPlugin({
-        title: 'ToDo List - TheOdinProject &#9745;',
+        title: 'ToDo List - TheOdinProject',
         }),
     ],
     output: {

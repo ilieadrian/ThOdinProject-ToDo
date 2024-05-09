@@ -43,9 +43,7 @@ const defaultValues  = (function () {
         taskList,
         projectsList,
     };
-    
 })();
-
 
 export default defaultValues;
 

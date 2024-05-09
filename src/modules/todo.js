@@ -39,31 +39,8 @@ export default class Todo {
 
     set status(value) {
         this._checked = value;
-    }
-    // getItemsByProject(taskList, project){
-    //     var result = taskList.filter(obj => {
-    //         return obj.project === project;
-    //     })
-    //     return result;
-    // }
-
-    //     getIndex(param) {
-    //     return this.taskList.findIndex(e => e.title === param);
-    // }
-
-    // removeItem(param) {
-    //     const index = this.getIndex(param);
-    //     if (index !== -1) {
-    //         this.taskList.splice(index, 1);
-    //     }
-    // }
-
+    } 
 }
-
-// https://github.com/Belayne/todo/blob/main/src/model.js
-// https://github.com/Ioannis-Bfg/Todo-List/blob/main/src/assets/domproject.js
-// https://github.com/youssefKetata/todoist-clone/blob/main/js/project-dialog.js
-// https://github.com/Valentin-Sosa/Todo-List/blob/main/src/logic.js
 
 
 
