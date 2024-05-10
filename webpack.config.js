@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-    
     mode: 'development',
     entry: {
         index: './src/modules/index.js',
@@ -16,7 +16,7 @@ module.exports = {
     devtool: 'inline-source-map',
     plugins: [
         new HtmlWebpackPlugin({
-        title: 'ToDo List - TheOdinProject',
+            title: 'ToDo List - TheOdinProject',
         }),
     ],
     output: {
@@ -31,8 +31,16 @@ module.exports = {
                 use: ['style-loader', 'css-loader'],
             },
             {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+            },
+            {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: 'asset/resource',
+            },
+            {
+                test: /\.svg$/,
+                use: 'svg-url-loader',
             },
         ],
     },
