@@ -1,16 +1,16 @@
 import '../style.css';
+// import Project from "./project";
+import { handleTodos } from './handletodos';
 // import Todo from './todo';
 
-// import Project from './project';
-// import handleProject from './handleproject';
 
-// const addpluscircles = new Image();
+const renderUI  = (function (projectsList) {
 
-// addpluscircles.src = addpluscircle;
-
-const renderUI  = (function () {
+    console.log("hello")
     const div = document.createElement("div");
     div.classList.add("container")
+
+    console.log(projectsList)
     
     div.innerHTML = `
             <section class="header">
@@ -69,3 +69,8 @@ const renderUI  = (function () {
 
     document.body.appendChild(div);
 })();
+
+
+export default renderUI;
+
+

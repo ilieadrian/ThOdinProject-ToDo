@@ -3,6 +3,7 @@ import Project from './project';
 import handleProject from './handleproject';
 import {handleTodos} from './handletodos';
 import {getTodosByProject} from './handletodos';
+// import renderUI from './index';
 
 const defaultValues  = (function () {
     const taskList = [];
@@ -38,7 +39,9 @@ const defaultValues  = (function () {
     handleProject(newToDo, projectsList);
 
     handleTodos(taskList, projectsList);
+    // renderUI(projectsList); // Update UI with updated project list
 
+    
     return {
         taskList,
         projectsList,

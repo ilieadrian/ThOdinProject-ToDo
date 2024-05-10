@@ -5,7 +5,7 @@ module.exports = {
     mode: 'development',
     entry: {
         index: './src/modules/index.js',
-        startup: './src/modules/startup.js',
+        // renderUI: './src/modules/index.js',
         todo: './src/modules/todo.js',
         project: './src/modules/project.js',
         handletodos: './src/modules/handletodos.js',

@@ -9,6 +9,8 @@ function handleProject(newToDo, projectList){
         const newProject = new Project(newToDo.project);
         projectList.push(newProject);
     }
+
+    return projectList;
 }
 
 export default handleProject;
