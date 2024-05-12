@@ -5,7 +5,12 @@ function handleTodos(taskList, projectsList) {
     } 
 }
 
+// function aRandomFunc(projectsList) {
+//     console.log("a random func", projectsList)
+// }
+
 function getTodosByProject(taskList, element) {
+    
     return taskList.filter(taskList => taskList.project === element);
 }
 

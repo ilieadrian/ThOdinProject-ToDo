@@ -1,16 +1,20 @@
 import '../style.css';
-// import Project from "./project";
+import Project from "./project";
 import { handleTodos } from './handletodos';
+import projectList from './startup';
 // import Todo from './todo';
 
+function aRandomFunc(projectsList) {
+    console.log("a random func", projectsList)
+}
 
 const renderUI  = (function (projectsList) {
 
-    console.log("hello")
+    // console.log("hello")
+    // console.log(projectsList)
+
     const div = document.createElement("div");
     div.classList.add("container")
-
-    console.log(projectsList)
     
     div.innerHTML = `
             <section class="header">
@@ -70,7 +74,6 @@ const renderUI  = (function (projectsList) {
     document.body.appendChild(div);
 })();
 
-
-export default renderUI;
+export { renderUI, aRandomFunc };
 
 

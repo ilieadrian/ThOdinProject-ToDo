@@ -1,9 +1,9 @@
 import Todo from './todo';
 import Project from './project';
 import handleProject from './handleproject';
-import {handleTodos} from './handletodos';
+import {handleTodos } from './handletodos';
 import {getTodosByProject} from './handletodos';
-// import renderUI from './index';
+import {aRandomFunc} from './index';
 
 const defaultValues  = (function () {
     const taskList = [];
@@ -39,14 +39,16 @@ const defaultValues  = (function () {
     handleProject(newToDo, projectsList);
 
     handleTodos(taskList, projectsList);
-    // renderUI(projectsList); // Update UI with updated project list
 
+    aRandomFunc(projectsList);
     
     return {
         taskList,
         projectsList,
+
     };
 })();
+
 
 export default defaultValues;
 
