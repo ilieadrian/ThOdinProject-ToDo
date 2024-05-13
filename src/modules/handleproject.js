@@ -13,5 +13,19 @@ function handleProject(newToDo, projectList){
     return projectList;
 }
 
-export default handleProject;
+function getProjects(projectsList) {
+    let ulContent = '';
+    
+    projectsList.forEach(element => {
+        const li = document.createElement("li");
+        ulContent += `
+            <li><a href="#">${element.name}</a><span class="number-of-tasks">3</span></li>
+        `;
+
+    });
+
+    return ulContent;
+}
+
+export {handleProject, getProjects };
 

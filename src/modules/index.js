@@ -1,6 +1,7 @@
 import '../style.css';
 import Project from "./project";
-import { handleTodos, getProjects } from './handletodos';
+import { handleTodos } from './handletodos';
+import { getProjects } from './handleproject';
 import projectList from './startup';
 // import Todo from './todo';
 

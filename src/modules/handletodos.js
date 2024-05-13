@@ -5,24 +5,12 @@ function handleTodos(taskList, projectsList) {
     } 
 }
 
-function getProjects(projectsList) {
-    let ulContent = '';
-    
-    projectsList.forEach(element => {
-        const li = document.createElement("li");
-        ulContent += `
-            <li><a href="#">${element.name}</a><span class="number-of-tasks">3</span></li>
-        `;
 
-    });
-
-    return ulContent;
-}
 
 function getTodosByProject(taskList, element) {
     
     return taskList.filter(taskList => taskList.project === element);
 }
 
-export { handleTodos, getTodosByProject, getProjects }
+export { handleTodos, getTodosByProject }
 

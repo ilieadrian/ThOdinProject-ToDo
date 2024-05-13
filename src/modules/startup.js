@@ -1,6 +1,6 @@
 import Todo from './todo';
 import Project from './project';
-import handleProject from './handleproject';
+import {handleProject} from './handleproject';
 import {handleTodos } from './handletodos';
 import {getTodosByProject} from './handletodos';
 import {renderUI} from './index';
