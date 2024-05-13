@@ -2,7 +2,6 @@ import Todo from './todo';
 import Project from './project';
 import {handleProject} from './handleproject';
 import {handleTodos } from './handletodos';
-import {getTodosByProject} from './handletodos';
 import {renderUI} from './index';
 
 const defaultValues  = (function () {
@@ -38,9 +37,9 @@ const defaultValues  = (function () {
     taskList.push(newToDo);
     handleProject(newToDo, projectsList);
 
-    handleTodos(taskList, projectsList);
+    // handleTodos(taskList, projectsList);
 
-    renderUI(projectsList);
+    renderUI(projectsList, taskList);
     
     return {
         taskList,
@@ -49,7 +48,7 @@ const defaultValues  = (function () {
 })();
 
 
-export default defaultValues;
+export { defaultValues };
 
 
 

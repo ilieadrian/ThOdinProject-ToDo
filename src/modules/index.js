@@ -1,11 +1,10 @@
 import '../style.css';
-import Project from "./project";
-import { handleTodos } from './handletodos';
 import { getProjects } from './handleproject';
-import projectList from './startup';
-// import Todo from './todo';
+import { displayToDods } from './handletodos';
+import { defaultValues } from './startup';
 
-function renderUI(projectsList) {
+function renderUI(projectsList, taskList) {
+    // console.log("Render", projectsList, taskList)
     const div = document.createElement("div");
     div.classList.add("container")
     
@@ -17,7 +16,9 @@ function renderUI(projectsList) {
             <div class="content-container">
             <section class="menu">
                 <ul id="todos-due" class="menu-links">
-                    <li><a href="#">Home</a><span class="number-of-tasks">7</span></li>    
+                    <li><a href="#">Home</a><span class="number-of-tasks">7</span></li>
+                    <li><a href="#">Due Today</a><span class="number-of-tasks">2</span></li>
+                    <li><a href="#">Due These Week</a><span class="number-of-tasks">1</span></li> 
                 </ul>
 
                 <h2>Projects</h2>
@@ -38,19 +39,7 @@ function renderUI(projectsList) {
             </section>
             <section class="todo-container">
                 <ul class="items-list">
-                    <li class="item">
-                        <div class="name-grup">
-                            <div class="priority low"></div>
-                            <input type="checkbox"/>
-                            <p>Lorem ipsum dolor sit amet. </p>
-                        </div>
-                        <div class="action-grup">
-                            <p id="due-date">Jun 9th</p>
-                            <button class="view-btn"><img src="../src/images/view.svg" alt="" srcset=""></button>
-                            <button class="edit-btn"><img src="../src/images/edit.svg" alt="" srcset=""></button>
-                            <button><img src="../src/images/delete.svg" alt="" srcset=""></button>
-                        </div>
-                    </li>
+                    ${displayToDods(taskList)}  
                 </ul>
             </section>
             </div>
