@@ -1,18 +1,10 @@
 import '../style.css';
 import Project from "./project";
-import { handleTodos } from './handletodos';
+import { handleTodos, getProjects } from './handletodos';
 import projectList from './startup';
 // import Todo from './todo';
 
-function aRandomFunc(projectsList) {
-    console.log("a random func", projectsList)
-}
-
-const renderUI  = (function (projectsList) {
-
-    // console.log("hello")
-    // console.log(projectsList)
-
+function renderUI(projectsList) {
     const div = document.createElement("div");
     div.classList.add("container")
     
@@ -24,19 +16,12 @@ const renderUI  = (function (projectsList) {
             <div class="content-container">
             <section class="menu">
                 <ul id="todos-due" class="menu-links">
-                    <li><a href="#">Home</a><span class="number-of-tasks">7</span></li>
-                    <li><a href="#">Due Today</a><span class="number-of-tasks">2</span></li>
-                    <li><a href="#">Due These Week</a><span class="number-of-tasks">1</span></li>
-                    <li><a href="#">Due These Week</a><span class="number-of-tasks">1</span></li>
-                    <li><a href="#">Due These Week</a><span class="number-of-tasks">1</span></li>
-                    <li><a href="#">Due These Week</a><span class="number-of-tasks">1</span></li>
-                    <li><a href="#">Due These Week</a><span class="number-of-tasks">1</span></li>
+                    <li><a href="#">Home</a><span class="number-of-tasks">7</span></li>    
                 </ul>
 
                 <h2>Projects</h2>
                 <ul id="projects" class="menu-links">
-                    <li><a href="#">Random generated</a><span class="number-of-tasks">3</span></li>
-                    <li><a href="#">Somehow also random generated</a><span class="number-of-tasks">1</span></li>
+                    ${getProjects(projectsList)}     
                 </ul>
 
                 <div class="buttons-container">
@@ -69,11 +54,12 @@ const renderUI  = (function (projectsList) {
             </section>
             </div>
         </div>
-    `
+    `;
 
     document.body.appendChild(div);
-})();
+};
 
-export { renderUI, aRandomFunc };
+
+export { renderUI };
 
 

@@ -3,7 +3,7 @@ import Project from './project';
 import handleProject from './handleproject';
 import {handleTodos } from './handletodos';
 import {getTodosByProject} from './handletodos';
-import {aRandomFunc} from './index';
+import {renderUI} from './index';
 
 const defaultValues  = (function () {
     const taskList = [];
@@ -40,12 +40,11 @@ const defaultValues  = (function () {
 
     handleTodos(taskList, projectsList);
 
-    aRandomFunc(projectsList);
+    renderUI(projectsList);
     
     return {
         taskList,
         projectsList,
-
     };
 })();
 
