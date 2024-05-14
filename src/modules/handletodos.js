@@ -7,21 +7,21 @@ function handleTodos(taskList, projectsList) {
 
 function displayToDods(taskList){
 
-    console.log("Handletodos",taskList);
+    // console.log("Handletodos",taskList);
 
     let ulContent = '';
     
     taskList.forEach(element => {
-        console.log(element)
+        console.table(element)
         ulContent += `
             <li class="item">
-                <div class="name-grup">
-                <div class="priority low"></div>
-                    <input type="checkbox"/>
+                <div class="name-grup ${element._status ? "finished" : false}">
+                <div class="priority ${element.priority}"></div>
+                    <input type="checkbox"/ ${element.status ? "checked" : false}>
                     <p>${element.title} </p>
                 </div>
                 <div class="action-grup">
-                    <p id="due-date">Jun 9th</p>
+                    <p id="due-date">${element.dueDate}</p>
                     <button class="view-btn"><img src="../src/images/view.svg" alt="" srcset=""></button>
                     <button class="edit-btn"><img src="../src/images/edit.svg" alt="" srcset=""></button>
                     <button><img src="../src/images/delete.svg" alt="" srcset=""></button>

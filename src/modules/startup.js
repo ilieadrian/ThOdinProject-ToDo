@@ -13,27 +13,27 @@ const defaultValues  = (function () {
     defaultProject = new Project("Default")
     projectsList.push(defaultProject);
 
-    newToDo = new Todo('Read daily a pattern', 'https://www.patterns.dev/vanilla/import-on-interaction', '2024-03-20', 'High', 'Unfinished', 'Learning', false);
+    newToDo = new Todo('Read daily a pattern', 'https://www.patterns.dev/vanilla/import-on-interaction', '20.03.2024', 'high', false, 'Learning');
     taskList.push(newToDo);
     handleProject(newToDo, projectsList);
 
-    newToDo = new Todo('Write on blog', 'Write about last part from TicTacToe game', '2024-03-21', 'Low', 'Unfinished', 'Home', false);
+    newToDo = new Todo('Write on blog', 'Write about last part from TicTacToe game', '21.03.2024', 'low', false, 'Home');
     taskList.push(newToDo);
     handleProject(newToDo, projectsList);
 
-    newToDo = new Todo('New Odin Chapter', 'Start a new OdinProjectChapter', '2024-04-15', 'Normal', 'Finished', 'Learning', true);
+    newToDo = new Todo('New Odin Chapter', 'Start a new OdinProjectChapter', '15.04.2024', 'medium', true, 'Learning');
     taskList.push(newToDo);
     handleProject(newToDo, projectsList);
 
-    newToDo = new Todo('Repair blog', 'Fix social links on blog header', '2024-03-29', 'High', 'Unfinished', 'Learning', true);
+    newToDo = new Todo('Repair blog', 'Fix social links on blog header', '29.03.2024', 'high', false, 'Learning');
     taskList.push(newToDo);
     handleProject(newToDo, projectsList);
 
-    newToDo = new Todo('TheOdinProject chapter 2', 'Finish theOdinProject chapter 2', '2024-03-15', 'Normal', 'Finished', 'Home', false);
+    newToDo = new Todo('TheOdinProject chapter 2', 'Finish theOdinProject chapter 2', '15.03.2024', 'low', true, 'Home');
     taskList.push(newToDo);
     handleProject(newToDo, projectsList);
 
-    newToDo = new Todo('App implementation', 'Add ability to extract the projects from the array', '2024-04-24', 'Normal', 'Finished', 'Active learing', true);
+    newToDo = new Todo('App implementation', 'Add ability to extract the projects from the array', '24.03.2024', 'low', true, 'Active learing');
     taskList.push(newToDo);
     handleProject(newToDo, projectsList);
 
