@@ -3,6 +3,7 @@ export default (function () {
         //Menu links interaction
 
         const menuLinks = document.querySelectorAll(".menu-links a");
+        
     
         menuLinks.forEach(function(link) {
             link.addEventListener("click", function(event) {

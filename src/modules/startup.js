@@ -37,8 +37,6 @@ const defaultValues  = (function () {
     taskList.push(newToDo);
     handleProject(newToDo, projectsList);
 
-    // handleTodos(taskList, projectsList);
-
     renderUI(projectsList, taskList);
     
     return {
