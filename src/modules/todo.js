@@ -32,12 +32,8 @@ export default class Todo {
         return this._project;
     }
 
-    // get status() {
-    //     return this._checked;
-    // }
-
     set status(value) {
-        this._checked = value;
+        this._status = value;
     } 
 }
 

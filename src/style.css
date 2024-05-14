@@ -238,7 +238,6 @@ button:hover {
 
 .priority {
     height: 50px; 
-    /* background-color: #008000; */
     position: relative; 
 }
 
@@ -300,8 +299,12 @@ input[type="checkbox"]:checked::before {
 }
 /* endof checkbox handler */
 
-.finished .name-grup p {
+.finished.name-grup p {
     text-decoration: line-through;
+    opacity: 0.4;
+}
+
+.finished.action-grup {
     opacity: 0.4;
 }
 
