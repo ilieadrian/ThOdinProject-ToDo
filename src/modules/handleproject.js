@@ -4,6 +4,8 @@ function handleProject(newToDo, projectList){
     const projectName = newToDo.project;
     const existingProject = projectList.find(project => project.name === projectName);
 
+    console.log(projectList)
+
     if (!existingProject){
         const newProject = new Project(newToDo.project);
         projectList.push(newProject);
@@ -26,7 +28,7 @@ function getProjects(projectsList) {
         const projectList = document.querySelectorAll("#projects li");
         projectList.forEach(li => {
             li.addEventListener("click", function(event) {
-                console.log("Clicked on", a.textContent.trim()); 
+                console.log("Clicked on", li.textContent.trim()); 
                 li.classList.toggle("active");
             });
         });
