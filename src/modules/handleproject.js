@@ -20,16 +20,18 @@ function getProjects(projectsList) {
     projectsList.forEach(element => {
         const li = document.createElement("li");
         ulContent += `
-            <li><a href="#">${element.name}</a><span class="number-of-tasks">3</span></li>
+            <li data-project-id="${element.id}"><a href="#">${element.name}</a><span class="number-of-tasks">3</span></li>
         `;
     });
 
     document.addEventListener("DOMContentLoaded", function(){
         const projectList = document.querySelectorAll("#projects li");
+        
         projectList.forEach(li => {
             li.addEventListener("click", function(event) {
-                console.log("Clicked on", li.textContent.trim()); 
-                li.classList.toggle("active");
+                const projectId = li.getAttribute('data-project-id');
+                console.log("Clicked on", projectId); 
+                // li.classList.toggle("active");
             });
         });
 
