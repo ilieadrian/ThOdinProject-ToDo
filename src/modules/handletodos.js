@@ -1,3 +1,5 @@
+import { renderUI } from ".";
+
 function handleTodos(taskList, projectsList) {
     for (const element of projectsList){
         const curentElement = element.name;
@@ -29,9 +31,13 @@ function displayToDods(taskList){
     return ulContent;
 }
 
-function getTodosByProject(taskList, element) {
+function getTodosByProject(taskList, element){
+
+    const filteredElements = taskList.filter(taskList => taskList.project === element);
+
+    console.log(taskList)
     
-    return taskList.filter(taskList => taskList.project === element);
+    renderUI(taskList, filteredElements)
 }
 
 export { handleTodos, getTodosByProject, displayToDods }

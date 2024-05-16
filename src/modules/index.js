@@ -23,7 +23,7 @@ function renderUI(projectsList, taskList) {
 
                 <h2>Projects</h2>
                 <ul id="projects" class="menu-links">
-                    ${getProjects(projectsList)}     
+                    ${getProjects(projectsList, taskList)}     
                 </ul>
 
                 <div class="buttons-container">
