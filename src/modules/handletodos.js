@@ -35,7 +35,7 @@ function getTodosByProject(taskList, element){
 
     const filteredElements = taskList.filter(taskList => taskList.project === element);
 
-    console.log(taskList)
+    console.log("Tasklist",taskList)
     
     renderUI(taskList, filteredElements)
 }

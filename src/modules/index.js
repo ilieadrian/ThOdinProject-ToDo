@@ -4,11 +4,19 @@ import { displayToDods } from './handletodos';
 import { defaultValues } from './startup';
 
 function renderUI(projectsList, taskList) {
-    // console.log("Render", projectsList, taskList)
-    const div = document.createElement("div");
-    div.classList.add("container")
+    let container = document.querySelector('.container');
     
-    div.innerHTML = `
+    // If container doesn't exist, create and append it.
+    if (!container) {
+        container = document.createElement('div');
+        container.classList.add('container');
+        document.body.appendChild(container);
+    }
+
+    // Clear previous content
+    container.innerHTML = "";
+    
+    container.innerHTML = `
             <section class="header">
                 <h1>// To do</h1> 
                 <img src="../src/images/to-do-list.svg" alt="" srcset="">
@@ -47,6 +55,7 @@ function renderUI(projectsList, taskList) {
     `;
 
     document.body.appendChild(div);
+
 };
 
 
