@@ -41,7 +41,6 @@ function getProjects(projectsList, taskList) {
                 const projectId = li.getAttribute('data-project-id');
                 const projectName = anchor.textContent; 
 
-
                 getTodosByProject(taskList, projectName);
                 // to be resolved
                 li.classList.toggle("active");

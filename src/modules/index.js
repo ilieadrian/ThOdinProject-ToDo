@@ -12,8 +12,10 @@ function renderUI(projectsList, taskList) {
         container.classList.add('container');
         document.body.appendChild(container);
     }
+    console.log("projectlist index", projectsList)
+    console.log("taskList index", taskList)
+    // console.log("filtered", filteredElements)
 
-    // Clear previous content
     container.innerHTML = "";
     
     container.innerHTML = `
@@ -54,7 +56,7 @@ function renderUI(projectsList, taskList) {
         </div>
     `;
 
-    document.body.appendChild(div);
+    // document.body.appendChild(div);
 
 };
 

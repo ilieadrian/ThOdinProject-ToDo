@@ -31,13 +31,17 @@ function displayToDods(taskList){
     return ulContent;
 }
 
-function getTodosByProject(taskList, element){
+function getTodosByProject(taskList, projectName){
 
-    const filteredElements = taskList.filter(taskList => taskList.project === element);
+    const filteredElements = taskList.filter(taskList => taskList.project === projectName);
 
-    console.log("Tasklist",taskList)
+    // console.log("Tasklist",taskList)
+
+    console.log("taskList Handletodos", taskList)
+    // console.log("projectlist HandleTodos", projectsList)
+    console.log("filteredElements Handletodos", filteredElements)
     
-    renderUI(taskList, filteredElements)
+    renderUI(filteredElements)
 }
 
 export { handleTodos, getTodosByProject, displayToDods }
