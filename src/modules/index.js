@@ -13,7 +13,7 @@ function renderUI(projectsList, todoList) {
         document.body.appendChild(container);
     }
     console.log("projectlist index", projectsList)
-    console.log("todoList index", todoList)
+    // console.log("todoList index", todoList)
     // console.log("filtered", filteredElements)
 
     container.innerHTML = "";

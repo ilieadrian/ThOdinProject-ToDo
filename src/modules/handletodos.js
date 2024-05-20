@@ -1,8 +1,11 @@
 import { renderUI } from ".";
+// import { defaultValues } from "./startup";
+
 function handleTodos(todoList, projectsList) {
     for (const element of projectsList){
         const curentElement = element.name;
         getTodosByProject(todoList, curentElement);
+        console.log("projectslist handleTodos", defaultValues)
     } 
 }
 
@@ -30,19 +33,18 @@ function displayToDods(todoList){
     return ulContent;
 }
 
-function getTodosByProject(todoList, projectName){
+function getTodosByProject(todoList, projectName, projectsList){
 
     const filteredElements = todoList.filter(taskList => taskList.project === projectName);
 
     // console.log("Tasklist",taskList)
 
-    console.log("todoList Handletodos", todoList)
-    // console.log("projectlist HandleTodos", projectsList)
-    console.log("filteredElements Handletodos", filteredElements)
+    // console.log("todoList Handletodos", todoList)
+    console.log("projectlist HandleTodos", projectsList)
+    // console.log("filteredElements Handletodos", filteredElements)
     
     renderUI(projectsList, filteredElements)
 }
 
 export { handleTodos, getTodosByProject, displayToDods }
 
-// tasklist is todoList
