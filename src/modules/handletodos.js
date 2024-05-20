@@ -1,16 +1,15 @@
 import { renderUI } from ".";
-
-function handleTodos(taskList, projectsList) {
+function handleTodos(todoList, projectsList) {
     for (const element of projectsList){
         const curentElement = element.name;
-        getTodosByProject(taskList, curentElement);
+        getTodosByProject(todoList, curentElement);
     } 
 }
 
-function displayToDods(taskList){
+function displayToDods(todoList){
     let ulContent = '';
     
-    taskList.forEach(element => {
+    todoList.forEach(element => {
         ulContent += `
             <li class="item">
                 <div class="name-grup ${element.status ? "finished" : ''}">
@@ -31,18 +30,19 @@ function displayToDods(taskList){
     return ulContent;
 }
 
-function getTodosByProject(taskList, projectName){
+function getTodosByProject(todoList, projectName){
 
-    const filteredElements = taskList.filter(taskList => taskList.project === projectName);
+    const filteredElements = todoList.filter(taskList => taskList.project === projectName);
 
     // console.log("Tasklist",taskList)
 
-    console.log("taskList Handletodos", taskList)
+    console.log("todoList Handletodos", todoList)
     // console.log("projectlist HandleTodos", projectsList)
     console.log("filteredElements Handletodos", filteredElements)
     
-    renderUI(filteredElements)
+    renderUI(projectsList, filteredElements)
 }
 
 export { handleTodos, getTodosByProject, displayToDods }
 
+// tasklist is todoList

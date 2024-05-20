@@ -3,7 +3,7 @@ import { getProjects } from './handleproject';
 import { displayToDods } from './handletodos';
 import { defaultValues } from './startup';
 
-function renderUI(projectsList, taskList) {
+function renderUI(projectsList, todoList) {
     let container = document.querySelector('.container');
     
     // If container doesn't exist, create and append it.
@@ -13,7 +13,7 @@ function renderUI(projectsList, taskList) {
         document.body.appendChild(container);
     }
     console.log("projectlist index", projectsList)
-    console.log("taskList index", taskList)
+    console.log("todoList index", todoList)
     // console.log("filtered", filteredElements)
 
     container.innerHTML = "";
@@ -33,7 +33,7 @@ function renderUI(projectsList, taskList) {
 
                 <h2>Projects</h2>
                 <ul id="projects" class="menu-links">
-                    ${getProjects(projectsList, taskList)}     
+                    ${getProjects(projectsList, todoList)}     
                 </ul>
 
                 <div class="buttons-container">
@@ -49,7 +49,7 @@ function renderUI(projectsList, taskList) {
             </section>
             <section class="todo-container">
                 <ul class="items-list">
-                    ${displayToDods(taskList)}  
+                    ${displayToDods(todoList)}  
                 </ul>
             </section>
             </div>

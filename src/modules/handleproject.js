@@ -18,9 +18,9 @@ function handleProject(newToDo, projectList){
     return projectList;
 }
 
-function getProjects(projectsList, taskList) {
+function getProjects(projectsList, todoList) {
     let ulContent = '';
-    // console.log(taskList);
+    // console.log(todoList);
 
 
     projectsList.forEach(element => {
@@ -41,7 +41,7 @@ function getProjects(projectsList, taskList) {
                 const projectId = li.getAttribute('data-project-id');
                 const projectName = anchor.textContent; 
 
-                getTodosByProject(taskList, projectName);
+                getTodosByProject(todoList, projectName);
                 // to be resolved
                 li.classList.toggle("active");
             });
@@ -51,7 +51,6 @@ function getProjects(projectsList, taskList) {
 
     return ulContent;
 }
-
 
 export {handleProject, getProjects };
 
