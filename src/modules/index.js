@@ -1,23 +1,16 @@
 import '../style.css';
 import { getProjects } from './handleproject';
 import { displayToDods } from './handletodos';
-import { getTodosByProject } from './handletodos';
 import { defaultValues } from './startup';
-
-const { todoList, projectsList } = defaultValues;
 
 function renderUI(projectsList, todoList) {
     let container = document.querySelector('.container');
     
-    // If container doesn't exist, create and append it.
     if (!container) {
         container = document.createElement('div');
         container.classList.add('container');
         document.body.appendChild(container);
     }
-    console.log("projectlist INDEX", projectsList)
-    // console.log("todoList index", todoList)
-    // console.log("filtered", filteredElements)
 
     container.innerHTML = "";
     
@@ -59,46 +52,20 @@ function renderUI(projectsList, todoList) {
         </div>
     `;
 
-    // document.body.appendChild(div);
-    // const projectLinks = container.querySelectorAll('#projects li a');
-    // projectLinks.forEach(link => {
-    //     link.addEventListener('click', event => {
-    //         event.preventDefault();
-    //         const projectName = event.target.textContent;
-    //         getTodosByProject(todoList, projectName);
-    //     });
-    // });
-
 };
 
-
-function simpleRenderUI(filteredElements){
+function renderTodoContainer(filteredElements){
     let container = document.querySelector('.todo-container');
     
-    // If container doesn't exist, create and append it.
-    if (!container) {
-        container = document.createElement('div');
-        container.classList.add('container');
-        document.body.appendChild(container);
-    }
-
-    console.table(filteredElements)
     container.innerHTML = "";
-    
     container.innerHTML = `
-            
-            <section class="todo-container">
-                <ul class="items-list">
-                    ${displayToDods(filteredElements)}  
-                </ul>
-            </section>
-        `;
+        <ul class="items-list">
+            ${displayToDods(filteredElements)}  
+        </ul>
+        
+    `;
 }
 
-// document.addEventListener("DOMContentLoaded", function () {
-//     const { todoList, projectsList } = defaultValues;
-//     renderUI(projectsList, todoList);
-// });
-export { renderUI, simpleRenderUI };
+export { renderUI, renderTodoContainer };
 
 

@@ -5,8 +5,6 @@ function handleProject(newToDo, projectsList){
     const projectName = newToDo.project;
     const existingProject = projectsList.find(project => project.name === projectName);
 
-    // console.log("projectlist HANDLPROJECT", projectList)
-
     if (!existingProject){
         const newProject = new Project(newToDo.project);
         projectsList.push(newProject);
@@ -18,8 +16,6 @@ function handleProject(newToDo, projectsList){
 function getProjects(projectsList, todoList) {
     let ulContent = '';
 
-    console.log("projectlist GETPROJECTS", projectsList)
-
     projectsList.forEach(element => {
         const li = document.createElement("li");
 
@@ -28,24 +24,48 @@ function getProjects(projectsList, todoList) {
         `;
     });
 
-    document.addEventListener("DOMContentLoaded", function(){
-        const projectList = document.querySelectorAll("#projects li");
+    // document.addEventListener("DOMContentLoaded", function(){
+    //     const projectList = document.querySelectorAll("#projects li");
+    //     console.log(projectList)
         
+        
+    //     projectList.forEach(li => {
+    //         const anchor = li.querySelector('a');
+    //         anchor.addEventListener("click", function(event) {
+    //             event.preventDefault();
+    //             const projectId = li.getAttribute('data-project-id');
+    //             const projectName = anchor.textContent; 
+
+    //             getTodosByProject(todoList, projectName);
+    //             // to be resolved
+    //             const menuLinks = document.querySelectorAll(".menu-links");
+            
+    //             menuLinks.classList.toggle("active");
+    //         });
+    //     });
+    // })
+    document.addEventListener("DOMContentLoaded", function() {
+        const projectList = document.querySelectorAll("#projects li");
+    
         projectList.forEach(li => {
             const anchor = li.querySelector('a');
-            // console.log("projectlist GETPROJECTS Interior", projectsList)
-
             anchor.addEventListener("click", function(event) {
                 event.preventDefault();
                 const projectId = li.getAttribute('data-project-id');
-                const projectName = anchor.textContent; 
-
-                getTodosByProject(todoList, projectName, projectsList);
-                // to be resolved
-                li.classList.toggle("active");
+                const projectName = anchor.textContent;
+    
+                getTodosByProject(todoList, projectName);
+    
+                projectList.forEach(item => {
+                    const link = item.querySelector('a');
+                    link.classList.remove('active');
+                });
+    
+                anchor.classList.add('active');
             });
         });
-    })
+    });
+
 
     return ulContent;
 }

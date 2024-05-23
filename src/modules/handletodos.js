@@ -1,12 +1,9 @@
-import { renderUI } from ".";
-import { simpleRenderUI } from ".";
-// import { defaultValues } from "./startup";
+import { renderTodoContainer } from ".";
 
 function handleTodos(todoList, projectsList) {
     for (const element of projectsList){
         const curentElement = element.name;
-        getTodosByProject(todoList, curentElement, projectsList);
-        console.log("projectslist HANDLETODOS", projectsList)
+        getTodosByProject(todoList, curentElement);
     } 
 }
 
@@ -34,32 +31,10 @@ function displayToDods(todoList){
     return ulContent;
 }
 
-function getTodosByProject(todoList, curentElement, projectsList){
-
-    if (!projectsList) {
-        console.error('getTodosByProject received undefined projectsList');
-        return;
-    }
-
-    if (!todoList) {
-        console.error('getTodosByProject received undefined todoList');
-        return;
-    }
-
+function getTodosByProject(todoList, curentElement){
     const filteredElements = todoList.filter(taskList => taskList.project === curentElement);
-    simpleRenderUI(filteredElements)
-
-
-    // console.log("Tasklist",taskList)
-
-    // console.log("todoList Handletodos", todoList)
-    console.log("projectlist GETTODOSBYPROJECT", projectsList)
-    // console.log("filteredElements Handletodos", filteredElements)
-    
-    // renderUI(projectsList, filteredElements);
+    renderTodoContainer(filteredElements)
 }
-
-
 
 export { handleTodos, getTodosByProject, displayToDods }
 
