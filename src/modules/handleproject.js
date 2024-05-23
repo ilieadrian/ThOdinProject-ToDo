@@ -1,21 +1,24 @@
 import Project from "./project";
 import { getTodosByProject } from "./handletodos";
 
-function handleProject(newToDo, projectList){
+function handleProject(newToDo, projectsList){
     const projectName = newToDo.project;
-    const existingProject = projectList.find(project => project.name === projectName);
+    const existingProject = projectsList.find(project => project.name === projectName);
+
+    // console.log("projectlist HANDLPROJECT", projectList)
 
     if (!existingProject){
         const newProject = new Project(newToDo.project);
-        projectList.push(newProject);
+        projectsList.push(newProject);
     }
 
-    return projectList;
+    return projectsList;
 }
 
 function getProjects(projectsList, todoList) {
     let ulContent = '';
-    
+
+    console.log("projectlist GETPROJECTS", projectsList)
 
     projectsList.forEach(element => {
         const li = document.createElement("li");
@@ -30,8 +33,10 @@ function getProjects(projectsList, todoList) {
         
         projectList.forEach(li => {
             const anchor = li.querySelector('a');
+            // console.log("projectlist GETPROJECTS Interior", projectsList)
 
             anchor.addEventListener("click", function(event) {
+                event.preventDefault();
                 const projectId = li.getAttribute('data-project-id');
                 const projectName = anchor.textContent; 
 
@@ -39,8 +44,7 @@ function getProjects(projectsList, todoList) {
                 // to be resolved
                 li.classList.toggle("active");
             });
-    });
-
+        });
     })
 
     return ulContent;

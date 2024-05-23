@@ -1,6 +1,7 @@
 import '../style.css';
 import { getProjects } from './handleproject';
 import { displayToDods } from './handletodos';
+import { getTodosByProject } from './handletodos';
 import { defaultValues } from './startup';
 
 function renderUI(projectsList, todoList) {
@@ -12,7 +13,7 @@ function renderUI(projectsList, todoList) {
         container.classList.add('container');
         document.body.appendChild(container);
     }
-    console.log("projectlist index", projectsList)
+    console.log("projectlist INDEX", projectsList)
     // console.log("todoList index", todoList)
     // console.log("filtered", filteredElements)
 
@@ -57,10 +58,26 @@ function renderUI(projectsList, todoList) {
     `;
 
     // document.body.appendChild(div);
+    // const projectLinks = container.querySelectorAll('#projects li a');
+    // projectLinks.forEach(link => {
+    //     link.addEventListener('click', event => {
+    //         event.preventDefault();
+    //         const projectName = event.target.textContent;
+    //         getTodosByProject(todoList, projectName);
+    //     });
+    // });
 
 };
 
 
-export { renderUI };
+function simpleRenderUI(filteredElements){
+    console.table(filteredElements)
+}
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     const { todoList, projectsList } = defaultValues;
+//     renderUI(projectsList, todoList);
+// });
+export { renderUI, simpleRenderUI };
 
 
