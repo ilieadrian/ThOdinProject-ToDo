@@ -4,6 +4,8 @@ import { displayToDods } from './handletodos';
 import { getTodosByProject } from './handletodos';
 import { defaultValues } from './startup';
 
+const { todoList, projectsList } = defaultValues;
+
 function renderUI(projectsList, todoList) {
     let container = document.querySelector('.container');
     
@@ -71,7 +73,26 @@ function renderUI(projectsList, todoList) {
 
 
 function simpleRenderUI(filteredElements){
+    let container = document.querySelector('.todo-container');
+    
+    // If container doesn't exist, create and append it.
+    if (!container) {
+        container = document.createElement('div');
+        container.classList.add('container');
+        document.body.appendChild(container);
+    }
+
     console.table(filteredElements)
+    container.innerHTML = "";
+    
+    container.innerHTML = `
+            
+            <section class="todo-container">
+                <ul class="items-list">
+                    ${displayToDods(filteredElements)}  
+                </ul>
+            </section>
+        `;
 }
 
 // document.addEventListener("DOMContentLoaded", function () {
