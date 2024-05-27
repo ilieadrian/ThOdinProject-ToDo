@@ -24,7 +24,9 @@ function getProjects(projectsList, todoList) {
     console.log(project.items)
 
 
-    projectsList.forEach(project => project.items = 0);
+    // projectsList.forEach(project => project.items = 0);
+    console.log("projectsList from handleProject")
+    console.table(projectsList)
 
         todoList.forEach(todo => {
             // console.log(todo.project)
