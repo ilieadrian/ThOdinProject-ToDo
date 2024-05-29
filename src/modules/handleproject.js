@@ -1,88 +1,85 @@
 import Project from "./project";
 import { getTodosByProject } from "./handletodos";
 
+
 function handleProject(newToDo, projectsList){
+    const defaultProjectExists = projectsList.some(project => project.name === "Default");
+    if (!defaultProjectExists) {
+        const defaultProject = new Project("Default");
+        projectsList.push(defaultProject);
+}
+    // for (const element of projectsList) {
+    //     console.log(element.name)
+    // }
     const projectName = newToDo.project;
     const existingProject = projectsList.find(project => project.name === projectName);
 
-    // console.log("from handleProject: ");
-    // console.log("projectsList length:", projectsList.length);
-    console.table(projectsList);
-    projectsList.forEach(project => project._items = 0);
-
-    // Check if projectsList[1] exists before accessing its id
-    if (projectsList.length > 1) {
-            let curentProject = projectsList.map(project => {
-            project.calcItem()
-        })
-
-        console.table(projectsList[0].name);
-        projectsList[0].calcItem()
-    } else {
-        console.log("projectsList[1] is undefined");
-    }
-    
     if (!existingProject){
         const newProject = new Project(newToDo.project);
         projectsList.push(newProject);
     }
 
+    tryTO()
+    
+            // Testground
+        // Testground
+    // Testground
+
+    // console.log("from handleProject: ");
+    // console.log("projectsList length:", projectsList.length);
+    // console.table(projectsList);
+
+    //Get the project every time it apears
+            //asociate the apearance of a project with the said project
+                    //count add the counter to the items section
+
+
+    // projectsList.forEach(project => project._items = 0);
+
+    
+
+
+    // projectsList.forEach(project => {
+    //     // const existingProject = projectsList.find(project => project.name === projectName);
+    //     // const projectNames = project.name;
+
+    //     // console.log(projectNames)
+
+    //     ///
+        
+    //     // const project = projectsList.find(project => project.name === project.project);
+    //     // console.log(project)
+    //     // if (project) {
+            
+    //     //     project.calcItem();
+        
+    // });
+
+    // Check if projectsList[1] exists before accessing its id
+    // if (projectsList.length > 1) {
+    //         let curentProject = projectsList.map(project => {
+    //         project.calcItem()
+    //         })
+
+    //         console.table(projectsList[0].name);
+    //         projectsList[0].calcItem()
+    // } else {
+    //     console.log("projectsList[1] is undefined");
+    // }
+    // Testground
+      // Testground
+       // Testground
+    
+
     return projectsList;
 }
 
+
+function tryTO (){
+    console.log("Try to")
+}
+
 function getProjects(projectsList, todoList) {
-    // console.log("todoList from handleProject")
-    // console.log(todoList)
-
-
-    // const project = todoList[5].project;
-    // console.log("todoList[5].project", project)
-
-
-    const iterator = todoList.keys();
-        for (const key of iterator) {
-        compareStuff(todoList[key].project);
-        }
-
-     function compareStuff(param){
-        // console.log("param in compareStuff: ", param)
-        // console.log([param].name)
-     }  
-
-    // console.log(project.items)
-
-
-    // projectsList.forEach(project => project.items = 0);
-    // console.log("projectsList from handleProject")
-    // console.table(projectsList)
-
-        todoList.forEach(todo => {
-            // console.log(todo.project)
-            // console.log("todoList.forEach")
-            
-            const project = projectsList.find(project => project.id === todo.projectId);
-            
-                if (project) {
-                    project.calcItem();
-                    // console.log("todo.projectId", todo.projectId)
-                }
-
-                // console.log(project)
-
-        })
-
-    // Reset the items count for each project
-    // console.table(projectsList)
-
-    // Increment the items count for each project based on the todoList
-    // GPT`s solution
-    // todoList.forEach(todo => {
-    //     const project = projectsList.find(project => project.id === todo.projectId);
-    //     if (project) {
-    //         project.calcItem();
-    //     }
-    // });
-
     let ulContent = '';
 
     projectsList.forEach(element => {
