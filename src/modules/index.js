@@ -56,14 +56,26 @@ function renderUI(projectsList, todoList) {
 
 function renderTodoContainer(filteredElements){
     let container = document.querySelector('.todo-container');
-    
+
     container.innerHTML = "";
-    container.innerHTML = `
+
+    if (filteredElements.length > 0) {
+        container.innerHTML = `
         <ul class="items-list">
             ${displayToDods(filteredElements)}  
         </ul>
         
     `;
+    } else {
+        container.innerHTML = `
+        <div class="items-list">
+            <h2>Empty Project!</h2>
+            <p> Create a new to-do item or delete project. </p>
+            <button class="delete-btn"> Delete project</button>
+        </div>    
+    `;
+    }
+    
 }
 
 export { renderUI, renderTodoContainer };

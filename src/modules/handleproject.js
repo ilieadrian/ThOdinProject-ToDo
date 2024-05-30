@@ -8,9 +8,7 @@ function handleProject(newToDo, projectsList){
         const defaultProject = new Project("Default");
         projectsList.push(defaultProject);
 }
-    // for (const element of projectsList) {
-    //     console.log(element.name)
-    // }
+
     const projectName = newToDo.project;
     const existingProject = projectsList.find(project => project.name === projectName);
 
@@ -20,60 +18,8 @@ function handleProject(newToDo, projectsList){
     }
 
     tryTO()
-    
-            // Testground
-        // Testground
-    // Testground
-
-    // console.log("from handleProject: ");
-    // console.log("projectsList length:", projectsList.length);
-    // console.table(projectsList);
-
-    //Get the project every time it apears
-            //asociate the apearance of a project with the said project
-                    //count add the counter to the items section
-
-
-    // projectsList.forEach(project => project._items = 0);
-
-    
-
-
-    // projectsList.forEach(project => {
-    //     // const existingProject = projectsList.find(project => project.name === projectName);
-    //     // const projectNames = project.name;
-
-    //     // console.log(projectNames)
-
-    //     ///
-        
-    //     // const project = projectsList.find(project => project.name === project.project);
-    //     // console.log(project)
-    //     // if (project) {
-            
-    //     //     project.calcItem();
-        
-    // });
-
-    // Check if projectsList[1] exists before accessing its id
-    // if (projectsList.length > 1) {
-    //         let curentProject = projectsList.map(project => {
-    //         project.calcItem()
-    //         })
-
-    //         console.table(projectsList[0].name);
-    //         projectsList[0].calcItem()
-    // } else {
-    //     console.log("projectsList[1] is undefined");
-    // }
-    // Testground
-      // Testground
-       // Testground
-    
-
     return projectsList;
 }
-
 
 function tryTO (){
     console.log("Try to")

@@ -8,6 +8,8 @@ function handleTodos(todoList, projectsList) {
 }
 
 function displayToDods(todoList){
+
+
     let ulContent = '';
     
     todoList.forEach(element => {
