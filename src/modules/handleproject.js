@@ -17,16 +17,20 @@ function handleProject(newToDo, projectsList){
         projectsList.push(newProject);
     }
 
-    tryTO()
     return projectsList;
 }
 
-function tryTO (){
-    console.log("Try to")
-}
 
 function getProjects(projectsList, todoList) {
     let ulContent = '';
+
+    for (let i = 0; i < projectsList.length; i++) {
+        console.log("ProjectList: ", projectsList[i].name);
+    } 
+
+    for (let i = 0; i < todoList.length; i++) {
+        console.log("todoList: ", todoList[i].project)
+    } 
 
     projectsList.forEach(element => {
         ulContent += `
@@ -58,6 +62,10 @@ function getProjects(projectsList, todoList) {
             });
         });
     });
+
+    // tryTO()
+    
+    
 
     return ulContent;
 }

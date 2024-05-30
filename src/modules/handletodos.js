@@ -4,12 +4,11 @@ function handleTodos(todoList, projectsList) {
     for (const element of projectsList){
         const curentElement = element.name;
         getTodosByProject(todoList, curentElement);
+        
     } 
 }
 
 function displayToDods(todoList){
-
-
     let ulContent = '';
     
     todoList.forEach(element => {
