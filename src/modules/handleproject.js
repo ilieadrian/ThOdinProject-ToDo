@@ -1,13 +1,13 @@
 import Project from "./project";
 import { getTodosByProject } from "./handletodos";
 
-
 function handleProject(newToDo, projectsList){
     const defaultProjectExists = projectsList.some(project => project.name === "Default");
     if (!defaultProjectExists) {
         const defaultProject = new Project("Default");
         projectsList.push(defaultProject);
-}
+        }
+        
 
     const projectName = newToDo.project;
     const existingProject = projectsList.find(project => project.name === projectName);
@@ -16,21 +16,13 @@ function handleProject(newToDo, projectsList){
         const newProject = new Project(newToDo.project);
         projectsList.push(newProject);
     }
-
+    // console.log("Handle Project PROJECTLIST", projectsList)
     return projectsList;
 }
 
 
 function getProjects(projectsList, todoList) {
     let ulContent = '';
-
-    for (let i = 0; i < projectsList.length; i++) {
-        console.log("ProjectList: ", projectsList[i].name);
-    } 
-
-    for (let i = 0; i < todoList.length; i++) {
-        console.log("todoList: ", todoList[i].project)
-    } 
 
     projectsList.forEach(element => {
         ulContent += `
@@ -63,12 +55,38 @@ function getProjects(projectsList, todoList) {
         });
     });
 
-    // tryTO()
-    
-    
 
-    return ulContent;
+    countTodoinProject(projectsList, todoList)
+
+        return ulContent;
 }
+
+
+function countTodoinProject(projectsList, todoList){
+
+    let eachProject;
+
+    for (let i = 0; i < projectsList.length; i++) {
+        eachProject = projectsList[i].name;
+        projectsList[i].calcItem();
+        console.log(projectsList[i]);
+        yahoo(eachProject, todoList);
+    } 
+
+    for (let i = 0; i < todoList.length; i++) {
+        console.log("countTodoinProject todoList: ", todoList[i])
+    }
+}
+
+function yahoo(eachProject, todoList) {
+    console.log("Yahoo", eachProject)
+
+    for (let i = 0; i < todoList.length; i++) {
+        // console.log("countTodoinProject todoList: ", todoList[i].project)
+    }
+    
+}
+
 
 // function getProjects(projectsList, todoList) {
 //     let ulContent = '';
