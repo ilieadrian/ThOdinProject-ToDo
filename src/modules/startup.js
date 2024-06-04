@@ -16,7 +16,9 @@ const defaultValues  = (function () {
         new Todo('New Odin Chapter', 'Start a new OdinProjectChapter', '15.04.2024', 'medium', true, 'Learning'),
         new Todo('Repair blog', 'Fix social links on blog header', '29.03.2024', 'high', false, 'Learning'),
         new Todo('TheOdinProject chapter 2', 'Finish theOdinProject chapter 2', '15.03.2024', 'low', true, 'Home'),
-        new Todo('App implementation', 'Add ability to extract the projects from the array', '24.03.2024', 'low', true, 'Active learning')
+        new Todo('App implementation', 'Add ability to extract the projects from the array', '24.03.2024', 'low', true, 'Active learning'),
+        new Todo('Xyx', 'Some random text', '31.05.2024', 'low', true, 'Active learning'),
+        new Todo('ABC', 'First three leters from the algha', '02.06.2024', 'high', false, 'Active learning')
     ];
     
     todos.forEach(newToDo => {
