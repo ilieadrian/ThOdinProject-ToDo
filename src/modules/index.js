@@ -50,6 +50,8 @@ function renderUI(projectsList, todoList) {
             </section>
             </div>
         </div>
+
+        <div id="modal-container"></div>
     `;
 
 };

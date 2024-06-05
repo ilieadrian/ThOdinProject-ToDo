@@ -15,7 +15,7 @@ export default (function () {
                 
             });
         });
-
+        
         // Selecting elements
         const addProjectBTN = document.querySelector('.addproject');
         const addToDoBTN = document.querySelector('addtodo');
@@ -32,6 +32,7 @@ export default (function () {
 
 
         addProjectBTN.addEventListener('click', thefunction);
+
         // function thefunction() {
         //     console.log("Something, something")
         // }
@@ -51,10 +52,10 @@ export default (function () {
         }
 
         // Event listeners for close buttons
-        closeButton.addEventListener('click', closeAllModals);
-        projectModalCloseButton.addEventListener('click', () => toggleModal(addProjectModal));
-        todoModalCloseButton.addEventListener('click', () => toggleModal(addToDoModal));
-        editModalCloseButton.addEventListener('click', () => toggleModal(editModalTodo));
+        // closeButton.addEventListener('click', closeAllModals);
+        // projectModalCloseButton.addEventListener('click', () => toggleModal(addProjectModal));
+        // todoModalCloseButton.addEventListener('click', () => toggleModal(addToDoModal));
+        // editModalCloseButton.addEventListener('click', () => toggleModal(editModalTodo));
 
         // Event listeners for view buttons
         viewButtons.forEach(viewButton => {
@@ -62,7 +63,7 @@ export default (function () {
         });
 
         // Event listener for add project button
-        addProjectBTN.addEventListener('click', () => toggleModal(addProjectModal));
+        // addProjectBTN.addEventListener('click', () => toggleModal(addProjectModal));
 
         // Event listener for add todo button
         addToDoBTN.addEventListener('click', () => toggleModal(addToDoModal));
@@ -81,6 +82,27 @@ export default (function () {
 })();
 
 
-// function thefunction() {
-//     console.log("Something, something")
-// }
+function thefunction() {
+    let modalContainer = document.getElementById('modal-container');
+
+    modalContainer.innerHTML = "";
+
+    modalContainer.innerHTML = `
+    <div id="add-project-modal" class="modal active">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p>Create a new Project</p>
+                <img src="./src/images/close-ellipse-white-bg.svg" class="close-project-modal-button">
+            </div>
+            <form>
+                <div class="input-container">
+                    <label for="name">Project name: </label>
+                    <input type="text" id="name">
+                </div>
+                <button>Create project</button>
+            </form>
+            
+        </div>
+    </div>`
+
+}
