@@ -3,7 +3,7 @@ import Project from './project';
 import {handleProject} from './handleproject';
 import {handleTodos } from './handletodos';
 import {renderUI} from './index';
-import domeffects from './domeffects';
+import domeffects from './manipulateDOM';
 
 const defaultValues  = (function () {
     const todoList = [];

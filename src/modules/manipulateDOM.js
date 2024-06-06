@@ -1,10 +1,8 @@
 export default (function () {
     document.addEventListener("DOMContentLoaded", function() {
         //Menu links interaction
-
         const menuLinks = document.querySelectorAll(".menu-links a");
         
-
         menuLinks.forEach(function(link) {
             link.addEventListener("click", function(event) {
                 menuLinks.forEach(function(link) {
@@ -17,31 +15,30 @@ export default (function () {
         });
         
         // Selecting elements
+
         const addProjectBTN = document.querySelector('.addproject');
-        const addToDoBTN = document.querySelector('addtodo');
-        const viewModal = document.getElementById('view-modal');
-        const addProjectModal = document.getElementById('add-project-modal');
-        const addToDoModal = document.getElementById('add-modal-todo');
-        const editModalTodo = document.getElementById('edit-modal-todo');
-        const closeButton = document.querySelector('.close-modal-button');
-        const projectModalCloseButton = document.querySelector('.close-project-modal-button');
-        const todoModalCloseButton = document.querySelector('.close-todo-modal-button');
-        const editModalCloseButton = document.querySelector('.close-edit-modal-button');
-        const viewButtons = document.querySelectorAll('.view-btn');
-        const editButtons = document.querySelectorAll('.edit-btn');
+        const addToDoBTN = document.querySelector('.addtodo');
+        // const viewModal = document.getElementById('view-modal');
+        // const addProjectModal = document.getElementById('add-project-modal');
+        // const addToDoModal = document.getElementById('add-modal-todo');
+        // const editModalTodo = document.getElementById('edit-modal-todo');
+        // const closeButton = document.querySelector('.close-modal-button');
+        // const projectModalCloseButton = document.querySelector('.close-project-modal-button');
+        // const todoModalCloseButton = document.querySelector('.close-todo-modal-button');
+        // const editModalCloseButton = document.querySelector('.close-edit-modal-button');
+        // const viewButtons = document.querySelectorAll('.view-btn');
+        // const editButtons = document.querySelectorAll('.edit-btn');
 
 
-        addProjectBTN.addEventListener('click', thefunction);
+        addProjectBTN.addEventListener('click', openProjectModal);
+        addToDoBTN.addEventListener('click', openToDoModal);
 
-        // function thefunction() {
-        //     console.log("Something, something")
-        // }
 
         // Function to toggle modal
-        function toggleModal(modal) {
-            console.log("Toggling modal:", modal);
-            modal.classList.toggle('active');
-        }
+        // function toggleModal(modal) {
+        //     console.log("Toggling modal:", modal);
+        //     modal.classList.toggle('active');
+        // }
 
         // Function to close all modals
         function closeAllModals() {
@@ -78,13 +75,11 @@ export default (function () {
         });
         
         });
-
 })();
 
 
-function thefunction() {
+function openProjectModal() {
     let modalContainer = document.getElementById('modal-container');
-
     modalContainer.innerHTML = "";
 
     modalContainer.innerHTML = `
@@ -92,7 +87,7 @@ function thefunction() {
         <div class="modal-content">
             <div class="modal-header">
                 <p>Create a new Project</p>
-                <img src="./src/images/close-ellipse-white-bg.svg" class="close-project-modal-button">
+                <img src="../src/images/close-ellipse-white-bg" class="close-project-modal-button">
             </div>
             <form>
                 <div class="input-container">
@@ -104,5 +99,12 @@ function thefunction() {
             
         </div>
     </div>`
+}
 
+
+function openToDoModal() {
+    let modalContainer = document.getElementById('modal-container');
+    modalContainer.innerHTML = "";
+
+    console.log("Todo add ")
 }
