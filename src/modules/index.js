@@ -2,9 +2,11 @@ import '../style.css';
 import { getProjects } from './handleproject';
 import { displayToDods } from './handletodos';
 import { defaultValues } from './startup';
+import TodoIcon from "../images/to-do-list.svg"
 
 function renderUI(projectsList, todoList) {
     let container = document.querySelector('.container');
+    
     
     if (!container) {
         container = document.createElement('div');
@@ -17,7 +19,7 @@ function renderUI(projectsList, todoList) {
     container.innerHTML = `
             <section class="header">
                 <h1>// To do</h1> 
-                <img src="../src/images/to-do-list.svg" alt="" srcset="">
+                <img src="./images/to-do-list.svg" alt="" srcset="">
             </section>
             <div class="content-container">
             <section class="menu">

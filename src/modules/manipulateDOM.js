@@ -87,7 +87,7 @@ function openProjectModal() {
         <div class="modal-content">
             <div class="modal-header">
                 <p>Create a new Project</p>
-                <img src="../src/images/close-ellipse-white-bg" class="close-project-modal-button">
+                <img src="./images/close-ellipse-white-bg.svg" class="close-project-modal-button">
             </div>
             <form>
                 <div class="input-container">
@@ -106,5 +106,43 @@ function openToDoModal() {
     let modalContainer = document.getElementById('modal-container');
     modalContainer.innerHTML = "";
 
-    console.log("Todo add ")
+    modalContainer.innerHTML = `
+    <div id="add-modal-todo" class="modal active">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p>Create a new To Do</p>
+                <img src="./images/close-ellipse-white-bg.svg" class="close-todo-modal-button">
+            </div>
+            <form action="">
+                <ul class="input-container">
+                    <li>
+                        <label for="title">Title</label>
+                        <input type="text" id="title">
+                    </li>
+                    <li>
+                        <label for="description">Description</label>
+                        <input type="text" id="description">
+                    </li>
+                    <li>    
+                        <label for="duedate">Due date:</label>
+                        <input type="date" id="duedate">
+                    </li>
+                </ul>
+
+                <div class="button-container">  
+                    <div class="priority-btn-grup">
+                        <label for="priority">Priority:</label>
+                        <button id="low">Low</button>
+                        <button id="medium">Medium</button>
+                        <button id="high">High</button>
+                    </div>
+
+                    <button>Create project</button> 
+                </div> 
+            </form>
+            
+        </div>
+    </div>
+    `;
+
 }
