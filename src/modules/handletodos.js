@@ -1,4 +1,5 @@
 import { renderTodoContainer } from ".";
+import { addEventListeners } from "./manipulateDOM";
 
 function handleTodos(todoList, projectsList) {
     for (const element of projectsList){
@@ -27,7 +28,11 @@ function displayToDods(todoList){
                 </div>
             </li>
         `;
+
+    
+
     });
+    addEventListeners(todoList)
 
     return ulContent;
 }

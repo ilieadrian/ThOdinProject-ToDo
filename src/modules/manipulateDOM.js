@@ -1,3 +1,6 @@
+
+
+
 export default (function () {
     document.addEventListener("DOMContentLoaded", function() {
         //Menu links interaction
@@ -78,6 +81,10 @@ export default (function () {
 })();
 
 
+function addEventListeners(param) {
+    console.log(param)
+}
+
 function openProjectModal() {
     let modalContainer = document.getElementById('modal-container');
     modalContainer.innerHTML = "";
@@ -144,5 +151,6 @@ function openToDoModal() {
         </div>
     </div>
     `;
-
 }
+
+export {addEventListeners}
