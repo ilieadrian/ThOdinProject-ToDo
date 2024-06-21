@@ -1,5 +1,4 @@
 import { renderTodoContainer } from ".";
-import { addEventListeners } from "./manipulateDOM";
 
 function handleTodos(todoList, projectsList) {
     for (const element of projectsList){
@@ -9,15 +8,15 @@ function handleTodos(todoList, projectsList) {
     } 
 }
 
-function displayToDods(todoList){
+function displayToDods(todoList) {
     let ulContent = '';
-    
+
     todoList.forEach((element, index) => {
         ulContent += `
-            <li class="item">
+            <li class="item" id="item-${index}">
                 <div class="name-grup ${element.status ? "finished" : ''}">
                 <div class="priority ${element.priority}"></div>
-                    <input type="checkbox"/ ${element.status ? "checked /" : ''}>
+                    <input type="checkbox" ${element.status ? "checked" : ''}>
                     <p class="finished">${element.title} </p>
                 </div>
                 <div class="action-grup ${element.status ? "finished" : ''}">
@@ -28,11 +27,7 @@ function displayToDods(todoList){
                 </div>
             </li>
         `;
-
-    
-
     });
-    addEventListeners(todoList)
 
     return ulContent;
 }

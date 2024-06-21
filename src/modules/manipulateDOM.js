@@ -1,6 +1,4 @@
 
-
-
 export default (function () {
     document.addEventListener("DOMContentLoaded", function() {
         //Menu links interaction
@@ -81,9 +79,55 @@ export default (function () {
 })();
 
 
-function addEventListeners(param) {
-    console.log(param)
+function addEventListeners(e) {
+    console.log(e.target)
+
+    // const todoListContainer = document.querySelector('.items-list')
+    // console.log(todoListContainer)
+
+    // if (todoListContainer) {
+    //     todoListContainer.addEventListener('click', (event) => {
+    //         const target = event.target;
+    //         const listItem = target.closest('.item');
+    //         const index = listItem ? listItem.id.split('-')[1] : null;
+
+    //         if (index !== null) {
+    //             if (target.classList.contains('checkbox')) {
+    //                 console.log("handleCheckboxChange(index, target.checked)")
+    //                 // handleCheckboxChange(index, target.checked);
+    //             } else if (target.closest('.view-btn')) {
+    //                 console.log("handleViewButtonClick(index)")
+    //                 // handleViewButtonClick(index);
+    //             } else if (target.closest('.edit-btn')) {
+    //                 console.log("handleEditButtonClick(index)")
+    //                 // handleEditButtonClick(index);
+    //             } else if (target.closest('.delete-btn')) {
+    //                 console.log("handleDeleteButtonClick(index)")
+    //                 // handleDeleteButtonClick(index);
+    //             }
+    //         }
+    //     });
+    // }
+
+    
+    // todoList.forEach((element, index) => 
+    //     {  
+    //     const theElement = document.getElementById(`view-btn-${index}`);
+    //     console.log(theElement)
+
+    //     // document.getElementById(`view-btn-${index}`).addEventListener('click', () => {
+    //     //     handleViewButtonClick(index);
+    //     // });
+    // });
+    // // console.log(todoList)
 }
+
+function handleViewButtonClick(index) {
+    console.log(`View button clicked at index ${index}`);
+    // Add your logic here to handle view button click
+}
+
+
 
 function openProjectModal() {
     let modalContainer = document.getElementById('modal-container');
