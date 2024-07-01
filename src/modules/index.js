@@ -56,7 +56,6 @@ function renderUI(projectsList, todoList) {
     todoListContainer.addEventListener('click', theFunction);
 }
 
-
 function theFunction(e) {
     console.log(e.target)
 }
