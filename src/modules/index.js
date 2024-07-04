@@ -1,6 +1,7 @@
 import '../style.css';
 import { getProjects } from './handleproject';
-import { displayToDods } from './handletodos';
+import { displayToDods } from './handletodos'; 
+//correct typo above: should be displayTodos
 import { defaultValues } from './startup';
 import TodoIcon from "../images/to-do-list.svg"
 import { addEventListeners } from './manipulateDOM';
