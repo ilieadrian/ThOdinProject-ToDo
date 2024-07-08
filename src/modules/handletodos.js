@@ -1,11 +1,11 @@
 import { renderTodoContainer } from ".";
+import { openViewModal, openEditModal } from "./manipulateDOM";
 
 function handleTodos(todoList, projectsList) {
     for (const element of projectsList){
         const curentElement = element.name;
         getTodosByProject(todoList, curentElement);
-        
-    } 
+            } 
 }
 
 // function displayToDods(todoList) {
@@ -60,10 +60,8 @@ function getTodosByProject(todoList, curentElement){
     const filteredElements = todoList.filter(taskList => taskList.project === curentElement);
     renderTodoContainer(filteredElements)
 }
-
+//
 document.addEventListener('DOMContentLoaded', function() {
-    const { todoList, projectsList } = defaultValues; // Ensure this line gets `todoList` and `projectsList` from your startup file
-
     const todoListContainer = document.querySelector('.todo-container');
 
     todoListContainer.addEventListener('click', function(event) {
@@ -71,31 +69,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const listItem = target.closest('.item');
         const index = listItem ? listItem.id.split('-')[1] : null;
 
+
         if (index !== null) {
-            if (target.closest('.edit-btn')) {
-                handleEditButtonClick(index, todoList);
-            } else if (target.closest('.delete-btn')) {
-                handleDeleteButtonClick(index, todoList, projectsList);
+            if (target.closest('.view-btn')) {
+                openViewModal(index);
+            } else if (target.closest('.edit-btn')) {
+                openEditModal(index);
+            }   else if (target.closest('.delete-btn')) {
+                deleteTodoItem(index);
             }
         }
     });
 });
 
-function handleEditButtonClick(index, todoList) {
-    console.log(`Edit button clicked at index ${index}`);
-    openEditModal(index, todoList);
-}
-
-function handleDeleteButtonClick(index, todoList, projectsList) {
+function deleteTodoItem(index) {
     console.log(`Delete button clicked at index ${index}`);
-    deleteTodoItem(index, todoList, projectsList);
-}
 
-function openEditModal(index, todoList) {
-    // Logic to open the edit modal and populate it with the current to-do item's details
-}
-
-function deleteTodoItem(index, todoList, projectsList) {
+    // Logic to remove the to-do item from the list and re-render the UI
     todoList.splice(index, 1);
     renderUI(projectsList, todoList);
 }
