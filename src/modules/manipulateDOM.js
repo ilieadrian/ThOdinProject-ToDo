@@ -198,7 +198,6 @@ function openToDoModal() {
 }
 
 //
-
 document.addEventListener('DOMContentLoaded', function() {
     const todoListContainer = document.querySelector('.todo-container');
 
@@ -207,10 +206,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const listItem = target.closest('.item');
         const index = listItem ? listItem.id.split('-')[1] : null;
 
+
         if (index !== null) {
-            if (target.closest('.edit-btn')) {
+            if (target.closest('.view-btn')) {
+                openViewModal(index);
+            } else if (target.closest('.edit-btn')) {
                 handleEditButtonClick(index);
-            } else if (target.closest('.delete-btn')) {
+            }   else if (target.closest('.delete-btn')) {
                 handleDeleteButtonClick(index);
             }
         }
@@ -229,6 +231,11 @@ function handleDeleteButtonClick(index) {
     // Add your logic here to handle delete button click
     // For example, remove the to-do item from the list and re-render the UI
     deleteTodoItem(index);
+}
+function openViewModal(index) {
+    console.log(`View button clicked at index ${index}`);
+
+    // Logic to open the edit modal and populate it with the current to-do item's details
 }
 
 function openEditModal(index) {
