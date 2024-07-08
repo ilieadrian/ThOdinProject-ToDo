@@ -61,28 +61,29 @@ function getTodosByProject(todoList, curentElement){
     renderTodoContainer(filteredElements)
 }
 //
-document.addEventListener('DOMContentLoaded', function() {
-    const todoListContainer = document.querySelector('.todo-container');
+function setupEventListeners(todoList, projectsList) {
+    document.addEventListener('DOMContentLoaded', function() {
+        const todoListContainer = document.querySelector('.todo-container');
 
-    todoListContainer.addEventListener('click', function(event) {
-        const target = event.target;
-        const listItem = target.closest('.item');
-        const index = listItem ? listItem.id.split('-')[1] : null;
+        todoListContainer.addEventListener('click', function(event) {
+            const target = event.target;
+            const listItem = target.closest('.item');
+            const index = listItem ? listItem.id.split('-')[1] : null;
 
-
-        if (index !== null) {
-            if (target.closest('.view-btn')) {
-                openViewModal(index);
-            } else if (target.closest('.edit-btn')) {
-                openEditModal(index);
-            }   else if (target.closest('.delete-btn')) {
-                deleteTodoItem(index);
+            if (index !== null) {
+                if (target.closest('.view-btn')) {
+                    openViewModal(index, todoList);
+                } else if (target.closest('.edit-btn')) {
+                    openEditModal(index);
+                } else if (target.closest('.delete-btn')) {
+                    deleteTodoItem(index, todoList, projectsList);
+                }
             }
-        }
+        });
     });
-});
+}
 
-function deleteTodoItem(index) {
+function deleteTodoItem(index, todoList, projectsList) {
     console.log(`Delete button clicked at index ${index}`);
 
     // Logic to remove the to-do item from the list and re-render the UI
@@ -90,5 +91,5 @@ function deleteTodoItem(index) {
     renderUI(projectsList, todoList);
 }
 
-export { handleTodos, getTodosByProject, displayToDods }
+export { handleTodos, getTodosByProject, displayToDods, setupEventListeners  }
 

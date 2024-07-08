@@ -4,6 +4,7 @@ import {handleProject} from './handleproject';
 import {handleTodos } from './handletodos';
 import {renderUI} from './index';
 import domeffects from './manipulateDOM';
+import { setupEventListeners } from './handletodos';
 
 const defaultValues  = (function () {
     const todoList = [];
@@ -28,6 +29,7 @@ const defaultValues  = (function () {
     });
 
     renderUI(projectsList, todoList);
+    setupEventListeners(todoList, projectsList);
     
     return {
         todoList,

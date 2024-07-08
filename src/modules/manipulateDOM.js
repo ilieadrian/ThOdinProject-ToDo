@@ -59,9 +59,9 @@ export default (function () {
         // editModalCloseButton.addEventListener('click', () => toggleModal(editModalTodo));
 
         // Event listeners for view buttons
-        viewButtons.forEach(viewButton => {
-            viewButton.addEventListener('click', () => toggleModal(viewModal));
-        });
+        // viewButtons.forEach(viewButton => {
+        //     viewButton.addEventListener('click', () => toggleModal(viewModal));
+        // });
 
         // Event listener for add project button
         // addProjectBTN.addEventListener('click', () => toggleModal(addProjectModal));
@@ -80,55 +80,6 @@ export default (function () {
         
         });
 })();
-
-
-function addEventListeners(e) {
-    console.log(e.target)
-
-    // const todoListContainer = document.querySelector('.items-list')
-    // console.log(todoListContainer)
-
-    // if (todoListContainer) {
-    //     todoListContainer.addEventListener('click', (event) => {
-    //         const target = event.target;
-    //         const listItem = target.closest('.item');
-    //         const index = listItem ? listItem.id.split('-')[1] : null;
-
-    //         if (index !== null) {
-    //             if (target.classList.contains('checkbox')) {
-    //                 console.log("handleCheckboxChange(index, target.checked)")
-    //                 // handleCheckboxChange(index, target.checked);
-    //             } else if (target.closest('.view-btn')) {
-    //                 console.log("handleViewButtonClick(index)")
-    //                 // handleViewButtonClick(index);
-    //             } else if (target.closest('.edit-btn')) {
-    //                 console.log("handleEditButtonClick(index)")
-    //                 // handleEditButtonClick(index);
-    //             } else if (target.closest('.delete-btn')) {
-    //                 console.log("handleDeleteButtonClick(index)")
-    //                 // handleDeleteButtonClick(index);
-    //             }
-    //         }
-    //     });
-    // }
-
-    
-    // todoList.forEach((element, index) => 
-    //     {  
-    //     const theElement = document.getElementById(`view-btn-${index}`);
-    //     console.log(theElement)
-
-    //     // document.getElementById(`view-btn-${index}`).addEventListener('click', () => {
-    //     //     handleViewButtonClick(index);
-    //     // });
-    // });
-    // // console.log(todoList)
-}
-
-function handleViewButtonClick(index) {
-    console.log(`View button clicked at index ${index}`);
-    // Add your logic here to handle view button click
-}
 
 
 
@@ -202,13 +153,41 @@ function openToDoModal() {
 
 //
 
-
-
-function openViewModal(index) {
+function openViewModal(index, todoList) {
     console.log(`View button clicked at index ${index}`);
     console.log(todoList)
 
-    // Logic to open the edit modal and populate it with the current to-do item's details
+    let modalContainer = document.getElementById('modal-container');
+    modalContainer.innerHTML = "";
+
+    modalContainer.innerHTML = `
+        <div id="view-modal" class="modal active">
+        <div class="modal-content">
+            <img src="src/images/close-ellipse.svg" class="close-modal-button">
+            <h2>Project title</h2>
+            <div class="detail">
+                <p class="detail-title">Project: </p>
+                <p>${todoList[index].title}</p>
+            </div>
+            <div class="detail">
+                <p class="detail-title">Priority: </p>
+                <p>${todoList[index].priority}</p>
+            </div>
+            <div class="detail">
+                <p class="detail-title">Due Date: </p>
+                <p>${todoList[index].dueDate}</p>
+            </div>
+            <div class="detail">
+                <p class="detail-title">Details: </p>
+                <p>${todoList[index].description}</p>
+            </div>
+            <form>
+                <button>Create project</button>
+            </form>
+        </div>
+        
+    </div>
+    `;
 }
 
 function openEditModal(index) {
@@ -217,11 +196,5 @@ function openEditModal(index) {
     // Logic to open the edit modal and populate it with the current to-do item's details
 }
 
-function deleteTodoItem(index) {
-    console.log(`Delete button clicked at index ${index}`);
 
-    // Logic to remove the to-do item from the list and re-render the UI
-    todoList.splice(index, 1);
-    renderUI(projectsList, todoList);
-}
-export {addEventListeners, openViewModal, openEditModal}
+export {openViewModal, openEditModal}
