@@ -62,6 +62,8 @@ function getTodosByProject(todoList, curentElement){
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    const { todoList, projectsList } = defaultValues; // Ensure this line gets `todoList` and `projectsList` from your startup file
+
     const todoListContainer = document.querySelector('.todo-container');
 
     todoListContainer.addEventListener('click', function(event) {
@@ -71,34 +73,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (index !== null) {
             if (target.closest('.edit-btn')) {
-                handleEditButtonClick(index);
+                handleEditButtonClick(index, todoList);
             } else if (target.closest('.delete-btn')) {
-                handleDeleteButtonClick(index);
+                handleDeleteButtonClick(index, todoList, projectsList);
             }
         }
     });
 });
 
-function handleEditButtonClick(index) {
+function handleEditButtonClick(index, todoList) {
     console.log(`Edit button clicked at index ${index}`);
-    // Add your logic here to handle edit button click
-    // For example, open a modal to edit the to-do item
-    openEditModal(index);
+    openEditModal(index, todoList);
 }
 
-function handleDeleteButtonClick(index) {
+function handleDeleteButtonClick(index, todoList, projectsList) {
     console.log(`Delete button clicked at index ${index}`);
-    // Add your logic here to handle delete button click
-    // For example, remove the to-do item from the list and re-render the UI
-    deleteTodoItem(index);
+    deleteTodoItem(index, todoList, projectsList);
 }
 
-function openEditModal(index) {
+function openEditModal(index, todoList) {
     // Logic to open the edit modal and populate it with the current to-do item's details
 }
 
-function deleteTodoItem(index) {
-    // Logic to remove the to-do item from the list and re-render the UI
+function deleteTodoItem(index, todoList, projectsList) {
     todoList.splice(index, 1);
     renderUI(projectsList, todoList);
 }
