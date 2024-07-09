@@ -21,7 +21,6 @@ export default (function () {
         });
 })();
 
-
 function openProjectModal(modalContainer) {
     modalContainer.innerHTML = "";
     modalContainer.innerHTML = `
@@ -89,10 +88,10 @@ function openToDoModal(modalContainer) {
 function openViewModal(index, todoList, modalContainer) {
     modalContainer.innerHTML = "";
     modalContainer.innerHTML = `
-        <div id="view-modal" class="modal active">
+    <div id="view-modal" class="modal active">
         <div class="modal-content">
-            <img src="src/images/close-ellipse.svg" class="close-modal-button">
-            <h2>Project title</h2>
+            <img src="./images/close-ellipse.svg" class="close-modal-button">
+            <h2>${todoList[index].title}</h2>
             <div class="detail">
                 <p class="detail-title">Project: </p>
                 <p>${todoList[index].title}</p>
@@ -109,11 +108,7 @@ function openViewModal(index, todoList, modalContainer) {
                 <p class="detail-title">Details: </p>
                 <p>${todoList[index].description}</p>
             </div>
-            <form>
-                <button>Create project</button>
-            </form>
-        </div>
-        
+        </div>    
     </div>
     `;
 }
@@ -127,7 +122,7 @@ function openEditModal(index, todoList, modalContainer) {
         <div class="modal-content">
             <div class="modal-header">
                 <p>Create a new To Do</p>
-                <img src="src/images/close-ellipse-white-bg.svg" class="close-edit-modal-button">
+                <img src="./images/close-ellipse-white-bg.svg" class="close-project-modal-button">
             </div>
             <form action="">
                 <ul class="input-container">
@@ -160,8 +155,6 @@ function openEditModal(index, todoList, modalContainer) {
         </div>
     </div>
     `;
-    console.log(`Edit button clicked at index ${index}`);
-
 }
 
 export {openProjectModal, openToDoModal, openViewModal, openEditModal}

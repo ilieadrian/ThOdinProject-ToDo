@@ -16,7 +16,6 @@ function renderUI(projectsList, todoList) {
     }
 
     container.innerHTML = "";
-
     container.innerHTML = `
         <section class="header">
             <h1>// To do</h1>
