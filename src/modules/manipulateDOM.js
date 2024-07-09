@@ -17,17 +17,12 @@ export default (function () {
         });
         
         // Selecting elements
-        const addProjectBTN = document.querySelector('.addproject');
-        const addToDoBTN = document.querySelector('.addtodo');
-
-        addProjectBTN.addEventListener('click', openProjectModal);
-        addToDoBTN.addEventListener('click', openToDoModal);
+        
         });
 })();
 
 
-function openProjectModal() {
-    // let modalContainer = document.getElementById('modal-container');
+function openProjectModal(modalContainer) {
     modalContainer.innerHTML = "";
     modalContainer.innerHTML = `
     <div id="add-project-modal" class="modal active">
@@ -49,8 +44,7 @@ function openProjectModal() {
 }
 
 
-function openToDoModal() {
-    // let modalContainer = document.getElementById('modal-container');
+function openToDoModal(modalContainer) {
     modalContainer.innerHTML = "";
     modalContainer.innerHTML = `
     <div id="add-modal-todo" class="modal active">
@@ -93,7 +87,6 @@ function openToDoModal() {
 }
 
 function openViewModal(index, todoList, modalContainer) {
-    // let modalContainer = document.getElementById('modal-container');
     modalContainer.innerHTML = "";
     modalContainer.innerHTML = `
         <div id="view-modal" class="modal active">
@@ -125,10 +118,50 @@ function openViewModal(index, todoList, modalContainer) {
     `;
 }
 
-function openEditModal(index) {
+function openEditModal(index, todoList, modalContainer) {
+    modalContainer.innerHTML = "";
+    //Correct the value of the imput @DueDate, it does not use the stored dueDate
+    //Add functionality to select the active BTN
+    modalContainer.innerHTML = `
+    <div id="edit-modal-todo" class="modal active">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p>Create a new To Do</p>
+                <img src="src/images/close-ellipse-white-bg.svg" class="close-edit-modal-button">
+            </div>
+            <form action="">
+                <ul class="input-container">
+                    <li>
+                        <label for="title">Title</label>
+                        <input type="text" id="title" value="${todoList[index].title}">
+                    </li>
+                    <li>
+                        <label for="description">Description</label>
+                        <input type="text" id="description" value="${todoList[index].description}">
+                    </li>
+                    <li>    
+                        <label for="duedate">Due date:</label>
+                        <input type="date" id="duedate" value="${todoList[index].dueDate}">
+                    </li>
+                </ul>
+
+                <div class="button-container">  
+                    <div class="priority-btn-grup">
+                        <label for="priority">Priority:</label>
+                        <button id="low">Low</button>
+                        <button id="medium">Medium</button>
+                        <button id="high">High</button>
+                    </div>
+
+                    <button>Confirm edit</button> 
+                </div> 
+            </form>
+            
+        </div>
+    </div>
+    `;
     console.log(`Edit button clicked at index ${index}`);
 
-    // Logic to open the edit modal and populate it with the current to-do item's details
 }
 
-export {openViewModal, openEditModal}
+export {openProjectModal, openToDoModal, openViewModal, openEditModal}

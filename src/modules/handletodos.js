@@ -1,5 +1,5 @@
 import { renderTodoContainer } from ".";
-import { openViewModal, openEditModal } from "./manipulateDOM";
+import { openProjectModal, openToDoModal, openViewModal, openEditModal } from "./manipulateDOM";
 
 function handleTodos(todoList, projectsList) {
     for (const element of projectsList){
@@ -66,16 +66,27 @@ function setupEventListeners(todoList, projectsList) {
         const todoListContainer = document.querySelector('.todo-container');
         let modalContainer = document.getElementById('modal-container');
 
+        const addProjectBTN = document.querySelector('.addproject');
+        const addToDoBTN = document.querySelector('.addtodo');
+
+        addProjectBTN.addEventListener('click', function() {
+            openProjectModal(modalContainer);
+        });
+
+        addToDoBTN.addEventListener('click', function() {
+            openToDoModal(modalContainer);
+        });
+
         todoListContainer.addEventListener('click', function(event) {
             const target = event.target;
             const listItem = target.closest('.item');
             const index = listItem ? listItem.id.split('-')[1] : null;
-
+                        
             if (index !== null) {
                 if (target.closest('.view-btn')) {
                     openViewModal(index, todoList, modalContainer);
                 } else if (target.closest('.edit-btn')) {
-                    openEditModal(index, todoList);
+                    openEditModal(index, todoList, modalContainer);
                 } else if (target.closest('.delete-btn')) {
                     deleteTodoItem(index, todoList, projectsList);
                 }
