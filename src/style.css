@@ -391,9 +391,12 @@ input[type="checkbox"]:checked::before {
     font-weight: bold;
 }
 
+.close-btn {
+    cursor: pointer;
+}
+
 .close-modal-button {
     z-index: 1;
-    cursor: pointer;
     position: absolute;
     top: 0; 
     right:0; 

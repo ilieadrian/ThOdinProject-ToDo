@@ -10,14 +10,9 @@ export default (function () {
                 menuLinks.forEach(function(link) {
                     link.classList.remove("active");
                 });
-    
-                this.classList.add("active");
-                
-            });
-        });
-        
-        // Selecting elements
-        
+                    this.classList.add("active");
+                });
+            });        
         });
 })();
 
@@ -28,7 +23,7 @@ function openProjectModal(modalContainer) {
         <div class="modal-content">
             <div class="modal-header">
                 <p>Create a new Project</p>
-                <img src="./images/close-ellipse-white-bg.svg" class="close-project-modal-button">
+                <img src="./images/close-ellipse-white-bg.svg" class="close-project-modal-button close-btn">
             </div>
             <form>
                 <div class="input-container">
@@ -39,9 +34,10 @@ function openProjectModal(modalContainer) {
             </form>
             
         </div>
-    </div>`
+    </div>
+    `;
+    addCloseEventListeners(modalContainer);
 }
-
 
 function openToDoModal(modalContainer) {
     modalContainer.innerHTML = "";
@@ -50,7 +46,7 @@ function openToDoModal(modalContainer) {
         <div class="modal-content">
             <div class="modal-header">
                 <p>Create a new To Do</p>
-                <img src="./images/close-ellipse-white-bg.svg" class="close-todo-modal-button">
+                <img src="./images/close-ellipse-white-bg.svg" class="close-todo-modal-button close-btn">
             </div>
             <form action="">
                 <ul class="input-container">
@@ -83,6 +79,7 @@ function openToDoModal(modalContainer) {
         </div>
     </div>
     `;
+    addCloseEventListeners(modalContainer);
 }
 
 function openViewModal(index, todoList, modalContainer) {
@@ -90,7 +87,7 @@ function openViewModal(index, todoList, modalContainer) {
     modalContainer.innerHTML = `
     <div id="view-modal" class="modal active">
         <div class="modal-content">
-            <img src="./images/close-ellipse.svg" class="close-modal-button">
+            <img src="./images/close-ellipse.svg" class="close-modal-button close-btn">
             <h2>${todoList[index].title}</h2>
             <div class="detail">
                 <p class="detail-title">Project: </p>
@@ -111,6 +108,7 @@ function openViewModal(index, todoList, modalContainer) {
         </div>    
     </div>
     `;
+    addCloseEventListeners(modalContainer);
 }
 
 function openEditModal(index, todoList, modalContainer) {
@@ -122,7 +120,7 @@ function openEditModal(index, todoList, modalContainer) {
         <div class="modal-content">
             <div class="modal-header">
                 <p>Create a new To Do</p>
-                <img src="./images/close-ellipse-white-bg.svg" class="close-project-modal-button">
+                <img src="./images/close-ellipse-white-bg.svg" class="close-project-modal-button close-btn">
             </div>
             <form action="">
                 <ul class="input-container">
@@ -155,6 +153,17 @@ function openEditModal(index, todoList, modalContainer) {
         </div>
     </div>
     `;
+    addCloseEventListeners(modalContainer);
 }
+
+function addCloseEventListeners(modalContainer) {
+    const closeButtons = modalContainer.querySelectorAll('.close-btn');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            modalContainer.innerHTML = '';
+        });
+    });
+}
+
 
 export {openProjectModal, openToDoModal, openViewModal, openEditModal}
