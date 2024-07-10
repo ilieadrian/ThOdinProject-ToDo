@@ -3,23 +3,25 @@ import { getProjects } from './handleproject';
 import { displayToDods } from './handletodos'; 
 //correct typo above: should be displayTodos
 import { defaultValues } from './startup';
-import TodoIcon from "../images/to-do-list.svg"
+import TodoIcon from "../images/to-do-list.svg";
 import { addEventListeners } from './manipulateDOM';
 
 function renderUI(projectsList, todoList) {
     let container = document.querySelector('.container');
+    const headerTodoIcon = new Image();
+    headerTodoIcon.src = TodoIcon;
 
     if (!container) {
         container = document.createElement('div');
         container.classList.add('container');
         document.body.appendChild(container);
-    }
+        }
 
     container.innerHTML = "";
     container.innerHTML = `
         <section class="header">
             <h1>// To do</h1>
-            <img src="./images/to-do-list.svg" alt="" srcset="">
+            <div id="header-icon-container"></div>
         </section>
         <div class="content-container">
             <section class="menu">
@@ -52,13 +54,23 @@ function renderUI(projectsList, todoList) {
         <div id="modal-container"></div>
     `;
 
+    const headerIconContainer = document.getElementById('header-icon-container');
+    console.log(headerIconContainer)
+    headerIconContainer.appendChild(headerTodoIcon);
+
+    //********************** */
+    //TO BE DELETED - after handling todo check status!
     const todoListContainer = document.querySelector('.items-list');
     todoListContainer.addEventListener('click', theFunction);
+    //********************** */
 }
 
+//********************** */
+//TO BE DELETED - after handling todo check status!
 function theFunction(e) {
     console.log(e.target)
 }
+//********************** */
 
 function renderTodoContainer(filteredElements){
     let container = document.querySelector('.todo-container');

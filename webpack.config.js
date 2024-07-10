@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+// import html from "./file.html";
+
 module.exports = {
     mode: 'development',
     entry: {
@@ -28,7 +30,8 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                use: ['style-loader', 
+                    'css-loader'],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -38,6 +41,10 @@ module.exports = {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: 'asset/resource',
             },
-            ],
+            {
+            test: /\.html$/i,
+            loader: "html-loader",
+            },
+        ],
     },
 };
