@@ -67,5 +67,9 @@ function countTodoinProject(element, todoList){
     return count;
 }
 
-export {handleProject, getProjects };
+function deleteProject() {
+    console.log("Logic in here to delete the project")
+}
+
+export {handleProject, getProjects, deleteProject };
 

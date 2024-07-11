@@ -327,7 +327,7 @@ input[type="checkbox"]:checked::before {
     opacity: 0.6;
 }
 
-/* Genaral & View Modal Styles */
+/* General & View Modal Styles */
 .modal {
     display: none;
     position: fixed;

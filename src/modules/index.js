@@ -1,10 +1,11 @@
 import '../style.css';
 import { getProjects } from './handleproject';
-import { displayToDods } from './handletodos'; 
+import { displayToDods, setupEventListeners } from './handletodos'; 
 //correct typo above: should be displayTodos
 import { defaultValues } from './startup';
 import TodoIcon from "../images/to-do-list.svg";
 import { addEventListeners } from './manipulateDOM';
+import { deleteProject } from './handleproject';
 
 function renderUI(projectsList, todoList) {
     let container = document.querySelector('.container');
@@ -56,7 +57,7 @@ function renderUI(projectsList, todoList) {
     `;
 
     const headerIconContainer = document.getElementById('header-icon-container');
-    console.log(headerIconContainer)
+    // console.log(headerIconContainer)
     headerIconContainer.appendChild(headerTodoIcon);
 
     //********************** */
@@ -69,7 +70,7 @@ function renderUI(projectsList, todoList) {
 //********************** */
 //TO BE DELETED - after handling todo check status!
 function theFunction(e) {
-    console.log(e.target)
+    // console.log(e.target)
 }
 //********************** */
 
@@ -94,7 +95,30 @@ function renderTodoContainer(filteredElements){
         </div>    
     `;
     }
-    
+
+    setupEventListenersProjects();
+}
+
+function setupEventListenersProjects() {
+    const projectsListContainer = document.getElementById("projects")
+
+    projectsListContainer.addEventListener('click', function(event) {
+        const target = event.target;
+        const listItem = target.closest('li');
+        const index = listItem ? listItem.id.split('-')[1] : null;
+
+        console.log(listItem)
+                    
+        // if (index !== null) {
+        //     if (target.closest('.view-btn')) {
+        //         openViewModal(index, todoList, modalContainer);
+        //     } else if (target.closest('.edit-btn')) {
+        //         openEditModal(index, todoList, modalContainer);
+        //     } else if (target.closest('.delete-btn')) {
+        //         deleteTodoItem(index, todoList, projectsList);
+        //     }
+        // }
+    });
 }
 
 export { renderUI, renderTodoContainer };
