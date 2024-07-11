@@ -21,6 +21,7 @@ function renderUI(projectsList, todoList) {
     container.innerHTML = `
         <section class="header">
             <h1>// To do</h1>
+            <img src="../src/images/to-do-list.svg" alt="" srcset="">
             <div id="header-icon-container"></div>
         </section>
         <div class="content-container">

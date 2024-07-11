@@ -23,7 +23,7 @@ function openProjectModal(modalContainer) {
         <div class="modal-content">
             <div class="modal-header">
                 <p>Create a new Project</p>
-                <img src="./images/close-ellipse-white-bg.svg" class="close-project-modal-button close-btn">
+                <img src="../src/images/close-ellipse-white-bg.svg" class="close-project-modal-button close-btn">
             </div>
             <form>
                 <div class="input-container">
@@ -46,7 +46,7 @@ function openToDoModal(modalContainer) {
         <div class="modal-content">
             <div class="modal-header">
                 <p>Create a new To Do</p>
-                <img src="./images/close-ellipse-white-bg.svg" class="close-todo-modal-button close-btn">
+                <img src="../src/images/close-ellipse-white-bg.svg" class="close-todo-modal-button close-btn">
             </div>
             <form action="">
                 <ul class="input-container">
@@ -87,7 +87,7 @@ function openViewModal(index, todoList, modalContainer) {
     modalContainer.innerHTML = `
     <div id="view-modal" class="modal active">
         <div class="modal-content">
-            <img src="./images/close-ellipse.svg" class="close-modal-button close-btn">
+            <img src="../src/images/close-ellipse.svg" class="close-modal-button close-btn">
             <h2>${todoList[index].title}</h2>
             <div class="detail">
                 <p class="detail-title">Project: </p>
@@ -120,7 +120,7 @@ function openEditModal(index, todoList, modalContainer) {
         <div class="modal-content">
             <div class="modal-header">
                 <p>Create a new To Do</p>
-                <img src="./images/close-ellipse-white-bg.svg" class="close-project-modal-button close-btn">
+                <img src="../src/images/close-ellipse-white-bg.svg" class="close-project-modal-button close-btn">
             </div>
             <form action="">
                 <ul class="input-container">
