@@ -100,7 +100,10 @@ function renderTodoContainer(filteredElements){
 }
 
 function setupEventListenersProjects() {
-    const projectsListContainer = document.getElementById("projects")
+    const projectsListContainer = document.getElementById("projects");
+
+    const newProjectsListContainer = projectsListContainer.cloneNode(true);
+    projectsListContainer.parentNode.replaceChild(newProjectsListContainer, projectsListContainer);
 
     projectsListContainer.addEventListener('click', function(event) {
         const target = event.target;
