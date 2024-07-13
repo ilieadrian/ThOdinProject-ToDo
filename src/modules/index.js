@@ -110,7 +110,7 @@ function setupEventListenersProjects() {
         const listItem = target.closest('li');
         const index = listItem ? listItem.id.split('-')[1] : null;
 
-        console.log(listItem)
+        console.log(listItem, index)
                     
         // if (index !== null) {
         //     if (target.closest('.view-btn')) {
