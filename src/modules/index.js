@@ -95,22 +95,20 @@ function renderTodoContainer(filteredElements){
         </div>    
     `;
     }
-
-    setupEventListenersProjects();
 }
+document.addEventListener('DOMContentLoaded', function() {
+    setupEventListenersProjects();
+});
 
 function setupEventListenersProjects() {
-    const projectsListContainer = document.getElementById("projects");
-
-    const newProjectsListContainer = projectsListContainer.cloneNode(true);
-    projectsListContainer.parentNode.replaceChild(newProjectsListContainer, projectsListContainer);
+    const projectsListContainer = document.getElementById("projects")
 
     projectsListContainer.addEventListener('click', function(event) {
         const target = event.target;
         const listItem = target.closest('li');
         const index = listItem ? listItem.id.split('-')[1] : null;
 
-        console.log(listItem, index)
+        console.log(listItem)
                     
         // if (index !== null) {
         //     if (target.closest('.view-btn')) {
