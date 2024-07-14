@@ -87,31 +87,37 @@ function renderTodoContainer(filteredElements){
         
     `;
     } else {
+        const idToDelete = getActiveLink();
+
+        console.log(idToDelete)
+
         container.innerHTML = `
         <div class="items-list">
             <h2>Empty Project!</h2>
             <p> Create a new to-do item or delete project. </p>
-            <button class="delete-btn"> Delete project</button>
+            <button class="delete-btn">Delete project</button>
         </div>    
     `;
+
+        const deleteBtn = container.querySelector('.delete-btn');
+            if (deleteBtn) {
+                deleteBtn.addEventListener('click', function() {
+                    deleteProject(idToDelete);
+                });
+            }
+    
     }
 }
-document.addEventListener('DOMContentLoaded', function() {
-    getActiveLink();
-});
 
 function getActiveLink() {
-    const projectsListContainer = document.getElementById("projects")
-
-    projectsListContainer.addEventListener('click', function(event) {
-        const activeLink = document.querySelector("#projects a.active");
-
-        if (activeLink) {
-            const activeProjectId = activeLink.closest('li').getAttribute('data-project-id');
-            console.log("Active project ID:", activeProjectId);
-            return activeProjectId;
-        }
-    });
+    const activeLink = document.querySelector("#projects a.active");
+    if (activeLink) {
+        const activeProjectId = activeLink.closest('li').getAttribute('data-project-id');
+        return activeProjectId;
+    } else {
+        console.log("No active project link found");
+        return null;
+    }
 }
 
 export { renderUI, renderTodoContainer };
