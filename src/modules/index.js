@@ -89,8 +89,6 @@ function renderTodoContainer(filteredElements){
     } else {
         const idToDelete = getActiveLink();
 
-        console.log(idToDelete)
-
         container.innerHTML = `
         <div class="items-list">
             <h2>Empty Project!</h2>
@@ -98,14 +96,14 @@ function renderTodoContainer(filteredElements){
             <button class="delete-btn">Delete project</button>
         </div>    
     `;
+        const { projectsList } = defaultValues;
 
         const deleteBtn = container.querySelector('.delete-btn');
             if (deleteBtn) {
                 deleteBtn.addEventListener('click', function() {
-                    deleteProject(idToDelete);
+                    deleteProject(idToDelete, projectsList);
                 });
             }
-    
     }
 }
 
@@ -114,10 +112,7 @@ function getActiveLink() {
     if (activeLink) {
         const activeProjectId = activeLink.closest('li').getAttribute('data-project-id');
         return activeProjectId;
-    } else {
-        console.log("No active project link found");
-        return null;
-    }
+    } 
 }
 
 export { renderUI, renderTodoContainer };

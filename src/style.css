@@ -287,7 +287,6 @@ input[type="checkbox"] {
     background-color: #F7F7F7;
 }
 
-
 input[type="checkbox"]::before {
         margin: 0 auto;
     content: "";

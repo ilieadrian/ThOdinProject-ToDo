@@ -67,9 +67,10 @@ function countTodoinProject(element, todoList){
     return count;
 }
 
-function deleteProject(idToDelete) {
+function deleteProject(idToDelete, projectsList) {
     console.log("Deleting the project with the ID:", idToDelete)
+    console.log("ProjectList from: deleteProject", projectsList)
 }
 
-export {handleProject, getProjects, deleteProject };
+export {handleProject, getProjects, deleteProject};
 

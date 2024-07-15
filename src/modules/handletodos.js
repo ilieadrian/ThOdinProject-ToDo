@@ -1,13 +1,6 @@
 import { renderTodoContainer } from ".";
 import { openProjectModal, openToDoModal, openViewModal, openEditModal } from "./manipulateDOM";
 
-function handleTodos(todoList, projectsList) {
-    for (const element of projectsList){
-        const curentElement = element.name;
-        getTodosByProject(todoList, curentElement);
-    } 
-}
-
 function displayToDods(todoList) {
     let ulContent = '';
 
@@ -32,7 +25,7 @@ function displayToDods(todoList) {
     return ulContent;
 }
 
-function getTodosByProject(todoList, curentElement){
+function getTodosByProject(todoList, curentElement) {
     const filteredElements = todoList.filter(taskList => taskList.project === curentElement);
     renderTodoContainer(filteredElements)
 }
@@ -71,14 +64,6 @@ function setupEventListeners(todoList, projectsList) {
     });
 }
 
-// function deleteTodoItem(index, todoList, projectsList) {
-//     console.log(`Delete button clicked at index ${index}`);
-
-//     // Logic to remove the to-do item from the list and re-render the UI
-//     todoList.splice(index, 1);
-//     renderUI(projectsList, todoList);
-// }
-
-export { handleTodos, getTodosByProject, displayToDods, setupEventListeners  }
+export { getTodosByProject, displayToDods, setupEventListeners  }
 
 

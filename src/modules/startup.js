@@ -1,7 +1,6 @@
 import Todo from './todo';
 import Project from './project';
 import {handleProject} from './handleproject';
-import {handleTodos } from './handletodos';
 import {renderUI} from './index';
 import domeffects from './manipulateDOM';
 import { setupEventListeners } from './handletodos';
