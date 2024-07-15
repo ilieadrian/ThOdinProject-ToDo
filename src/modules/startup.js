@@ -8,6 +8,7 @@ import { setupEventListeners } from './handletodos';
 const defaultValues  = (function () {
     const todoList = [];
     const projectsList = [];
+    const filteredElements = [];
     let newToDo;
     let defaultProject;
 

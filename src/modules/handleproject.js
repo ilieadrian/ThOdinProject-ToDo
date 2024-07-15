@@ -69,7 +69,6 @@ function countTodoinProject(element, todoList){
 
 function deleteProject(idToDelete, projectsList) {
     const projectIndex = projectsList.findIndex(project => project.id == idToDelete);
-    console.log(idToDelete, projectIndex)
     if (projectIndex !== -1) {
         projectsList.splice(projectIndex, 1);
         console.log("Updated projects list:", projectsList);

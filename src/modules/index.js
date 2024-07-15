@@ -7,10 +7,6 @@ import TodoIcon from "../images/to-do-list.svg";
 import { addEventListeners } from './manipulateDOM';
 import { deleteProject } from './handleproject';
 
-document.addEventListener('DOMContentLoaded', function() {
-    const { todoList, projectsList } = defaultValues;
-    // renderUI(projectsList, todoList);
-});
 
 function renderUI(projectsList, todoList) {
     let container = document.querySelector('.container');
@@ -94,8 +90,6 @@ function renderTodoContainer(filteredElements){
         
     `;
     } else {
-        const idToDelete = getActiveLink();
-
         container.innerHTML = `
         <div class="items-list">
             <h2>Empty Project!</h2>
@@ -103,15 +97,25 @@ function renderTodoContainer(filteredElements){
             <button class="delete-btn">Delete project</button>
         </div>    
     `;
+        handleEmptyProjectPage(container)
+    }
+}
+function renderProjectsMenu() {
+    console.log("Opa")
+}    
+
+function handleEmptyProjectPage(container){
+        const idToDelete = getActiveLink();
+        
         const { projectsList } = defaultValues;
 
         const deleteBtn = container.querySelector('.delete-btn');
             if (deleteBtn) {
                 deleteBtn.addEventListener('click', function() {
                     deleteProject(idToDelete, projectsList);
+                    //deleteProject(3, projectsList) Example call
                 });
             }
-    }
 }
 
 function getActiveLink() {
@@ -121,6 +125,7 @@ function getActiveLink() {
         return activeProjectId;
     } 
 }
+
 
 export { renderUI, renderTodoContainer };
 
