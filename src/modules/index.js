@@ -1,11 +1,16 @@
 import '../style.css';
 import { getProjects } from './handleproject';
-import { displayToDods, setupEventListeners } from './handletodos'; 
+import { displayToDods } from './handletodos'; 
 //correct typo above: should be displayTodos
 import { defaultValues } from './startup';
 import TodoIcon from "../images/to-do-list.svg";
 import { addEventListeners } from './manipulateDOM';
 import { deleteProject } from './handleproject';
+
+document.addEventListener('DOMContentLoaded', function() {
+    const { todoList, projectsList } = defaultValues;
+    // renderUI(projectsList, todoList);
+});
 
 function renderUI(projectsList, todoList) {
     let container = document.querySelector('.container');
@@ -55,6 +60,8 @@ function renderUI(projectsList, todoList) {
         </div>
         <div id="modal-container"></div>
     `;
+
+    console.log(projectsList)
 
     const headerIconContainer = document.getElementById('header-icon-container');
     // console.log(headerIconContainer)
