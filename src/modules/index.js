@@ -57,7 +57,7 @@ function renderUI(projectsList, todoList) {
         <div id="modal-container"></div>
     `;
 
-    console.log(projectsList)
+    // console.log(projectsList)
 
     const headerIconContainer = document.getElementById('header-icon-container');
     // console.log(headerIconContainer)
@@ -100,19 +100,25 @@ function renderTodoContainer(filteredElements){
         handleEmptyProjectPage(container)
     }
 }
-function renderProjectsMenu() {
-    console.log("Opa")
+function renderProjectsMenu(projectsList, todoList) {
+    const projectMenuContainer = document.getElementById("projects");
+
+    projectMenuContainer.innerHTML = "";
+
+    projectMenuContainer.innerHTML = `
+        ${getProjects(projectsList, todoList)}
+    `;
 }    
 
 function handleEmptyProjectPage(container){
         const idToDelete = getActiveLink();
-        
-        const { projectsList } = defaultValues;
+
+        const { projectsList, todoList } = defaultValues;
 
         const deleteBtn = container.querySelector('.delete-btn');
             if (deleteBtn) {
                 deleteBtn.addEventListener('click', function() {
-                    deleteProject(idToDelete, projectsList);
+                    deleteProject(idToDelete, projectsList, todoList);
                     //deleteProject(3, projectsList) Example call
                 });
             }
@@ -127,6 +133,6 @@ function getActiveLink() {
 }
 
 
-export { renderUI, renderTodoContainer };
+export { renderUI, renderTodoContainer, renderProjectsMenu };
 
 

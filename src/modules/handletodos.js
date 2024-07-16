@@ -28,7 +28,6 @@ function displayToDods(todoList) {
 function getTodosByProject(todoList, curentElement) {
     const filteredElements = todoList.filter(taskList => taskList.project === curentElement);
     renderTodoContainer(filteredElements);
-    console.log(filteredElements)
 }
 //
 function setupEventListeners(todoList, projectsList) {

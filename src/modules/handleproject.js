@@ -1,5 +1,6 @@
 import Project from "./project";
 import { getTodosByProject } from "./handletodos";
+import { renderProjectsMenu } from "./index";
 
 function handleProject(newToDo, projectsList){
     const defaultProjectExists = projectsList.some(project => project.name === "Default");
@@ -67,14 +68,12 @@ function countTodoinProject(element, todoList){
     return count;
 }
 
-function deleteProject(idToDelete, projectsList) {
+function deleteProject(idToDelete, projectsList, todoList) {
     const projectIndex = projectsList.findIndex(project => project.id == idToDelete);
     if (projectIndex !== -1) {
         projectsList.splice(projectIndex, 1);
-        console.log("Updated projects list:", projectsList);
-    } else {
-        console.log("Project not found with ID:", idToDelete);
-    }
+        renderProjectsMenu(projectsList, todoList);
+    } 
 }
 
 export {handleProject, getProjects, deleteProject};
