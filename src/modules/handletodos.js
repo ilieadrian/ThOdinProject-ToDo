@@ -29,38 +29,39 @@ function getTodosByProject(todoList, curentElement) {
     const filteredElements = todoList.filter(taskList => taskList.project === curentElement);
     renderTodoContainer(filteredElements);
 }
-//
+
 function setupEventListeners(todoList, projectsList) {
-    document.addEventListener('DOMContentLoaded', function() {
-        const todoListContainer = document.querySelector('.todo-container');
-        let modalContainer = document.getElementById('modal-container');
 
-        const addProjectBTN = document.querySelector('.addproject');
-        const addToDoBTN = document.querySelector('.addtodo');
+    console.log("setupEventListeners has fired")
 
-        addProjectBTN.addEventListener('click', function() {
-            openProjectModal(modalContainer);
-        });
+    const todoListContainer = document.querySelector('.todo-container');
+    let modalContainer = document.getElementById('modal-container');
 
-        addToDoBTN.addEventListener('click', function() {
-            openToDoModal(modalContainer);
-        });
+    const addProjectBTN = document.querySelector('.addproject');
+    const addToDoBTN = document.querySelector('.addtodo');
 
-        todoListContainer.addEventListener('click', function(event) {
-            const target = event.target;
-            const listItem = target.closest('.item');
-            const index = listItem ? listItem.id.split('-')[1] : null;
-                        
-            if (index !== null) {
-                if (target.closest('.view-btn')) {
-                    openViewModal(index, todoList, modalContainer);
-                } else if (target.closest('.edit-btn')) {
-                    openEditModal(index, todoList, modalContainer);
-                } else if (target.closest('.delete-btn')) {
-                    deleteTodoItem(index, todoList, projectsList);
-                }
+    addProjectBTN.addEventListener('click', function() {
+        openProjectModal(modalContainer);
+    });
+
+    addToDoBTN.addEventListener('click', function() {
+        openToDoModal(modalContainer);
+    });
+
+    todoListContainer.addEventListener('click', function(event) {
+        const target = event.target;
+        const listItem = target.closest('.item');
+        const index = listItem ? listItem.id.split('-')[1] : null;
+
+        if (index !== null) {
+            if (target.closest('.view-btn')) {
+                openViewModal(index, todoList, modalContainer);
+            } else if (target.closest('.edit-btn')) {
+                openEditModal(index, todoList, modalContainer);
+            } else if (target.closest('.delete-btn')) {
+                deleteTodoItem(index, todoList, projectsList);
             }
-        });
+        }
     });
 }
 

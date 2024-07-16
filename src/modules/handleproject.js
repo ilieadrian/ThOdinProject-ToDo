@@ -1,6 +1,7 @@
 import Project from "./project";
 import { getTodosByProject } from "./handletodos";
-import { renderProjectsMenu } from "./index";
+import { renderUI } from ".";
+import { setupEventListeners } from "./handletodos";
 
 function handleProject(newToDo, projectsList){
     const defaultProjectExists = projectsList.some(project => project.name === "Default");
@@ -21,6 +22,7 @@ function handleProject(newToDo, projectsList){
 
 
 function getProjects(projectsList, todoList) {
+    console.log("getProject fired")
     let ulContent = '';
 
     projectsList.forEach(element => {
@@ -72,7 +74,8 @@ function deleteProject(idToDelete, projectsList, todoList) {
     const projectIndex = projectsList.findIndex(project => project.id == idToDelete);
     if (projectIndex !== -1) {
         projectsList.splice(projectIndex, 1);
-        renderProjectsMenu(projectsList, todoList);
+        // renderProjectsMenu(projectsList, todoList);
+        renderUI(projectsList, todoList);
     } 
 }
 

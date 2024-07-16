@@ -4,7 +4,7 @@ import { displayToDods } from './handletodos';
 //correct typo above: should be displayTodos
 import { defaultValues } from './startup';
 import TodoIcon from "../images/to-do-list.svg";
-import { addEventListeners } from './manipulateDOM';
+import { setupEventListeners } from './handletodos';
 import { deleteProject } from './handleproject';
 
 
@@ -68,6 +68,9 @@ function renderUI(projectsList, todoList) {
     const todoListContainer = document.querySelector('.items-list');
     todoListContainer.addEventListener('click', theFunction);
     //********************** */
+
+    //Event listeners updated
+    setupEventListeners(todoList, projectsList);
 }
 
 //********************** */
@@ -100,16 +103,7 @@ function renderTodoContainer(filteredElements){
         handleEmptyProjectPage(container)
     }
 }
-function renderProjectsMenu(projectsList, todoList) {
-    const projectMenuContainer = document.getElementById("projects");
-
-    projectMenuContainer.innerHTML = "";
-
-    projectMenuContainer.innerHTML = `
-        ${getProjects(projectsList, todoList)}
-    `;
-}    
-
+    
 function handleEmptyProjectPage(container){
         const idToDelete = getActiveLink();
 
@@ -124,6 +118,7 @@ function handleEmptyProjectPage(container){
             }
 }
 
+
 function getActiveLink() {
     const activeLink = document.querySelector("#projects a.active");
     if (activeLink) {
@@ -133,6 +128,6 @@ function getActiveLink() {
 }
 
 
-export { renderUI, renderTodoContainer, renderProjectsMenu };
+export { renderUI, renderTodoContainer };
 
 

@@ -29,7 +29,7 @@ const defaultValues  = (function () {
     });
 
     renderUI(projectsList, todoList);
-    setupEventListeners(todoList, projectsList);
+    // setupEventListeners(todoList, projectsList);
     
     return {
         todoList,
