@@ -4,8 +4,8 @@ import { displayToDods } from './handletodos';
 //correct typo above: should be displayTodos
 import { defaultValues } from './startup';
 import TodoIcon from "../images/to-do-list.svg";
-import { setupEventListeners } from './handletodos';
 import { deleteProject } from './handleproject';
+import { setupEventListeners } from './manipulatedom';
 
 
 function renderUI(projectsList, todoList) {
@@ -57,7 +57,7 @@ function renderUI(projectsList, todoList) {
         <div id="modal-container"></div>
     `;
 
-    // console.log(projectsList)
+
 
     const headerIconContainer = document.getElementById('header-icon-container');
     // console.log(headerIconContainer)
@@ -70,7 +70,8 @@ function renderUI(projectsList, todoList) {
     //********************** */
 
     //Event listeners updated
-    setupEventListeners(todoList, projectsList);
+    // console.log(projectsList, todoList)
+    // setupEventListeners(projectsList, todoList);
 }
 
 //********************** */
@@ -102,6 +103,8 @@ function renderTodoContainer(filteredElements){
     `;
         handleEmptyProjectPage(container)
     }
+
+    
 }
     
 function handleEmptyProjectPage(container){
@@ -118,7 +121,6 @@ function handleEmptyProjectPage(container){
             }
 }
 
-
 function getActiveLink() {
     const activeLink = document.querySelector("#projects a.active");
     if (activeLink) {
@@ -126,6 +128,7 @@ function getActiveLink() {
         return activeProjectId;
     } 
 }
+
 
 
 export { renderUI, renderTodoContainer };

@@ -1,7 +1,7 @@
 import Project from "./project";
 import { getTodosByProject } from "./handletodos";
-import { renderUI } from ".";
-import { setupEventListeners } from "./handletodos";
+import { renderUI } from "./index";
+import { setupEventListeners } from "./manipulatedom";
 
 function handleProject(newToDo, projectsList){
     const defaultProjectExists = projectsList.some(project => project.name === "Default");
@@ -20,9 +20,7 @@ function handleProject(newToDo, projectsList){
     return projectsList;
 }
 
-
 function getProjects(projectsList, todoList) {
-    console.log("getProject fired")
     let ulContent = '';
 
     projectsList.forEach(element => {
@@ -34,27 +32,27 @@ function getProjects(projectsList, todoList) {
         `;
     });
 
-    document.addEventListener("DOMContentLoaded", function() {
-        const projectList = document.querySelectorAll("#projects li");
+    // document.addEventListener("DOMContentLoaded", function() {
+    //     const projectList = document.querySelectorAll("#projects li");
 
-        projectList.forEach(li => {
-            const anchor = li.querySelector('a');
-            anchor.addEventListener("click", function(event) {
-                event.preventDefault();
-                const projectId = li.getAttribute('data-project-id');
-                const projectName = anchor.textContent;
+    //     projectList.forEach(li => {
+    //         const anchor = li.querySelector('a');
+    //         anchor.addEventListener("click", function(event) {
+    //             event.preventDefault();
+    //             const projectId = li.getAttribute('data-project-id');
+    //             const projectName = anchor.textContent;
 
-                getTodosByProject(todoList, projectName);
+    //             getTodosByProject(todoList, projectName);
 
-                projectList.forEach(item => {
-                    const link = item.querySelector('a');
-                    link.classList.remove('active');
-                });
+    //             projectList.forEach(item => {
+    //                 const link = item.querySelector('a');
+    //                 link.classList.remove('active');
+    //             });
 
-                anchor.classList.add('active');
-            });
-        });
-    });
+    //             anchor.classList.add('active');
+    //         });
+    //     });
+    // });
 
     return ulContent;
 }
@@ -74,7 +72,6 @@ function deleteProject(idToDelete, projectsList, todoList) {
     const projectIndex = projectsList.findIndex(project => project.id == idToDelete);
     if (projectIndex !== -1) {
         projectsList.splice(projectIndex, 1);
-        // renderProjectsMenu(projectsList, todoList);
         renderUI(projectsList, todoList);
     } 
 }

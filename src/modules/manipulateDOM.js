@@ -1,4 +1,8 @@
-let modalContainer = document.getElementById('modal-container');
+import { renderTodoContainer } from "./index";
+import { getTodosByProject, deleteTodoItem } from './handletodos';
+
+
+// let modalContainer = document.getElementById('modal-container');
 
 export default (function () {
     document.addEventListener("DOMContentLoaded", function() {
@@ -15,6 +19,10 @@ export default (function () {
             });        
         });
 })();
+
+// function testFunction() {
+//     console.log("Test Function")
+// }
 
 function openProjectModal(modalContainer) {
     modalContainer.innerHTML = "";
@@ -165,5 +173,68 @@ function addCloseEventListeners(modalContainer) {
     });
 }
 
+function testFunction() {
+    console.log("Test Function from manipulatedom.js");
+    try {
+        // Placeholder for any potential error-causing code
+    } catch (error) {
+        console.error("Error in testFunction:", error);
+    }
+}
 
-export {openProjectModal, openToDoModal, openViewModal, openEditModal}
+function setupEventListeners(todoList, projectsList) {
+    console.log("setupEventListeners has fired");
+
+    const todoListContainer = document.querySelector('.todo-container');
+    let modalContainer = document.getElementById('modal-container');
+
+    const addProjectBTN = document.querySelector('.addproject');
+    const addToDoBTN = document.querySelector('.addtodo');
+
+    addProjectBTN.addEventListener('click', function() {
+        openProjectModal(modalContainer);
+    });
+
+    addToDoBTN.addEventListener('click', function() {
+        openToDoModal(modalContainer);
+    });
+
+    todoListContainer.addEventListener('click', function(event) {
+        const target = event.target;
+        const listItem = target.closest('.item');
+        const index = listItem ? listItem.id.split('-')[1] : null;
+
+        if (index !== null) {
+            if (target.closest('.view-btn')) {
+                openViewModal(index, todoList, modalContainer);
+            } else if (target.closest('.edit-btn')) {
+                openEditModal(index, todoList, modalContainer);
+            } else if (target.closest('.delete-btn')) {
+                deleteTodoItem(index, todoList, projectsList);
+            }
+        }
+    });
+
+    const projectList = document.querySelectorAll("#projects li");
+    projectList.forEach(li => {
+        const anchor = li.querySelector('a');
+        anchor.addEventListener('click', function(event) {
+            event.preventDefault();
+            const projectId = li.getAttribute('data-project-id');
+            const projectName = anchor.textContent;
+
+            getTodosByProject(todoList, projectName);
+
+            projectList.forEach(item => {
+                const link = item.querySelector('a');
+                link.classList.remove('active');
+            });
+
+            anchor.classList.add('active');
+        });
+    });
+}
+
+// export { openProjectModal, openToDoModal, openViewModal, openEditModal };
+
+export { setupEventListeners };

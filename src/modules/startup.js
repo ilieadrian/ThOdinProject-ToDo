@@ -2,8 +2,8 @@ import Todo from './todo';
 import Project from './project';
 import {handleProject} from './handleproject';
 import {renderUI} from './index';
-import domeffects from './manipulateDOM';
-import { setupEventListeners } from './handletodos';
+import domeffects from './manipulatedom';
+// import setupEventListeners from './manipulateDOM';
 
 const defaultValues  = (function () {
     const todoList = [];
@@ -29,7 +29,6 @@ const defaultValues  = (function () {
     });
 
     renderUI(projectsList, todoList);
-    // setupEventListeners(todoList, projectsList);
     
     return {
         todoList,
