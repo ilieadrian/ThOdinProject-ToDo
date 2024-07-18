@@ -1,9 +1,6 @@
 import { renderTodoContainer } from "./index";
 import { getTodosByProject, deleteTodoItem } from './handletodos';
 
-
-// let modalContainer = document.getElementById('modal-container');
-
 export default (function () {
     document.addEventListener("DOMContentLoaded", function() {
         //Menu links interaction
@@ -20,9 +17,6 @@ export default (function () {
         });
 })();
 
-// function testFunction() {
-//     console.log("Test Function")
-// }
 
 function openProjectModal(modalContainer) {
     modalContainer.innerHTML = "";
@@ -183,6 +177,9 @@ function testFunction() {
 }
 
 function setupEventListeners(todoList, projectsList) {
+
+    console.log("log from setupEventListeners")
+    console.table(projectsList)
 
     const todoListContainer = document.querySelector('.todo-container');
     let modalContainer = document.getElementById('modal-container');

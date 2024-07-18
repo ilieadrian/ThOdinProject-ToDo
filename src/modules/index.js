@@ -57,7 +57,6 @@ async function renderUI(projectsList, todoList) {
         <div id="modal-container"></div>
     `;
 
-
         //---!!!---//
     const headerIconContainer = document.getElementById('header-icon-container');
     // console.log(headerIconContainer)
@@ -68,16 +67,6 @@ async function renderUI(projectsList, todoList) {
     const todoListContainer = document.querySelector('.items-list');
     todoListContainer.addEventListener('click', theFunction);
     //********************** */
-
-    //Event listeners updated
-    // console.log(projectsList, todoList)
-
-    // setTimeout(() => {
-    //     console.log("Delayed for 0.5 second.");
-    //     setupEventListeners(projectsList, todoList);
-    //   }, "500");
-      
-    
 }
 
 //********************** */
