@@ -8,7 +8,7 @@ import { deleteProject } from './handleproject';
 import { setupEventListeners } from './manipulatedom';
 
 
-function renderUI(projectsList, todoList) {
+async function renderUI(projectsList, todoList) {
     let container = document.querySelector('.container');
     const headerTodoIcon = new Image();
     headerTodoIcon.src = TodoIcon;
@@ -58,7 +58,7 @@ function renderUI(projectsList, todoList) {
     `;
 
 
-
+        //---!!!---//
     const headerIconContainer = document.getElementById('header-icon-container');
     // console.log(headerIconContainer)
     headerIconContainer.appendChild(headerTodoIcon);
@@ -71,7 +71,13 @@ function renderUI(projectsList, todoList) {
 
     //Event listeners updated
     // console.log(projectsList, todoList)
-    // setupEventListeners(projectsList, todoList);
+
+    // setTimeout(() => {
+    //     console.log("Delayed for 0.5 second.");
+    //     setupEventListeners(projectsList, todoList);
+    //   }, "500");
+      
+    
 }
 
 //********************** */
@@ -103,8 +109,6 @@ function renderTodoContainer(filteredElements){
     `;
         handleEmptyProjectPage(container)
     }
-
-    
 }
     
 function handleEmptyProjectPage(container){
@@ -119,6 +123,8 @@ function handleEmptyProjectPage(container){
                     //deleteProject(3, projectsList) Example call
                 });
             }
+
+            return projectsList, todoList;
 }
 
 function getActiveLink() {
@@ -129,7 +135,20 @@ function getActiveLink() {
     } 
 }
 
+//Until i figure out async-await i use these function to add the eventlisteners
+//after the UI is rendered. Adding the call to setupEventListeners in renderUI returnet a webpack module
+//error because the UI was not fully rendered.
+function callEvents(){
+    const { projectsList, todoList } = defaultValues;
 
+    try {
+        setupEventListeners(todoList, projectsList);
+    } catch (error) {
+        console.error("Error calling callEvents:", error);
+    }
+}
+
+callEvents()
 
 export { renderUI, renderTodoContainer };
 

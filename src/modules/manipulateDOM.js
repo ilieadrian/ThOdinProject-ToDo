@@ -183,7 +183,6 @@ function testFunction() {
 }
 
 function setupEventListeners(todoList, projectsList) {
-    console.log("setupEventListeners has fired");
 
     const todoListContainer = document.querySelector('.todo-container');
     let modalContainer = document.getElementById('modal-container');
