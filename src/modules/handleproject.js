@@ -1,7 +1,7 @@
 import Project from "./project";
 import { getTodosByProject } from "./handletodos";
 import { renderUI } from "./index";
-import { setupEventListeners } from "./manipulatedom";
+import { setupEventListeners } from "./manipulateDOM";
 
 function handleProject(newToDo, projectsList){
     const defaultProjectExists = projectsList.some(project => project.name === "Default");
@@ -31,28 +31,6 @@ function getProjects(projectsList, todoList) {
             </li>
         `;
     });
-
-    // document.addEventListener("DOMContentLoaded", function() {
-    //     const projectList = document.querySelectorAll("#projects li");
-
-    //     projectList.forEach(li => {
-    //         const anchor = li.querySelector('a');
-    //         anchor.addEventListener("click", function(event) {
-    //             event.preventDefault();
-    //             const projectId = li.getAttribute('data-project-id');
-    //             const projectName = anchor.textContent;
-
-    //             getTodosByProject(todoList, projectName);
-
-    //             projectList.forEach(item => {
-    //                 const link = item.querySelector('a');
-    //                 link.classList.remove('active');
-    //             });
-
-    //             anchor.classList.add('active');
-    //         });
-    //     });
-    // });
 
     return ulContent;
 }

@@ -167,20 +167,7 @@ function addCloseEventListeners(modalContainer) {
     });
 }
 
-function testFunction() {
-    console.log("Test Function from manipulatedom.js");
-    try {
-        // Placeholder for any potential error-causing code
-    } catch (error) {
-        console.error("Error in testFunction:", error);
-    }
-}
-
 function setupEventListeners(todoList, projectsList) {
-
-    console.log("log from setupEventListeners")
-    console.table(projectsList)
-
     const todoListContainer = document.querySelector('.todo-container');
     let modalContainer = document.getElementById('modal-container');
 
@@ -199,6 +186,10 @@ function setupEventListeners(todoList, projectsList) {
         const target = event.target;
         const listItem = target.closest('.item');
         const index = listItem ? listItem.id.split('-')[1] : null;
+        console.log("Target todoListContainer", target );
+        console.log("listItem todoListContainer", listItem);
+        console.log("index todoListContainer", index);
+
 
         if (index !== null) {
             if (target.closest('.view-btn')) {
@@ -207,7 +198,17 @@ function setupEventListeners(todoList, projectsList) {
                 openEditModal(index, todoList, modalContainer);
             } else if (target.closest('.delete-btn')) {
                 deleteTodoItem(index, todoList, projectsList);
+            }else if (target.classList.contains('todo-checkbox')) {
+                console.log("Checkbox clicked in else if")
             }
+
+            // Temporary disabled, but not abadoned, in seach for a better solution
+            // } else if (target.classList.contains('todo-checkbox')) {
+            //     const todoItem = todoList[index];
+            //     todoItem.status = target.checked; // Update the status based on checkbox
+            //     renderUI(projectsList, todoList); // Re-render the UI to reflect the changes
+            //     console.log(`Checkbox clicked for item ${index}, new status: ${todoItem.status}`);
+            // }
         }
     });
 
@@ -231,6 +232,5 @@ function setupEventListeners(todoList, projectsList) {
     });
 }
 
-// export { openProjectModal, openToDoModal, openViewModal, openEditModal };
+export {setupEventListeners, openProjectModal, openToDoModal, openViewModal, openEditModal };
 
-export { setupEventListeners };

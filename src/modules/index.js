@@ -5,10 +5,9 @@ import { displayToDods } from './handletodos';
 import { defaultValues } from './startup';
 import TodoIcon from "../images/to-do-list.svg";
 import { deleteProject } from './handleproject';
-import { setupEventListeners } from './manipulatedom';
+import { setupEventListeners } from './manipulateDOM';
 
-
-async function renderUI(projectsList, todoList) {
+function renderUI(projectsList, todoList) {
     let container = document.querySelector('.container');
     const headerTodoIcon = new Image();
     headerTodoIcon.src = TodoIcon;
@@ -57,7 +56,7 @@ async function renderUI(projectsList, todoList) {
         <div id="modal-container"></div>
     `;
 
-        //---!!!---//
+    //---!!!---//
     const headerIconContainer = document.getElementById('header-icon-container');
     // console.log(headerIconContainer)
     headerIconContainer.appendChild(headerTodoIcon);
@@ -72,6 +71,7 @@ async function renderUI(projectsList, todoList) {
 //********************** */
 //TO BE DELETED - after handling todo check status!
 function theFunction(e) {
+    // console.log("theFunction fired")
     // console.log(e.target)
 }
 //********************** */

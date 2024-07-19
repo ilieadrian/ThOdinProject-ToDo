@@ -1,5 +1,5 @@
 import { renderTodoContainer } from "./index";
-import { openProjectModal, openToDoModal, openViewModal, openEditModal } from "./manipulatedom";
+// import { openProjectModal, openToDoModal, openViewModal, openEditModal } from "./manipulatedom";
 
 function displayToDods(todoList) {
     let ulContent = '';
@@ -10,7 +10,7 @@ function displayToDods(todoList) {
                 <div class="name-grup ${element.status ? "finished" : ''}">
                     <div class="priority ${element.priority}"></div>
                     <input type="checkbox" ${element.status ? "checked" : ''}>
-                    <p class="finished">${element.title} </p>
+                    <p class="finished">${element.title}</p>
                 </div>
                 <div class="action-grup ${element.status ? "finished" : ''}">
                     <p id="due-date">${element.dueDate}</p>

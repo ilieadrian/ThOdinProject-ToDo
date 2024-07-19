@@ -2,7 +2,7 @@ import Todo from './todo';
 import Project from './project';
 import {handleProject} from './handleproject';
 import {renderUI} from './index';
-import setupEventListeners from './manipulatedom';
+import { setupEventListeners } from './manipulateDOM';
 
 const defaultValues  = (function () {
     const todoList = [];
