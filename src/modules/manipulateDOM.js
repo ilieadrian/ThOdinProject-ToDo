@@ -1,5 +1,5 @@
 import { renderTodoContainer } from "./index";
-import { getTodosByProject, deleteTodoItem } from './handletodos';
+import { getTodosByProject } from './handletodos';
 
 export default (function () {
     document.addEventListener("DOMContentLoaded", function() {
@@ -186,10 +186,6 @@ function setupEventListeners(todoList, projectsList) {
         const target = event.target;
         const listItem = target.closest('.item');
         const index = listItem ? listItem.id.split('-')[1] : null;
-        console.log("Target todoListContainer", target );
-        console.log("listItem todoListContainer", listItem);
-        console.log("index todoListContainer", index);
-
 
         if (index !== null) {
             if (target.closest('.view-btn')) {
@@ -199,7 +195,7 @@ function setupEventListeners(todoList, projectsList) {
             } else if (target.closest('.delete-btn')) {
                 deleteTodoItem(index, todoList, projectsList);
             }else if (target.classList.contains('todo-checkbox')) {
-                console.log("Checkbox clicked in else if")
+                console.log("Checkbox clicked in else if", index)
             }
 
             // Temporary disabled, but not abadoned, in seach for a better solution
@@ -232,5 +228,7 @@ function setupEventListeners(todoList, projectsList) {
     });
 }
 
-export {setupEventListeners, openProjectModal, openToDoModal, openViewModal, openEditModal };
+// export {setupEventListeners, openProjectModal, openToDoModal, openViewModal, openEditModal };
+export { setupEventListeners };
+
 
