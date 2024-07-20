@@ -60,21 +60,7 @@ function renderUI(projectsList, todoList) {
     const headerIconContainer = document.getElementById('header-icon-container');
     // console.log(headerIconContainer)
     headerIconContainer.appendChild(headerTodoIcon);
-
-    //********************** */
-    //TO BE DELETED - after handling todo check status!
-    const todoListContainer = document.querySelector('.items-list');
-    todoListContainer.addEventListener('click', theFunction);
-    //********************** */
 }
-
-//********************** */
-//TO BE DELETED - after handling todo check status!
-function theFunction(e) {
-    // console.log("theFunction fired")
-    // console.log(e.target)
-}
-//********************** */
 
 function renderTodoContainer(filteredElements){
     let container = document.querySelector('.todo-container');
@@ -137,7 +123,7 @@ function callEvents(){
     }
 }
 
-callEvents()
+callEvents();
 
 export { renderUI, renderTodoContainer };
 

@@ -1,5 +1,6 @@
 import { renderTodoContainer } from "./index";
 import { getTodosByProject } from './handletodos';
+import { renderUI } from "./index";
 
 export default (function () {
     document.addEventListener("DOMContentLoaded", function() {
@@ -158,6 +159,13 @@ function openEditModal(index, todoList, modalContainer) {
     addCloseEventListeners(modalContainer);
 }
 
+function modifyTodoStatus(index, target, projectsList, todoList) {
+    const todoItem = todoList[index];
+    todoItem.status = target.checked; 
+    renderUI(projectsList, todoList);
+    setupEventListeners(todoList, projectsList);
+}
+
 function addCloseEventListeners(modalContainer) {
     const closeButtons = modalContainer.querySelectorAll('.close-btn');
     closeButtons.forEach(button => {
@@ -166,6 +174,7 @@ function addCloseEventListeners(modalContainer) {
         });
     });
 }
+
 
 function setupEventListeners(todoList, projectsList) {
     const todoListContainer = document.querySelector('.todo-container');
@@ -194,17 +203,9 @@ function setupEventListeners(todoList, projectsList) {
                 openEditModal(index, todoList, modalContainer);
             } else if (target.closest('.delete-btn')) {
                 deleteTodoItem(index, todoList, projectsList);
-            }else if (target.classList.contains('todo-checkbox')) {
-                console.log("Checkbox clicked in else if", index)
+            } else if (target.classList.contains('todo-checkbox')) {
+                modifyTodoStatus(index, target, projectsList, todoList);
             }
-
-            // Temporary disabled, but not abadoned, in seach for a better solution
-            // } else if (target.classList.contains('todo-checkbox')) {
-            //     const todoItem = todoList[index];
-            //     todoItem.status = target.checked; // Update the status based on checkbox
-            //     renderUI(projectsList, todoList); // Re-render the UI to reflect the changes
-            //     console.log(`Checkbox clicked for item ${index}, new status: ${todoItem.status}`);
-            // }
         }
     });
 
