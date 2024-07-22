@@ -8,6 +8,7 @@ import { deleteProject } from './handleproject';
 import { setupEventListeners } from './manipulateDOM';
 
 function renderUI(projectsList, todoList) {
+    console.log("FIRED: renderUI")
     let container = document.querySelector('.container');
     const headerTodoIcon = new Image();
     headerTodoIcon.src = TodoIcon;
@@ -62,7 +63,40 @@ function renderUI(projectsList, todoList) {
     headerIconContainer.appendChild(headerTodoIcon);
 }
 
-function renderTodoContainer(filteredElements){
+// function renderTodoContainer(filteredElements){
+//     console.log("FIRED: renderTodoContainer")
+
+//     let { renderOnlyContainer } = defaultValues;
+
+//     console.log("renderOnlyContainer:", renderOnlyContainer)
+//     let container = document.querySelector('.todo-container');
+
+//     container.innerHTML = "";
+
+//     if (filteredElements.length > 0) {
+//         container.innerHTML = `
+//         <ul class="items-list">
+//             ${displayToDods(filteredElements, renderOnlyContainer)}  
+//         </ul>
+        
+//     `;
+//     } else {
+//         container.innerHTML = `
+//         <div class="items-list">
+//             <h2>Empty Project!</h2>
+//             <p> Create a new to-do item or delete project. </p>
+//             <button class="delete-btn">Delete project</button>
+//         </div>    
+//     `;
+//         handleEmptyProjectPage(container)
+
+//     }
+// }
+
+
+function renderTodoContainer(filteredElements) {
+    console.log("FIRED: renderTodoContainer");
+
     let container = document.querySelector('.todo-container');
 
     container.innerHTML = "";
@@ -72,21 +106,21 @@ function renderTodoContainer(filteredElements){
         <ul class="items-list">
             ${displayToDods(filteredElements)}  
         </ul>
-        
     `;
     } else {
         container.innerHTML = `
         <div class="items-list">
             <h2>Empty Project!</h2>
-            <p> Create a new to-do item or delete project. </p>
+            <p>Create a new to-do item or delete project.</p>
             <button class="delete-btn">Delete project</button>
-        </div>    
+        </div>
     `;
-        handleEmptyProjectPage(container)
+        handleEmptyProjectPage(container);
     }
 }
     
 function handleEmptyProjectPage(container){
+    console.log("FIRED: handleEmptyProjectPage")
         const idToDelete = getActiveLink();
 
         const { projectsList, todoList } = defaultValues;
@@ -116,8 +150,11 @@ function getActiveLink() {
 function callEvents(){
     const { projectsList, todoList } = defaultValues;
 
+    // console.log("renderOnlyContainer:", renderOnlyContainer)
+
+
     try {
-        setupEventListeners(todoList, projectsList);
+        setupEventListeners(todoList, projectsList,);
     } catch (error) {
         console.error("Error calling callEvents:", error);
     }

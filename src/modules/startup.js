@@ -5,9 +5,11 @@ import {renderUI} from './index';
 import { setupEventListeners } from './manipulateDOM';
 
 const defaultValues  = (function () {
+    console.log("FIRED: defaultValues")
     const todoList = [];
     const projectsList = [];
-    const filteredElements = [];
+    let renderOnlyContainer = false;
+
     let newToDo;
     let defaultProject;
 
@@ -32,6 +34,7 @@ const defaultValues  = (function () {
     return {
         todoList,
         projectsList,
+        renderOnlyContainer,
     };
 })();
 
