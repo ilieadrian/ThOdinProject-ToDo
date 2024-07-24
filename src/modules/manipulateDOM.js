@@ -161,31 +161,41 @@ function openEditModal(index, todoList, modalContainer) {
     addCloseEventListeners(modalContainer);
 }
 
-// function modifyTodoStatus(index, target, projectsList, todoList) {
-//     console.log("FIRED: modifyTodoStatus")
-//     const todoItem = todoList[index];
-//     todoItem.status = target.checked; 
-//     console.log("renderOnlyContainerin modifyTodoStatus:")
-//     renderUI(projectsList, todoList);
-//     setupEventListeners(todoList, projectsList);
-// }
-
 function modifyTodoStatus(index, target, projectsList, todoList) {
-    console.log("FIRED: modifyTodoStatus");
+    console.log("FIRED: modifyTodoStatus")
     const todoItem = todoList[index];
     todoItem.status = target.checked; 
+
     
-    // Check if all todos are being displayed or a specific project
-    const activeProjectLink = document.querySelector('#projects a.active');
-    if (activeProjectLink && activeProjectLink.textContent !== 'All') {
-        // Render only the filtered project todos
-        getTodosByProject(todoList, activeProjectLink.textContent);
+
+    if(statusOfUI) {
+        getTodosByProject(todoList, "Home");
+        console.log("if statusOfUI true", todoList)
     } else {
-        // Render the entire UI
         renderUI(projectsList, todoList);
-        setupEventListeners(todoList, projectsList);
     }
+    setupEventListeners(todoList, projectsList);
+
+    console.log("statusOfUI in modifyTodoStatus:", statusOfUI)
 }
+
+// function modifyTodoStatus(index, target, projectsList, todoList) {
+//     console.log("FIRED: modifyTodoStatus");
+//     const todoItem = todoList[index];
+//     todoItem.status = target.checked; 
+    
+//     // Check if all todos are being displayed or a specific project
+//     const activeProjectLink = document.querySelector('#projects a.active');
+//     console.log("activeProjectLink", activeProjectLink.textContent)
+//     if (activeProjectLink && activeProjectLink.textContent !== 'All') {
+//         // Render only the filtered project todos
+//         getTodosByProject(todoList, activeProjectLink.textContent);
+//     } else {
+//         // Render the entire UI
+//         renderUI(projectsList, todoList);
+//         setupEventListeners(todoList, projectsList);
+//     }
+// }
 
 function addCloseEventListeners(modalContainer) {
     const closeButtons = modalContainer.querySelectorAll('.close-btn');
@@ -195,6 +205,8 @@ function addCloseEventListeners(modalContainer) {
         });
     });
 }
+
+let statusOfUI = false;
 
 function setupEventListeners(todoList, projectsList) {
     console.log("setupEventListeners has fired");
@@ -238,8 +250,10 @@ function setupEventListeners(todoList, projectsList) {
         anchor.addEventListener('click', function(event) {
             event.preventDefault();
             const projectName = anchor.textContent;
-
+            
             getTodosByProject(todoList, projectName);
+            //
+            console.log("firing getTodosByProject from event lister ")
 
             projectList.forEach(item => {
                 const link = item.querySelector('a');
@@ -247,8 +261,14 @@ function setupEventListeners(todoList, projectsList) {
             });
 
             anchor.classList.add('active');
+
+            //
+            return statusOfUI = true;
         });
+        
     });
+
+    
 }
 
 // function setupEventListeners(todoList, projectsList) {
