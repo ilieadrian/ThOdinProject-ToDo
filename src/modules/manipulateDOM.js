@@ -166,11 +166,13 @@ function modifyTodoStatus(index, target, projectsList, todoList) {
     const todoItem = todoList[index];
     todoItem.status = target.checked; 
 
+
+    console.log("PROJECT FOR TO CLICKED:", todoList[index].project)
     
 
     if(statusOfUI) {
-        getTodosByProject(todoList, "Home");
-        console.log("if statusOfUI true", todoList)
+        getTodosByProject(todoList, todoList[index].project);
+        // console.log("if statusOfUI true", todoList)
     } else {
         renderUI(projectsList, todoList);
     }

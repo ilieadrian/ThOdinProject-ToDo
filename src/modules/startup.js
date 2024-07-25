@@ -14,11 +14,11 @@ const defaultValues  = (function () {
     let defaultProject;
 
     const todos = [
-        new Todo('Read daily a pattern', 'https://www.patterns.dev/vanilla/import-on-interaction', '20.03.2024', 'high', false, 'Learning'),
         new Todo('Write on blog', 'Write about last part from TicTacToe game', '21.03.2024', 'low', false, 'Home'),
+        new Todo('TheOdinProject chapter 2', 'Finish theOdinProject chapter 2', '15.03.2024', 'low', true, 'Home'),
         new Todo('New Odin Chapter', 'Start a new OdinProjectChapter', '15.04.2024', 'medium', true, 'Learning'),
         new Todo('Repair blog', 'Fix social links on blog header', '29.03.2024', 'high', false, 'Learning'),
-        new Todo('TheOdinProject chapter 2', 'Finish theOdinProject chapter 2', '15.03.2024', 'low', true, 'Home'),
+        new Todo('Read daily a pattern', 'https://www.patterns.dev/vanilla/import-on-interaction', '20.03.2024', 'high', false, 'Learning'),
         new Todo('App implementation', 'Add ability to extract the projects from the array', '24.03.2024', 'low', true, 'Active learning'),
         new Todo('Xyx', 'Some random text', '31.05.2024', 'low', true, 'Active learning'),
         new Todo('ABC', 'First three leters from the algha', '02.06.2024', 'high', false, 'Active learning')
