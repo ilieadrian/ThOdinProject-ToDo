@@ -1,10 +1,12 @@
 import { renderTodoContainer } from "./index";
 // import { openProjectModal, openToDoModal, openViewModal, openEditModal } from "./manipulatedom";
 
-function displayToDods(todoList, renderOnlyContainer) {
+function displayToDods(todoList) {
     let ulContent = '';
 
-    console.log("FIRED: displayToDods")
+    console.log("FIRED: displayToDods -->>")
+    console.table(todoList);
+    console.log("<<<----")
 
     todoList.forEach((element, index) => {
         ulContent += `
@@ -28,6 +30,7 @@ function displayToDods(todoList, renderOnlyContainer) {
 }
 
 function getTodosByProject(todoList, curentElement) {
+    console.log("!!!---   New instance   ---!!!")
     console.log("FIRED: getTodosByProject - CURENT ELEMENT IS:", curentElement)
     const filteredElements = todoList.filter(taskList => taskList.project === curentElement);
     renderTodoContainer(filteredElements);

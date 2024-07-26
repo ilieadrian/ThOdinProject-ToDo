@@ -160,27 +160,32 @@ function openEditModal(index, todoList, modalContainer) {
     `;
     addCloseEventListeners(modalContainer);
 }
+let statusOfUI = false;
 
+//V2
 function modifyTodoStatus(index, target, projectsList, todoList) {
-    console.log("FIRED: modifyTodoStatus")
+    console.log("FIRED: modifyTodoStatus with index, target", index, target)
     const todoItem = todoList[index];
     todoItem.status = target.checked; 
 
-
+    console.log(todoItem)
     console.log("PROJECT FOR TO CLICKED:", todoList[index].project)
     
 
     if(statusOfUI) {
+        console.log("statusOfUI TRUE, value of PROJECT: ", todoList[index].project)
         getTodosByProject(todoList, todoList[index].project);
         // console.log("if statusOfUI true", todoList)
     } else {
         renderUI(projectsList, todoList);
+        console.log("IF statusOFUI - ELSE -> Render UI Fired")
     }
     setupEventListeners(todoList, projectsList);
 
     console.log("statusOfUI in modifyTodoStatus:", statusOfUI)
 }
 
+//V1
 // function modifyTodoStatus(index, target, projectsList, todoList) {
 //     console.log("FIRED: modifyTodoStatus");
 //     const todoItem = todoList[index];
@@ -208,7 +213,6 @@ function addCloseEventListeners(modalContainer) {
     });
 }
 
-let statusOfUI = false;
 
 function setupEventListeners(todoList, projectsList) {
     console.log("setupEventListeners has fired");
@@ -255,7 +259,7 @@ function setupEventListeners(todoList, projectsList) {
             
             getTodosByProject(todoList, projectName);
             //
-            console.log("firing getTodosByProject from event lister ")
+            console.log("??? --- EVENT ---??? firing getTodosByProject from Event Listener - projectname: ", projectName)
 
             projectList.forEach(item => {
                 const link = item.querySelector('a');
@@ -273,6 +277,7 @@ function setupEventListeners(todoList, projectsList) {
     
 }
 
+//V1
 // function setupEventListeners(todoList, projectsList) {
 //     const todoListContainer = document.querySelector('.todo-container');
 //     let modalContainer = document.getElementById('modal-container');

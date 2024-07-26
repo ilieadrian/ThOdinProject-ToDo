@@ -93,9 +93,8 @@ function renderUI(projectsList, todoList) {
 //     }
 // }
 
-
 function renderTodoContainer(filteredElements) {
-    console.log("FIRED: renderTodoContainer");
+    console.log("FIRED: renderTodoContainer - FILTERDELEMENTS", filteredElements );
 
     let container = document.querySelector('.todo-container');
 
