@@ -8,7 +8,7 @@ import { deleteProject } from './handleproject';
 import { setupEventListeners } from './manipulateDOM';
 
 function renderUI(projectsList, todoList) {
-    console.log("FIRED: renderUI")
+    // console.log("FIRED: renderUI")
     let container = document.querySelector('.container');
     const headerTodoIcon = new Image();
     headerTodoIcon.src = TodoIcon;
@@ -94,7 +94,7 @@ function renderUI(projectsList, todoList) {
 // }
 
 function renderTodoContainer(filteredElements) {
-    console.log("FIRED: renderTodoContainer - FILTERDELEMENTS", filteredElements );
+    // console.log("FIRED: renderTodoContainer - FILTERDELEMENTS", filteredElements );
 
     let container = document.querySelector('.todo-container');
 
@@ -119,7 +119,7 @@ function renderTodoContainer(filteredElements) {
 }
     
 function handleEmptyProjectPage(container){
-    console.log("FIRED: handleEmptyProjectPage")
+    // console.log("FIRED: handleEmptyProjectPage")
         const idToDelete = getActiveLink();
 
         const { projectsList, todoList } = defaultValues;
@@ -150,7 +150,6 @@ function callEvents(){
     const { projectsList, todoList } = defaultValues;
 
     // console.log("renderOnlyContainer:", renderOnlyContainer)
-
 
     try {
         setupEventListeners(todoList, projectsList,);

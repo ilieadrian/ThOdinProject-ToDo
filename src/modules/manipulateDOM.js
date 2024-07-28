@@ -168,8 +168,9 @@ function modifyTodoStatus(index, target, projectsList, todoList) {
     const todoItem = todoList[index];
     todoItem.status = target.checked; 
 
-    console.log(todoItem)
-    console.log("PROJECT FOR TO CLICKED:", todoList[index].project)
+    console.log("PROJECT FOR TO CLICKED:", todoList.project)
+    console.log(todoList, todoItem)
+
     
 
     if(statusOfUI) {
@@ -177,10 +178,10 @@ function modifyTodoStatus(index, target, projectsList, todoList) {
         getTodosByProject(todoList, todoList[index].project);
         // console.log("if statusOfUI true", todoList)
     } else {
-        renderUI(projectsList, todoList);
         console.log("IF statusOFUI - ELSE -> Render UI Fired")
+        renderUI(projectsList, todoList);
+        setupEventListeners(todoList, projectsList);
     }
-    setupEventListeners(todoList, projectsList);
 
     console.log("statusOfUI in modifyTodoStatus:", statusOfUI)
 }
@@ -215,7 +216,7 @@ function addCloseEventListeners(modalContainer) {
 
 
 function setupEventListeners(todoList, projectsList) {
-    console.log("setupEventListeners has fired");
+    // console.log("setupEventListeners has fired");
 
     const todoListContainer = document.querySelector('.todo-container');
     let modalContainer = document.getElementById('modal-container');
@@ -259,7 +260,7 @@ function setupEventListeners(todoList, projectsList) {
             
             getTodosByProject(todoList, projectName);
             //
-            console.log("??? --- EVENT ---??? firing getTodosByProject from Event Listener - projectname: ", projectName)
+            // console.log("??? --- EVENT ---??? firing getTodosByProject from Event Listener - projectname: ", projectName)
 
             projectList.forEach(item => {
                 const link = item.querySelector('a');
