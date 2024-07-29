@@ -2,6 +2,8 @@ import { renderTodoContainer } from "./index";
 import { getTodosByProject } from './handletodos';
 import { renderUI } from "./index";
 
+let statusOfUI = false;
+
 export default (function () {
     document.addEventListener("DOMContentLoaded", function() {
         //Menu links interaction
@@ -17,7 +19,6 @@ export default (function () {
             });        
         });
 })();
-
 
 function openProjectModal(modalContainer) {
     modalContainer.innerHTML = "";
@@ -158,10 +159,9 @@ function openEditModal(index, todoList, modalContainer) {
     `;
     addCloseEventListeners(modalContainer);
 }
-let statusOfUI = false;
 
-function modifyTodoStatus(id, target, projectsList, todoList) {
-    const todoItem = todoList.find(todo => todo.id == id);
+function modifyTodoStatus(index, target, projectsList, todoList) {
+    const todoItem = todoList.find(todo => todo.id == index);
     if (!todoItem) {
         console.error("Todo item not found:", id);
         return;
@@ -177,7 +177,6 @@ function modifyTodoStatus(id, target, projectsList, todoList) {
     }
 }
 
-
 function addCloseEventListeners(modalContainer) {
     const closeButtons = modalContainer.querySelectorAll('.close-btn');
     closeButtons.forEach(button => {
@@ -186,7 +185,6 @@ function addCloseEventListeners(modalContainer) {
         });
     });
 }
-
 
 function setupEventListeners(todoList, projectsList) {
     const todoListContainer = document.querySelector('.todo-container');
@@ -206,6 +204,8 @@ function setupEventListeners(todoList, projectsList) {
     todoListContainer.addEventListener('click', function(event) {
         const target = event.target;
         const listItem = target.closest('.item');
+        console.table(listItem);
+
         const index = listItem ? listItem.id.split('-')[1] : null;
 
         if (index !== null) {
@@ -242,65 +242,8 @@ function setupEventListeners(todoList, projectsList) {
         });
         
     });
-
-    
 }
 
-//V1
-// function setupEventListeners(todoList, projectsList) {
-//     const todoListContainer = document.querySelector('.todo-container');
-//     let modalContainer = document.getElementById('modal-container');
-
-//     const addProjectBTN = document.querySelector('.addproject');
-//     const addToDoBTN = document.querySelector('.addtodo');
-
-//     addProjectBTN.addEventListener('click', function() {
-//         openProjectModal(modalContainer);
-//     });
-
-//     addToDoBTN.addEventListener('click', function() {
-//         openToDoModal(modalContainer);
-//     });
-
-//     todoListContainer.addEventListener('click', function(event) {
-//         const target = event.target;
-//         const listItem = target.closest('.item');
-//         const index = listItem ? listItem.id.split('-')[1] : null;
-
-//         if (index !== null) {
-//             if (target.closest('.view-btn')) {
-//                 openViewModal(index, todoList, modalContainer);
-//             } else if (target.closest('.edit-btn')) {
-//                 openEditModal(index, todoList, modalContainer);
-//             } else if (target.closest('.delete-btn')) {
-//                 deleteTodoItem(index, todoList, projectsList);
-//             } else if (target.classList.contains('todo-checkbox')) {
-//                 modifyTodoStatus(index, target, projectsList, todoList);
-//             }
-//         }
-//     });
-
-//     const projectList = document.querySelectorAll("#projects li");
-//     projectList.forEach(li => {
-//         const anchor = li.querySelector('a');
-//         anchor.addEventListener('click', function(event) {
-//             event.preventDefault();
-//             const projectId = li.getAttribute('data-project-id');
-//             const projectName = anchor.textContent;
-
-//             getTodosByProject(todoList, projectName);
-
-//             projectList.forEach(item => {
-//                 const link = item.querySelector('a');
-//                 link.classList.remove('active');
-//             });
-
-//             anchor.classList.add('active');
-//         });
-//     });
-// }
-
-// export {setupEventListeners, openProjectModal, openToDoModal, openViewModal, openEditModal };
 export { setupEventListeners };
 
 
