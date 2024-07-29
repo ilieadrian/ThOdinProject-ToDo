@@ -47,8 +47,3 @@ export default class Todo {
         this._status = value;
     } 
 }
-
-
-
-
-

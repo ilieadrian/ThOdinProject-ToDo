@@ -4,10 +4,6 @@ import { renderTodoContainer } from "./index";
 function displayToDods(todoList) {
     let ulContent = '';
 
-    // console.log("FIRED: displayToDods -->>")
-    // console.table(todoList);
-    // console.log("<<<----")
-
     todoList.forEach((element, index) => {
         ulContent += `
             <li class="item" id="item-${element.id}">
@@ -30,10 +26,7 @@ function displayToDods(todoList) {
 }
 
 function getTodosByProject(todoList, curentElement) {
-    // console.log("!!!---   New instance   ---!!!")
-    // console.log("FIRED: getTodosByProject - CURENT ELEMENT IS:", curentElement)
     const filteredElements = todoList.filter(taskList => taskList.project === curentElement);
-    // console.log(filteredElements)
     renderTodoContainer(filteredElements);
 }
 

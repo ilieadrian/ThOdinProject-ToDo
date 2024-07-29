@@ -2,9 +2,7 @@ import { renderTodoContainer } from "./index";
 import { getTodosByProject } from './handletodos';
 import { renderUI } from "./index";
 
-
 export default (function () {
-
     document.addEventListener("DOMContentLoaded", function() {
         //Menu links interaction
         const menuLinks = document.querySelectorAll(".menu-links a");
@@ -162,57 +160,23 @@ function openEditModal(index, todoList, modalContainer) {
 }
 let statusOfUI = false;
 
-//V2
 function modifyTodoStatus(id, target, projectsList, todoList) {
-    // console.log("FIRED: modifyTodoStatus with index, target", index, target)
-    // const todoItem = todoList;
-
     const todoItem = todoList.find(todo => todo.id == id);
     if (!todoItem) {
         console.error("Todo item not found:", id);
         return;
     }
 
-
     todoItem.status = target.checked; 
-    const curentElement = todoList.id;
-
-    console.log("PROJECT FOR TO CLICKED:", todoItem.project)
-    // console.log(todoList, todoItem)
-
-    
 
     if(statusOfUI) {
-        console.log("statusOfUI TRUE, value of PROJECT: ", todoList[index].project)
         getTodosByProject(todoList, todoItem.project);
-        // console.log("if statusOfUI true", todoList)
     } else {
-        console.log("IF statusOFUI - ELSE -> Render UI Fired")
         renderUI(projectsList, todoList);
         setupEventListeners(todoList, projectsList);
     }
-
-    console.log("statusOfUI in modifyTodoStatus:", statusOfUI)
 }
 
-//V1
-// function modifyTodoStatus(index, target, projectsList, todoList) {
-//     console.log("FIRED: modifyTodoStatus");
-//     const todoItem = todoList[index];
-//     todoItem.status = target.checked; 
-    
-//     // Check if all todos are being displayed or a specific project
-//     const activeProjectLink = document.querySelector('#projects a.active');
-//     console.log("activeProjectLink", activeProjectLink.textContent)
-//     if (activeProjectLink && activeProjectLink.textContent !== 'All') {
-//         // Render only the filtered project todos
-//         getTodosByProject(todoList, activeProjectLink.textContent);
-//     } else {
-//         // Render the entire UI
-//         renderUI(projectsList, todoList);
-//         setupEventListeners(todoList, projectsList);
-//     }
-// }
 
 function addCloseEventListeners(modalContainer) {
     const closeButtons = modalContainer.querySelectorAll('.close-btn');
@@ -225,8 +189,6 @@ function addCloseEventListeners(modalContainer) {
 
 
 function setupEventListeners(todoList, projectsList) {
-    // console.log("setupEventListeners has fired");
-
     const todoListContainer = document.querySelector('.todo-container');
     let modalContainer = document.getElementById('modal-container');
 
@@ -244,10 +206,7 @@ function setupEventListeners(todoList, projectsList) {
     todoListContainer.addEventListener('click', function(event) {
         const target = event.target;
         const listItem = target.closest('.item');
-
         const index = listItem ? listItem.id.split('-')[1] : null;
-        console.log("todoListContainer ListItem", listItem);
-
 
         if (index !== null) {
             if (target.closest('.view-btn')) {
@@ -271,9 +230,7 @@ function setupEventListeners(todoList, projectsList) {
             const projectName = anchor.textContent;
             
             getTodosByProject(todoList, projectName);
-            //
-            // console.log("??? --- EVENT ---??? firing getTodosByProject from Event Listener - projectname: ", projectName)
-
+        
             projectList.forEach(item => {
                 const link = item.querySelector('a');
                 link.classList.remove('active');
@@ -281,7 +238,6 @@ function setupEventListeners(todoList, projectsList) {
 
             anchor.classList.add('active');
 
-            //
             return statusOfUI = true;
         });
         

@@ -36,5 +36,3 @@ export default class Project {
         // this._items = value;
     }
 }
-
-
