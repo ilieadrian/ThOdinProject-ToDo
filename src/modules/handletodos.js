@@ -10,7 +10,7 @@ function displayToDods(todoList) {
 
     todoList.forEach((element, index) => {
         ulContent += `
-            <li class="item" id="item-${index}">
+            <li class="item" id="item-${element.id}">
                 <div class="name-grup ${element.status ? "finished" : ''}">
                     <div class="priority ${element.priority}"></div>
                     <input type="checkbox" class="todo-checkbox" ${element.status ? "checked" : ''}>
@@ -33,7 +33,7 @@ function getTodosByProject(todoList, curentElement) {
     // console.log("!!!---   New instance   ---!!!")
     // console.log("FIRED: getTodosByProject - CURENT ELEMENT IS:", curentElement)
     const filteredElements = todoList.filter(taskList => taskList.project === curentElement);
-    console.log(filteredElements)
+    // console.log(filteredElements)
     renderTodoContainer(filteredElements);
 }
 

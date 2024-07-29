@@ -163,19 +163,28 @@ function openEditModal(index, todoList, modalContainer) {
 let statusOfUI = false;
 
 //V2
-function modifyTodoStatus(index, target, projectsList, todoList) {
-    console.log("FIRED: modifyTodoStatus with index, target", index, target)
-    const todoItem = todoList[index];
-    todoItem.status = target.checked; 
+function modifyTodoStatus(id, target, projectsList, todoList) {
+    // console.log("FIRED: modifyTodoStatus with index, target", index, target)
+    // const todoItem = todoList;
 
-    console.log("PROJECT FOR TO CLICKED:", todoList.project)
-    console.log(todoList, todoItem)
+    const todoItem = todoList.find(todo => todo.id == id);
+    if (!todoItem) {
+        console.error("Todo item not found:", id);
+        return;
+    }
+
+
+    todoItem.status = target.checked; 
+    const curentElement = todoList.id;
+
+    console.log("PROJECT FOR TO CLICKED:", todoItem.project)
+    // console.log(todoList, todoItem)
 
     
 
     if(statusOfUI) {
         console.log("statusOfUI TRUE, value of PROJECT: ", todoList[index].project)
-        getTodosByProject(todoList, todoList[index].project);
+        getTodosByProject(todoList, todoItem.project);
         // console.log("if statusOfUI true", todoList)
     } else {
         console.log("IF statusOFUI - ELSE -> Render UI Fired")
@@ -235,7 +244,10 @@ function setupEventListeners(todoList, projectsList) {
     todoListContainer.addEventListener('click', function(event) {
         const target = event.target;
         const listItem = target.closest('.item');
+
         const index = listItem ? listItem.id.split('-')[1] : null;
+        console.log("todoListContainer ListItem", listItem);
+
 
         if (index !== null) {
             if (target.closest('.view-btn')) {
