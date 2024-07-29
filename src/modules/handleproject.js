@@ -33,18 +33,33 @@ function getProjects(projectsList, todoList) {
         `;
     });
 
+
     return ulContent;
 }
 
 function countTodoinProject(element, todoList){
     let count = 0;
-
+    
     for (let i = 0; i < todoList.length; i++) {
         if (todoList[i].project === element && !todoList[i].status) {
             count++;
         }
-    }   
+    } 
     return count;
+}
+
+function handleProjectCountNumber() {
+    const numberBouble = document.querySelectorAll(".number-of-tasks");
+
+        if (numberBouble.length === 0) {
+            console.log("handleProjectCountNumber: No elements found with the class 'number-of-tasks'.");
+        }
+
+        numberBouble.forEach(bouble => {
+            if(bouble.innerHTML == 0) {
+                bouble.style.display = "none";
+            }
+        });
 }
 
 function deleteProject(idToDelete, projectsList, todoList) {
@@ -57,5 +72,5 @@ function deleteProject(idToDelete, projectsList, todoList) {
     } 
 }
 
-export {handleProject, getProjects, deleteProject};
+export {handleProject, getProjects, deleteProject, handleProjectCountNumber};
 

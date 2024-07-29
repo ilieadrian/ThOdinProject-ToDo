@@ -162,12 +162,12 @@ function openEditModal(index, todoList, modalContainer) {
 
 function modifyTodoStatus(index, target, projectsList, todoList) {
     const todoItem = todoList.find(todo => todo.id == index);
+    todoItem.status = target.checked; 
+
     if (!todoItem) {
         console.error("Todo item not found:", id);
         return;
     }
-
-    todoItem.status = target.checked; 
 
     if(statusOfUI) {
         getTodosByProject(todoList, todoItem.project);
@@ -204,8 +204,6 @@ function setupEventListeners(todoList, projectsList) {
     todoListContainer.addEventListener('click', function(event) {
         const target = event.target;
         const listItem = target.closest('.item');
-        console.table(listItem);
-
         const index = listItem ? listItem.id.split('-')[1] : null;
 
         if (index !== null) {

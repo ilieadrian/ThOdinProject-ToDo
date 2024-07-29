@@ -21,6 +21,7 @@ const defaultValues  = (function () {
         new Todo('App implementation', 'Add ability to extract the projects from the array', '24.03.2024', 'low', true, 'Active learning'),
         new Todo('Xyx', 'Some random text', '31.05.2024', 'low', true, 'Active learning'),
         new Todo('ABC', 'First three leters from the algha', '02.06.2024', 'high', false, 'Active learning')
+        
     ];
     
     todos.forEach(newToDo => {

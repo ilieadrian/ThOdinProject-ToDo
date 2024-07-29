@@ -1,5 +1,5 @@
 import '../style.css';
-import { getProjects } from './handleproject';
+import { getProjects, handleProjectCountNumber } from './handleproject';
 import { displayToDods } from './handletodos'; 
 //correct typo above: should be displayTodos
 import { defaultValues } from './startup';
@@ -60,6 +60,7 @@ function renderUI(projectsList, todoList) {
     const headerIconContainer = document.getElementById('header-icon-container');
     // console.log(headerIconContainer)
     headerIconContainer.appendChild(headerTodoIcon);
+    handleProjectCountNumber();
 }
 
 function renderTodoContainer(filteredElements) {

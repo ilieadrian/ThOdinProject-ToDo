@@ -4,7 +4,7 @@ import { renderTodoContainer } from "./index";
 function displayToDods(todoList) {
     let ulContent = '';
 
-    todoList.forEach((element, index) => {
+    todoList.forEach((element) => {
         ulContent += `
             <li class="item" id="item-${element.id}">
                 <div class="name-grup ${element.status ? "finished" : ''}">
