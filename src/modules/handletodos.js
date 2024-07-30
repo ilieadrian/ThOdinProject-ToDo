@@ -2,6 +2,7 @@ import { renderTodoContainer } from "./index";
 // import { openProjectModal, openToDoModal, openViewModal, openEditModal } from "./manipulatedom";
 
 function displayToDods(todoList) {
+    console.log("FIRED: displayToDods")
     let ulContent = '';
 
     todoList.forEach((element) => {
@@ -26,6 +27,8 @@ function displayToDods(todoList) {
 }
 
 function getTodosByProject(todoList, curentElement) {
+    
+    console.log("FIRED: getTodosByProject")
     const filteredElements = todoList.filter(taskList => taskList.project === curentElement);
     renderTodoContainer(filteredElements);
 }

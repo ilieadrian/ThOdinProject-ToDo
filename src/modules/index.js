@@ -8,6 +8,7 @@ import { deleteProject } from './handleproject';
 import { setupEventListeners } from './manipulateDOM';
 
 function renderUI(projectsList, todoList) {
+    console.log("FIRED: RenderUI")
     let container = document.querySelector('.container');
     const headerTodoIcon = new Image();
     headerTodoIcon.src = TodoIcon;
@@ -60,10 +61,11 @@ function renderUI(projectsList, todoList) {
     const headerIconContainer = document.getElementById('header-icon-container');
     // console.log(headerIconContainer)
     headerIconContainer.appendChild(headerTodoIcon);
-    handleProjectCountNumber();
+    handleProjectCountNumber(todoList);
 }
 
 function renderTodoContainer(filteredElements) {
+    console.log("FIRED: renderTodoContainer")
     let container = document.querySelector('.todo-container');
 
     container.innerHTML = "";
@@ -87,6 +89,7 @@ function renderTodoContainer(filteredElements) {
 }
     
 function handleEmptyProjectPage(container){
+    console.log("FIRED: handleEmptyProjectPage")
         const idToDelete = getActiveLink();
 
         const { projectsList, todoList } = defaultValues;
@@ -103,6 +106,7 @@ function handleEmptyProjectPage(container){
 }
 
 function getActiveLink() {
+    console.log("FIRED: getActiveLink")
     const activeLink = document.querySelector("#projects a.active");
     if (activeLink) {
         const activeProjectId = activeLink.closest('li').getAttribute('data-project-id');
@@ -114,6 +118,7 @@ function getActiveLink() {
 //after the UI is rendered. Adding the call to setupEventListeners in renderUI returnet a webpack module
 //error because the UI was not fully rendered.
 function callEvents(){
+    console.log("FIRED: callEvents")
     const { projectsList, todoList } = defaultValues;
 
     try {

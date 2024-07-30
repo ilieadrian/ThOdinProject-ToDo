@@ -1,10 +1,13 @@
 import { renderTodoContainer } from "./index";
 import { getTodosByProject } from './handletodos';
+import { handleProjectCountNumber } from "./handleproject";
 import { renderUI } from "./index";
+import { getProjects } from "./handleproject";
 
 let statusOfUI = false;
 
 export default (function () {
+    console.log("FIRED: exportdefault in Manipulatedom")
     document.addEventListener("DOMContentLoaded", function() {
         //Menu links interaction
         const menuLinks = document.querySelectorAll(".menu-links a");
@@ -161,6 +164,7 @@ function openEditModal(index, todoList, modalContainer) {
 }
 
 function modifyTodoStatus(index, target, projectsList, todoList) {
+    console.log("FIRED: modifyTodoStatus")
     const todoItem = todoList.find(todo => todo.id == index);
     todoItem.status = target.checked; 
 
@@ -171,6 +175,13 @@ function modifyTodoStatus(index, target, projectsList, todoList) {
 
     if(statusOfUI) {
         getTodosByProject(todoList, todoItem.project);
+        //work zone
+        // console.log("handleProjectCountNumber fired")
+        // handleProjectCountNumber();
+        //End work zone
+        getProjects(projectsList, todoList)
+        handleProjectCountNumber(todoList);
+        setupEventListeners(todoList, projectsList);
     } else {
         renderUI(projectsList, todoList);
         setupEventListeners(todoList, projectsList);
@@ -187,6 +198,7 @@ function addCloseEventListeners(modalContainer) {
 }
 
 function setupEventListeners(todoList, projectsList) {
+    console.log("FIRED: setupEventListeners")
     const todoListContainer = document.querySelector('.todo-container');
     let modalContainer = document.getElementById('modal-container');
 
@@ -227,6 +239,7 @@ function setupEventListeners(todoList, projectsList) {
             event.preventDefault();
             const projectName = anchor.textContent;
             
+            // console.log("Fired event listener projectList, next runs getTodosByProject")
             getTodosByProject(todoList, projectName);
         
             projectList.forEach(item => {
@@ -243,5 +256,3 @@ function setupEventListeners(todoList, projectsList) {
 }
 
 export { setupEventListeners };
-
-

@@ -4,6 +4,7 @@ import { renderUI } from "./index";
 import { setupEventListeners } from "./manipulateDOM";
 
 function handleProject(newToDo, projectsList){
+    console.log("FIRED: handleProject")
     const defaultProjectExists = projectsList.some(project => project.name === "Default");
     if (!defaultProjectExists) {
         const defaultProject = new Project("Default");
@@ -21,6 +22,8 @@ function handleProject(newToDo, projectsList){
 }
 
 function getProjects(projectsList, todoList) {
+    console.log("FIRED: getProjects")
+
     let ulContent = '';
 
     projectsList.forEach(element => {
@@ -38,6 +41,8 @@ function getProjects(projectsList, todoList) {
 }
 
 function countTodoinProject(element, todoList){
+    console.log("FIRED: countTodoinProject")
+
     let count = 0;
     
     for (let i = 0; i < todoList.length; i++) {
@@ -49,6 +54,8 @@ function countTodoinProject(element, todoList){
 }
 
 function handleProjectCountNumber() {
+    console.log("FIRED: handleProjectCountNumber")
+    
     const numberBouble = document.querySelectorAll(".number-of-tasks");
 
         if (numberBouble.length === 0) {

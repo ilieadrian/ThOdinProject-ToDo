@@ -5,6 +5,7 @@ import {renderUI} from './index';
 import { setupEventListeners } from './manipulateDOM';
 
 const defaultValues  = (function () {
+    console.log("FIRED: defaultValues")
     const todoList = [];
     const projectsList = [];
     let renderOnlyContainer = false;
