@@ -26,12 +26,20 @@ function displayToDods(todoList) {
     return ulContent;
 }
 
+
+//V2
 function getTodosByProject(todoList, curentElement) {
-    
     console.log("FIRED: getTodosByProject")
-    const filteredElements = todoList.filter(taskList => taskList.project === curentElement);
-    renderTodoContainer(filteredElements);
+    return filteredElements = todoList.filter(taskList => taskList.project === curentElement);
 }
+
+
+//V1
+// function getTodosByProject(todoList, curentElement) {
+//     console.log("FIRED: getTodosByProject")
+//     const filteredElements = todoList.filter(taskList => taskList.project === curentElement);
+//     renderTodoContainer(filteredElements);
+// }
 
 export { getTodosByProject, displayToDods }
 
