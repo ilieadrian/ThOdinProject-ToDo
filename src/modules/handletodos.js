@@ -30,7 +30,7 @@ function displayToDods(todoList) {
 //V2
 function getTodosByProject(todoList, curentElement) {
     console.log("FIRED: getTodosByProject")
-    return filteredElements = todoList.filter(taskList => taskList.project === curentElement);
+    return todoList.filter(taskList => taskList.project === curentElement);
 }
 
 
