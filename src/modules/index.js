@@ -36,7 +36,7 @@ function renderUI(projectsList, todoList) {
                     <li><a href="#">Due Today</a><span class="number-of-tasks">2</span></li>
                     <li><a href="#">Due These Week</a><span class="number-of-tasks">1</span></li>
                 </ul>
-                <h2>Projects</h2>
+                <h2><a href="#">Projects</a></h2>
                 <ul id="projects" class="menu-links">
                     ${getProjects(projectsList, todoList)}
                 </ul>

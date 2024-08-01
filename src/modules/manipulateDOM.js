@@ -1,5 +1,5 @@
 import { renderTodoContainer } from "./index";
-import { getTodosByProject } from './handletodos';
+import { getTodosByProject, displayToDods } from './handletodos';
 import { handleProjectCountNumber } from "./handleproject";
 import { renderUI } from "./index";
 import { getProjects } from "./handleproject";
@@ -175,14 +175,17 @@ function modifyTodoStatus(index, target, projectsList, todoList) {
     }
 
     if(statusOfUI) {
+        displayToDods(todoList);
         getTodosByProject(todoList, todoItem.project);
-        //work zone
+
+                //work zone
         // console.log("handleProjectCountNumber fired")
         // handleProjectCountNumber();
         //End work zone
         getProjects(projectsList, todoList)
+        // countTodoinProject(todoItem.project, todoList)
         handleProjectCountNumber(todoList);
-        setupEventListeners(todoList, projectsList);
+        // setupEventListeners(todoList, projectsList);
     } else {
         renderUI(projectsList, todoList);
         setupEventListeners(todoList, projectsList);
@@ -230,6 +233,7 @@ function setupEventListeners(todoList, projectsList) {
     const todoListContainer = document.querySelector('.todo-container');
     let modalContainer = document.getElementById('modal-container');
 
+    const projectLink = document.getElementsByTagName('h2 a');
     const addProjectBTN = document.querySelector('.addproject');
     const addToDoBTN = document.querySelector('.addtodo');
 
@@ -240,6 +244,11 @@ function setupEventListeners(todoList, projectsList) {
     addToDoBTN.addEventListener('click', function() {
         openToDoModal(modalContainer);
     });
+
+
+    projectLink.addEventListener('click', function(event) {
+        console.log("Project link clicked")
+    })
 
     todoListContainer.addEventListener('click', function(event) {
         const target = event.target;
@@ -259,6 +268,8 @@ function setupEventListeners(todoList, projectsList) {
         }
     });
 
+
+
     // Attach event listeners to project links
     const projectList = document.querySelectorAll("#projects li");
     projectList.forEach(li => {
@@ -269,7 +280,7 @@ function setupEventListeners(todoList, projectsList) {
 
             const filteredTodos = getTodosByProject(todoList, projectName);
             renderTodoContainer(filteredTodos);
-            handleProjectCountNumber(projectsList, todoList);
+            handleProjectCountNumber(todoList);
             
             // console.log("Fired event listener projectList, next runs getTodosByProject")
             // getTodosByProject(todoList, projectName);

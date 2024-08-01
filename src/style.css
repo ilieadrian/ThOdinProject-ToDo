@@ -166,6 +166,12 @@ button:hover {
 .content-container h2 {
     color: #141414;
     margin-bottom: 1rem;
+
+}
+
+h2 a {
+    text-decoration: none;
+    color: #141414;
 }
 
 .addtodo,
