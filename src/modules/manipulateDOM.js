@@ -233,7 +233,7 @@ function setupEventListeners(todoList, projectsList) {
     const todoListContainer = document.querySelector('.todo-container');
     let modalContainer = document.getElementById('modal-container');
 
-    const projectLink = document.getElementsByTagName('h2 a');
+    const projectLink = document.getElementById('projects-link');
     const addProjectBTN = document.querySelector('.addproject');
     const addToDoBTN = document.querySelector('.addtodo');
 
@@ -246,8 +246,10 @@ function setupEventListeners(todoList, projectsList) {
     });
 
 
-    projectLink.addEventListener('click', function(event) {
-        console.log("Project link clicked")
+    projectLink.addEventListener('click', function() {
+        renderUI(projectsList, todoList);
+        console.log("Project link clicked");
+        setupEventListeners(todoList, projectsList);
     })
 
     todoListContainer.addEventListener('click', function(event) {
