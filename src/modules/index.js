@@ -63,7 +63,6 @@ function renderUI(projectsList, todoList) {
     // console.log(headerIconContainer)
     headerIconContainer.appendChild(headerTodoIcon);
     handleProjectCountNumber(todoList);
-    setupEventListeners(todoList, projectsList,);
 }
 
 function renderTodoContainer(filteredElements) {
@@ -129,7 +128,6 @@ function callEvents(){
         console.error("Error calling callEvents:", error);
     }
 }
-
 callEvents();
 
 export { renderUI, renderTodoContainer };

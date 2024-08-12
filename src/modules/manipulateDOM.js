@@ -167,6 +167,7 @@ function openEditModal(index, todoList, modalContainer) {
 function modifyTodoStatus(index, target, projectsList, todoList) {
     console.log("FIRED: modifyTodoStatus")
     const todoItem = todoList.find(todo => todo.id == index);
+    console.log("Clicked on a todo Item", todoItem)
     todoItem.status = target.checked; 
 
     if (!todoItem) {
@@ -178,18 +179,19 @@ function modifyTodoStatus(index, target, projectsList, todoList) {
         displayToDods(todoList);
         getTodosByProject(todoList, todoItem.project);
 
-                //work zone
+        //work zone
         // console.log("handleProjectCountNumber fired")
         // handleProjectCountNumber();
         //End work zone
         getProjects(projectsList, todoList)
         // countTodoinProject(todoItem.project, todoList)
         handleProjectCountNumber(todoList);
-        // setupEventListeners(todoList, projectsList);
     } else {
         renderUI(projectsList, todoList);
-        setupEventListeners(todoList, projectsList);
     }
+
+    setupEventListeners(todoList, projectsList);
+
 }
 
 //V1
