@@ -116,8 +116,8 @@ function getActiveLink() {
 }
 
 //Until i figure out async-await i use these function to add the eventlisteners
-//after the UI is rendered. Adding the call to setupEventListeners in renderUI returnet a webpack module
-//error because the UI was not fully rendered.
+//after the UI is rendered. Adding the call to setupEventListeners in renderUI returned a webpack module error
+//because the UI was not fully rendered.
 function callEvents(){
     console.log("FIRED: callEvents")
     const { projectsList, todoList } = defaultValues;

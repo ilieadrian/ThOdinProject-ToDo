@@ -191,7 +191,6 @@ function modifyTodoStatus(index, target, projectsList, todoList) {
     }
 
     setupEventListeners(todoList, projectsList);
-
 }
 
 //V1
