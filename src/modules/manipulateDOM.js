@@ -238,6 +238,16 @@ function setupEventListeners(todoList, projectsList) {
     const addProjectBTN = document.querySelector('.addproject');
     const addToDoBTN = document.querySelector('.addtodo');
 
+
+    //fix attempt
+    todoListContainer.addEventListener('change', function(event) {
+        if (event.target.classList.contains('todo-checkbox')) {
+            const todoId = event.target.closest('.item').id.split('-')[1];
+            toggleTodoStatus(todoId, todoList, projectsList);
+        }
+    });
+    //fix attempt
+
     addProjectBTN.addEventListener('click', function() {
         openProjectModal(modalContainer);
     });
@@ -300,6 +310,20 @@ function setupEventListeners(todoList, projectsList) {
         
     });
 }
+
+//fix attempt
+function updateProjectTaskCounts(todoList, projectsList) {
+    projectsList.forEach(project => {
+        const taskCount = countTodoinProject(project.name, todoList);
+        const projectBubble = document.querySelector(`[data-project-id="${project.id}"] .number-of-tasks`);
+
+        if (projectBubble) {
+            projectBubble.textContent = taskCount;
+            projectBubble.style.display = taskCount > 0 ? 'inline' : 'none';
+        }
+    });
+}
+//fix attempt
 
 //V1
 // function setupEventListeners(todoList, projectsList) {
