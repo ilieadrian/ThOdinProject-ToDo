@@ -79,5 +79,6 @@ function deleteProject(idToDelete, projectsList, todoList) {
     } 
 }
 
+
 export {handleProject, getProjects, deleteProject, handleProjectCountNumber};
 

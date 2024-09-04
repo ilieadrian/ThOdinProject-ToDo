@@ -41,7 +41,9 @@ function getTodosByProject(todoList, curentElement) {
 //     renderTodoContainer(filteredElements);
 // }
 
-export { getTodosByProject, displayToDods }
+
+
+export { getTodosByProject, displayToDods}
 
 
 

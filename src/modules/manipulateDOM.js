@@ -238,15 +238,37 @@ function setupEventListeners(todoList, projectsList) {
     const addProjectBTN = document.querySelector('.addproject');
     const addToDoBTN = document.querySelector('.addtodo');
 
-
-    //fix attempt
+    //fix work
     todoListContainer.addEventListener('change', function(event) {
         if (event.target.classList.contains('todo-checkbox')) {
             const todoId = event.target.closest('.item').id.split('-')[1];
+            console.log("Clicked on todoListContainer.addEventListener")
             toggleTodoStatus(todoId, todoList, projectsList);
         }
     });
-    //fix attempt
+
+
+    function toggleTodoStatus(todoId, todoList, projectsList) {
+        const todo = todoList.find(item => item.id == todoId);
+        if (todo) {
+            todo.status = !todo.status;
+        }
+    
+        // Update the task counts after the status change
+        // updateProjectTaskCounts(todoList, projectsList);
+    
+        if (statusOfUI) {
+            const filteredTodos = getTodosByProject(todoList, currentProjectFilter);
+            renderTodoContainer(filteredTodos);
+        } else {
+            renderTodoContainer(todoList);
+        }
+    
+        setupEventListeners(todoList, projectsList);
+    }
+    //fix work
+
+    
 
     addProjectBTN.addEventListener('click', function() {
         openProjectModal(modalContainer);
@@ -282,7 +304,6 @@ function setupEventListeners(todoList, projectsList) {
     });
 
 
-
     // Attach event listeners to project links
     const projectList = document.querySelectorAll("#projects li");
     projectList.forEach(li => {
@@ -310,20 +331,6 @@ function setupEventListeners(todoList, projectsList) {
         
     });
 }
-
-//fix attempt
-function updateProjectTaskCounts(todoList, projectsList) {
-    projectsList.forEach(project => {
-        const taskCount = countTodoinProject(project.name, todoList);
-        const projectBubble = document.querySelector(`[data-project-id="${project.id}"] .number-of-tasks`);
-
-        if (projectBubble) {
-            projectBubble.textContent = taskCount;
-            projectBubble.style.display = taskCount > 0 ? 'inline' : 'none';
-        }
-    });
-}
-//fix attempt
 
 //V1
 // function setupEventListeners(todoList, projectsList) {
