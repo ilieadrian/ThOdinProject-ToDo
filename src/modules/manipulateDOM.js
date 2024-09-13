@@ -238,36 +238,37 @@ function setupEventListeners(todoList, projectsList) {
     const addProjectBTN = document.querySelector('.addproject');
     const addToDoBTN = document.querySelector('.addtodo');
 
+        //fix work
     //fix work
-    todoListContainer.addEventListener('change', function(event) {
-        if (event.target.classList.contains('todo-checkbox')) {
-            const todoId = event.target.closest('.item').id.split('-')[1];
-            console.log("Clicked on todoListContainer.addEventListener")
-            toggleTodoStatus(todoId, todoList, projectsList);
-        }
-    });
+    // todoListContainer.addEventListener('change', function(event) {
+    //     if (event.target.classList.contains('todo-checkbox')) {
+    //         const todoId = event.target.closest('.item').id.split('-')[1];
+    //         console.log("Clicked on todoListContainer.addEventListener")
+    //         toggleTodoStatus(todoId, todoList, projectsList);
+    //     }
+    // });
 
 
-    function toggleTodoStatus(todoId, todoList, projectsList) {
-        const todo = todoList.find(item => item.id == todoId);
-        if (todo) {
-            todo.status = !todo.status;
-        }
+    // function toggleTodoStatus(todoId, todoList, projectsList) {
+    //     const todo = todoList.find(item => item.id == todoId);
+    //     if (todo) {
+    //         todo.status = !todo.status;
+    //     }
     
-        // Update the task counts after the status change
-        // updateProjectTaskCounts(todoList, projectsList);
+    //     // Update the task counts after the status change
+    //     // updateProjectTaskCounts(todoList, projectsList);
     
-        if (statusOfUI) {
-            const filteredTodos = getTodosByProject(todoList, currentProjectFilter);
-            renderTodoContainer(filteredTodos);
-        } else {
-            renderTodoContainer(todoList);
-        }
+    //     if (statusOfUI) {
+    //         const filteredTodos = getTodosByProject(todoList, currentProjectFilter);
+    //         renderTodoContainer(filteredTodos);
+    //     } else {
+    //         renderTodoContainer(todoList);
+    //     }
     
-        setupEventListeners(todoList, projectsList);
-    }
+    //     setupEventListeners(todoList, projectsList);
+    // }
     //fix work
-
+        //fix work
     
 
     addProjectBTN.addEventListener('click', function() {

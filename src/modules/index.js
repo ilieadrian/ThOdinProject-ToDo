@@ -115,6 +115,10 @@ function getActiveLink() {
     } 
 }
 
+function renderProjectContainer() {
+    //logic for regenerating the container of to do names on status todo status change
+}
+
 //Until i figure out async-await i use these function to add the eventlisteners
 //after the UI is rendered. Adding the call to setupEventListeners in renderUI returned a webpack module error
 //because the UI was not fully rendered.
