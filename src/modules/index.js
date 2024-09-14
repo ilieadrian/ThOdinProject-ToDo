@@ -9,7 +9,6 @@ import { deleteProject } from './handleproject';
 import { setupEventListeners } from './manipulateDOM';
 
 function renderUI(projectsList, todoList) {
-    console.log("FIRED: RenderUI")
     let container = document.querySelector('.container');
     const headerTodoIcon = new Image();
     headerTodoIcon.src = TodoIcon;
@@ -60,18 +59,16 @@ function renderUI(projectsList, todoList) {
 
     //---!!!---//
     const headerIconContainer = document.getElementById('header-icon-container');
-    // console.log(headerIconContainer)
     headerIconContainer.appendChild(headerTodoIcon);
     handleProjectCountNumber(todoList);
 }
 
 function renderTodoContainer(filteredElements) {
-    console.log("FIRED: renderTodoContainer")
     let container = document.querySelector('.todo-container');
 
     container.innerHTML = "";
 
-    if (filteredElements.length > 0) {
+    if(filteredElements.length > 0) {
         container.innerHTML = `
         <ul class="items-list">
             ${displayToDods(filteredElements)}  
@@ -88,26 +85,33 @@ function renderTodoContainer(filteredElements) {
         handleEmptyProjectPage(container);
     }
 }
+
+function renderProjectContainer(projectsList, todoList) {
+    let container = document.getElementById('projects');
+
+    container.innerHTML = "";
+    container.innerHTML = `
+        ${getProjects(projectsList, todoList)}
+    `;
+}
     
 function handleEmptyProjectPage(container){
-    console.log("FIRED: handleEmptyProjectPage")
-        const idToDelete = getActiveLink();
+    const idToDelete = getActiveLink();
 
-        const { projectsList, todoList } = defaultValues;
+    const { projectsList, todoList } = defaultValues;
 
-        const deleteBtn = container.querySelector('.delete-btn');
-            if (deleteBtn) {
-                deleteBtn.addEventListener('click', function() {
-                    deleteProject(idToDelete, projectsList, todoList);
-                    //deleteProject(3, projectsList) Example call
-                });
-            }
+    const deleteBtn = container.querySelector('.delete-btn');
+        if (deleteBtn) {
+            deleteBtn.addEventListener('click', function() {
+                deleteProject(idToDelete, projectsList, todoList);
+                //deleteProject(3, projectsList) Example call
+            });
+        }
 
-            return projectsList, todoList;
+    return projectsList, todoList;
 }
 
 function getActiveLink() {
-    console.log("FIRED: getActiveLink")
     const activeLink = document.querySelector("#projects a.active");
     if (activeLink) {
         const activeProjectId = activeLink.closest('li').getAttribute('data-project-id');
@@ -115,15 +119,10 @@ function getActiveLink() {
     } 
 }
 
-function renderProjectContainer() {
-    //logic for regenerating the container of to do names on status todo status change
-}
-
 //Until i figure out async-await i use these function to add the eventlisteners
 //after the UI is rendered. Adding the call to setupEventListeners in renderUI returned a webpack module error
 //because the UI was not fully rendered.
 function callEvents(){
-    console.log("FIRED: callEvents")
     const { projectsList, todoList } = defaultValues;
 
     try {
@@ -134,6 +133,4 @@ function callEvents(){
 }
 callEvents();
 
-export { renderUI, renderTodoContainer };
-
-
+export { renderUI, renderTodoContainer, renderProjectContainer };

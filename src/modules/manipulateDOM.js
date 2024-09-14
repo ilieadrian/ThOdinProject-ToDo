@@ -1,4 +1,4 @@
-import { renderTodoContainer } from "./index";
+import { renderTodoContainer, renderProjectContainer } from "./index";
 import { getTodosByProject, displayToDods } from './handletodos';
 import { handleProjectCountNumber } from "./handleproject";
 import { renderUI } from "./index";
@@ -7,7 +7,6 @@ import { getProjects } from "./handleproject";
 let statusOfUI = false;
 
 export default (function () {
-    console.log("FIRED: exportdefault in Manipulatedom")
     document.addEventListener("DOMContentLoaded", function() {
         //Menu links interaction
         const menuLinks = document.querySelectorAll(".menu-links a");
@@ -165,9 +164,7 @@ function openEditModal(index, todoList, modalContainer) {
 
 //V2
 function modifyTodoStatus(index, target, projectsList, todoList) {
-    console.log("FIRED: modifyTodoStatus")
     const todoItem = todoList.find(todo => todo.id == index);
-    console.log("Clicked on a todo Item", todoItem)
     todoItem.status = target.checked; 
 
     if (!todoItem) {
@@ -177,19 +174,11 @@ function modifyTodoStatus(index, target, projectsList, todoList) {
 
     if(statusOfUI) {
         displayToDods(todoList);
-        getTodosByProject(todoList, todoItem.project);
-
-        //work zone
-        // console.log("handleProjectCountNumber fired")
-        // handleProjectCountNumber();
-        //End work zone
-        getProjects(projectsList, todoList)
-        // countTodoinProject(todoItem.project, todoList)
-        handleProjectCountNumber(todoList);
-    } else {
-        renderUI(projectsList, todoList);
-    }
-
+        getTodosByProject(todoList, todoItem.project);        
+        renderProjectContainer(projectsList, todoList);
+        } else {
+            renderUI(projectsList, todoList);
+        }
     setupEventListeners(todoList, projectsList);
 }
 
@@ -230,46 +219,12 @@ function addCloseEventListeners(modalContainer) {
 
 //V2
 function setupEventListeners(todoList, projectsList) {
-    console.log("FIRED: setupEventListeners")
     const todoListContainer = document.querySelector('.todo-container');
     let modalContainer = document.getElementById('modal-container');
 
     const projectLink = document.getElementById('projects-link');
     const addProjectBTN = document.querySelector('.addproject');
     const addToDoBTN = document.querySelector('.addtodo');
-
-        //fix work
-    //fix work
-    // todoListContainer.addEventListener('change', function(event) {
-    //     if (event.target.classList.contains('todo-checkbox')) {
-    //         const todoId = event.target.closest('.item').id.split('-')[1];
-    //         console.log("Clicked on todoListContainer.addEventListener")
-    //         toggleTodoStatus(todoId, todoList, projectsList);
-    //     }
-    // });
-
-
-    // function toggleTodoStatus(todoId, todoList, projectsList) {
-    //     const todo = todoList.find(item => item.id == todoId);
-    //     if (todo) {
-    //         todo.status = !todo.status;
-    //     }
-    
-    //     // Update the task counts after the status change
-    //     // updateProjectTaskCounts(todoList, projectsList);
-    
-    //     if (statusOfUI) {
-    //         const filteredTodos = getTodosByProject(todoList, currentProjectFilter);
-    //         renderTodoContainer(filteredTodos);
-    //     } else {
-    //         renderTodoContainer(todoList);
-    //     }
-    
-    //     setupEventListeners(todoList, projectsList);
-    // }
-    //fix work
-        //fix work
-    
 
     addProjectBTN.addEventListener('click', function() {
         openProjectModal(modalContainer);
@@ -279,10 +234,8 @@ function setupEventListeners(todoList, projectsList) {
         openToDoModal(modalContainer);
     });
 
-
     projectLink.addEventListener('click', function() {
         renderUI(projectsList, todoList);
-        console.log("Project link clicked");
         setupEventListeners(todoList, projectsList);
     })
 
@@ -304,7 +257,6 @@ function setupEventListeners(todoList, projectsList) {
         }
     });
 
-
     // Attach event listeners to project links
     const projectList = document.querySelectorAll("#projects li");
     projectList.forEach(li => {
@@ -316,9 +268,6 @@ function setupEventListeners(todoList, projectsList) {
             const filteredTodos = getTodosByProject(todoList, projectName);
             renderTodoContainer(filteredTodos);
             handleProjectCountNumber(todoList);
-            
-            // console.log("Fired event listener projectList, next runs getTodosByProject")
-            // getTodosByProject(todoList, projectName);
         
             projectList.forEach(item => {
                 const link = item.querySelector('a');
@@ -326,7 +275,6 @@ function setupEventListeners(todoList, projectsList) {
             });
 
             anchor.classList.add('active');
-            //Vezi daca merge si fara return
             return statusOfUI = true;
         });
         

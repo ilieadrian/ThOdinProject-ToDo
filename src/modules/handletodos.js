@@ -1,8 +1,6 @@
 import { renderTodoContainer } from "./index";
-// import { openProjectModal, openToDoModal, openViewModal, openEditModal } from "./manipulatedom";
 
 function displayToDods(todoList) {
-    console.log("FIRED: displayToDods")
     let ulContent = '';
 
     todoList.forEach((element) => {
@@ -26,13 +24,10 @@ function displayToDods(todoList) {
     return ulContent;
 }
 
-
 //V2
 function getTodosByProject(todoList, curentElement) {
-    console.log("FIRED: getTodosByProject")
     return todoList.filter(taskList => taskList.project === curentElement);
 }
-
 
 //V1
 // function getTodosByProject(todoList, curentElement) {
@@ -41,9 +36,4 @@ function getTodosByProject(todoList, curentElement) {
 //     renderTodoContainer(filteredElements);
 // }
 
-
-
 export { getTodosByProject, displayToDods}
-
-
-
