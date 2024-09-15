@@ -176,6 +176,7 @@ function modifyTodoStatus(index, target, projectsList, todoList) {
         displayToDods(todoList);
         getTodosByProject(todoList, todoItem.project);        
         renderProjectContainer(projectsList, todoList);
+        handleProjectCountNumber();
         } else {
             renderUI(projectsList, todoList);
         }
@@ -267,7 +268,7 @@ function setupEventListeners(todoList, projectsList) {
 
             const filteredTodos = getTodosByProject(todoList, projectName);
             renderTodoContainer(filteredTodos);
-            handleProjectCountNumber(todoList);
+            handleProjectCountNumber();
         
             projectList.forEach(item => {
                 const link = item.querySelector('a');
