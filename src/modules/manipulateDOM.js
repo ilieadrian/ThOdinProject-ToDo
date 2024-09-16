@@ -164,7 +164,9 @@ function openEditModal(index, todoList, modalContainer) {
 
 //V2
 function modifyTodoStatus(index, target, projectsList, todoList) {
-    const todoItem = todoList.find(todo => todo.id == index);
+    console.table(todoList)
+    const todoItem = todoList.find(todo => todo.id -1 == index);
+    console.log(todoItem)
     todoItem.status = target.checked; 
 
     if (!todoItem) {

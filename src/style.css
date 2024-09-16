@@ -67,7 +67,6 @@ button:hover {
 
 .container {
     width: 1280px;
-    /* min-width: 1280px; */
     display: flex;
     flex-direction: column;
     background-color: #F7F7F7;
