@@ -159,6 +159,8 @@ function openEditModal(index, todoList, modalContainer) {
         </div>
     </div>
     `;
+//<input type="date" id="duedate" value="${todoList[index].dueDate}">
+    console.log(todoList[index].dueDate);
     addCloseEventListeners(modalContainer);
 }
 
