@@ -28,4 +28,9 @@ function getTodosByProject(todoList, curentElement) {
     return todoList.filter(taskList => taskList.project === curentElement);
 }
 
-export { getTodosByProject, displayToDods}
+function deleteTodoItem(index, todoList, projectsList) {
+    console.table(todoList)
+    console.log("Delele the Todo with the index of:", index)
+}
+
+export { getTodosByProject, displayToDods, deleteTodoItem}

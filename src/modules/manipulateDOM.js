@@ -1,5 +1,5 @@
 import { renderTodoContainer, renderProjectContainer } from "./index";
-import { getTodosByProject, displayToDods } from './handletodos';
+import { getTodosByProject, displayToDods, deleteTodoItem } from './handletodos';
 import { handleProjectCountNumber } from "./handleproject";
 import { renderUI } from "./index";
 import { getProjects } from "./handleproject";
@@ -119,8 +119,6 @@ function openViewModal(index, todoList, modalContainer) {
 
 function openEditModal(index, todoList, modalContainer) {
     modalContainer.innerHTML = "";
-    //Correct the value of the imput @DueDate, it does not use the stored dueDate
-    //Add functionality to select the active BTN
     modalContainer.innerHTML = `
     <div id="edit-modal-todo" class="modal active">
         <div class="modal-content">
@@ -159,8 +157,6 @@ function openEditModal(index, todoList, modalContainer) {
         </div>
     </div>
     `;
-//<input type="date" id="duedate" value="${todoList[index].dueDate}">
-    console.log(todoList[index].dueDate);
     addCloseEventListeners(modalContainer);
 }
 
