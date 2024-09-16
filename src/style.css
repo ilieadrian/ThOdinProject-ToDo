@@ -66,11 +66,12 @@ button:hover {
 /* End of general styles */
 
 .container {
-    /* width: 1280px; */
-    min-width: 1280px;
+    width: 1280px;
+    /* min-width: 1280px; */
     display: flex;
     flex-direction: column;
     background-color: #F7F7F7;
+    margin: 1rem;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 }
