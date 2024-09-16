@@ -70,9 +70,6 @@ function deleteProject(idToDelete, projectsList, todoList) {
         setupEventListeners(todoList, projectsList)
     } 
 
-    //In deleteProject, the splice operation could be refined. 
-    //It currently uses splice(projectIndex-1, 1), which might unintentionally delete the 
-    //wrong project. It should simply be splice(projectIndex, 1).
 }
 
 export {handleProject, getProjects, deleteProject, handleProjectCountNumber};
