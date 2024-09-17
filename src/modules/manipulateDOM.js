@@ -213,7 +213,7 @@ function setupEventListeners(todoList, projectsList) {
     todoListContainer.addEventListener('click', function(event) {
         const target = event.target;
         const listItem = target.closest('.item');
-        const index = listItem ? listItem.id.split('-')[1] -1 : null;
+        const index = listItem ? listItem.id.split('-')[1] : null;
         
         if (index !== null) {
             if (target.closest('.view-btn')) {

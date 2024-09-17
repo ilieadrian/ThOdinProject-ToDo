@@ -31,6 +31,16 @@ function getTodosByProject(todoList, curentElement) {
 function deleteTodoItem(index, todoList, projectsList) {
     console.table(todoList)
     console.log("Delele the Todo with the index of:", index)
+
+    const todoIndex = todoList.findIndex(todo => todo.id == index);
+
+    console.log("todoIndex", todoIndex)
+
+    // if (projectIndex !== -1) {
+    //     projectsList.splice(projectIndex-1, 1);
+    //     renderUI(projectsList, todoList);
+    //     setupEventListeners(todoList, projectsList)
+    // } 
 }
 
 export { getTodosByProject, displayToDods, deleteTodoItem}
