@@ -125,7 +125,7 @@ function callEvents(){
     const { projectsList, todoList } = defaultValues;
 
     try {
-        setupEventListeners(todoList, projectsList,);
+        setupEventListeners(todoList, projectsList);
     } catch (error) {
         console.error("Error calling callEvents:", error);
     }

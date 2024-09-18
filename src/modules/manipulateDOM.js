@@ -221,7 +221,7 @@ function setupEventListeners(todoList, projectsList) {
             } else if (target.closest('.edit-btn')) {
                 openEditModal(elementId, todoList, modalContainer);
             } else if (target.closest('.delete-btn')) {
-                deleteTodoItem(elementId, todoList);
+                deleteTodoItem(elementId, todoList, projectsList);
             } else if (target.classList.contains('todo-checkbox')) {
                 modifyTodoStatus(elementId, target, projectsList, todoList);
             }

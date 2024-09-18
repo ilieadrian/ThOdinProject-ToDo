@@ -1,4 +1,6 @@
 import { renderTodoContainer } from "./index";
+import { renderUI } from "./index";
+import { setupEventListeners } from "./manipulateDOM";
 
 function displayToDods(todoList) {
     let ulContent = '';
@@ -30,19 +32,14 @@ function getTodosByProject(todoList, curentElement) {
     return todoList.filter(taskList => taskList.project === curentElement);
 }
 
-function deleteTodoItem(elementId, todoList) {
-    console.table(todoList)
-    console.log("Delele the Todo with the elementId of:", elementId, typeof elementId)
-
+function deleteTodoItem(elementId, todoList, projectsList) {
     const todoIndex = todoList.findIndex(todo => todo.id == elementId);
 
-    console.log("todoIndex", todoIndex)
+    todoList.splice(todoIndex, 1);
 
-    // if (projectIndex !== -1) {
-    //     projectsList.splice(projectIndex-1, 1);
-    //     renderUI(projectsList, todoList);
-    //     setupEventListeners(todoList, projectsList)
-    // } 
+    renderUI(projectsList, todoList);
+    setupEventListeners(todoList, projectsList)
+
 }
 
 export { getTodosByProject, displayToDods, deleteTodoItem}
