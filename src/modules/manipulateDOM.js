@@ -115,8 +115,6 @@ function openViewModal(elementId, todoList, modalContainer) {
     </div>
     `;
     addCloseEventListeners(modalContainer);
-    console.table(todoList)
-    console.log("openViewModal elementId", elementId)
 }
 
 function openEditModal(elementId, todoList, modalContainer) {
@@ -160,15 +158,10 @@ function openEditModal(elementId, todoList, modalContainer) {
     </div>
     `;
     addCloseEventListeners(modalContainer);
-
-    console.table(todoList)
-    console.log("openEditModal elementId", elementId)
 }
 
 function modifyTodoStatus(elementId, target, projectsList, todoList) {
     const todoItem = todoList.find(todo => todo.id == elementId);
-    console.table(todoList)
-    console.log("modifyTodoStatus elementId", elementId)
     todoItem.status = target.checked; 
 
     if (!todoItem) {
@@ -220,8 +213,8 @@ function setupEventListeners(todoList, projectsList) {
     todoListContainer.addEventListener('click', function(event) {
         const target = event.target;
         const listItem = target.closest('.item');
-        const elementId = listItem ? listItem.id.split('-')[1] : null;
-        
+        const elementId = listItem ? +listItem.id.split('-')[1] : null;
+                
         if (elementId !== null) {
             if (target.closest('.view-btn')) {
                 openViewModal(elementId, todoList, modalContainer);
