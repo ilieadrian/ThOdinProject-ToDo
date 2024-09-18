@@ -115,6 +115,8 @@ function openViewModal(index, todoList, modalContainer) {
     </div>
     `;
     addCloseEventListeners(modalContainer);
+    console.table(todoList)
+    console.log("openViewModal INDEX", index)
 }
 
 function openEditModal(index, todoList, modalContainer) {
@@ -158,10 +160,16 @@ function openEditModal(index, todoList, modalContainer) {
     </div>
     `;
     addCloseEventListeners(modalContainer);
+
+    console.table(todoList)
+    console.log("openEditModal INDEX", index)
 }
 
 function modifyTodoStatus(index, target, projectsList, todoList) {
-    const todoItem = todoList.find(todo => todo.id -1 == index);
+    const todoItem = todoList.find(todo => todo.id == index);
+    console.table(todoList)
+    console.log("modifyTodoStatus index", index)
+    console.log("modifyTodoStatus todoItem", todoItem.id)
     todoItem.status = target.checked; 
 
     if (!todoItem) {

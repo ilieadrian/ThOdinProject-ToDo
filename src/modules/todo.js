@@ -1,5 +1,5 @@
 export default class Todo {
-    static idCounter = 0;
+    static idCounter = -1;
 
     constructor(title, description, dueDate, priority, status, project) {
         this._id = Todo.calcId();
