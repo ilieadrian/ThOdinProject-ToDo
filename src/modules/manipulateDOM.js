@@ -88,38 +88,38 @@ function openToDoModal(modalContainer) {
     addCloseEventListeners(modalContainer);
 }
 
-function openViewModal(index, todoList, modalContainer) {
+function openViewModal(elementId, todoList, modalContainer) {
     modalContainer.innerHTML = "";
     modalContainer.innerHTML = `
     <div id="view-modal" class="modal active">
         <div class="modal-content">
             <img src="../src/images/close-ellipse.svg" class="close-modal-button close-btn">
-            <h2>${todoList[index].title}</h2>
+            <h2>${todoList[elementId].title}</h2>
             <div class="detail">
                 <p class="detail-title">Project: </p>
-                <p>${todoList[index].title}</p>
+                <p>${todoList[elementId].title}</p>
             </div>
             <div class="detail">
                 <p class="detail-title">Priority: </p>
-                <p>${todoList[index].priority}</p>
+                <p>${todoList[elementId].priority}</p>
             </div>
             <div class="detail">
                 <p class="detail-title">Due Date: </p>
-                <p>${todoList[index].dueDate}</p>
+                <p>${todoList[elementId].dueDate}</p>
             </div>
             <div class="detail">
                 <p class="detail-title">Details: </p>
-                <p>${todoList[index].description}</p>
+                <p>${todoList[elementId].description}</p>
             </div>
         </div>    
     </div>
     `;
     addCloseEventListeners(modalContainer);
     console.table(todoList)
-    console.log("openViewModal INDEX", index)
+    console.log("openViewModal elementId", elementId)
 }
 
-function openEditModal(index, todoList, modalContainer) {
+function openEditModal(elementId, todoList, modalContainer) {
     modalContainer.innerHTML = "";
     modalContainer.innerHTML = `
     <div id="edit-modal-todo" class="modal active">
@@ -132,15 +132,15 @@ function openEditModal(index, todoList, modalContainer) {
                 <ul class="input-container">
                     <li>
                         <label for="title">Title</label>
-                        <input type="text" id="title" value="${todoList[index].title}">
+                        <input type="text" id="title" value="${todoList[elementId].title}">
                     </li>
                     <li>
                         <label for="description">Description</label>
-                        <input type="text" id="description" value="${todoList[index].description}">
+                        <input type="text" id="description" value="${todoList[elementId].description}">
                     </li>
                     <li>    
                         <label for="duedate">Due date:</label>
-                        <input type="date" id="duedate" value="${todoList[index].dueDate}">
+                        <input type="date" id="duedate" value="${todoList[elementId].dueDate}">
                     </li>
                 </ul>
 
@@ -162,14 +162,13 @@ function openEditModal(index, todoList, modalContainer) {
     addCloseEventListeners(modalContainer);
 
     console.table(todoList)
-    console.log("openEditModal INDEX", index)
+    console.log("openEditModal elementId", elementId)
 }
 
-function modifyTodoStatus(index, target, projectsList, todoList) {
-    const todoItem = todoList.find(todo => todo.id == index);
+function modifyTodoStatus(elementId, target, projectsList, todoList) {
+    const todoItem = todoList.find(todo => todo.id == elementId);
     console.table(todoList)
-    console.log("modifyTodoStatus index", index)
-    console.log("modifyTodoStatus todoItem", todoItem.id)
+    console.log("modifyTodoStatus elementId", elementId)
     todoItem.status = target.checked; 
 
     if (!todoItem) {
@@ -221,17 +220,17 @@ function setupEventListeners(todoList, projectsList) {
     todoListContainer.addEventListener('click', function(event) {
         const target = event.target;
         const listItem = target.closest('.item');
-        const index = listItem ? listItem.id.split('-')[1] : null;
+        const elementId = listItem ? listItem.id.split('-')[1] : null;
         
-        if (index !== null) {
+        if (elementId !== null) {
             if (target.closest('.view-btn')) {
-                openViewModal(index, todoList, modalContainer);
+                openViewModal(elementId, todoList, modalContainer);
             } else if (target.closest('.edit-btn')) {
-                openEditModal(index, todoList, modalContainer);
+                openEditModal(elementId, todoList, modalContainer);
             } else if (target.closest('.delete-btn')) {
-                deleteTodoItem(index, todoList, projectsList);
+                deleteTodoItem(elementId, todoList);
             } else if (target.classList.contains('todo-checkbox')) {
-                modifyTodoStatus(index, target, projectsList, todoList);
+                modifyTodoStatus(elementId, target, projectsList, todoList);
             }
         }
     });
