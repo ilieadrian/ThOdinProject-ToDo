@@ -62,15 +62,15 @@ function renderUI(projectsList, todoList) {
     handleProjectCountNumber(todoList);
 }
 
-function renderTodoContainer(filteredElements) {
+function renderTodoContainer(filteredTodos) {
     let container = document.querySelector('.todo-container');
 
     container.innerHTML = "";
 
-    if(filteredElements.length > 0) {
+    if(filteredTodos.length > 0) {
         container.innerHTML = `
         <ul class="items-list">
-            ${displayToDods(filteredElements)}  
+            ${displayToDods(filteredTodos)}  
         </ul>
     `;
     } else {

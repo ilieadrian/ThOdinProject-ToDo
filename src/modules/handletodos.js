@@ -1,6 +1,5 @@
-import { renderTodoContainer } from "./index";
-import { renderUI } from "./index";
-import { setupEventListeners } from "./manipulateDOM";
+import { renderUI, renderTodoContainer } from "./index";
+import { setupEventListeners, statusOfUI, filteredTodos, testFunction } from "./manipulateDOM";
 
 function displayToDods(todoList) {
     let ulContent = '';
@@ -32,14 +31,23 @@ function getTodosByProject(todoList, curentElement) {
     return todoList.filter(taskList => taskList.project === curentElement);
 }
 
+
 function deleteTodoItem(elementId, todoList, projectsList) {
     const todoIndex = todoList.findIndex(todo => todo.id == elementId);
 
     todoList.splice(todoIndex, 1);
 
-    renderUI(projectsList, todoList);
-    setupEventListeners(todoList, projectsList)
+
+    if(statusOfUI) {
+        console.log("statusOfUI", statusOfUI)
+        console.table(filteredTodos)
+        // renderTodoContainer(filteredTodos); 
+        testFunction(todoList);
+    } else {
+        renderUI(projectsList, todoList);
+        setupEventListeners(todoList, projectsList)
+    }
 
 }
 
-export { getTodosByProject, displayToDods, deleteTodoItem}
+export { getTodosByProject, displayToDods, deleteTodoItem }
