@@ -1,5 +1,6 @@
 import { renderUI, renderTodoContainer } from "./index";
 import { setupEventListeners, statusOfUI, filteredTodos, testFunction } from "./manipulateDOM";
+import { handleProjectCountNumber } from "./handleproject";
 
 function displayToDods(todoList) {
     let ulContent = '';
@@ -41,7 +42,15 @@ function deleteTodoItem(elementId, todoList, projectsList) {
     if(statusOfUI) {
         console.log("statusOfUI", statusOfUI)
         console.table(filteredTodos)
-        // renderTodoContainer(filteredTodos); 
+        
+        const projectName = filteredTodos[0].project;
+        console.log(projectName)
+        console.table(todoList)
+        filteredTodos =[]
+        console.log(filteredTodos)
+        filteredTodos = getTodosByProject(todoList, projectName)
+        renderTodoContainer(filteredTodos); 
+        handleProjectCountNumber(); 
         testFunction(todoList);
     } else {
         renderUI(projectsList, todoList);

@@ -5,7 +5,7 @@ import { renderUI } from "./index";
 import { getProjects } from "./handleproject";
 
 let statusOfUI = false;
-let filteredTodos;
+let filteredTodos = [];
 
 export default (function () {
     document.addEventListener("DOMContentLoaded", function() {
