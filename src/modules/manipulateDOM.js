@@ -209,6 +209,7 @@ function setupEventListeners(todoList, projectsList) {
     projectLink.addEventListener('click', function() {
         renderUI(projectsList, todoList);
         setupEventListeners(todoList, projectsList);
+        statusOfUI = false;
     })
 
     todoListContainer.addEventListener('click', function(event) {
