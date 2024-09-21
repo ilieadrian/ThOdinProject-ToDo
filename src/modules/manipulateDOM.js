@@ -230,37 +230,30 @@ function setupEventListeners(todoList, projectsList) {
     });
 
     // Attach event listeners to project links
-    
-testFunction(todoList);
-}
+    const projectList = document.querySelectorAll("#projects li");
 
-function testFunction(todoList) {
-    console.log("Hellow from test function")
-const projectList = document.querySelectorAll("#projects li");
+    projectList.forEach(li => {
+        const anchor = li.querySelector('a');
+        anchor.addEventListener('click', function(event) {
+            event.preventDefault();
+            const projectName = anchor.textContent;
 
-projectList.forEach(li => {
-    const anchor = li.querySelector('a');
-    anchor.addEventListener('click', function(event) {
-        event.preventDefault();
-        const projectName = anchor.textContent;
+            filteredTodos = getTodosByProject(todoList, projectName);
+            renderTodoContainer(filteredTodos);
+            handleProjectCountNumber();
+        
+            projectList.forEach(item => {
+                const link = item.querySelector('a');
+                link.classList.remove('active');
+            });
 
-        filteredTodos = getTodosByProject(todoList, projectName);
-        renderTodoContainer(filteredTodos);
-        handleProjectCountNumber();
-    
-        projectList.forEach(item => {
-            const link = item.querySelector('a');
-            link.classList.remove('active');
+            anchor.classList.add('active');
+            statusOfUI = true;
+            return statusOfUI, filteredTodos;
         });
-
-        anchor.classList.add('active');
-        statusOfUI = true;
-        console.log("filteredTodos in manipulateDOM")
-        console.table(filteredTodos);
-        return statusOfUI, filteredTodos;
+        
     });
     
-});
 }
 
-export { setupEventListeners, statusOfUI, filteredTodos, testFunction };
+export { setupEventListeners, statusOfUI, filteredTodos };

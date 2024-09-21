@@ -1,5 +1,5 @@
 import { renderUI, renderTodoContainer } from "./index";
-import { setupEventListeners, statusOfUI, filteredTodos, testFunction } from "./manipulateDOM";
+import { setupEventListeners, statusOfUI, filteredTodos } from "./manipulateDOM";
 import { handleProjectCountNumber } from "./handleproject";
 
 function displayToDods(todoList) {
@@ -23,8 +23,6 @@ function displayToDods(todoList) {
         `;
     });
 
-    
-
     return ulContent;
 }
 
@@ -32,26 +30,16 @@ function getTodosByProject(todoList, curentElement) {
     return todoList.filter(taskList => taskList.project === curentElement);
 }
 
-
 function deleteTodoItem(elementId, todoList, projectsList) {
     const todoIndex = todoList.findIndex(todo => todo.id == elementId);
 
     todoList.splice(todoIndex, 1);
 
-
     if(statusOfUI) {
-        console.log("statusOfUI", statusOfUI)
-        console.table(filteredTodos)
-        
         const projectName = filteredTodos[0].project;
-        console.log(projectName)
-        console.table(todoList)
-        filteredTodos =[]
-        console.log(filteredTodos)
-        filteredTodos = getTodosByProject(todoList, projectName)
-        renderTodoContainer(filteredTodos); 
+        let filteredTodosAfterDeletion = getTodosByProject(todoList, projectName)
+        renderTodoContainer(filteredTodosAfterDeletion); 
         handleProjectCountNumber(); 
-        testFunction(todoList);
     } else {
         renderUI(projectsList, todoList);
         setupEventListeners(todoList, projectsList)
