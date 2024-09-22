@@ -1,4 +1,4 @@
-import { renderUI, renderTodoContainer } from "./index";
+import { renderUI, renderTodoContainer, handleEmptyProjectPage } from "./index";
 import { setupEventListeners, statusOfUI, filteredTodos } from "./manipulateDOM";
 import { handleProjectCountNumber } from "./handleproject";
 
@@ -43,6 +43,10 @@ function deleteTodoItem(elementId, todoList, projectsList) {
     } else {
         renderUI(projectsList, todoList);
         setupEventListeners(todoList, projectsList)
+        if(todoList.length == 0) {
+            console.log("Opsie")
+            handleEmptyProjectPage();
+        }
     }
 
 }

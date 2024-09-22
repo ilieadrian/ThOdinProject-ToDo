@@ -81,7 +81,7 @@ function renderTodoContainer(filteredTodos) {
             <button class="delete-btn">Delete project</button>
         </div>
     `;
-        handleEmptyProjectPage(container);
+        handleEmptyProjectPage();
     }
 }
 
@@ -94,7 +94,9 @@ function renderProjectContainer(projectsList, todoList) {
     `;
 }
     
-function handleEmptyProjectPage(container){
+function handleEmptyProjectPage(){
+    console.log("handleEmptyProjectPage fired")
+    let container = document.querySelector('.todo-container');
     const idToDelete = getActiveLink();
 
     const { projectsList, todoList } = defaultValues;
@@ -111,11 +113,15 @@ function handleEmptyProjectPage(container){
 }
 
 function getActiveLink() {
+    console.log("getActiveLink fired")
     const activeLink = document.querySelector("#projects a.active");
     if (activeLink) {
         const activeProjectId = activeLink.closest('li').getAttribute('data-project-id');
+        console.log("activeProjectId", activeProjectId);
         return activeProjectId;
-    } 
+    } else {
+        console.log("no active link")
+    }
 }
 
 //Until i figure out async-await i use these function to add the eventlisteners
@@ -132,4 +138,4 @@ function callEvents(){
 }
 callEvents();
 
-export { renderUI, renderTodoContainer, renderProjectContainer };
+export { renderUI, renderTodoContainer, renderProjectContainer, handleEmptyProjectPage };

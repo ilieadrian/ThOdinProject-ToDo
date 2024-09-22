@@ -254,6 +254,9 @@ function setupEventListeners(todoList, projectsList) {
         });
         
     });
+
+    console.table(todoList)
+    console.table(projectsList)
     
 }
 

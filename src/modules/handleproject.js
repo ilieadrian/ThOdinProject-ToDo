@@ -62,10 +62,11 @@ function handleProjectCountNumber() {
 }
 
 function deleteProject(idToDelete, projectsList, todoList) {
+    console.log("deleteProject fired with idToDelete", idToDelete)
     const projectIndex = projectsList.findIndex(project => project.id == idToDelete);
     
     if (projectIndex !== -1) {
-        projectsList.splice(projectIndex-1, 1);
+        projectsList.splice(projectIndex, 1);
         renderUI(projectsList, todoList);
         setupEventListeners(todoList, projectsList)
     } 
