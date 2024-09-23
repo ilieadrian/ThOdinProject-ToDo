@@ -22,8 +22,8 @@ function renderUI(projectsList, todoList) {
     container.innerHTML = `
         <section class="header">
             <h1>// To do</h1>
-            <img src="../src/images/to-do-list.svg" alt="" srcset="">
-            <div id="header-icon-container"></div>
+                <img src="../src/images/to-do-list.svg" alt="" srcset="">
+                <div id="header-icon-container"></div>
         </section>
         <div class="content-container">
             <section class="menu">
@@ -33,9 +33,9 @@ function renderUI(projectsList, todoList) {
                     <li><a href="#">Due These Week</a><span class="number-of-tasks">1</span></li>
                 </ul>
                 <h2><a href="#" id="projects-link">Projects</a></h2>
-                <ul id="projects" class="menu-links">
-                    ${getProjects(projectsList, todoList)}
-                </ul>
+                    <ul id="projects" class="menu-links">
+                        ${getProjects(projectsList, todoList)}
+                    </ul>
                 <div class="buttons-container">
                     <div class="addtodo">
                         <img src="../src/images/add-plus-circle.svg" alt="" srcset="">
@@ -55,7 +55,13 @@ function renderUI(projectsList, todoList) {
         </div>
         <div id="modal-container"></div>
     `;
+    
 
+    if(todoList.length == 0) {
+        let notificationContainer = document.querySelector(".todo-container");
+
+        notificationContainer.innerHTML = `<p class="emptyPageNotification">There are no more todos. Add a new one or delete projects.</p>`;
+    }
     //---!!!---//
     const headerIconContainer = document.getElementById('header-icon-container');
     headerIconContainer.appendChild(headerTodoIcon);
@@ -107,9 +113,12 @@ function handleEmptyProjectPage(){
                 deleteProject(idToDelete, projectsList, todoList);
                 //deleteProject(3, projectsList) Example call
             });
+        } else {
+            console.log("RenderUI case")
+            
         }
 
-    return projectsList, todoList;
+        return projectsList, todoList;
 }
 
 function getActiveLink() {
@@ -121,6 +130,7 @@ function getActiveLink() {
         return activeProjectId;
     } else {
         console.log("no active link")
+        return null;
     }
 }
 

@@ -207,6 +207,10 @@ h2 a {
     justify-content: center;
 }
 
+.emptyPageNotification {
+    margin: 2rem;
+}
+
 .items-list {
     padding: 3rem;
     margin: 0 auto;
