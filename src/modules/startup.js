@@ -13,6 +13,8 @@ const defaultValues  = (function () {
     let defaultProject;
 
     if(todoList.length == 0) {
+        console.log(todoList)
+        console.log("Fired the default todos population")
         const todos = [
             new Todo('Write on blog', 'Write about last part from TicTacToe game', '2024-03-21', 'low', false, 'Home'),
             new Todo('TheOdinProject chapter 2', 'Finish theOdinProject chapter 2', '2024-03-15', 'low', true, 'Home'),

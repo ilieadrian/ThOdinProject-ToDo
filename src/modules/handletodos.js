@@ -34,6 +34,8 @@ function deleteTodoItem(elementId, todoList, projectsList) {
     const todoIndex = todoList.findIndex(todo => todo.id == elementId);
 
     todoList.splice(todoIndex, 1);
+    localStorage.removeItem("todoList");
+    localStorage.setItem("todoList", JSON.stringify(todoList));
 
     if(statusOfUI) {
         const projectName = filteredTodos[0].project;
