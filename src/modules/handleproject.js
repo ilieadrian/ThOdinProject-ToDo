@@ -65,6 +65,8 @@ function deleteProject(idToDelete, projectsList, todoList) {
     
     if (projectIndex !== -1) {
         projectsList.splice(projectIndex, 1);
+        localStorage.removeItem("projectsList");
+        localStorage.setItem("projectsList", JSON.stringify(projectsList));
         renderUI(projectsList, todoList);
         setupEventListeners(todoList, projectsList)
     } 
