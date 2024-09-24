@@ -44,7 +44,6 @@ function deleteTodoItem(elementId, todoList, projectsList) {
         renderUI(projectsList, todoList);
         setupEventListeners(todoList, projectsList)
         if(todoList.length == 0) {
-            console.log("Opsie")
             handleEmptyProjectPage();
         }
     }

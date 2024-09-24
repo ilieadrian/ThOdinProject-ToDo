@@ -1,5 +1,5 @@
 export default class Project {
-    static idCounter = 0;
+    static idCounter = -1;
 
     constructor(name) {
         this._id = Project.calcId();

@@ -24,7 +24,6 @@ function getProjects(projectsList, todoList) {
     let ulContent = '';
 
     projectsList.forEach(element => {
-
         ulContent += `
             <li data-project-id="${element.id}">
                 <a href="#">${element.name}</a>
@@ -62,7 +61,6 @@ function handleProjectCountNumber() {
 }
 
 function deleteProject(idToDelete, projectsList, todoList) {
-    console.log("deleteProject fired with idToDelete", idToDelete)
     const projectIndex = projectsList.findIndex(project => project.id == idToDelete);
     
     if (projectIndex !== -1) {
@@ -70,7 +68,6 @@ function deleteProject(idToDelete, projectsList, todoList) {
         renderUI(projectsList, todoList);
         setupEventListeners(todoList, projectsList)
     } 
-
 }
 
 export {handleProject, getProjects, deleteProject, handleProjectCountNumber};

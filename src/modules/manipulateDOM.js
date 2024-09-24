@@ -253,11 +253,7 @@ function setupEventListeners(todoList, projectsList) {
             return statusOfUI, filteredTodos;
         });
         
-    });
-
-    console.table(todoList)
-    console.table(projectsList)
-    
+    });    
 }
 
 export { setupEventListeners, statusOfUI, filteredTodos };

@@ -60,8 +60,11 @@ function renderUI(projectsList, todoList) {
     if(todoList.length == 0) {
         let notificationContainer = document.querySelector(".todo-container");
 
-        notificationContainer.innerHTML = `<p class="emptyPageNotification">There are no more todos. Add a new one or delete projects.</p>`;
+        notificationContainer.innerHTML = `
+            <p class="emptyPageNotification">There are no more todos.</p>
+        `;
     }
+    
     //---!!!---//
     const headerIconContainer = document.getElementById('header-icon-container');
     headerIconContainer.appendChild(headerTodoIcon);
@@ -86,7 +89,7 @@ function renderTodoContainer(filteredTodos) {
             <p>Create a new to-do item or delete project.</p>
             <button class="delete-btn">Delete project</button>
         </div>
-    `;
+        `;
         handleEmptyProjectPage();
     }
 }
@@ -103,35 +106,39 @@ function renderProjectContainer(projectsList, todoList) {
 function handleEmptyProjectPage(){
     console.log("handleEmptyProjectPage fired")
     let container = document.querySelector('.todo-container');
-    const idToDelete = getActiveLink();
 
     const { projectsList, todoList } = defaultValues;
 
-    const deleteBtn = container.querySelector('.delete-btn');
+    getActiveLink(function(idToDelete) {
+        console.log("idToDelete", idToDelete);
+
+        const deleteBtn = container.querySelector('.delete-btn');
         if (deleteBtn) {
             deleteBtn.addEventListener('click', function() {
                 deleteProject(idToDelete, projectsList, todoList);
-                //deleteProject(3, projectsList) Example call
             });
         } else {
-            console.log("RenderUI case")
-            
+            console.log("RenderUI case");
         }
+    });
 
-        return projectsList, todoList;
 }
 
-function getActiveLink() {
+function getActiveLink(callback) {
     console.log("getActiveLink fired")
-    const activeLink = document.querySelector("#projects a.active");
-    if (activeLink) {
-        const activeProjectId = activeLink.closest('li').getAttribute('data-project-id');
-        console.log("activeProjectId", activeProjectId);
-        return activeProjectId;
-    } else {
-        console.log("no active link")
-        return null;
-    }
+
+    const linkContainer = document.querySelector('#projects');
+
+    linkContainer.addEventListener('click', function(event) {
+        const target = event.target;
+        const activeProjectId = target.parentElement.getAttribute('data-project-id');
+        console.log("activeProjectId in Listener", activeProjectId);
+
+        // Pass the activeProjectId to the callback function
+        if (callback && typeof callback === 'function') {
+            callback(activeProjectId);
+        }
+    });
 }
 
 //Until i figure out async-await i use these function to add the eventlisteners
