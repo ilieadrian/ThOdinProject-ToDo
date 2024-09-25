@@ -5,14 +5,18 @@ import {renderUI} from './index';
 import { setupEventListeners } from './manipulateDOM';
 
 const defaultValues  = (function () {
+    console.log("defaultValues FIRED")
     const todoList = [] || JSON.parse(localStorage.getItem("todoList"));
+    console.log(todoList)
     const projectsList = [] || JSON.parse(localStorage.getItem("projectsList"));
     let renderOnlyContainer = false;
 
     let newToDo;
     let defaultProject;
 
-    if(todoList.length == 0) {
+    console.log("JSON PARSE", JSON.parse(localStorage.getItem("todoList")))
+
+    if(todoList.length === 0 || JSON.parse(localStorage.getItem("todoList")) === 0) {
         console.log(todoList)
         console.log("Fired the default todos population")
         const todos = [
@@ -31,11 +35,16 @@ const defaultValues  = (function () {
             todoList.push(newToDo);
             handleProject(newToDo, projectsList);
         });
-    }
+    } 
+
+    console.log(typeof todoList, todoList)
+
     
     renderUI(projectsList, todoList);
-    localStorage.setItem("projectsList", JSON.stringify(projectsList));
-    localStorage.setItem("todoList", JSON.stringify(todoList));
+    // localStorage.removeItem("projectsList");
+        localStorage.setItem("projectsList", JSON.stringify(projectsList));
+        // localStorage.removeItem("todoList");
+        localStorage.setItem("todoList", JSON.stringify(todoList));
 
     
     return {

@@ -8,9 +8,15 @@ import { deleteProject } from './handleproject';
 import { setupEventListeners } from './manipulateDOM';
 
 function renderUI(projectsList, todoList) {
+    console.log("RenderUI Fired")
+    // todoList = JSON.parse(localStorage.getItem("todoList")) || todoList;
+    // projectsList = JSON.parse(localStorage.getItem("projectsList")) || projectsList;
     let container = document.querySelector('.container');
     const headerTodoIcon = new Image();
     headerTodoIcon.src = TodoIcon;
+
+    // console.log("todoList from localStorage:", todoList);
+    // console.log("projectsList from localStorage:", projectsList);   
 
     if (!container) {
         container = document.createElement('div');
@@ -19,6 +25,7 @@ function renderUI(projectsList, todoList) {
         }
 
     container.innerHTML = "";
+    console.log("FROM INDEX.JS", projectsList, todoList)
     container.innerHTML = `
         <section class="header">
             <h1>// To do</h1>
@@ -63,6 +70,10 @@ function renderUI(projectsList, todoList) {
         notificationContainer.innerHTML = `
             <p class="emptyPageNotification">There are no more todos.</p>
         `;
+
+        localStorage.removeItem("projectsList");
+        console.log("JSON PARSE", JSON.parse(localStorage.getItem("todoList")))
+        localStorage.removeItem("todoList");
     }
     
     //---!!!---//
