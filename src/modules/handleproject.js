@@ -4,6 +4,11 @@ import { renderUI } from "./index";
 import { setupEventListeners } from "./manipulateDOM";
 
 function handleProject(newToDo, projectsList){
+
+    console.log("handleProject:", newToDo);
+    console.log("handleProject:", projectsList);
+
+    
     const defaultProjectExists = projectsList.some(project => project.name === "Default");
     if (!defaultProjectExists) {
         const defaultProject = new Project("Default");
@@ -21,6 +26,9 @@ function handleProject(newToDo, projectsList){
 }
 
 function getProjects(projectsList, todoList) {
+
+    console.log("getProjects:", todoList);
+    console.log("getProjects:", projectsList);
     let ulContent = '';
 
     projectsList.forEach(element => {
@@ -61,11 +69,14 @@ function handleProjectCountNumber() {
 }
 
 function deleteProject(idToDelete, projectsList, todoList) {
+
+    console.log("deleteProject:", idToDelete);
+    console.log("deleteProject:", todoList);
+    console.log("deleteProject:", projectsList);
     const projectIndex = projectsList.findIndex(project => project.id == idToDelete);
     
     if (projectIndex !== -1) {
         projectsList.splice(projectIndex, 1);
-        localStorage.removeItem("projectsList");
         localStorage.setItem("projectsList", JSON.stringify(projectsList));
         renderUI(projectsList, todoList);
         setupEventListeners(todoList, projectsList)

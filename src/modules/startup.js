@@ -4,11 +4,16 @@ import {handleProject} from './handleproject';
 import {renderUI} from './index';
 import { setupEventListeners } from './manipulateDOM';
 
+let todoList = JSON.parse(localStorage.getItem("todoList")) || [];
+let projectsList = JSON.parse(localStorage.getItem("projectsList")) || [];
+
+
+
 const defaultValues  = (function () {
     console.log("defaultValues FIRED")
-    const todoList = [] || JSON.parse(localStorage.getItem("todoList"));
-    console.log(todoList)
-    const projectsList = [] || JSON.parse(localStorage.getItem("projectsList"));
+    // let todoList = JSON.parse(localStorage.getItem("todoList")) || [];
+    console.log("after declaration", todoList, typeof todoList)
+    // let projectsList = JSON.parse(localStorage.getItem("projectsList")) || [];
     let renderOnlyContainer = false;
 
     let newToDo;
@@ -16,7 +21,8 @@ const defaultValues  = (function () {
 
     console.log("JSON PARSE", JSON.parse(localStorage.getItem("todoList")))
 
-    if(todoList.length === 0 || JSON.parse(localStorage.getItem("todoList")) === 0) {
+    // if(todoList.length === 0 || JSON.parse(localStorage.getItem("todoList")) === 0) {
+    if(todoList.length === 0) {
         console.log(todoList)
         console.log("Fired the default todos population")
         const todos = [
@@ -36,15 +42,24 @@ const defaultValues  = (function () {
             handleProject(newToDo, projectsList);
         });
     } 
+    // else {
+    //    todos.forEach(newToDo => {
+    //         todoList.push(newToDo);
+    //         handleProject(newToDo, projectsList);
+    //     });
+    // }
 
-    console.log(typeof todoList, todoList)
+    console.log("Final todoList before rendering:", todoList);
+    console.log("Final projectsList before rendering:", projectsList);
 
-    
+    // Render the UI with current data
     renderUI(projectsList, todoList);
-    // localStorage.removeItem("projectsList");
-        localStorage.setItem("projectsList", JSON.stringify(projectsList));
-        // localStorage.removeItem("todoList");
-        localStorage.setItem("todoList", JSON.stringify(todoList));
+
+    // Update localStorage with the latest values
+    localStorage.setItem("projectsList", JSON.stringify(projectsList));
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+
+    console.log("JSON PARSE AFTER RECORD TO LOCALSTORAGE", JSON.parse(localStorage.getItem("todoList")))
 
     
     return {

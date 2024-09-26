@@ -15,7 +15,7 @@ function renderUI(projectsList, todoList) {
     const headerTodoIcon = new Image();
     headerTodoIcon.src = TodoIcon;
 
-    // console.log("todoList from localStorage:", todoList);
+    console.log("todoList ajuns in RENDERUI:", todoList);
     // console.log("projectsList from localStorage:", projectsList);   
 
     if (!container) {
@@ -74,6 +74,7 @@ function renderUI(projectsList, todoList) {
         localStorage.removeItem("projectsList");
         console.log("JSON PARSE", JSON.parse(localStorage.getItem("todoList")))
         localStorage.removeItem("todoList");
+        localStorage.setItem("todoList", JSON.stringify(todoList));
     }
     
     //---!!!---//
@@ -83,6 +84,8 @@ function renderUI(projectsList, todoList) {
 }
 
 function renderTodoContainer(filteredTodos) {
+
+    console.log("Filtered todos:", filteredTodos);
     let container = document.querySelector('.todo-container');
 
     container.innerHTML = "";
@@ -106,6 +109,10 @@ function renderTodoContainer(filteredTodos) {
 }
 
 function renderProjectContainer(projectsList, todoList) {
+
+    console.log("renderProjectContainer:", todoList);
+    console.log("renderProjectContainer:", projectsList);
+    
     let container = document.getElementById('projects');
 
     container.innerHTML = "";
@@ -118,7 +125,12 @@ function handleEmptyProjectPage(){
     console.log("handleEmptyProjectPage fired")
     let container = document.querySelector('.todo-container');
 
+    
+
     const { projectsList, todoList } = defaultValues;
+
+    console.log("handleEmptyProjectPage:", todoList);
+    console.log("handleEmptyProjectPage:", projectsList);
 
     getActiveLink(function(idToDelete) {
         console.log("idToDelete", idToDelete);
