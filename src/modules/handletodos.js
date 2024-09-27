@@ -29,15 +29,15 @@ function displayToDods(todoList) {
 }
 
 function getTodosByProject(todoList, curentElement) {
-    console.log("getTodosByProject:", todoList);
-    console.log("getTodosByProject:", curentElement);
+    // console.log("getTodosByProject:", todoList);
+    // console.log("getTodosByProject:", curentElement);
     return todoList.filter(taskList => taskList.project === curentElement);
 }
 
 function deleteTodoItem(elementId, todoList, projectsList) {
-    console.log("deleteTodoItem:", elementId);
-    console.log("deleteTodoItem:", todoList);
-    console.log("deleteTodoItem:", projectsList);
+    // console.log("deleteTodoItem:", elementId);
+    // console.log("deleteTodoItem:", todoList);
+    // console.log("deleteTodoItem:", projectsList);
 
 
     const todoIndex = todoList.findIndex(todo => todo.id == elementId);

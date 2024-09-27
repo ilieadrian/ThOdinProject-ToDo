@@ -5,8 +5,8 @@ import { setupEventListeners } from "./manipulateDOM";
 
 function handleProject(newToDo, projectsList){
 
-    console.log("handleProject:", newToDo);
-    console.log("handleProject:", projectsList);
+    // console.log("handleProject:", newToDo);
+    // console.log("handleProject:", projectsList);
 
     
     const defaultProjectExists = projectsList.some(project => project.name === "Default");
@@ -27,8 +27,8 @@ function handleProject(newToDo, projectsList){
 
 function getProjects(projectsList, todoList) {
 
-    console.log("getProjects:", todoList);
-    console.log("getProjects:", projectsList);
+    // console.log("getProjects:", todoList);
+    // console.log("getProjects:", projectsList);
     let ulContent = '';
 
     projectsList.forEach(element => {
