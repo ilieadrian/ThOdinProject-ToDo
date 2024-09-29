@@ -8,15 +8,9 @@ import { deleteProject } from './handleproject';
 import { setupEventListeners } from './manipulateDOM';
 
 function renderUI(projectsList, todoList) {
-    console.log("RenderUI Fired")
-    // todoList = JSON.parse(localStorage.getItem("todoList")) || todoList;
-    // projectsList = JSON.parse(localStorage.getItem("projectsList")) || projectsList;
     let container = document.querySelector('.container');
     const headerTodoIcon = new Image();
     headerTodoIcon.src = TodoIcon;
-
-    console.log("todoList ajuns in RENDERUI:", todoList);
-    // console.log("projectsList from localStorage:", projectsList);   
 
     if (!container) {
         container = document.createElement('div');
@@ -25,7 +19,6 @@ function renderUI(projectsList, todoList) {
         }
 
     container.innerHTML = "";
-    console.log("FROM INDEX.JS", projectsList, todoList)
     container.innerHTML = `
         <section class="header">
             <h1>// To do</h1>
@@ -71,9 +64,6 @@ function renderUI(projectsList, todoList) {
             <p class="emptyPageNotification">There are no more todos.</p>
         `;
 
-        localStorage.removeItem("projectsList");
-        console.log("JSON PARSE", JSON.parse(localStorage.getItem("todoList")))
-        localStorage.removeItem("todoList");
         localStorage.setItem("todoList", JSON.stringify(todoList));
     }
     
@@ -84,8 +74,6 @@ function renderUI(projectsList, todoList) {
 }
 
 function renderTodoContainer(filteredTodos) {
-
-    console.log("Filtered todos:", filteredTodos);
     let container = document.querySelector('.todo-container');
 
     container.innerHTML = "";
@@ -109,10 +97,6 @@ function renderTodoContainer(filteredTodos) {
 }
 
 function renderProjectContainer(projectsList, todoList) {
-
-    console.log("renderProjectContainer:", todoList);
-    console.log("renderProjectContainer:", projectsList);
-    
     let container = document.getElementById('projects');
 
     container.innerHTML = "";
@@ -122,19 +106,11 @@ function renderProjectContainer(projectsList, todoList) {
 }
     
 function handleEmptyProjectPage(){
-    console.log("handleEmptyProjectPage fired")
     let container = document.querySelector('.todo-container');
-
-    
 
     const { projectsList, todoList } = defaultValues;
 
-    console.log("handleEmptyProjectPage:", todoList);
-    console.log("handleEmptyProjectPage:", projectsList);
-
     getActiveLink(function(idToDelete) {
-        console.log("idToDelete", idToDelete);
-
         const deleteBtn = container.querySelector('.delete-btn');
         if (deleteBtn) {
             deleteBtn.addEventListener('click', function() {
@@ -148,14 +124,11 @@ function handleEmptyProjectPage(){
 }
 
 function getActiveLink(callback) {
-    console.log("getActiveLink fired")
-
     const linkContainer = document.querySelector('#projects');
 
     linkContainer.addEventListener('click', function(event) {
         const target = event.target;
         const activeProjectId = target.parentElement.getAttribute('data-project-id');
-        console.log("activeProjectId in Listener", activeProjectId);
 
         // Pass the activeProjectId to the callback function
         if (callback && typeof callback === 'function') {
