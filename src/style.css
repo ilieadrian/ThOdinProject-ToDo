@@ -169,8 +169,9 @@ button:hover {
 
 }
 
-#homez {
+#projects-link {
     text-decoration: none;
+    font-weight: 600;
     color: #141414;
 }
 

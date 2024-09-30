@@ -18,6 +18,7 @@ const defaultValues  = (function () {
             new Todo('App implementation', 'Add ability to extract the projects from the array', '2024-12-24', 'low', true, 'Active learning'),
             new Todo('Xyx', 'Some random text', '2024-09-31', 'low', true, 'Active learning'),
             new Todo('ABC', 'First three letters from the alphabet', '2024-10-30', 'high', false, 'Active learning'),
+            //surplus
             new Todo('XYZ', 'Some letters from the alphabet', '2024-09-30', 'high', false, 'Learning'),
             new Todo('TheOdinProject chapter 15', 'Finish theOdinProject chapter 15', '2024-09-15', 'medium', true, 'Home'),
         ];        
