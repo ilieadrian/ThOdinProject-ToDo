@@ -1,5 +1,5 @@
 import '../style.css';
-import { getProjects, handleProjectCountNumber } from './handleproject';
+import { getProjects, getProjetsByDueDate, handleProjectCountNumber } from './handleproject';
 import { displayToDods } from './handletodos'; 
 //correct typo above: should be displayTodos
 import { defaultValues } from './startup';
@@ -28,9 +28,7 @@ function renderUI(projectsList, todoList) {
         <div class="content-container">
             <section class="menu">
                 <ul id="todos-due" class="menu-links">
-                    <li><a href="#" id="projects-link">Home</a><span class="number-of-tasks">2</span></li>
-                    <li><a href="#">Due Today</a><span class="number-of-tasks">2</span></li>
-                    <li><a href="#">Due These Week</a><span class="number-of-tasks">1</span></li>
+                    ${getProjetsByDueDate()}
                 </ul>
                 <ul id="projects" class="menu-links">
                     ${getProjects(projectsList, todoList)}

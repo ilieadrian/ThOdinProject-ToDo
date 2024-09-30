@@ -107,7 +107,7 @@ function openViewModal(elementId, todoList, modalContainer) {
             </div>
             <div class="detail">
                 <p class="detail-title">Due Date: </p>
-                <p>${format(new Date(todoList[elementId].dueDate), "do MMM YYY")}</p>
+                <p>${format(new Date(todoList[elementId].dueDate), "do MMM yyy")}</p>
             </div>
             <div class="detail">
                 <p class="detail-title">Details: </p>

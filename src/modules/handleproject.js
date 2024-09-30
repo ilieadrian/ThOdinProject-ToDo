@@ -35,6 +35,21 @@ function getProjects(projectsList, todoList) {
     return ulContent;
 }
 
+function getProjetsByDueDate() {
+    console.log("getProjetsByDueDate fired")
+    let ulContent = '';
+
+    
+        ulContent += `
+            <li><a href="#" id="projects-link">Home</a><span class="number-of-tasks">2</span></li>
+            <li><a href="#">Due Today</a><span class="number-of-tasks">2</span></li>
+            <li><a href="#">Due These Week</a><span class="number-of-tasks">1</span></li>
+        `;
+
+
+    return ulContent;
+}
+
 function countTodoinProject(element, todoList){
     let count = 0;
     
@@ -71,5 +86,5 @@ function deleteProject(idToDelete, projectsList, todoList) {
     } 
 }
 
-export {handleProject, getProjects, deleteProject, handleProjectCountNumber};
+export {handleProject, getProjects, getProjetsByDueDate, deleteProject, handleProjectCountNumber};
 
