@@ -27,8 +27,9 @@ function renderUI(projectsList, todoList) {
         </section>
         <div class="content-container">
             <section class="menu">
+                <a href="#" id="homez">Home</a>
+
                 <ul id="todos-due" class="menu-links">
-                    <li><a href="#">Home</a><span class="number-of-tasks">7</span></li>
                     <li><a href="#">Due Today</a><span class="number-of-tasks">2</span></li>
                     <li><a href="#">Due These Week</a><span class="number-of-tasks">1</span></li>
                 </ul>

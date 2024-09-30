@@ -3,6 +3,7 @@ import { getTodosByProject, displayToDods, deleteTodoItem } from './handletodos'
 import { handleProjectCountNumber } from "./handleproject";
 import { renderUI } from "./index";
 import { getProjects } from "./handleproject";
+import { format } from "date-fns";
 
 let statusOfUI = false;
 let filteredTodos = [];
@@ -106,7 +107,7 @@ function openViewModal(elementId, todoList, modalContainer) {
             </div>
             <div class="detail">
                 <p class="detail-title">Due Date: </p>
-                <p>${todoList[elementId].dueDate}</p>
+                <p>${format(new Date(todoList[elementId].dueDate), "do MMM YYY")}</p>
             </div>
             <div class="detail">
                 <p class="detail-title">Details: </p>
