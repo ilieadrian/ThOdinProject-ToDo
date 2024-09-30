@@ -28,7 +28,7 @@ function renderUI(projectsList, todoList) {
         <div class="content-container">
             <section class="menu">
                 <ul id="todos-due" class="menu-links">
-                    ${getProjetsByDueDate()}
+                    ${getProjetsByDueDate(todoList)}
                 </ul>
                 <ul id="projects" class="menu-links">
                     ${getProjects(projectsList, todoList)}

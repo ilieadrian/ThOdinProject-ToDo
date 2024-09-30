@@ -2,6 +2,7 @@ import Project from "./project";
 import { getTodosByProject } from "./handletodos";
 import { renderUI } from "./index";
 import { setupEventListeners } from "./manipulateDOM";
+import { isThisWeek } from "date-fns";
 
 function handleProject(newToDo, projectsList){  
     const defaultProjectExists = projectsList.some(project => project.name === "Default");
@@ -35,13 +36,26 @@ function getProjects(projectsList, todoList) {
     return ulContent;
 }
 
-function getProjetsByDueDate() {
-    console.log("getProjetsByDueDate fired")
+function getProjetsByDueDate(todoList) {
+
+
+    todoList.forEach(element => {
+        console.log(element.dueDate)
+
+        // ulContent += `
+        //     <li data-project-id="${element.id}">
+        //         <a href="#">${element.name}</a>
+        //         <span class="number-of-tasks">${countTodoinProject(element.name, todoList)}</span>
+        //     </li>
+        // `;
+    });
+
+    //return todoList.filter(taskList => taskList.project === curentElement);
     let ulContent = '';
 
     
         ulContent += `
-            <li><a href="#" id="projects-link">Home</a><span class="number-of-tasks">2</span></li>
+            <li><a href="#" id="projects-link">Home</a><span class="number-of-tasks">${todoList.length}</span></li>
             <li><a href="#">Due Today</a><span class="number-of-tasks">2</span></li>
             <li><a href="#">Due These Week</a><span class="number-of-tasks">1</span></li>
         `;
