@@ -1,11 +1,13 @@
 import { renderUI, renderTodoContainer, handleEmptyProjectPage } from "./index";
 import { setupEventListeners, statusOfUI, filteredTodos } from "./manipulateDOM";
 import { handleProjectCountNumber } from "./handleproject";
+import { format } from "date-fns";
 
 function displayToDods(todoList) {
     let ulContent = '';
 
     todoList.forEach((element) => {
+        console.log(element.dueDate)
         ulContent += `
             <li class="item" id="item-${element.id}">
                 <div class="name-grup ${element.status ? "finished" : ''}">
@@ -14,7 +16,7 @@ function displayToDods(todoList) {
                     <p class="finished">${element.title}</p>
                 </div>
                 <div class="action-grup ${element.status ? "finished" : ''}">
-                    <p id="due-date">${element.dueDate}</p>
+                    <p id="due-date">${format(new Date(element.dueDate), "MMM do")}</p>
                     <button class="view-btn" id="view-btn-${element.id}"><img src="../src/images/view.svg" alt="" srcset=""></button>
                     <button class="edit-btn" id="edit-btn-${element.id}"><img src="../src/images/edit.svg" alt="" srcset=""></button>
                     <button class="delete-btn" id="delete-btn-${element.id}"><img src="../src/images/delete.svg" alt="" srcset=""></button>
