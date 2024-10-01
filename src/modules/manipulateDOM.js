@@ -1,6 +1,6 @@
 import { renderTodoContainer, renderProjectContainer } from "./index";
 import { getTodosByProject, displayToDods, deleteTodoItem } from './handletodos';
-import { handleProjectCountNumber } from "./handleproject";
+import { handleProjectCountNumber, getProjetsByDueDate } from "./handleproject";
 import { renderUI } from "./index";
 import { getProjects } from "./handleproject";
 import { format } from "date-fns";
@@ -176,8 +176,10 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
         getTodosByProject(todoList, todoItem.project);        
         renderProjectContainer(projectsList, todoList);
         handleProjectCountNumber();
-        } else {
+        getProjetsByDueDate(todoList);
+                } else {
             renderUI(projectsList, todoList);
+            getProjetsByDueDate(todoList);
         }
     setupEventListeners(todoList, projectsList);
 }
@@ -254,7 +256,8 @@ function setupEventListeners(todoList, projectsList) {
             return statusOfUI, filteredTodos;
         });
         
-    });    
+    });
+    getProjetsByDueDate(todoList)    
 }
 
 export { setupEventListeners, statusOfUI, filteredTodos };

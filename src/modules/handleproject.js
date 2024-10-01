@@ -37,10 +37,10 @@ function getProjects(projectsList, todoList) {
 }
 
 function getProjetsByDueDate(todoList) {
-
+    countTheTrue(todoList)
 
     todoList.forEach(element => {
-        console.log(element.dueDate)
+        
 
         // ulContent += `
         //     <li data-project-id="${element.id}">
@@ -53,15 +53,32 @@ function getProjetsByDueDate(todoList) {
     //return todoList.filter(taskList => taskList.project === curentElement);
     let ulContent = '';
 
-    
-        ulContent += `
-            <li><a href="#" id="projects-link">Home</a><span class="number-of-tasks">${todoList.length}</span></li>
-            <li><a href="#">Due Today</a><span class="number-of-tasks">2</span></li>
-            <li><a href="#">Due These Week</a><span class="number-of-tasks">1</span></li>
-        `;
+    ulContent += `
+        <li><a href="#" id="projects-link">Home</a><span class="number-of-tasks">${countTheTrue(todoList)}</span></li>
+        <li><a href="#">Due Today</a><span class="number-of-tasks">2</span></li>
+        <li><a href="#">Due These Week</a><span class="number-of-tasks">1</span></li>
+    `;
 
 
     return ulContent;
+}
+
+function countTheTrue(todoList) {
+    let trueCount = 0;
+    todoList.forEach(elemement => {
+      if(!elemement.status) {
+            trueCount++;
+      }
+    })
+    console.log(trueCount)
+
+
+    return trueCount;
+
+}
+
+function countTodosByPeriod(element, todolist) {
+
 }
 
 function countTodoinProject(element, todoList){

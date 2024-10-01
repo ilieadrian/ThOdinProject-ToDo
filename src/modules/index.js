@@ -53,7 +53,6 @@ function renderUI(projectsList, todoList) {
         <div id="modal-container"></div>
     `;
     
-
     if(todoList.length == 0) {
         let notificationContainer = document.querySelector(".todo-container");
 
@@ -72,6 +71,7 @@ function renderUI(projectsList, todoList) {
 
 function renderTodoContainer(filteredTodos) {
     let container = document.querySelector('.todo-container');
+    const { projectsList, todoList } = defaultValues;
 
     container.innerHTML = "";
 
@@ -81,6 +81,8 @@ function renderTodoContainer(filteredTodos) {
             ${displayToDods(filteredTodos)}  
         </ul>
     `;
+
+    getProjetsByDueDate(todoList);
     } else {
         container.innerHTML = `
         <div class="items-list">
@@ -117,7 +119,6 @@ function handleEmptyProjectPage(){
             console.log("RenderUI case");
         }
     });
-
 }
 
 function getActiveLink(callback) {
