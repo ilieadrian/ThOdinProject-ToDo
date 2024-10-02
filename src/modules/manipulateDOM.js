@@ -179,7 +179,6 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
         getProjetsByDueDate(todoList);
                 } else {
             renderUI(projectsList, todoList);
-            getProjetsByDueDate(todoList);
         }
     setupEventListeners(todoList, projectsList);
 }
@@ -257,7 +256,6 @@ function setupEventListeners(todoList, projectsList) {
         });
         
     });
-    getProjetsByDueDate(todoList)    
 }
 
 export { setupEventListeners, statusOfUI, filteredTodos };

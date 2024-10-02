@@ -81,8 +81,6 @@ function renderTodoContainer(filteredTodos) {
             ${displayToDods(filteredTodos)}  
         </ul>
     `;
-
-    getProjetsByDueDate(todoList);
     } else {
         container.innerHTML = `
         <div class="items-list">
