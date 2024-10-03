@@ -1,4 +1,4 @@
-import { renderTodoContainer, renderProjectContainer } from "./index";
+import { renderTodoContainer, renderProjectContainer, renderHomeMenu } from "./index";
 import { getTodosByProject, displayToDods, deleteTodoItem } from './handletodos';
 import { handleProjectCountNumber, getProjetsByDueDate } from "./handleproject";
 import { renderUI } from "./index";
@@ -175,6 +175,7 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
         displayToDods(todoList);
         getTodosByProject(todoList, todoItem.project);        
         renderProjectContainer(projectsList, todoList);
+        renderHomeMenu(todoList);
         handleProjectCountNumber();
         getProjetsByDueDate(todoList);
                 } else {
@@ -218,7 +219,7 @@ function setupEventListeners(todoList, projectsList) {
         const target = event.target;
         const listItem = target.closest('.item');
         const elementId = listItem ? +listItem.id.split('-')[1] : null;
-                
+                        
         if (elementId !== null) {
             if (target.closest('.view-btn')) {
                 openViewModal(elementId, todoList, modalContainer);

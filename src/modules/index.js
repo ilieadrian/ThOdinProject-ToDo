@@ -101,6 +101,15 @@ function renderProjectContainer(projectsList, todoList) {
         ${getProjects(projectsList, todoList)}
     `;
 }
+
+function renderHomeMenu(todoList) {
+    let container = document.getElementById('todos-due');
+
+    container.innerHTML = "";
+    container.innerHTML = `
+        ${getProjetsByDueDate(todoList)}
+    `;
+}
     
 function handleEmptyProjectPage(){
     let container = document.querySelector('.todo-container');
@@ -147,4 +156,4 @@ function callEvents(){
 }
 callEvents();
 
-export { renderUI, renderTodoContainer, renderProjectContainer, handleEmptyProjectPage };
+export { renderUI, renderTodoContainer, renderProjectContainer, renderHomeMenu, handleEmptyProjectPage };
