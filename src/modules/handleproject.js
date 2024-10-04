@@ -35,12 +35,11 @@ function getProjects(projectsList, todoList) {
 
     return ulContent;
 }
-
-function newFunc(todoList) {
-    console.log("newFunc fired")
+//getProjetsByDueDate
+function getProjetsByDueDate(todoList) {
+    console.log("getProjetsByDueDate fired")
     const dueTodayTodos = todoList.filter(todo => isToday(new Date(todo.dueDate)));
     const dueThisWeekTodos = todoList.filter(todo => isThisWeek(new Date(todo.dueDate)));
-
 
     console.table(dueTodayTodos);
     console.table(dueThisWeekTodos);
@@ -48,18 +47,9 @@ function newFunc(todoList) {
     return { dueTodayTodos, dueThisWeekTodos };
 }
 
-function getProjetsByDueDate(todoList) {
-    
-    console.log("getProjetsByDueDate fired")
+function renderDueTodosContainer(todoList) {    
+    const { dueTodayTodos, dueThisWeekTodos } = getProjetsByDueDate(todoList);
 
-    const { dueTodayTodos, dueThisWeekTodos } = newFunc(todoList);
-    console.log(dueTodayTodos.length, dueThisWeekTodos.length)
-
-    // const dueTodayTodos = todoList.filter(todo => isToday(new Date(todo.dueDate)));
-    // const dueThisWeekTodos = todoList.filter(todo => isThisWeek(new Date(todo.dueDate)));
-
-    
-    
     let ulContent = '';
     ulContent = `
         <li><a href="#" id="projects-link">Home</a><span class="number-of-tasks">${countIncompleteTodos(todoList)}</span></li>
@@ -119,5 +109,5 @@ function deleteProject(idToDelete, projectsList, todoList) {
     } 
 }
 
-export {handleProject, getProjects, getProjetsByDueDate, deleteProject, handleProjectCountNumber};
+export {handleProject, getProjects, renderDueTodosContainer, deleteProject, handleProjectCountNumber};
 

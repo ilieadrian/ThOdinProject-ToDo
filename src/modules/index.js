@@ -1,5 +1,5 @@
 import '../style.css';
-import { getProjects, getProjetsByDueDate, handleProjectCountNumber } from './handleproject';
+import { getProjects, renderDueTodosContainer, handleProjectCountNumber } from './handleproject';
 import { displayToDods } from './handletodos'; 
 //correct typo above: should be displayTodos
 import { defaultValues } from './startup';
@@ -28,7 +28,7 @@ function renderUI(projectsList, todoList) {
         <div class="content-container">
             <section class="menu">
                 <ul id="todos-due" class="menu-links">
-                    ${getProjetsByDueDate(todoList)}
+                    ${renderDueTodosContainer(todoList)}
                 </ul>
                 <ul id="projects" class="menu-links">
                     ${getProjects(projectsList, todoList)}
@@ -156,4 +156,4 @@ function callEvents(){
 }
 callEvents();
 
-export { renderUI, renderTodoContainer, renderProjectContainer, renderHomeMenu, handleEmptyProjectPage };
+export { renderUI, renderTodoContainer, displayToDods, renderProjectContainer, renderHomeMenu, handleEmptyProjectPage };
