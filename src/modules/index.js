@@ -71,7 +71,7 @@ function renderUI(projectsList, todoList) {
 
 function renderTodoContainer(filteredTodos) {
     let container = document.querySelector('.todo-container');
-    const { projectsList, todoList } = defaultValues;
+    // const { projectsList, todoList } = defaultValues;
 
     container.innerHTML = "";
 

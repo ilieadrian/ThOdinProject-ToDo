@@ -36,15 +36,29 @@ function getProjects(projectsList, todoList) {
     return ulContent;
 }
 
-function getProjetsByDueDate(todoList) {
-    console.log("getProjetsByDueDate fired")
-
+function newFunc(todoList) {
+    console.log("newFunc fired")
     const dueTodayTodos = todoList.filter(todo => isToday(new Date(todo.dueDate)));
     const dueThisWeekTodos = todoList.filter(todo => isThisWeek(new Date(todo.dueDate)));
+
 
     console.table(dueTodayTodos);
     console.table(dueThisWeekTodos);
 
+    return { dueTodayTodos, dueThisWeekTodos };
+}
+
+function getProjetsByDueDate(todoList) {
+    
+    console.log("getProjetsByDueDate fired")
+
+    const { dueTodayTodos, dueThisWeekTodos } = newFunc(todoList);
+    console.log(dueTodayTodos.length, dueThisWeekTodos.length)
+
+    // const dueTodayTodos = todoList.filter(todo => isToday(new Date(todo.dueDate)));
+    // const dueThisWeekTodos = todoList.filter(todo => isThisWeek(new Date(todo.dueDate)));
+
+    
     
     let ulContent = '';
     ulContent = `
@@ -66,13 +80,7 @@ function countIncompleteTodos(todoList) {
     })
     console.log(count)
 
-
     return count;
-
-}
-
-function countTodosByPeriod(element, todolist) {
-
 }
 
 function countTodoinProject(element, todoList){
