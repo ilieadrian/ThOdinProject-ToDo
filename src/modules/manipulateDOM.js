@@ -203,12 +203,24 @@ function setupEventListeners(todoList, projectsList) {
     const thisWeekTodosLink = document.getElementById('week-link');
 
     todayTodosLink.addEventListener('click', function() {
-        renderTodoContainer(dueTodayTodos);
+        if(dueTodayTodos.length !==0 ) {
+            renderTodoContainer(dueTodayTodos);
+        } else {
+            const errorMessage = `<p class="emptyPageNotification">There are no todos with due date today.</p>`;
+            renderTodoContainer(dueTodayTodos, errorMessage);
+        }
+        
         return statusOfUI = true;
     });
     
     thisWeekTodosLink.addEventListener('click', function() {
-        renderTodoContainer(dueThisWeekTodos);
+        if(dueThisWeekTodos.length !==0 ) {
+            renderTodoContainer(dueThisWeekTodos);
+        } else {
+            const errorMessage = `<p class="emptyPageNotification">There are no todos with due date this week.</p>`;
+            renderTodoContainer(dueThisWeekTodos, errorMessage);
+        }
+
         return statusOfUI = true;
     });
     

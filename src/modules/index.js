@@ -82,13 +82,17 @@ function renderTodoContainer(filteredTodos, errorMessage) {
             ${errorMessage}
         </div>
         `;
-        // container.innerHTML = `
-        // <div class="items-list">
-        //     <h2>Empty Project!</h2>
-        //     <p>Create a new to-do item or delete project.</p>
-        //     <button class="delete-btn">Delete project</button>
-        // </div>
-        // `;
+
+        if(!errorMessage) {
+            container.innerHTML = `
+            <div class="items-list">
+                <h2>Empty Project!</h2>
+                <p>Create a new to-do item or delete project.</p>
+                <button class="delete-btn">Delete project</button>
+            </div>
+            `;
+        }
+        
         handleEmptyProjectPage();
     }
 }
