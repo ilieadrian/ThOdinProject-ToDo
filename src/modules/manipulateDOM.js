@@ -1,6 +1,6 @@
 import { renderTodoContainer, renderProjectContainer, renderHomeMenu } from "./index";
 import { getTodosByProject, displayToDods, deleteTodoItem } from './handletodos';
-import { handleProjectCountNumber, renderDueTodosContainer } from "./handleproject";
+import { handleProjectCountNumber, renderDueTodosContainer, getProjetsByDueDate } from "./handleproject";
 import { renderUI } from "./index";
 import { getProjects } from "./handleproject";
 import { format } from "date-fns";
@@ -197,6 +197,25 @@ function setupEventListeners(todoList, projectsList) {
     const todoListContainer = document.querySelector('.todo-container');
     let modalContainer = document.getElementById('modal-container');
 
+
+    //Home and dueDate menu section
+    const { dueTodayTodos, dueThisWeekTodos } = getProjetsByDueDate(todoList);
+    const todayTodosLink = document.getElementById('today-link');
+    const thisWeekTodosLink = document.getElementById('week-link');
+
+
+
+    todayTodosLink.addEventListener('click', function() {
+        renderTodoContainer(dueTodayTodos);
+        return statusOfUI = true;
+    });
+    
+    thisWeekTodosLink.addEventListener('click', function() {
+        renderTodoContainer(dueThisWeekTodos);
+        return statusOfUI = true;
+    });
+    
+    //
     const projectLink = document.getElementById('projects-link');
     const addProjectBTN = document.querySelector('.addproject');
     const addToDoBTN = document.querySelector('.addtodo');

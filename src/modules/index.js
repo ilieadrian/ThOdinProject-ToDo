@@ -107,7 +107,7 @@ function renderHomeMenu(todoList) {
 
     container.innerHTML = "";
     container.innerHTML = `
-        ${getProjetsByDueDate(todoList)}
+        ${renderDueTodosContainer(todoList)}
     `;
 }
     
