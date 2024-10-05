@@ -54,12 +54,8 @@ function renderUI(projectsList, todoList) {
     `;
     
     if(todoList.length == 0) {
-        let notificationContainer = document.querySelector(".todo-container");
-
-        notificationContainer.innerHTML = `
-            <p class="emptyPageNotification">There are no more todos.</p>
-        `;
-
+        const errorMessage = `<p class="emptyPageNotification">There are no more todos.</p>`;
+        renderTodoContainer(todoList, errorMessage);
         localStorage.setItem("todoList", JSON.stringify(todoList));
     }
     
@@ -69,9 +65,8 @@ function renderUI(projectsList, todoList) {
     handleProjectCountNumber(todoList);
 }
 
-function renderTodoContainer(filteredTodos) {
+function renderTodoContainer(filteredTodos, errorMessage) {
     let container = document.querySelector('.todo-container');
-    // const { projectsList, todoList } = defaultValues;
 
     container.innerHTML = "";
 
@@ -84,11 +79,16 @@ function renderTodoContainer(filteredTodos) {
     } else {
         container.innerHTML = `
         <div class="items-list">
-            <h2>Empty Project!</h2>
-            <p>Create a new to-do item or delete project.</p>
-            <button class="delete-btn">Delete project</button>
+            ${errorMessage}
         </div>
         `;
+        // container.innerHTML = `
+        // <div class="items-list">
+        //     <h2>Empty Project!</h2>
+        //     <p>Create a new to-do item or delete project.</p>
+        //     <button class="delete-btn">Delete project</button>
+        // </div>
+        // `;
         handleEmptyProjectPage();
     }
 }

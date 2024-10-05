@@ -1,6 +1,6 @@
 import Project from "./project";
 import { getTodosByProject } from "./handletodos";
-import { renderUI, renderTodoContainer } from "./index";
+import { renderUI } from "./index";
 import { setupEventListeners } from "./manipulateDOM";
 import { isThisWeek, isToday } from "date-fns";
 
@@ -36,8 +36,6 @@ function getProjects(projectsList, todoList) {
     return ulContent;
 }
 function getProjetsByDueDate(todoList) {
-    console.log("getProjetsByDueDate fired")
-
     const dueTodayTodos = todoList.filter(todo => isToday(new Date(todo.dueDate)) && !todo._status);
     const dueThisWeekTodos = todoList.filter(todo => isThisWeek(new Date(todo.dueDate)) && !todo._status);
 
@@ -58,14 +56,12 @@ function renderDueTodosContainer(todoList) {
 }
 
 function countIncompleteTodos(todoList) {
-    console.log("countIncompleteTodos Fired")
     let count = 0;
     todoList.forEach(elemement => {
         if(!elemement.status) {
             count++;
         }
     })
-    // console.log(count)
 
     return count;
 }
