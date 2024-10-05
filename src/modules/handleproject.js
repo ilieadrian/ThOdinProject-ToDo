@@ -38,8 +38,8 @@ function getProjects(projectsList, todoList) {
 function getProjetsByDueDate(todoList) {
     console.log("getProjetsByDueDate fired")
 
-    const dueTodayTodos = todoList.filter(todo => isToday(new Date(todo.dueDate)));
-    const dueThisWeekTodos = todoList.filter(todo => isThisWeek(new Date(todo.dueDate)));
+    const dueTodayTodos = todoList.filter(todo => isToday(new Date(todo.dueDate)) && !todo._status);
+    const dueThisWeekTodos = todoList.filter(todo => isThisWeek(new Date(todo.dueDate)) && !todo._status);
 
     return { dueTodayTodos, dueThisWeekTodos };
 }

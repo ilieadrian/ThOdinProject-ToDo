@@ -197,13 +197,10 @@ function setupEventListeners(todoList, projectsList) {
     const todoListContainer = document.querySelector('.todo-container');
     let modalContainer = document.getElementById('modal-container');
 
-
     //Home and dueDate menu section
     const { dueTodayTodos, dueThisWeekTodos } = getProjetsByDueDate(todoList);
     const todayTodosLink = document.getElementById('today-link');
     const thisWeekTodosLink = document.getElementById('week-link');
-
-
 
     todayTodosLink.addEventListener('click', function() {
         renderTodoContainer(dueTodayTodos);
