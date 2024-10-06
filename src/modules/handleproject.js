@@ -15,10 +15,15 @@ function handleProject(newToDo, projectsList){
     const existingProject = projectsList.find(project => project.name === projectName);
 
     if (!existingProject){
-        const newProject = new Project(newToDo.project);
-        projectsList.push(newProject);
+        checkeExistingProject(projectName, projectsList)    
     }
-    return projectsList;
+    
+}
+
+function checkeExistingProject(projectName, projectsList) {
+        const newProject = new Project(projectName);
+        projectsList.push(newProject);
+        return projectsList;
 }
 
 function getProjects(projectsList, todoList) {

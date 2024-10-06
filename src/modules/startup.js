@@ -23,8 +23,8 @@ const defaultValues  = (function () {
             new Todo('TheOdinProject chapter 15', 'Finish theOdinProject chapter 15', '2024-10-04', 'medium', true, 'Home'),
         ];        
     } else {
-        let getTodoFromLocalStorage = JSON.parse(localStorage.getItem("todoList"));
-        todoList = getTodoFromLocalStorage.map(item => 
+            let getTodoFromLocalStorage = JSON.parse(localStorage.getItem("todoList"));
+            todoList = getTodoFromLocalStorage.map(item => 
             new Todo(item._title, item._description, item._dueDate, item._priority, item._status, item._project)
         );
     }
@@ -32,7 +32,8 @@ const defaultValues  = (function () {
     projectsList = []
         todoList.forEach(newToDo => {
             handleProject(newToDo, projectsList);
-        });
+    });
+
     localStorage.setItem("todoList", JSON.stringify(todoList));
     localStorage.setItem("projectsList", JSON.stringify(projectsList));    
 

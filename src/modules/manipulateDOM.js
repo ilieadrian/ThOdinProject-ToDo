@@ -36,14 +36,15 @@ function openProjectModal(modalContainer) {
             <form>
                 <div class="input-container">
                     <label for="name">Project name: </label>
-                    <input type="text" id="name">
+                    <input type="text" id="name" required>
                 </div>
-                <button>Create project</button>
+                <button id="create-project">Create project</button>
             </form>
             
         </div>
     </div>
     `;
+
     addCloseEventListeners(modalContainer);
 }
 
@@ -285,6 +286,18 @@ function setupEventListeners(todoList, projectsList) {
         });
         
     });
+
+    //Event listeners for new Projects/TTodos and handlers for edits
+        modalContainer.addEventListener('click', function(event) {
+        if (event.target && event.target.id === 'create-project') {
+            console.log("I am adding a new project!");
+
+            const projectName = document.querySelector('#name').value.trim();
+
+            console.log(projectName)
+        }
+    });
+
 }
 
 export { setupEventListeners, statusOfUI, filteredTodos };
