@@ -1,6 +1,6 @@
 import Project from "./project";
 import { getTodosByProject } from "./handletodos";
-import { renderUI } from "./index";
+import { renderUI, renderProjectContainer } from "./index";
 import { setupEventListeners } from "./manipulateDOM";
 import { isThisWeek, isToday } from "date-fns";
 
@@ -16,11 +16,15 @@ function handleProject(newToDo, projectsList){
 
     if (!existingProject){
         checkeExistingProject(projectName, projectsList)    
+    } else {
+        return;
     }
-    
+    console.log("Now we fire renderProjectContainer")
+    // renderProjectContainer(projectsList, todoList)
 }
 
 function checkeExistingProject(projectName, projectsList) {
+        console.log("checkeExistingProject run")
         const newProject = new Project(projectName);
         projectsList.push(newProject);
         return projectsList;
@@ -107,5 +111,5 @@ function deleteProject(idToDelete, projectsList, todoList) {
     } 
 }
 
-export {handleProject, getProjects, renderDueTodosContainer, getProjetsByDueDate, deleteProject, handleProjectCountNumber};
+export {handleProject, getProjects, checkeExistingProject, renderDueTodosContainer, getProjetsByDueDate, deleteProject, handleProjectCountNumber};
 

@@ -1,6 +1,6 @@
 import { renderTodoContainer, renderProjectContainer, renderHomeMenu } from "./index";
 import { getTodosByProject, displayToDods, deleteTodoItem } from './handletodos';
-import { handleProjectCountNumber, renderDueTodosContainer, getProjetsByDueDate } from "./handleproject";
+import { handleProjectCountNumber, renderDueTodosContainer, checkeExistingProject, getProjetsByDueDate } from "./handleproject";
 import { renderUI } from "./index";
 import { getProjects } from "./handleproject";
 import { format } from "date-fns";
@@ -294,7 +294,10 @@ function setupEventListeners(todoList, projectsList) {
 
             const projectName = document.querySelector('#name').value.trim();
 
+            checkeExistingProject(projectName, projectsList)
+
             console.log(projectName)
+            console.table(projectsList)
         }
     });
 
