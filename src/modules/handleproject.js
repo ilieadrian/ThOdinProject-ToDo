@@ -15,7 +15,7 @@ function handleProject(newToDo, projectsList){
     const existingProject = projectsList.find(project => project.name === projectName);
 
     if (!existingProject){
-        checkeExistingProject(projectName, projectsList)    
+        checkExistingProject(projectName, projectsList)    
     } else {
         return;
     }
@@ -23,10 +23,29 @@ function handleProject(newToDo, projectsList){
     // renderProjectContainer(projectsList, todoList)
 }
 
-function checkeExistingProject(projectName, projectsList) {
-        console.log("checkeExistingProject run")
+function checkExistingProject(projectName, projectsList) {
+        // console.log("checkeExistingProject run")
+        // const newProject = new Project(projectName);
+        // projectsList.push(newProject);
+        // console.log("checkeExistingProject SETING ITEM TO LOCAL STORAGE")
+        // localStorage.setItem("projectsList", JSON.stringify(projectsList));    
+        // return projectsList;
+
+        console.log("checkExistingProject run");
+    
+        const projectExists = projectsList.some(project => project.name === projectName);
+        
+        if (projectExists) {
+            console.log("Project with this name already exists.");
+            return;
+        }
+    
         const newProject = new Project(projectName);
         projectsList.push(newProject);
+        console.log("checkExistingProject SETTING ITEM TO LOCAL STORAGE");
+    
+        localStorage.setItem("projectsList", JSON.stringify(projectsList));
+    
         return projectsList;
 }
 
@@ -111,5 +130,5 @@ function deleteProject(idToDelete, projectsList, todoList) {
     } 
 }
 
-export {handleProject, getProjects, checkeExistingProject, renderDueTodosContainer, getProjetsByDueDate, deleteProject, handleProjectCountNumber};
+export {handleProject, getProjects, checkExistingProject, renderDueTodosContainer, getProjetsByDueDate, deleteProject, handleProjectCountNumber};
 
