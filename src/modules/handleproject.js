@@ -15,6 +15,7 @@ function handleProject(newToDo, projectsList){
     const existingProject = projectsList.find(project => project.name === projectName);
 
     if (!existingProject){
+        console.log("Now firing checkExistingProject in handleProject")
         checkExistingProject(projectName, projectsList)    
     } else {
         return;
@@ -42,6 +43,7 @@ function checkExistingProject(projectName, projectsList) {
     
         const newProject = new Project(projectName);
         projectsList.push(newProject);
+        console.log(newProject, projectsList)
         console.log("checkExistingProject SETTING ITEM TO LOCAL STORAGE");
     
         localStorage.setItem("projectsList", JSON.stringify(projectsList));

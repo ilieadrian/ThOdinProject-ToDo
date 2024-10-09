@@ -31,6 +31,7 @@ const defaultValues  = (function () {
 
     projectsList = []
         todoList.forEach(newToDo => {
+            console.log("Firing handleProject from startup.js")
             handleProject(newToDo, projectsList);
     });
 

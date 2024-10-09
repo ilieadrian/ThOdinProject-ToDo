@@ -316,7 +316,7 @@ function setupEventListeners(todoList, projectsList) {
             console.log("Project name is required.");
             return;
         }
-
+        console.log("Now firing checkExistingProject in manipulateDOM")
         checkExistingProject(projectName, projectsList);
 
         console.log("Project added:", projectName);
