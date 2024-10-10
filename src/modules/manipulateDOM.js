@@ -1,6 +1,6 @@
 import { renderTodoContainer, renderProjectContainer, renderHomeMenu } from "./index";
 import { getTodosByProject, displayToDods, deleteTodoItem } from './handletodos';
-import { handleProjectCountNumber, renderDueTodosContainer, checkExistingProject, getProjetsByDueDate } from "./handleproject";
+import { handleProject, handleProjectCountNumber, renderDueTodosContainer, checkExistingProject, getProjetsByDueDate } from "./handleproject";
 import { renderUI } from "./index";
 import { getProjects } from "./handleproject";
 import { format } from "date-fns";
@@ -288,44 +288,17 @@ function setupEventListeners(todoList, projectsList) {
     });
 
     //Event listeners for new Projects/TTodos and handlers for edits
-    //     modalContainer.addEventListener('click', function(event) {
-    //     if (event.target && event.target.id === 'create-project') {
-    //         console.log("I am adding a new project!");
+        modalContainer.addEventListener('click', function(event) {
+        if (event.target && event.target.id === 'create-project') {
+            event.preventDefault();
+            console.log("I am adding a new project!");
 
-    //         const projectName = document.querySelector('#name').value.trim();
+            const projectName = document.querySelector('#name').value.trim();
 
-    //         checkeExistingProject(projectName, projectsList)
-
-    //         console.log(projectName)
-    //         console.table(projectsList)
-    //     }
-    // });
-
-    const createProjectButton = document.querySelector('#create-project');
-    
-    if (!createProjectButton) return; // Safety check if the button is not yet rendered
-
-    createProjectButton.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent form submission if inside a form
-        console.log("I am adding a new project!");
-
-        const projectName = document.querySelector('#name').value.trim();
-
-        // Check if project name is empty
-        if (projectName === "") {
-            console.log("Project name is required.");
-            return;
+            handleProject(projectName, projectsList, projectName)
+            modalContainer.innerHTML = '';
         }
-        console.log("Now firing checkExistingProject in manipulateDOM")
-        checkExistingProject(projectName, projectsList);
-
-        console.log("Project added:", projectName);
-        console.table(projectsList);
-
-        // Optionally close the modal after creating the project
-        closeModal(modalContainer);
     });
-
 }
 
 export { setupEventListeners, statusOfUI, filteredTodos };

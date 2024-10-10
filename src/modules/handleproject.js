@@ -4,51 +4,48 @@ import { renderUI, renderProjectContainer } from "./index";
 import { setupEventListeners } from "./manipulateDOM";
 import { isThisWeek, isToday } from "date-fns";
 
-function handleProject(newToDo, projectsList){  
-    const defaultProjectExists = projectsList.some(project => project.name === "Default");
-    if (!defaultProjectExists) {
-        const defaultProject = new Project("Default");
-        projectsList.push(defaultProject);
-        }
-        
-    const projectName = newToDo.project;
-    const existingProject = projectsList.find(project => project.name === projectName);
+function handleProject(newToDo, projectsList, projectName){  
+    if(projectName) {
+        console.log("projectName", projectName)
 
-    if (!existingProject){
-        console.log("Now firing checkExistingProject in handleProject")
-        checkExistingProject(projectName, projectsList)    
+        checkExistingProject(projectName, projectsList)
     } else {
-        return;
+        console.log("handleProject fired");
+        const defaultProjectExists = projectsList.some(project => project.name === "Default");
+        if (!defaultProjectExists) {
+            const defaultProject = new Project("Default");
+            projectsList.push(defaultProject);
+            }
+            
+        const projectName = newToDo.project;
+        const existingProject = projectsList.find(project => project.name === projectName);
+        console.log("existingProject", existingProject)
+        console.log("WITHOUT someParam")
+        //
+
+
+        if (!existingProject){
+            console.log("Now firing checkExistingProject in handleProject")
+            checkExistingProject(projectName, projectsList)    
+        } else {
+            console.log("RETURN in !existingProject fired")
+            return;
+        }
+        console.log("Now we fire renderProjectContainer")
     }
-    console.log("Now we fire renderProjectContainer")
+
+    
     // renderProjectContainer(projectsList, todoList)
 }
 
 function checkExistingProject(projectName, projectsList) {
-        // console.log("checkeExistingProject run")
-        // const newProject = new Project(projectName);
-        // projectsList.push(newProject);
-        // console.log("checkeExistingProject SETING ITEM TO LOCAL STORAGE")
-        // localStorage.setItem("projectsList", JSON.stringify(projectsList));    
-        // return projectsList;
-
-        console.log("checkExistingProject run");
-    
-        const projectExists = projectsList.some(project => project.name === projectName);
-        
-        if (projectExists) {
-            console.log("Project with this name already exists.");
-            return;
-        }
-    
+        console.log("checkeExistingProject run")
         const newProject = new Project(projectName);
         projectsList.push(newProject);
-        console.log(newProject, projectsList)
-        console.log("checkExistingProject SETTING ITEM TO LOCAL STORAGE");
-    
-        localStorage.setItem("projectsList", JSON.stringify(projectsList));
-    
+        console.log("checkeExistingProject SETING ITEM TO LOCAL STORAGE")
+        localStorage.setItem("projectsList", JSON.stringify(projectsList));    
         return projectsList;
+
 }
 
 function getProjects(projectsList, todoList) {
