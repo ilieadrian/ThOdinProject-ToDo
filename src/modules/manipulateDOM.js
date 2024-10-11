@@ -1,6 +1,6 @@
 import { renderTodoContainer, renderProjectContainer, renderHomeMenu } from "./index";
 import { getTodosByProject, displayToDods, deleteTodoItem } from './handletodos';
-import { handleProject, handleProjectCountNumber, renderDueTodosContainer, checkExistingProject, getProjetsByDueDate } from "./handleproject";
+import { handleProject, handleProjectCountNumber, renderDueTodosContainer, getProjetsByDueDate } from "./handleproject";
 import { renderUI } from "./index";
 import { getProjects } from "./handleproject";
 import { format } from "date-fns";
@@ -291,12 +291,15 @@ function setupEventListeners(todoList, projectsList) {
         modalContainer.addEventListener('click', function(event) {
         if (event.target && event.target.id === 'create-project') {
             event.preventDefault();
-            console.log("I am adding a new project!");
 
             const passedProjectName = document.querySelector('#name').value.trim();
-
-            handleProject(null, projectsList, todoList, passedProjectName);
-            modalContainer.innerHTML = '';
+            if (passedProjectName.length === 0) {
+                return;
+            } else {
+                handleProject(null, projectsList, todoList, passedProjectName);
+                modalContainer.innerHTML = '';  
+            } 
+            
         }
     });
 }
