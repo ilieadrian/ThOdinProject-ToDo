@@ -4,14 +4,17 @@ import { renderUI, renderProjectContainer } from "./index";
 import { setupEventListeners } from "./manipulateDOM";
 import { isThisWeek, isToday } from "date-fns";
 
-function handleProject(newToDo, projectsList, passedProjectName){  
+function handleProject(newToDo = null, projectsList, todoList, passedProjectName = null){  
     if(passedProjectName) {
         console.log("passedProjectName", passedProjectName)
 
         checkExistingProject(passedProjectName, projectsList)
+        renderProjectContainer(projectsList, todoList);
+        setupEventListeners(todoList, projectsList)
     } else {
         console.log("handleProject fired");
         const defaultProjectExists = projectsList.some(project => project.name === "Default");
+
         if (!defaultProjectExists) {
             const defaultProject = new Project("Default");
             projectsList.push(defaultProject);
@@ -19,8 +22,8 @@ function handleProject(newToDo, projectsList, passedProjectName){
             
         const projectName = newToDo.project;
         const existingProject = projectsList.find(project => project.name === projectName);
-        console.log("existingProject", existingProject)
-        console.log("WITHOUT someParam")
+        console.log("existingProject", existingProject);
+        console.log("WITHOUT someParam");
         //
 
 
@@ -34,16 +37,59 @@ function handleProject(newToDo, projectsList, passedProjectName){
         console.log("Now we fire renderProjectContainer")
     }
 
-    
-    // renderProjectContainer(projectsList, todoList)
 }
-//checkExistingProject
+
+//Check this implementation
+// function handleProject(newToDo = null, projectsList, todoList, passedProjectName = null) {
+//     if (passedProjectName) {
+//         // If the function is called with a project name (from the modal)
+//         console.log("passedProjectName", passedProjectName);
+
+//         // Add or check for an existing project by the passed name
+//         checkExistingProject(passedProjectName, projectsList);
+
+//         // Render the updated list of projects and todos
+//         renderProjectContainer(projectsList, todoList);
+//         setupEventListeners(todoList, projectsList);
+//     } else if (newToDo) {
+//         // If the function is called with a todo (from todo creation)
+//         console.log("handleProject fired with newToDo");
+
+//         // Check for a default project if needed
+//         const defaultProjectExists = projectsList.some(project => project.name === "Default");
+//         if (!defaultProjectExists) {
+//             const defaultProject = new Project("Default");
+//             projectsList.push(defaultProject);
+//         }
+
+//         const projectName = newToDo.project;
+//         const existingProject = projectsList.find(project => project.name === projectName);
+//         console.log("existingProject", existingProject);
+
+//         if (!existingProject) {
+//             console.log("Now firing checkExistingProject in handleProject");
+//             checkExistingProject(projectName, projectsList);
+//         } else {
+//             console.log("RETURN in !existingProject fired");
+//             return;
+//         }
+//         console.log("Now we fire renderProjectContainer");
+//     } else {
+//         console.error("handleProject called with neither newToDo nor passedProjectName");
+//     }
+// }
+//Check this implementation
+
+
+//change this name checkExistingProject
 function checkExistingProject(projectName, projectsList) {
         console.log("checkeExistingProject run")
         const newProject = new Project(projectName);
         projectsList.push(newProject);
         console.log("checkeExistingProject SETING ITEM TO LOCAL STORAGE")
         localStorage.setItem("projectsList", JSON.stringify(projectsList));    
+
+
         return projectsList;
 
 }

@@ -37,7 +37,6 @@ const defaultValues  = (function () {
         projectsList = JSON.parse(localStorage.getItem("projectsList")).map(item =>
             new Project(item._name)
         );
-
     }
 
     localStorage.setItem("todoList", JSON.stringify(todoList));

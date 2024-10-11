@@ -293,9 +293,9 @@ function setupEventListeners(todoList, projectsList) {
             event.preventDefault();
             console.log("I am adding a new project!");
 
-            const projectName = document.querySelector('#name').value.trim();
+            const passedProjectName = document.querySelector('#name').value.trim();
 
-            handleProject(projectName, projectsList, projectName)
+            handleProject(null, projectsList, todoList, passedProjectName);
             modalContainer.innerHTML = '';
         }
     });
