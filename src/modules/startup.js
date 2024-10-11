@@ -21,19 +21,24 @@ const defaultValues  = (function () {
             //surplus
             new Todo('XYZ', 'Some letters from the alphabet', '2024-10-12', 'high', false, 'Learning'),
             new Todo('TheOdinProject chapter 15', 'Finish theOdinProject chapter 15', '2024-10-12', 'medium', true, 'Home'),
+            // new Todo('Zee projects', 'lorem20', '2024-10-13', 'high', true, 'Zee'),
         ];        
-    } else {
-            let getTodoFromLocalStorage = JSON.parse(localStorage.getItem("todoList"));
-            todoList = getTodoFromLocalStorage.map(item => 
-            new Todo(item._title, item._description, item._dueDate, item._priority, item._status, item._project)
-        );
-    }
-
-    projectsList = []
+        
+        projectsList = [];
         todoList.forEach(newToDo => {
             console.log("Firing handleProject from startup.js")
             handleProject(newToDo, projectsList);
-    });
+        });
+    } else {
+        todoList = JSON.parse(localStorage.getItem("todoList")).map(item =>
+            new Todo(item._title, item._description, item._dueDate, item._priority, item._status, item._project)
+        );
+
+        projectsList = JSON.parse(localStorage.getItem("projectsList")).map(item =>
+            new Project(item._name)
+        );
+
+    }
 
     localStorage.setItem("todoList", JSON.stringify(todoList));
     localStorage.setItem("projectsList", JSON.stringify(projectsList));    

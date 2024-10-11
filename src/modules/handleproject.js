@@ -4,11 +4,11 @@ import { renderUI, renderProjectContainer } from "./index";
 import { setupEventListeners } from "./manipulateDOM";
 import { isThisWeek, isToday } from "date-fns";
 
-function handleProject(newToDo, projectsList, projectName){  
-    if(projectName) {
-        console.log("projectName", projectName)
+function handleProject(newToDo, projectsList, passedProjectName){  
+    if(passedProjectName) {
+        console.log("passedProjectName", passedProjectName)
 
-        checkExistingProject(projectName, projectsList)
+        checkExistingProject(passedProjectName, projectsList)
     } else {
         console.log("handleProject fired");
         const defaultProjectExists = projectsList.some(project => project.name === "Default");
@@ -37,7 +37,7 @@ function handleProject(newToDo, projectsList, projectName){
     
     // renderProjectContainer(projectsList, todoList)
 }
-
+//checkExistingProject
 function checkExistingProject(projectName, projectsList) {
         console.log("checkeExistingProject run")
         const newProject = new Project(projectName);
