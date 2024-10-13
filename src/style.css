@@ -299,7 +299,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]::before {
-        margin: 0 auto;
+    margin: 0 auto;
     content: "";
     width: 15px;
     height: 15px;
@@ -393,8 +393,7 @@ input[type="checkbox"]:checked::before {
 }
 
 .detail:last-of-type .detail-title{
-    
-    margin-right: 1.2rem;
+        margin-right: 1.2rem;
 }
 
 .detail-title {
@@ -433,7 +432,7 @@ input[type="checkbox"]:checked::before {
 #add-project-modal > .modal-content,
 #add-modal-todo > .modal-content,
 #edit-modal-todo > .modal-content {
-    height: 30rem;
+    height: 35rem;
     max-width: 50rem;
     background-color: #F7F7F7;
 }
@@ -465,7 +464,8 @@ input[type="checkbox"]:checked::before {
 #add-project-modal form input[type=text],
 #add-modal-todo form input[type=text],
 #edit-modal-todo form input[type=text],
-form input[type=date] {
+form input[type=date],
+select {
     font-family: main-font;
     font-size: 1rem;
     border: none;
@@ -473,12 +473,14 @@ form input[type=date] {
     padding: 0.5rem;
     letter-spacing: 1px;
     color: #141414;
+    background-color: white;
 }
 
 #add-modal-todo ul li,
-#edit-modal-todo ul li {
+#edit-modal-todo ul li,
+select {
     width: 100%;
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
 }
 
 #add-modal-todo ul li input,

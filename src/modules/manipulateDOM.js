@@ -68,6 +68,12 @@ function openToDoModal(modalContainer) {
                         <input type="text" id="description">
                     </li>
                     <li>    
+                        <label for="project">Project</label>
+                        <select id="projects-select" name="projects">
+                                
+                        </select> 
+                    </li>
+                    <li>    
                         <label for="duedate">Due date:</label>
                         <input type="date" id="duedate">
                     </li>
