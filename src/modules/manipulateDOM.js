@@ -100,7 +100,7 @@ function openViewModal(elementId, todoList, modalContainer) {
             <h2>${todoList[elementId].title}</h2>
             <div class="detail">
                 <p class="detail-title">Project: </p>
-                <p>${todoList[elementId].title}</p>
+                <p>${todoList[elementId].project}</p>
             </div>
             <div class="detail">
                 <p class="detail-title">Priority: </p>

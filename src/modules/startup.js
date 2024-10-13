@@ -10,23 +10,22 @@ const defaultValues  = (function () {
 
     if (!todoList || todoList.length === 0) {
         todoList = [
-            new Todo('Write on blog', 'Write about last part from TicTacToe game', '2024-10-10', 'low', false, 'Home'),
-            new Todo('TheOdinProject chapter 2', 'Finish theOdinProject chapter 2', '2024-10-10', 'low', true, 'Home'),
-            new Todo('New Odin Chapter', 'Start a new OdinProjectChapter', '2024-10-15', 'medium', true, 'Learning'),
+            new Todo('Write on blog', 'Write about last part from TicTacToe game', '2024-10-15', 'low', false, 'Home'),
+            new Todo('TheOdinProject chapter 2', 'Finish theOdinProject chapter 2', '2024-10-17', 'low', true, 'Home'),
+            new Todo('New Odin Chapter', 'Start a new OdinProjectChapter', '2024-10-16', 'medium', true, 'Learning'),
             new Todo('Repair blog', 'Fix social links on blog header', '2024-03-29', 'high', false, 'Learning'),
             new Todo('Read daily a pattern', 'https://www.patterns.dev/vanilla/import-on-interaction', '2024-03-20', 'high', false, 'Learning'),
             new Todo('App implementation', 'Add ability to extract the projects from the array', '2024-12-24', 'low', true, 'Active learning'),
             new Todo('Xyx', 'Some random text', '2024-09-31', 'low', true, 'Active learning'),
-            new Todo('ABC', 'First three letters from the alphabet', '2024-10-11', 'high', false, 'Active learning'),
+            new Todo('ABC', 'First three letters from the alphabet', '2024-10-16', 'high', false, 'Active learning'),
             //surplus
-            new Todo('XYZ', 'Some letters from the alphabet', '2024-10-12', 'high', false, 'Learning'),
-            new Todo('TheOdinProject chapter 15', 'Finish theOdinProject chapter 15', '2024-10-12', 'medium', true, 'Home'),
+            new Todo('XYZ', 'Some letters from the alphabet', '2024-10-18', 'high', false, 'Learning'),
+            new Todo('TheOdinProject chapter 15', 'Finish theOdinProject chapter 15', '2024-10-17', 'medium', true, 'Home'),
             // new Todo('Zee projects', 'lorem20', '2024-10-13', 'high', true, 'Zee'),
         ];        
         
         projectsList = [];
         todoList.forEach(newToDo => {
-            console.log("Firing handleProject from startup.js")
             handleProject(newToDo, projectsList);
         });
     } else {

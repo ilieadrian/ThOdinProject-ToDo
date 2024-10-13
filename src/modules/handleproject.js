@@ -10,9 +10,6 @@ function handleProject(newToDo = null, projectsList, todoList, passedProjectName
         existingProject = projectsList.find(project => project.name === passedProjectName);
 
         if(!existingProject){
-            //aici vezi de ce porneste log-ul asta si cand n-ar trebui
-            //poate trebuie sa inlocuiest !existingProject
-            console.log(existingProject)
             processProject(passedProjectName, projectsList)
             renderProjectContainer(projectsList, todoList);
             setupEventListeners(todoList, projectsList)
