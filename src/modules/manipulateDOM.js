@@ -48,7 +48,7 @@ function openProjectModal(modalContainer) {
     addCloseEventListeners(modalContainer);
 }
 
-function openToDoModal(modalContainer) {
+function openToDoModal(modalContainer, projectsList) {
     modalContainer.innerHTML = "";
     modalContainer.innerHTML = `
     <div id="add-modal-todo" class="modal active">
@@ -70,7 +70,7 @@ function openToDoModal(modalContainer) {
                     <li>    
                         <label for="project">Project</label>
                         <select id="projects-select" name="projects">
-                                
+                            ${getProjects(projectsList)}    
                         </select> 
                     </li>
                     <li>    
@@ -95,6 +95,19 @@ function openToDoModal(modalContainer) {
     </div>
     `;
     addCloseEventListeners(modalContainer);
+}
+
+function theFunction(projectsList) {
+    let selectContent = '';
+
+    projectsList.forEach(element => {
+        console.table(element)
+        selectContent +=`
+        <option value="${element.name}">${element.name}</option>
+        `;
+    })
+
+    return selectContent;
 }
 
 function openViewModal(elementId, todoList, modalContainer) {
@@ -237,11 +250,11 @@ function setupEventListeners(todoList, projectsList) {
     const addToDoBTN = document.querySelector('.addtodo');
 
     addProjectBTN.addEventListener('click', function() {
-        openProjectModal(modalContainer);
+        openProjectModal(modalContainer, projectsList);
     });
 
     addToDoBTN.addEventListener('click', function() {
-        openToDoModal(modalContainer);
+        openToDoModal(modalContainer, projectsList);
     });
 
     projectLink.addEventListener('click', function() {

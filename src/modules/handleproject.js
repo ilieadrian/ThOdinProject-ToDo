@@ -44,20 +44,33 @@ function processProject(projectName, projectsList) {
         return projectsList;
 }
 
-function getProjects(projectsList, todoList) {
-    let ulContent = '';
+function getProjects(projectsList, todoList = null) {
+    if(!todoList) {
+        let selectContent = '';
 
-    projectsList.forEach(element => {
-        ulContent += `
-            <li data-project-id="${element.id}">
-                <a href="#">${element.name}</a>
-                <span class="number-of-tasks">${countTodoinProject(element.name, todoList)}</span>
-            </li>
-        `;
-    });
+        projectsList.forEach(element => {
+            selectContent +=`
+            <option value="${element.name}">${element.name}</option>
+            `;
+        })
 
-    return ulContent;
+        return selectContent;
+    } else {
+        let ulContent = '';
+
+        projectsList.forEach(element => {
+            ulContent += `
+                <li data-project-id="${element.id}">
+                    <a href="#">${element.name}</a>
+                    <span class="number-of-tasks">${countTodoinProject(element.name, todoList)}</span>
+                </li>
+            `;
+        });
+    
+        return ulContent;
+    }
 }
+
 function getProjetsByDueDate(todoList) {
     const dueTodayTodos = todoList.filter(todo => isToday(new Date(todo.dueDate)) && !todo._status);
     const dueThisWeekTodos = todoList.filter(todo => isThisWeek(new Date(todo.dueDate)) && !todo._status);
