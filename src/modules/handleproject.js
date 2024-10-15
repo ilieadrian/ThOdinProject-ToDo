@@ -14,6 +14,7 @@ function handleProject(newToDo = null, projectsList, todoList, passedProjectName
             renderProjectContainer(projectsList, todoList);
             setupEventListeners(todoList, projectsList)
         } else {
+            alert("Project name cannot be duplicated")
             return;
         }
         
@@ -44,13 +45,13 @@ function processProject(projectName, projectsList) {
         return projectsList;
 }
 
-function getProjects(projectsList, todoList = null) {
+function getProjects(projectsList, todoList = null, currentProject) {
     if(!todoList) {
         let selectContent = '';
 
         projectsList.forEach(element => {
             selectContent +=`
-            <option value="${element.name}">${element.name}</option>
+            <option value="${element.name}" ${currentProject === element.name ? "selected" : "" }>${element.name}</option>
             `;
         })
 

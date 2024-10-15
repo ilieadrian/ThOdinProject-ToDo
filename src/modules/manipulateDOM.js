@@ -126,7 +126,7 @@ function openViewModal(elementId, todoList, modalContainer) {
     addCloseEventListeners(modalContainer);
 }
 
-function openEditModal(elementId, todoList, modalContainer) {
+function openEditModal(elementId, todoList, projectsList, modalContainer) {
     modalContainer.innerHTML = "";
     modalContainer.innerHTML = `
     <div id="edit-modal-todo" class="modal active">
@@ -144,6 +144,12 @@ function openEditModal(elementId, todoList, modalContainer) {
                     <li>
                         <label for="description">Description</label>
                         <input type="text" id="description" value="${todoList[elementId].description}">
+                    </li>
+                    <li>    
+                        <label for="project">Project</label>
+                        <select id="projects-select" name="projects">
+                            ${getProjects(projectsList, null, todoList[elementId].project)} 
+                        </select> 
                     </li>
                     <li>    
                         <label for="duedate">Due date:</label>
@@ -259,7 +265,7 @@ function setupEventListeners(todoList, projectsList) {
             if (target.closest('.view-btn')) {
                 openViewModal(elementId, todoList, modalContainer);
             } else if (target.closest('.edit-btn')) {
-                openEditModal(elementId, todoList, modalContainer);
+                openEditModal(elementId, todoList, projectsList, modalContainer);
             } else if (target.closest('.delete-btn')) {
                 deleteTodoItem(elementId, todoList, projectsList);
             } else if (target.classList.contains('todo-checkbox')) {
@@ -328,7 +334,6 @@ function setupEventListeners(todoList, projectsList) {
             const projectsDropdown = document.getElementById("projects-select");
             const selectedProject = projectsDropdown.value;
             const selecteDate = document.querySelector('input[type="date"]').value;
-            
             const activePriorityBtn = document.querySelector('.priority-btn-grup .active-priority');
             const selectedPriority = activePriorityBtn ? activePriorityBtn.id : null;
 
@@ -340,7 +345,6 @@ function setupEventListeners(todoList, projectsList) {
                 return;
             }
         }
-        
     });
 }
 
