@@ -160,9 +160,9 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
                 <div class="button-container">  
                     <div class="priority-btn-grup">
                         <label for="priority">Priority:</label>
-                        <button id="low">Low</button>
-                        <button id="medium">Medium</button>
-                        <button id="high">High</button>
+                        <button id="low" class="${todoList[elementId].priority === "low" ? "active-priority" : ""}">Low</button>
+                        <button id="medium" class="${todoList[elementId].priority === "medium" ? "active-priority" : ""}">Medium</button>
+                        <button id="high" class="${todoList[elementId].priority === "high" ? "active-priority" : ""}">High</button>
                     </div>
 
                     <button>Confirm edit</button> 
@@ -172,6 +172,8 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
         </div>
     </div>
     `;
+
+    console.log(todoList[elementId].priority)
     addCloseEventListeners(modalContainer);
 }
 
