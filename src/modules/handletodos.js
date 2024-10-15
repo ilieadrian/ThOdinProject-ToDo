@@ -1,6 +1,7 @@
 import { renderUI, renderTodoContainer, handleEmptyProjectPage } from "./index";
 import { setupEventListeners, statusOfUI, filteredTodos } from "./manipulateDOM";
 import { handleProjectCountNumber } from "./handleproject";
+import Todo from "./todo";
 import { format } from "date-fns";
 
 function displayToDods(todoList) {
@@ -31,13 +32,13 @@ function getTodosByProject(todoList, curentElement) {
     return todoList.filter(taskList => taskList.project === curentElement);
 }
 
-function addNewTodo(todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority){
-    console.log("Fired addNewTodo")
-    console.log("todoTitle", todoTitle)
-    console.log("todoDescription", todoDescription)
-    console.log("selectedProject", selectedProject)
-    console.log("selecteDate", selecteDate)
-    console.log("selectedPriority", selectedPriority);
+function addNewTodo(todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority, todoList, projectsList){
+    const newTodo = new Todo(todoTitle, todoDescription, selecteDate, selectedPriority, false, selectedProject);
+    todoList.push(newTodo);
+    
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+    renderUI(projectsList, todoList);
+    setupEventListeners(todoList, projectsList);
 }
 
 function deleteTodoItem(elementId, todoList, projectsList) {

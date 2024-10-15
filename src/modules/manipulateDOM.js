@@ -332,7 +332,8 @@ function setupEventListeners(todoList, projectsList) {
             const selectedPriority = activePriorityBtn ? activePriorityBtn.id : null;
 
             if(todoTitle && selectedProject && selecteDate && selectedPriority) {
-                addNewTodo(todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority)
+                addNewTodo(todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority, todoList, projectsList);
+                modalContainer.innerHTML = '';  
             } else {
                 return;
             }
@@ -341,8 +342,5 @@ function setupEventListeners(todoList, projectsList) {
     });
 }
 
-function theFunction() {
-    console.log("Za function is called")
-}
 
 export { setupEventListeners, statusOfUI, filteredTodos };
