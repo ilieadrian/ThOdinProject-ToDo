@@ -300,6 +300,7 @@ function setupEventListeners(todoList, projectsList) {
 
             const passedProjectName = document.querySelector('#name').value.trim();
             if (passedProjectName.length === 0) {
+                alert("Project name cannot be empty")
                 return;
             } else {
                 handleProject(null, projectsList, todoList, passedProjectName);
@@ -335,6 +336,7 @@ function setupEventListeners(todoList, projectsList) {
                 addNewTodo(todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority, todoList, projectsList);
                 modalContainer.innerHTML = '';  
             } else {
+                alert("Required fields: Title and Date");
                 return;
             }
         }

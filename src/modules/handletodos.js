@@ -29,16 +29,25 @@ function displayToDods(todoList) {
 }
 
 function getTodosByProject(todoList, curentElement) {
-    return todoList.filter(taskList => taskList.project === curentElement);
+    return todoList.some(taskList => taskList.project === curentElement);
 }
 
 function addNewTodo(todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority, todoList, projectsList){
     const newTodo = new Todo(todoTitle, todoDescription, selecteDate, selectedPriority, false, selectedProject);
-    todoList.push(newTodo);
     
-    localStorage.setItem("todoList", JSON.stringify(todoList));
-    renderUI(projectsList, todoList);
-    setupEventListeners(todoList, projectsList);
+    if(!checkForDuplicateTitle(newTodo, todoList)) {
+        todoList.push(newTodo);
+        localStorage.setItem("todoList", JSON.stringify(todoList));
+        renderUI(projectsList, todoList);
+        setupEventListeners(todoList, projectsList);
+    } else {
+        alert("Title needs to be unique");
+        return;
+    }
+}
+
+function checkForDuplicateTitle(newTodo, todoList){
+    return todoList.some(todoList => todoList.title === newTodo.title)
 }
 
 function deleteTodoItem(elementId, todoList, projectsList) {
