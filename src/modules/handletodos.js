@@ -31,6 +31,15 @@ function getTodosByProject(todoList, curentElement) {
     return todoList.filter(taskList => taskList.project === curentElement);
 }
 
+function addNewTodo(todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority){
+    console.log("Fired addNewTodo")
+    console.log("todoTitle", todoTitle)
+    console.log("todoDescription", todoDescription)
+    console.log("selectedProject", selectedProject)
+    console.log("selecteDate", selecteDate)
+    console.log("selectedPriority", selectedPriority);
+}
+
 function deleteTodoItem(elementId, todoList, projectsList) {
     const todoIndex = todoList.findIndex(todo => todo.id == elementId);
 
@@ -51,4 +60,4 @@ function deleteTodoItem(elementId, todoList, projectsList) {
     }
 }
 
-export { getTodosByProject, displayToDods, deleteTodoItem }
+export { getTodosByProject, displayToDods, addNewTodo, deleteTodoItem }

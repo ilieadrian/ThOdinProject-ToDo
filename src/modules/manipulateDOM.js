@@ -1,5 +1,5 @@
 import { renderTodoContainer, renderProjectContainer, renderHomeMenu } from "./index";
-import { getTodosByProject, displayToDods, deleteTodoItem } from './handletodos';
+import { getTodosByProject, displayToDods, addNewTodo, deleteTodoItem } from './handletodos';
 import { handleProject, handleProjectCountNumber, renderDueTodosContainer, getProjetsByDueDate } from "./handleproject";
 import { renderUI } from "./index";
 import { getProjects } from "./handleproject";
@@ -61,7 +61,7 @@ function openToDoModal(modalContainer, projectsList) {
                 <ul class="input-container">
                     <li>
                         <label for="title">Title</label>
-                        <input type="text" id="title">
+                        <input type="text" id="title" required>
                     </li>
                     <li>
                         <label for="description">Description</label>
@@ -82,12 +82,12 @@ function openToDoModal(modalContainer, projectsList) {
                 <div class="button-container">  
                     <div class="priority-btn-grup">
                         <label for="priority">Priority:</label>
-                        <button id="low">Low</button>
-                        <button id="medium">Medium</button>
-                        <button id="high">High</button>
+                        <button id="low" class="active-priority" type="button">Low</button>
+                        <button id="medium" type="button">Medium</button>
+                        <button id="high" type="button">High</button>
                     </div>
 
-                    <button>Create project</button> 
+                    <button id="create-todo">Create project</button> 
                 </div> 
             </form>
             
@@ -95,19 +95,6 @@ function openToDoModal(modalContainer, projectsList) {
     </div>
     `;
     addCloseEventListeners(modalContainer);
-}
-
-function theFunction(projectsList) {
-    let selectContent = '';
-
-    projectsList.forEach(element => {
-        console.table(element)
-        selectContent +=`
-        <option value="${element.name}">${element.name}</option>
-        `;
-    })
-
-    return selectContent;
 }
 
 function openViewModal(elementId, todoList, modalContainer) {
@@ -320,7 +307,42 @@ function setupEventListeners(todoList, projectsList) {
             } 
             
         }
+
+        const priorityBTNS = document.querySelectorAll(".priority-btn-grup button");
+
+        priorityBTNS.forEach(btn => {
+            btn.addEventListener('click', function(event) {
+                event.preventDefault(); 
+    
+                priorityBTNS.forEach(button => button.classList.remove('active-priority'));
+    
+                this.classList.add('active-priority');
+            });
+        });
+
+        if (event.target && event.target.id === 'create-todo'){
+            event.preventDefault();
+            const todoTitle = document.querySelector('#title').value.trim();
+            const todoDescription = document.querySelector('#description').value.trim();
+            const projectsDropdown = document.getElementById("projects-select");
+            const selectedProject = projectsDropdown.value;
+            const selecteDate = document.querySelector('input[type="date"]').value;
+            
+            const activePriorityBtn = document.querySelector('.priority-btn-grup .active-priority');
+            const selectedPriority = activePriorityBtn ? activePriorityBtn.id : null;
+
+            if(todoTitle && selectedProject && selecteDate && selectedPriority) {
+                addNewTodo(todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority)
+            } else {
+                return;
+            }
+        }
+        
     });
+}
+
+function theFunction() {
+    console.log("Za function is called")
 }
 
 export { setupEventListeners, statusOfUI, filteredTodos };

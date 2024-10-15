@@ -525,12 +525,25 @@ select {
     min-width: 4.5rem;
 }
 
+.priority-btn-grup #low {
+    color: #2a9d8f;
+    border-color: #2a9d8f;
+}
+
+.priority-btn-grup #low:hover,
+.priority-btn-grup #low.active-priority {
+    color: #F7F7F7;
+    background-color: #2a9d8f;
+}
+
 .priority-btn-grup #medium {
     color: #FFA500;
     border-color: #FFA500;
 }
 
-.priority-btn-grup #medium:hover {
+.priority-btn-grup #medium:hover,
+.priority-btn-grup #medium.active-priority {
+    color: #F7F7F7;
     background-color: #FFA500;
 }
 
@@ -539,7 +552,9 @@ select {
     border-color: #FF0000;
 }
 
-.priority-btn-grup #high:hover {
+.priority-btn-grup #high:hover,
+.priority-btn-grup #high.active-priority {
+    color: #F7F7F7;
     background-color: #FF0000;
 }
 
