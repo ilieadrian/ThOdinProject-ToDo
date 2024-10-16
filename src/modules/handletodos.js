@@ -46,6 +46,15 @@ function addNewTodo(todoTitle, todoDescription, selectedProject, selecteDate, se
     }
 }
 
+function editTodo(projectId, todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority) {
+            console.log("Id of the clicked todo to edit from eventlistener:", projectId);
+            console.log("todoTitle", todoTitle )
+            console.log("todoDescription", todoDescription )
+            console.log("selectedProject", selectedProject )
+            console.log("selecteDate", selecteDate )
+            console.log("selectedPriority", selectedPriority )
+}
+
 function checkForDuplicateTitle(newTodo, todoList){
     return todoList.some(todoList => todoList.title === newTodo.title)
 }
@@ -70,4 +79,4 @@ function deleteTodoItem(elementId, todoList, projectsList) {
     }
 }
 
-export { getTodosByProject, displayToDods, addNewTodo, deleteTodoItem }
+export { getTodosByProject, displayToDods, addNewTodo, editTodo, deleteTodoItem }

@@ -1,5 +1,5 @@
 import { renderTodoContainer, renderProjectContainer, renderHomeMenu } from "./index";
-import { getTodosByProject, displayToDods, addNewTodo, deleteTodoItem } from './handletodos';
+import { getTodosByProject, displayToDods, addNewTodo, editTodo, deleteTodoItem } from './handletodos';
 import { handleProject, handleProjectCountNumber, renderDueTodosContainer, getProjetsByDueDate } from "./handleproject";
 import { renderUI } from "./index";
 import { getProjects } from "./handleproject";
@@ -135,7 +135,7 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
                 <p>Create a new To Do</p>
                 <img src="../src/images/close-ellipse-white-bg.svg" class="close-project-modal-button close-btn">
             </div>
-            <form action="">
+            <form data-id="${todoList[elementId].id}">
                 <ul class="input-container">
                     <li>
                         <label for="title">Title</label>
@@ -165,7 +165,7 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
                         <button id="high" class="${todoList[elementId].priority === "high" ? "active-priority" : ""}">High</button>
                     </div>
 
-                    <button>Confirm edit</button> 
+                    <button id="edit-modal-todo">Confirm edit</button> 
                 </div> 
             </form>
             
@@ -173,7 +173,8 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
     </div>
     `;
 
-    console.log(todoList[elementId].priority)
+    console.log("Id of the clicked todo to edit:", todoList[elementId].id)
+    console.table(todoList);
     addCloseEventListeners(modalContainer);
 }
 
@@ -331,8 +332,8 @@ function setupEventListeners(todoList, projectsList) {
 
         if (event.target && event.target.id === 'create-todo'){
             event.preventDefault();
-            const todoTitle = document.querySelector('#title').value.trim();
-            const todoDescription = document.querySelector('#description').value.trim();
+            const todoTitle = document.getElementById('title').value.trim();
+            const todoDescription = document.getElementById('description').value.trim();
             const projectsDropdown = document.getElementById("projects-select");
             const selectedProject = projectsDropdown.value;
             const selecteDate = document.querySelector('input[type="date"]').value;
@@ -346,6 +347,22 @@ function setupEventListeners(todoList, projectsList) {
                 alert("Required fields: Title and Date");
                 return;
             }
+        }
+        if (event.target && event.target.id === 'edit-modal-todo') {
+            event.preventDefault();
+            
+            
+            const form = document.getElementsByTagName("form");
+            const projectId = form[0].dataset.id;
+            const todoTitle = document.getElementById('title').value.trim();
+            const todoDescription = document.getElementById('description').value.trim();
+            const projectsDropdown = document.getElementById("projects-select");
+            const selectedProject = projectsDropdown.value;
+            const selecteDate = document.querySelector('input[type="date"]').value;
+            const activePriorityBtn = document.querySelector('.priority-btn-grup .active-priority');
+            const selectedPriority = activePriorityBtn ? activePriorityBtn.id : null;
+            
+            editTodo(projectId, todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority)
         }
     });
 }
