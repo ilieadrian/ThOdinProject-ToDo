@@ -135,7 +135,7 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
                 <p>Edit To Do</p>
                 <img src="../src/images/close-ellipse-white-bg.svg" class="close-project-modal-button close-btn">
             </div>
-            <form data-id="${todoList[elementId].id}">
+            <form data-formid="${todoList[elementId].id}">
                 <ul class="input-container">
                     <li>
                         <label for="title">Title</label>
@@ -285,6 +285,7 @@ function setupEventListeners(todoList, projectsList) {
             const projectName = anchor.textContent;
 
             filteredTodos = getTodosByProject(todoList, projectName);
+            
             renderTodoContainer(filteredTodos);
             handleProjectCountNumber();
         
@@ -300,7 +301,7 @@ function setupEventListeners(todoList, projectsList) {
         
     });
 
-    //Event listeners for new Projects/TTodos and handlers for edits
+    //Event listeners for new Projects/Todos and handlers for edits
         modalContainer.addEventListener('click', function(event) {
         if (event.target && event.target.id === 'create-project') {
             event.preventDefault();
@@ -348,10 +349,9 @@ function setupEventListeners(todoList, projectsList) {
         }
         if (event.target && event.target.id === 'edit-modal-todo') {
             event.preventDefault();
-            
-            
+                        
             const form = document.getElementsByTagName("form");
-            const projectId = form[0].dataset.id;
+            const projectId = form[0].dataset.formid;
             const todoTitle = document.getElementById('title').value.trim();
             const todoDescription = document.getElementById('description').value.trim();
             const projectsDropdown = document.getElementById("projects-select");

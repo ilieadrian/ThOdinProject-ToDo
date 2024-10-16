@@ -29,7 +29,8 @@ function displayToDods(todoList) {
 }
 
 function getTodosByProject(todoList, curentElement) {
-    return todoList.some(taskList => taskList.project === curentElement);
+    console.log("filteredTodos in getTodosByProject", todoList.filter(taskList => taskList.project === curentElement))
+    return todoList.filter(taskList => taskList.project === curentElement);
 }
 
 function addNewTodo(todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority, todoList, projectsList){
