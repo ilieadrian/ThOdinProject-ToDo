@@ -132,7 +132,7 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
     <div id="edit-modal-todo" class="modal active">
         <div class="modal-content">
             <div class="modal-header">
-                <p>Create a new To Do</p>
+                <p>Edit To Do</p>
                 <img src="../src/images/close-ellipse-white-bg.svg" class="close-project-modal-button close-btn">
             </div>
             <form data-id="${todoList[elementId].id}">
@@ -173,8 +173,6 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
     </div>
     `;
 
-    console.log("Id of the clicked todo to edit:", todoList[elementId].id)
-    console.table(todoList);
     addCloseEventListeners(modalContainer);
 }
 
@@ -362,7 +360,7 @@ function setupEventListeners(todoList, projectsList) {
             const activePriorityBtn = document.querySelector('.priority-btn-grup .active-priority');
             const selectedPriority = activePriorityBtn ? activePriorityBtn.id : null;
             
-            editTodo(projectId, todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority)
+            editTodo(projectId, todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority, todoList, projectsList)
         }
     });
 }

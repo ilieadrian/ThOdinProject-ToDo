@@ -46,13 +46,17 @@ function addNewTodo(todoTitle, todoDescription, selectedProject, selecteDate, se
     }
 }
 
-function editTodo(projectId, todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority) {
-            console.log("Id of the clicked todo to edit from eventlistener:", projectId);
-            console.log("todoTitle", todoTitle )
-            console.log("todoDescription", todoDescription )
-            console.log("selectedProject", selectedProject )
-            console.log("selecteDate", selecteDate )
-            console.log("selectedPriority", selectedPriority )
+function editTodo(projectId, todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority, todoList, projectsList) {
+    const selectedTodo = todoList[projectId]; 
+    selectedTodo._title = todoTitle;
+    selectedTodo._description = todoDescription;
+    selectedTodo._project = selectedProject;
+    selectedTodo._dueDate = selecteDate;
+    selectedTodo._priority = selectedPriority;
+            
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+    renderUI(projectsList, todoList);
+    setupEventListeners(todoList, projectsList);
 }
 
 function checkForDuplicateTitle(newTodo, todoList){

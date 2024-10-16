@@ -46,4 +46,8 @@ export default class Todo {
     set status(value) {
         this._status = value;
     } 
+
+    //set project(value){
+      //  this.project = value;
+    //}
 }
