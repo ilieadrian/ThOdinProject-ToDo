@@ -192,6 +192,7 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
         renderHomeMenu(todoList);
         handleProjectCountNumber();
         renderDueTodosContainer(todoList);
+        
                 } else {
             renderUI(projectsList, todoList);
         }
@@ -239,7 +240,7 @@ function setupEventListeners(todoList, projectsList) {
     });
     
     //
-    const projectLink = document.getElementById('projects-link');
+    const homeLink = document.getElementById('home-link');
     const addProjectBTN = document.querySelector('.addproject');
     const addToDoBTN = document.querySelector('.addtodo');
 
@@ -251,7 +252,7 @@ function setupEventListeners(todoList, projectsList) {
         openToDoModal(modalContainer, projectsList);
     });
 
-    projectLink.addEventListener('click', function() {
+    homeLink.addEventListener('click', function() {
         renderUI(projectsList, todoList);
         setupEventListeners(todoList, projectsList);
         statusOfUI = false;
@@ -277,12 +278,14 @@ function setupEventListeners(todoList, projectsList) {
 
     // Attach event listeners to project links
     const projectList = document.querySelectorAll("#projects li");
+    console.log(projectList);
 
     projectList.forEach(li => {
         const anchor = li.querySelector('a');
         anchor.addEventListener('click', function(event) {
             event.preventDefault();
             const projectName = anchor.textContent;
+            console.log(projectName);
 
             filteredTodos = getTodosByProject(todoList, projectName);
             

@@ -29,7 +29,6 @@ function displayToDods(todoList) {
 }
 
 function getTodosByProject(todoList, curentElement) {
-    console.log("filteredTodos in getTodosByProject", todoList.filter(taskList => taskList.project === curentElement))
     return todoList.filter(taskList => taskList.project === curentElement);
 }
 

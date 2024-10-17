@@ -19,14 +19,14 @@ const defaultValues  = (function () {
             new Todo('Xyx', 'Some random text', '2024-09-31', 'low', true, 'Active learning'),
             new Todo('ABC', 'First three letters from the alphabet', '2024-10-16', 'high', false, 'Active learning'),
             //surplus
-            // new Todo('XYZ', 'Some letters from the alphabet', '2024-10-18', 'high', false, 'Learning'),
-            // new Todo('TheOdinProject chapter 15', 'Finish theOdinProject chapter 15', '2024-10-17', 'medium', true, 'Home'),
-            // new Todo('Zee projects', 'lorem20', '2024-10-13', 'high', true, 'Zee'),
-            // new Todo('Zee3 projects', 'lorem20', '2024-10-15', 'low', false, 'Learning'),
-            // new Todo('Zee4 projects', 'lorem20', '2024-10-15', 'high', true, 'Learning'),
-            // new Todo('Zee5projects', 'lorem20', '2024-10-16', 'low', true, 'Zee'),
-            // new Todo('Zee6 projects', 'lorem20', '2024-10-17', 'high', false, 'Zee'),
-            // new Todo('Zee7 projects', 'lorem20', '2024-10-18', 'high', true, 'Home'),
+            new Todo('XYZ', 'Some letters from the alphabet', '2024-10-18', 'high', false, 'Learning'),
+            new Todo('TheOdinProject chapter 15', 'Finish theOdinProject chapter 15', '2024-10-17', 'medium', true, 'Home'),
+            new Todo('Zee projects', 'lorem20', '2024-10-13', 'high', true, 'Zee'),
+            new Todo('Zee3 projects', 'lorem20', '2024-10-15', 'low', false, 'Learning'),
+            new Todo('Zee4 projects', 'lorem20', '2024-10-15', 'high', true, 'Learning'),
+            new Todo('Zee5projects', 'lorem20', '2024-10-16', 'low', true, 'Zee'),
+            new Todo('Zee6 projects', 'lorem20', '2024-10-17', 'high', false, 'Zee'),
+            new Todo('Zee7 projects', 'lorem20', '2024-10-18', 'high', true, 'Home'),
         ];        
         
         projectsList = [];

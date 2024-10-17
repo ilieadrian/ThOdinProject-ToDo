@@ -84,7 +84,7 @@ function renderDueTodosContainer(todoList) {
 
     let ulContent = '';
     ulContent = `
-        <li><a href="#" id="projects-link">Home</a><span class="number-of-tasks">${countIncompleteTodos(todoList)}</span></li>
+        <li><a href="#" id="home-link">Home</a><span class="number-of-tasks">${countIncompleteTodos(todoList)}</span></li>
         <li><a href="#" id="today-link">Due Today</a><span class="number-of-tasks">${dueTodayTodos.length}</span></li>
         <li><a href="#" id="week-link">Due This Week</a><span class="number-of-tasks">${dueThisWeekTodos.length}</span></li>
     `;
