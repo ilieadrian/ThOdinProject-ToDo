@@ -1,53 +1,53 @@
 export default class Todo {
-    static idCounter = -1;
+  static idCounter = -1;
 
-    constructor(title, description, dueDate, priority, status, project) {
-        this._id = Todo.calcId();
-        this._title = title;
-        this._description = description;
-        this._dueDate = dueDate;
-        this._priority = priority;
-        this._status = status;
-        this._project = project; 
-    }
+  constructor(title, description, dueDate, priority, status, project) {
+    this._id = Todo.calcId();
+    this._title = title;
+    this._description = description;
+    this._dueDate = dueDate;
+    this._priority = priority;
+    this._status = status;
+    this._project = project;
+  }
 
-    static calcId() {
-        return ++Todo.idCounter;
-    }
-    
-    get id() {
-        return this._id;
-    }
-    
-    get title() {
-        return this._title;
-    }
+  static calcId() {
+    return ++Todo.idCounter;
+  }
 
-    get description() {
-        return this._description;
-    }
+  get id() {
+    return this._id;
+  }
 
-    get dueDate() {
-        return this._dueDate;
-    }
+  get title() {
+    return this._title;
+  }
 
-    get priority() {
-        return this._priority;
-    }
+  get description() {
+    return this._description;
+  }
 
-    get status() {
-        return this._status;
-    }
+  get dueDate() {
+    return this._dueDate;
+  }
 
-    get project() {
-        return this._project;
-    }
+  get priority() {
+    return this._priority;
+  }
 
-    set status(value) {
-        this._status = value;
-    } 
+  get status() {
+    return this._status;
+  }
 
-    //set project(value){
-      //  this.project = value;
-    //}
+  get project() {
+    return this._project;
+  }
+
+  set status(value) {
+    this._status = value;
+  }
+
+  //set project(value){
+  //  this.project = value;
+  //}
 }

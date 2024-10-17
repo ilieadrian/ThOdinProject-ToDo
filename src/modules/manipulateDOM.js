@@ -1,6 +1,21 @@
-import { renderTodoContainer, renderProjectContainer, renderHomeMenu } from "./index";
-import { getTodosByProject, displayToDods, addNewTodo, editTodo, deleteTodoItem } from './handletodos';
-import { handleProject, handleProjectCountNumber, renderDueTodosContainer, getProjetsByDueDate } from "./handleproject";
+import {
+  renderTodoContainer,
+  renderProjectContainer,
+  renderHomeMenu,
+} from "./index";
+import {
+  getTodosByProject,
+  displayToDods,
+  addNewTodo,
+  editTodo,
+  deleteTodoItem,
+} from "./handletodos";
+import {
+  handleProject,
+  handleProjectCountNumber,
+  renderDueTodosContainer,
+  getProjetsByDueDate,
+} from "./handleproject";
 import { renderUI } from "./index";
 import { getProjects } from "./handleproject";
 import { format } from "date-fns";
@@ -9,24 +24,24 @@ let statusOfUI = false;
 let filteredTodos = [];
 
 export default (function () {
-    document.addEventListener("DOMContentLoaded", function() {
-        //Menu links interaction
-        const menuLinks = document.querySelectorAll(".menu-links a");
-        
-        menuLinks.forEach(function(link) {
-            link.addEventListener("click", function(event) {
-                menuLinks.forEach(function(link) {
-                    link.classList.remove("active");
-                });
-                    this.classList.add("active");
-                });
-            });        
+  document.addEventListener("DOMContentLoaded", function () {
+    //Menu links interaction
+    const menuLinks = document.querySelectorAll(".menu-links a");
+
+    menuLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        menuLinks.forEach(function (link) {
+          link.classList.remove("active");
         });
+        this.classList.add("active");
+      });
+    });
+  });
 })();
 
 function openProjectModal(modalContainer) {
-    modalContainer.innerHTML = "";
-    modalContainer.innerHTML = `
+  modalContainer.innerHTML = "";
+  modalContainer.innerHTML = `
     <div id="add-project-modal" class="modal active">
         <div class="modal-content">
             <div class="modal-header">
@@ -45,12 +60,12 @@ function openProjectModal(modalContainer) {
     </div>
     `;
 
-    addCloseEventListeners(modalContainer);
+  addCloseEventListeners(modalContainer);
 }
 
 function openToDoModal(modalContainer, projectsList) {
-    modalContainer.innerHTML = "";
-    modalContainer.innerHTML = `
+  modalContainer.innerHTML = "";
+  modalContainer.innerHTML = `
     <div id="add-modal-todo" class="modal active">
         <div class="modal-content">
             <div class="modal-header">
@@ -94,12 +109,12 @@ function openToDoModal(modalContainer, projectsList) {
         </div>
     </div>
     `;
-    addCloseEventListeners(modalContainer);
+  addCloseEventListeners(modalContainer);
 }
 
 function openViewModal(elementId, todoList, modalContainer) {
-    modalContainer.innerHTML = "";
-    modalContainer.innerHTML = `
+  modalContainer.innerHTML = "";
+  modalContainer.innerHTML = `
     <div id="view-modal" class="modal active">
         <div class="modal-content">
             <img src="../src/images/close-ellipse.svg" class="close-modal-button close-btn">
@@ -123,12 +138,12 @@ function openViewModal(elementId, todoList, modalContainer) {
         </div>    
     </div>
     `;
-    addCloseEventListeners(modalContainer);
+  addCloseEventListeners(modalContainer);
 }
 
 function openEditModal(elementId, todoList, projectsList, modalContainer) {
-    modalContainer.innerHTML = "";
-    modalContainer.innerHTML = `
+  modalContainer.innerHTML = "";
+  modalContainer.innerHTML = `
     <div id="edit-modal-todo" class="modal active">
         <div class="modal-content">
             <div class="modal-header">
@@ -173,200 +188,223 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
     </div>
     `;
 
-    addCloseEventListeners(modalContainer);
+  addCloseEventListeners(modalContainer);
 }
 
 function modifyTodoStatus(elementId, target, projectsList, todoList) {
-    const todoItem = todoList.find(todo => todo.id == elementId);
-    todoItem.status = target.checked; 
+  const todoItem = todoList.find((todo) => todo.id == elementId);
+  todoItem.status = target.checked;
 
-    if (!todoItem) {
-        console.error("Todo item not found:", id);
-        return;
-    }
+  if (!todoItem) {
+    // console.error("Todo item not found:", id);
+    return;
+  }
 
-    if(statusOfUI) {
-        displayToDods(todoList);
-        getTodosByProject(todoList, todoItem.project);        
-        renderProjectContainer(projectsList, todoList);
-        renderHomeMenu(todoList);
-        handleProjectCountNumber();
-        renderDueTodosContainer(todoList);
-        
-                } else {
-            renderUI(projectsList, todoList);
-        }
-    setupEventListeners(todoList, projectsList);
+  if (statusOfUI) {
+    displayToDods(todoList);
+    getTodosByProject(todoList, todoItem.project);
+    renderProjectContainer(projectsList, todoList);
+    renderHomeMenu(todoList);
+    handleProjectCountNumber();
+    renderDueTodosContainer(todoList);
+  } else {
+    renderUI(projectsList, todoList);
+  }
+  setupEventListeners(todoList, projectsList);
 }
 
 function addCloseEventListeners(modalContainer) {
-    const closeButtons = modalContainer.querySelectorAll('.close-btn');
-    closeButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            modalContainer.innerHTML = '';
-        });
+  const closeButtons = modalContainer.querySelectorAll(".close-btn");
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      modalContainer.innerHTML = "";
     });
+  });
 }
 
 function setupEventListeners(todoList, projectsList) {
-    const todoListContainer = document.querySelector('.todo-container');
-    let modalContainer = document.getElementById('modal-container');
+  const todoListContainer = document.querySelector(".todo-container");
+  let modalContainer = document.getElementById("modal-container");
 
-    //Home and dueDate menu section
-    const { dueTodayTodos, dueThisWeekTodos } = getProjetsByDueDate(todoList);
-    const todayTodosLink = document.getElementById('today-link');
-    const thisWeekTodosLink = document.getElementById('week-link');
+  //Home and dueDate menu section
+  const { dueTodayTodos, dueThisWeekTodos } = getProjetsByDueDate(todoList);
+  const todayTodosLink = document.getElementById("today-link");
+  const thisWeekTodosLink = document.getElementById("week-link");
 
-    todayTodosLink.addEventListener('click', function() {
-        if(dueTodayTodos.length !==0 ) {
-            renderTodoContainer(dueTodayTodos);
-        } else {
-            const errorMessage = `<p class="emptyPageNotification">There are no todos with due date today.</p>`;
-            renderTodoContainer(dueTodayTodos, errorMessage);
-        }
-        
-        return statusOfUI = true;
+  todayTodosLink.addEventListener("click", function () {
+    if (dueTodayTodos.length !== 0) {
+      renderTodoContainer(dueTodayTodos);
+    } else {
+      const errorMessage = `<p class="emptyPageNotification">There are no todos with due date today.</p>`;
+      renderTodoContainer(dueTodayTodos, errorMessage);
+    }
+
+    return (statusOfUI = true);
+  });
+
+  thisWeekTodosLink.addEventListener("click", function () {
+    if (dueThisWeekTodos.length !== 0) {
+      renderTodoContainer(dueThisWeekTodos);
+    } else {
+      const errorMessage = `<p class="emptyPageNotification">There are no todos with due date this week.</p>`;
+      renderTodoContainer(dueThisWeekTodos, errorMessage);
+    }
+
+    return (statusOfUI = true);
+  });
+
+  //
+  const homeLink = document.getElementById("home-link");
+  const addProjectBTN = document.querySelector(".addproject");
+  const addToDoBTN = document.querySelector(".addtodo");
+
+  addProjectBTN.addEventListener("click", function () {
+    openProjectModal(modalContainer, projectsList);
+  });
+
+  addToDoBTN.addEventListener("click", function () {
+    openToDoModal(modalContainer, projectsList);
+  });
+
+  homeLink.addEventListener("click", function () {
+    renderUI(projectsList, todoList);
+    setupEventListeners(todoList, projectsList);
+    statusOfUI = false;
+  });
+
+  todoListContainer.addEventListener("click", function (event) {
+    const target = event.target;
+    const listItem = target.closest(".item");
+    const elementId = listItem ? +listItem.id.split("-")[1] : null;
+
+    if (elementId !== null) {
+      if (target.closest(".view-btn")) {
+        openViewModal(elementId, todoList, modalContainer);
+      } else if (target.closest(".edit-btn")) {
+        openEditModal(elementId, todoList, projectsList, modalContainer);
+      } else if (target.closest(".delete-btn")) {
+        deleteTodoItem(elementId, todoList, projectsList);
+      } else if (target.classList.contains("todo-checkbox")) {
+        modifyTodoStatus(elementId, target, projectsList, todoList);
+      }
+    }
+  });
+
+  // Attach event listeners to project links
+  const projectList = document.querySelectorAll("#projects li");
+  console.log(projectList);
+
+  projectList.forEach((li) => {
+    const anchor = li.querySelector("a");
+    anchor.addEventListener("click", function (event) {
+      event.preventDefault();
+      const projectName = anchor.textContent;
+      console.log(projectName);
+
+      filteredTodos = getTodosByProject(todoList, projectName);
+
+      renderTodoContainer(filteredTodos);
+      handleProjectCountNumber();
+
+      projectList.forEach((item) => {
+        const link = item.querySelector("a");
+        link.classList.remove("active");
+      });
+
+      anchor.classList.add("active");
+      statusOfUI = true;
+      return statusOfUI, filteredTodos;
     });
-    
-    thisWeekTodosLink.addEventListener('click', function() {
-        if(dueThisWeekTodos.length !==0 ) {
-            renderTodoContainer(dueThisWeekTodos);
-        } else {
-            const errorMessage = `<p class="emptyPageNotification">There are no todos with due date this week.</p>`;
-            renderTodoContainer(dueThisWeekTodos, errorMessage);
-        }
+  });
 
-        return statusOfUI = true;
-    });
-    
-    //
-    const homeLink = document.getElementById('home-link');
-    const addProjectBTN = document.querySelector('.addproject');
-    const addToDoBTN = document.querySelector('.addtodo');
+  //Event listeners for new Projects/Todos and handlers for edits
+  modalContainer.addEventListener("click", function (event) {
+    if (event.target && event.target.id === "create-project") {
+      event.preventDefault();
 
-    addProjectBTN.addEventListener('click', function() {
-        openProjectModal(modalContainer, projectsList);
-    });
+      const passedProjectName = document.querySelector("#name").value.trim();
+      if (passedProjectName.length === 0) {
+        alert("Project name cannot be empty");
+        return;
+      } else {
+        handleProject(null, projectsList, todoList, passedProjectName);
+        modalContainer.innerHTML = "";
+      }
+    }
 
-    addToDoBTN.addEventListener('click', function() {
-        openToDoModal(modalContainer, projectsList);
-    });
+    const priorityBTNS = document.querySelectorAll(".priority-btn-grup button");
 
-    homeLink.addEventListener('click', function() {
-        renderUI(projectsList, todoList);
-        setupEventListeners(todoList, projectsList);
-        statusOfUI = false;
-    })
+    priorityBTNS.forEach((btn) => {
+      btn.addEventListener("click", function (event) {
+        event.preventDefault();
 
-    todoListContainer.addEventListener('click', function(event) {
-        const target = event.target;
-        const listItem = target.closest('.item');
-        const elementId = listItem ? +listItem.id.split('-')[1] : null;
-                        
-        if (elementId !== null) {
-            if (target.closest('.view-btn')) {
-                openViewModal(elementId, todoList, modalContainer);
-            } else if (target.closest('.edit-btn')) {
-                openEditModal(elementId, todoList, projectsList, modalContainer);
-            } else if (target.closest('.delete-btn')) {
-                deleteTodoItem(elementId, todoList, projectsList);
-            } else if (target.classList.contains('todo-checkbox')) {
-                modifyTodoStatus(elementId, target, projectsList, todoList);
-            }
-        }
+        priorityBTNS.forEach((button) =>
+          button.classList.remove("active-priority"),
+        );
+
+        this.classList.add("active-priority");
+      });
     });
 
-    // Attach event listeners to project links
-    const projectList = document.querySelectorAll("#projects li");
-    console.log(projectList);
+    if (event.target && event.target.id === "create-todo") {
+      event.preventDefault();
+      const todoTitle = document.getElementById("title").value.trim();
+      const todoDescription = document
+        .getElementById("description")
+        .value.trim();
+      const projectsDropdown = document.getElementById("projects-select");
+      const selectedProject = projectsDropdown.value;
+      const selecteDate = document.querySelector('input[type="date"]').value;
+      const activePriorityBtn = document.querySelector(
+        ".priority-btn-grup .active-priority",
+      );
+      const selectedPriority = activePriorityBtn ? activePriorityBtn.id : null;
 
-    projectList.forEach(li => {
-        const anchor = li.querySelector('a');
-        anchor.addEventListener('click', function(event) {
-            event.preventDefault();
-            const projectName = anchor.textContent;
-            console.log(projectName);
+      if (todoTitle && selectedProject && selecteDate && selectedPriority) {
+        addNewTodo(
+          todoTitle,
+          todoDescription,
+          selectedProject,
+          selecteDate,
+          selectedPriority,
+          todoList,
+          projectsList,
+        );
+        modalContainer.innerHTML = "";
+      } else {
+        alert("Required fields: Title and Date");
+        return;
+      }
+    }
+    if (event.target && event.target.id === "edit-modal-todo") {
+      event.preventDefault();
 
-            filteredTodos = getTodosByProject(todoList, projectName);
-            
-            renderTodoContainer(filteredTodos);
-            handleProjectCountNumber();
-        
-            projectList.forEach(item => {
-                const link = item.querySelector('a');
-                link.classList.remove('active');
-            });
+      const form = document.getElementsByTagName("form");
+      const projectId = form[0].dataset.formid;
+      const todoTitle = document.getElementById("title").value.trim();
+      const todoDescription = document
+        .getElementById("description")
+        .value.trim();
+      const projectsDropdown = document.getElementById("projects-select");
+      const selectedProject = projectsDropdown.value;
+      const selecteDate = document.querySelector('input[type="date"]').value;
+      const activePriorityBtn = document.querySelector(
+        ".priority-btn-grup .active-priority",
+      );
+      const selectedPriority = activePriorityBtn ? activePriorityBtn.id : null;
 
-            anchor.classList.add('active');
-            statusOfUI = true;
-            return statusOfUI, filteredTodos;
-        });
-        
-    });
-
-    //Event listeners for new Projects/Todos and handlers for edits
-        modalContainer.addEventListener('click', function(event) {
-        if (event.target && event.target.id === 'create-project') {
-            event.preventDefault();
-
-            const passedProjectName = document.querySelector('#name').value.trim();
-            if (passedProjectName.length === 0) {
-                alert("Project name cannot be empty")
-                return;
-            } else {
-                handleProject(null, projectsList, todoList, passedProjectName);
-                modalContainer.innerHTML = '';  
-            } 
-            
-        }
-
-        const priorityBTNS = document.querySelectorAll(".priority-btn-grup button");
-
-        priorityBTNS.forEach(btn => {
-            btn.addEventListener('click', function(event) {
-                event.preventDefault(); 
-    
-                priorityBTNS.forEach(button => button.classList.remove('active-priority'));
-    
-                this.classList.add('active-priority');
-            });
-        });
-
-        if (event.target && event.target.id === 'create-todo'){
-            event.preventDefault();
-            const todoTitle = document.getElementById('title').value.trim();
-            const todoDescription = document.getElementById('description').value.trim();
-            const projectsDropdown = document.getElementById("projects-select");
-            const selectedProject = projectsDropdown.value;
-            const selecteDate = document.querySelector('input[type="date"]').value;
-            const activePriorityBtn = document.querySelector('.priority-btn-grup .active-priority');
-            const selectedPriority = activePriorityBtn ? activePriorityBtn.id : null;
-
-            if(todoTitle && selectedProject && selecteDate && selectedPriority) {
-                addNewTodo(todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority, todoList, projectsList);
-                modalContainer.innerHTML = '';  
-            } else {
-                alert("Required fields: Title and Date");
-                return;
-            }
-        }
-        if (event.target && event.target.id === 'edit-modal-todo') {
-            event.preventDefault();
-                        
-            const form = document.getElementsByTagName("form");
-            const projectId = form[0].dataset.formid;
-            const todoTitle = document.getElementById('title').value.trim();
-            const todoDescription = document.getElementById('description').value.trim();
-            const projectsDropdown = document.getElementById("projects-select");
-            const selectedProject = projectsDropdown.value;
-            const selecteDate = document.querySelector('input[type="date"]').value;
-            const activePriorityBtn = document.querySelector('.priority-btn-grup .active-priority');
-            const selectedPriority = activePriorityBtn ? activePriorityBtn.id : null;
-            
-            editTodo(projectId, todoTitle, todoDescription, selectedProject, selecteDate, selectedPriority, todoList, projectsList)
-        }
-    });
+      editTodo(
+        projectId,
+        todoTitle,
+        todoDescription,
+        selectedProject,
+        selecteDate,
+        selectedPriority,
+        todoList,
+        projectsList,
+      );
+    }
+  });
 }
-
 
 export { setupEventListeners, statusOfUI, filteredTodos };

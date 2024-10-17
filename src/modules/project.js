@@ -1,38 +1,38 @@
 export default class Project {
-    static idCounter = -1;
+  static idCounter = -1;
 
-    constructor(name) {
-        this._id = Project.calcId();
-        this._name = name;
-        this._items = 0;
-    }   
+  constructor(name) {
+    this._id = Project.calcId();
+    this._name = name;
+    this._items = 0;
+  }
 
-    static calcId() {
-        return ++Project.idCounter;
-    }
+  static calcId() {
+    return ++Project.idCounter;
+  }
 
-    get id() {
-        return this._id;
-    }
+  get id() {
+    return this._id;
+  }
 
-    get name() {
-        return this._name;
-    }
+  get name() {
+    return this._name;
+  }
 
-    get items() {
-        return this._items;
-    }
+  get items() {
+    return this._items;
+  }
 
-    set name(value) {
-        this._name = value;
-    }
+  set name(value) {
+    this._name = value;
+  }
 
-    calcItem() {
-        this._items += 1;
-    }
+  calcItem() {
+    this._items += 1;
+  }
 
-    set items(value) {
-        console.log(value)
-        // this._items = value;
-    }
+  set items(value) {
+    console.log(value);
+    // this._items = value;
+  }
 }
