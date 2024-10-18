@@ -13,7 +13,6 @@ import {
 import {
   handleProject,
   handleProjectCountNumber,
-  renderDueTodosContainer,
   getProjetsByDueDate,
 } from "./handleproject";
 import { renderUI } from "./index";
@@ -196,7 +195,6 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
   todoItem.status = target.checked;
 
   if (!todoItem) {
-    // console.error("Todo item not found:", id);
     return;
   }
 
@@ -206,7 +204,6 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
     renderProjectContainer(projectsList, todoList);
     renderHomeMenu(todoList);
     handleProjectCountNumber();
-    renderDueTodosContainer(todoList);
   } else {
     renderUI(projectsList, todoList);
   }
@@ -272,7 +269,7 @@ function setupEventListeners(todoList, projectsList) {
     statusOfUI = false;
   });
 
-  todoListContainer.addEventListener("click", function (event) {
+  function adUIListeners(event) {
     const target = event.target;
     const listItem = target.closest(".item");
     const elementId = listItem ? +listItem.id.split("-")[1] : null;
@@ -286,20 +283,21 @@ function setupEventListeners(todoList, projectsList) {
         deleteTodoItem(elementId, todoList, projectsList);
       } else if (target.classList.contains("todo-checkbox")) {
         modifyTodoStatus(elementId, target, projectsList, todoList);
+        todoListContainer.removeEventListener("click", adUIListeners);
       }
     }
-  });
+  }
+
+  todoListContainer.addEventListener("click", adUIListeners);
 
   // Attach event listeners to project links
   const projectList = document.querySelectorAll("#projects li");
-  console.log(projectList);
 
   projectList.forEach((li) => {
     const anchor = li.querySelector("a");
     anchor.addEventListener("click", function (event) {
       event.preventDefault();
       const projectName = anchor.textContent;
-      console.log(projectName);
 
       filteredTodos = getTodosByProject(todoList, projectName);
 
