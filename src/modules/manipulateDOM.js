@@ -141,6 +141,8 @@ function openViewModal(elementId, todoList, modalContainer) {
 }
 
 function openEditModal(elementId, todoList, projectsList, modalContainer) {
+  console.log("elementid", elementId)
+  // console.table(todoList)
   modalContainer.innerHTML = "";
   modalContainer.innerHTML = `
     <div id="edit-modal-todo" class="modal active">
@@ -278,7 +280,11 @@ function setupEventListeners(todoList, projectsList) {
       if (target.closest(".view-btn")) {
         openViewModal(elementId, todoList, modalContainer);
       } else if (target.closest(".edit-btn")) {
-        openEditModal(elementId, todoList, projectsList, modalContainer);
+        if (todoList[elementId]) { // Check if the todo exists
+          openEditModal(elementId, todoList, projectsList, modalContainer);
+      } else {
+          console.error(`Todo with ID ${elementId} does not exist.`); 
+      }
       } else if (target.closest(".delete-btn")) {
         deleteTodoItem(elementId, todoList, projectsList);
       } else if (target.classList.contains("todo-checkbox")) {

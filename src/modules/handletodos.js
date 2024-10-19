@@ -92,9 +92,11 @@ function checkForDuplicateTitle(newTodo, todoList) {
 }
 
 function deleteTodoItem(elementId, todoList, projectsList) {
+  console.table(todoList)
   const todoIndex = todoList.findIndex((todo) => todo.id == elementId);
 
   todoList.splice(todoIndex, 1);
+  
   localStorage.setItem("todoList", JSON.stringify(todoList));
 
   if (statusOfUI) {
@@ -104,11 +106,14 @@ function deleteTodoItem(elementId, todoList, projectsList) {
     handleProjectCountNumber();
   } else {
     renderUI(projectsList, todoList);
+    console.table(todoList)
+    
     setupEventListeners(todoList, projectsList);
     if (todoList.length == 0) {
       handleEmptyProjectPage();
     }
   }
+  console.table(todoList)
 }
 
 export {
