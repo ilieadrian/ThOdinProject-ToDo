@@ -12,6 +12,7 @@ import { deleteProject } from "./handleproject";
 import { setupEventListeners } from "./manipulateDOM";
 
 function renderUI(projectsList, todoList) {
+  console.log("@renderUI", todoList)
   let container = document.querySelector(".container");
   const headerTodoIcon = new Image();
   headerTodoIcon.src = TodoIcon;

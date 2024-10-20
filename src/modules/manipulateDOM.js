@@ -222,6 +222,7 @@ function addCloseEventListeners(modalContainer) {
 }
 
 function setupEventListeners(todoList, projectsList) {
+  console.log("@setupEventListeners", todoList)
   const todoListContainer = document.querySelector(".todo-container");
   let modalContainer = document.getElementById("modal-container");
 
@@ -274,23 +275,27 @@ function setupEventListeners(todoList, projectsList) {
   function adUIListeners(event) {
     const target = event.target;
     const listItem = target.closest(".item");
+    console.log(listItem)
     const elementId = listItem ? +listItem.id.split("-")[1] : null;
 
     if (elementId !== null) {
       if (target.closest(".view-btn")) {
         openViewModal(elementId, todoList, modalContainer);
       } else if (target.closest(".edit-btn")) {
-        if (todoList[elementId]) { // Check if the todo exists
-          openEditModal(elementId, todoList, projectsList, modalContainer);
-      } else {
-          console.error(`Todo with ID ${elementId} does not exist.`); 
+          if (todoList[elementId]) { // Check if the todo exists
+            openEditModal(elementId, todoList, projectsList, modalContainer);
+        } else {
+            console.error(`Todo with ID ${elementId} does not exist.`); 
       }
+      //attention here
       } else if (target.closest(".delete-btn")) {
         deleteTodoItem(elementId, todoList, projectsList);
       } else if (target.classList.contains("todo-checkbox")) {
         modifyTodoStatus(elementId, target, projectsList, todoList);
         todoListContainer.removeEventListener("click", adUIListeners);
       }
+            //attention here
+
     }
   }
 
