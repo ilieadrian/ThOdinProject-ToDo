@@ -141,8 +141,6 @@ function openViewModal(elementId, todoList, modalContainer) {
 }
 
 function openEditModal(elementId, todoList, projectsList, modalContainer) {
-  console.log("elementid", elementId)
-  // console.table(todoList)
   modalContainer.innerHTML = "";
   modalContainer.innerHTML = `
     <div id="edit-modal-todo" class="modal active">
@@ -222,7 +220,6 @@ function addCloseEventListeners(modalContainer) {
 }
 
 function setupEventListeners(todoList, projectsList) {
-  console.log("@setupEventListeners", todoList)
   const todoListContainer = document.querySelector(".todo-container");
   let modalContainer = document.getElementById("modal-container");
 
@@ -275,27 +272,26 @@ function setupEventListeners(todoList, projectsList) {
   function adUIListeners(event) {
     const target = event.target;
     const listItem = target.closest(".item");
-    console.log(listItem)
-    const elementId = listItem ? +listItem.id.split("-")[1] : null;
+    if (!listItem) return;
 
+    const elementId = listItem ? +listItem.id.split("-")[1] : null;
+    const todoIndex = todoList.findIndex((todo) => todo._id == elementId);
+  
     if (elementId !== null) {
       if (target.closest(".view-btn")) {
-        openViewModal(elementId, todoList, modalContainer);
+        openViewModal(todoIndex, todoList, modalContainer);
       } else if (target.closest(".edit-btn")) {
-          if (todoList[elementId]) { // Check if the todo exists
-            openEditModal(elementId, todoList, projectsList, modalContainer);
+        if (todoList[todoIndex]) {
+          openEditModal(todoIndex, todoList, projectsList, modalContainer);
         } else {
-            console.error(`Todo with ID ${elementId} does not exist.`); 
-      }
-      //attention here
+          console.error(`Todo with ID ${elementId} does not exist.`);
+        }
       } else if (target.closest(".delete-btn")) {
-        deleteTodoItem(elementId, todoList, projectsList);
+        deleteTodoItem(todoIndex, todoList, projectsList);
       } else if (target.classList.contains("todo-checkbox")) {
         modifyTodoStatus(elementId, target, projectsList, todoList);
         todoListContainer.removeEventListener("click", adUIListeners);
       }
-            //attention here
-
     }
   }
 

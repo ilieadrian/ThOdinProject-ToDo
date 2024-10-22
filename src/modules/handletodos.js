@@ -9,11 +9,9 @@ import Todo from "./todo";
 import { format } from "date-fns";
 
 function displayToDods(todoList) {
-  console.log("@displayToDods", todoList)
   let ulContent = "";
 
   todoList.forEach((element) => {
-    console.log(" todoList.forEach((element)", element.id)
     ulContent += `
             <li class="item" id="item-${element.id}">
                 <div class="name-grup ${element.status ? "finished" : ""}">
@@ -93,12 +91,9 @@ function checkForDuplicateTitle(newTodo, todoList) {
   return todoList.some((todoList) => todoList.title === newTodo.title);
 }
 
-function deleteTodoItem(elementId, todoList, projectsList) {
-  console.log("entering @deleteTodoItem", todoList)
-  const todoIndex = todoList.findIndex((todo) => todo.id == elementId);
-
+function deleteTodoItem(todoIndex, todoList, projectsList) {
   todoList.splice(todoIndex, 1);
-  
+
   localStorage.setItem("todoList", JSON.stringify(todoList));
 
   if (statusOfUI) {
@@ -108,13 +103,12 @@ function deleteTodoItem(elementId, todoList, projectsList) {
     handleProjectCountNumber();
   } else {
     renderUI(projectsList, todoList);
-    
+
     setupEventListeners(todoList, projectsList);
     if (todoList.length == 0) {
       handleEmptyProjectPage();
     }
   }
-  console.log("exiting @deleteTodoItem", todoList)
 }
 
 export {
