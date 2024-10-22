@@ -24,7 +24,6 @@ let filteredTodos = [];
 
 export default (function () {
   document.addEventListener("DOMContentLoaded", function () {
-    //Menu links interaction
     const menuLinks = document.querySelectorAll(".menu-links a");
 
     menuLinks.forEach(function (link) {
@@ -96,9 +95,9 @@ function openToDoModal(modalContainer, projectsList) {
                 <div class="button-container">  
                     <div class="priority-btn-grup">
                         <label for="priority">Priority:</label>
-                        <button id="low" class="active-priority" type="button">Low</button>
-                        <button id="medium" type="button">Medium</button>
-                        <button id="high" type="button">High</button>
+                        <button type="button" id="low" class="active-priority" type="button">Low</button>
+                        <button type="button" id="medium" type="button">Medium</button>
+                        <button type="button" id="high" type="button">High</button>
                     </div>
 
                     <button id="create-todo">Create project</button> 
@@ -174,9 +173,9 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
                 <div class="button-container">  
                     <div class="priority-btn-grup">
                         <label for="priority">Priority:</label>
-                        <button id="low" class="${todoList[elementId].priority === "low" ? "active-priority" : ""}">Low</button>
-                        <button id="medium" class="${todoList[elementId].priority === "medium" ? "active-priority" : ""}">Medium</button>
-                        <button id="high" class="${todoList[elementId].priority === "high" ? "active-priority" : ""}">High</button>
+                        <button type="button" id="low" class="${todoList[elementId].priority === "low" ? "active-priority" : ""}">Low</button>
+                        <button type="button" id="medium" class="${todoList[elementId].priority === "medium" ? "active-priority" : ""}">Medium</button>
+                        <button type="button" id="high" class="${todoList[elementId].priority === "high" ? "active-priority" : ""}">High</button>
                     </div>
 
                     <button id="edit-modal-todo">Confirm edit</button> 
