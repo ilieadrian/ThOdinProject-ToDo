@@ -148,7 +148,11 @@ function deleteProject(idToDelete, projectsList, todoList) {
     (project) => project.id == idToDelete,
   );
 
-  if (projectIndex !== -1) {
+const projectToDelete = projectsList.find(project => project.id == idToDelete).name;
+const todosInProject = countTodoinProject(projectToDelete, todoList);
+console.log("projectToDelete, todosInProject", projectToDelete, todosInProject)
+
+  if (projectIndex !== -1 && todosInProject == 0) {
     projectsList.splice(projectIndex, 1);
     localStorage.setItem("projectsList", JSON.stringify(projectsList));
     renderUI(projectsList, todoList);

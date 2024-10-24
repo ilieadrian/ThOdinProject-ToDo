@@ -119,24 +119,6 @@ function renderHomeMenu(todoList) {
     `;
 }
 
-// function handleEmptyProjectPage() {
-//   let container = document.querySelector(".todo-container");
-
-//   const { projectsList, todoList } = defaultValues;
-
-//   getActiveLink(function (idToDelete) {
-//     const deleteBtn = container.querySelector(".delete-btn");
-//     console.log(deleteBtn)
-//     if (deleteBtn) {
-//       deleteBtn.addEventListener("click", function () {
-//         deleteProject(idToDelete, projectsList, todoList);
-//       });
-//     } else {
-//       console.log("RenderUI case");
-//     }
-//   });
-// }
-
 function handleEmptyProjectPage() {
   let container = document.querySelector(".todo-container");
 
@@ -144,19 +126,13 @@ function handleEmptyProjectPage() {
 
   getActiveLink(function (idToDelete) {
     const deleteBtn = container.querySelector(".delete-btn");
-
-    if (deleteBtn && !deleteBtn.dataset.listenerAdded) {
-      // Only add listener if not already added
-      function handleDeleteProject() {
+    console.log(deleteBtn)
+    if (deleteBtn) {
+      deleteBtn.addEventListener("click", function () {
         deleteProject(idToDelete, projectsList, todoList);
-      }
-
-      deleteBtn.addEventListener("click", handleDeleteProject);
-
-      // Set a flag (data attribute) indicating that the listener has been added
-      deleteBtn.dataset.listenerAdded = "true";
+      });
     } else {
-      console.log("Delete button already has an event listener or doesn't exist.");
+      console.log("RenderUI case");
     }
   });
 }
