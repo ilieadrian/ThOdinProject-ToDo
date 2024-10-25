@@ -55,6 +55,8 @@ function processProject(projectName, projectsList) {
 }
 
 function getProjects(projectsList, todoList = null, currentProject) {
+  console.log("getProjects fired")
+  
   if (!todoList) {
     let selectContent = "";
 
@@ -117,6 +119,7 @@ function countIncompleteTodos(todoList) {
 }
 
 function countTodoinProject(element, todoList) {
+  console.log("countTodoinProject fired")
   let count = 0;
 
   for (let i = 0; i < todoList.length; i++) {
@@ -144,21 +147,69 @@ function handleProjectCountNumber() {
 }
 
 function deleteProject(idToDelete, projectsList, todoList) {
-  const projectIndex = projectsList.findIndex(
-    (project) => project.id == idToDelete,
-  );
+  console.log("Fired deleteProject");
 
-const projectToDelete = projectsList.find(project => project.id == idToDelete).name;
-const todosInProject = countTodoinProject(projectToDelete, todoList);
-console.log("projectToDelete, todosInProject", projectToDelete, todosInProject)
+  // Find the project by ID and get its name
+  const projectIndex = projectsList.findIndex((project) => project.id == idToDelete);
+  const projectToDelete = projectsList[projectIndex]?.name; // Safely access the name
+  if (!projectToDelete) {
+    console.error("Project not found.");
+    return; // Exit if no project found
+  }
 
+  // Get the number of todos associated with the project
+  const todosInProject = countTodoinProject(projectToDelete, todoList);
+  console.log("Project to delete:", projectToDelete, "Todos in project:", todosInProject);
+
+  // Proceed if project exists and no todos are left in the project
   if (projectIndex !== -1 && todosInProject == 0) {
+    // Remove the project from the projectsList
     projectsList.splice(projectIndex, 1);
     localStorage.setItem("projectsList", JSON.stringify(projectsList));
+
+    // Filter out todos from this project
+    todoList = todoList.filter(todo => todo.project !== projectToDelete);
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+
+    // Re-render UI to update projects and todos
     renderUI(projectsList, todoList);
+    renderProjectContainer(projectsList, todoList);
+
+    // Update project count bubbles
+    handleProjectCountNumber();
+
+    // Reattach event listeners
     setupEventListeners(todoList, projectsList);
+  } else if (todosInProject > 0) {
+    console.error(`Cannot delete project "${projectToDelete}" because it has remaining todos.`);
   }
 }
+
+// function deleteProject(idToDelete, projectsList, todoList) {
+//   console.log("Fired deleteProject");
+//   const projectIndex = projectsList.findIndex(
+//     (project) => project.id == idToDelete,
+//   );
+
+//   const projectToDelete = projectsList.find(
+//     (project) => project.id == idToDelete,
+//   ).name;
+//   const todosInProject = countTodoinProject(projectToDelete, todoList);
+//   console.log("projectToDelete, todosInProject", projectToDelete, todosInProject);
+  
+
+
+//   if (projectIndex !== -1 && todosInProject == 0) {
+//     projectsList.splice(projectIndex, 1);
+//     localStorage.setItem("projectsList", JSON.stringify(projectsList));
+//     renderUI(projectsList, todoList);
+//     renderProjectContainer(projectsList, todoList);
+//     countTodoinProject(projectToDelete, todoList)
+//     handleProjectCountNumber()
+//     setupEventListeners(todoList, projectsList);
+    
+//   }
+// }
 
 export {
   handleProject,

@@ -12,6 +12,7 @@ import { deleteProject } from "./handleproject";
 import { setupEventListeners } from "./manipulateDOM";
 
 function renderUI(projectsList, todoList) {
+  console.log("renderUI");
   let container = document.querySelector(".container");
   const headerTodoIcon = new Image();
   headerTodoIcon.src = TodoIcon;
@@ -70,6 +71,7 @@ function renderUI(projectsList, todoList) {
 }
 
 function renderTodoContainer(filteredTodos, errorMessage) {
+  console.log("Fired renderTodoContainer");
   let container = document.querySelector(".todo-container");
 
   container.innerHTML = "";
@@ -120,14 +122,16 @@ function renderHomeMenu(todoList) {
 }
 
 function handleEmptyProjectPage() {
+  console.log("Fired handleEmptyProjectPage");
   let container = document.querySelector(".todo-container");
 
   const { projectsList, todoList } = defaultValues;
 
   getActiveLink(function (idToDelete) {
     const deleteBtn = container.querySelector(".delete-btn");
-    console.log(deleteBtn)
+    console.log(deleteBtn);
     if (deleteBtn) {
+      console.log("Fired if(deleteBTN) in get active link", deleteBtn)
       deleteBtn.addEventListener("click", function () {
         deleteProject(idToDelete, projectsList, todoList);
       });
@@ -138,6 +142,7 @@ function handleEmptyProjectPage() {
 }
 
 function getActiveLink(callback) {
+  console.log("Fired getActiveLink");
   const linkContainer = document.querySelector("#projects");
 
   linkContainer.addEventListener("click", function (event) {

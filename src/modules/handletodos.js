@@ -1,4 +1,4 @@
-import { renderUI, renderTodoContainer, handleEmptyProjectPage } from "./index";
+import { renderUI, renderTodoContainer, renderProjectContainer, handleEmptyProjectPage } from "./index";
 import {
   setupEventListeners,
   statusOfUI,
@@ -100,6 +100,7 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
     const projectName = filteredTodos[0].project;
     let filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
     renderTodoContainer(filteredTodosAfterDeletion);
+    renderProjectContainer(projectsList, todoList)
     handleProjectCountNumber();
   } else {
     renderUI(projectsList, todoList);

@@ -219,6 +219,7 @@ function addCloseEventListeners(modalContainer) {
 }
 
 function setupEventListeners(todoList, projectsList) {
+  console.log("Fired setupEventListeners");
   const todoListContainer = document.querySelector(".todo-container");
   let modalContainer = document.getElementById("modal-container");
 
@@ -275,7 +276,7 @@ function setupEventListeners(todoList, projectsList) {
 
     const elementId = listItem ? +listItem.id.split("-")[1] : null;
     const todoIndex = todoList.findIndex((todo) => todo._id == elementId);
-  
+
     if (elementId !== null) {
       if (target.closest(".view-btn")) {
         openViewModal(todoIndex, todoList, modalContainer);
