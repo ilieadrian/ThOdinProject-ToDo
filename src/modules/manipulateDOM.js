@@ -199,6 +199,7 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
 
   if (statusOfUI) {
     displayToDods(todoList);
+    console.log(todoList)
     getTodosByProject(todoList, todoItem.project);
     renderProjectContainer(projectsList, todoList);
     renderHomeMenu(todoList);

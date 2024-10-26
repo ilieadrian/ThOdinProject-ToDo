@@ -4,7 +4,7 @@ import {
   statusOfUI,
   filteredTodos,
 } from "./manipulateDOM";
-import { handleProjectCountNumber } from "./handleproject";
+// import { handleProjectCountNumber } from "./handleproject";
 import Todo from "./todo";
 import { format } from "date-fns";
 
@@ -91,25 +91,29 @@ function checkForDuplicateTitle(newTodo, todoList) {
   return todoList.some((todoList) => todoList.title === newTodo.title);
 }
 
+
+
 function deleteTodoItem(todoIndex, todoList, projectsList) {
-  todoList.splice(todoIndex, 1);
+  console.log("the project is now deleting")
+  // todoList.splice(todoIndex, 1);
+  // localStorage.setItem("todoList", JSON.stringify(todoList));
 
-  localStorage.setItem("todoList", JSON.stringify(todoList));
+  // if (statusOfUI) {
+  //   const projectName = filteredTodos[0]?.project; 
+  //   const filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
+  //   renderTodoContainer(filteredTodosAfterDeletion);
+  //   renderProjectContainer(projectsList, todoList);
+  //   handleProjectCountNumber();
+  //   setupEventListeners(todoList, projectsList);
 
-  if (statusOfUI) {
-    const projectName = filteredTodos[0].project;
-    let filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
-    renderTodoContainer(filteredTodosAfterDeletion);
-    renderProjectContainer(projectsList, todoList)
-    handleProjectCountNumber();
-  } else {
-    renderUI(projectsList, todoList);
+  // } else {
+  //   renderUI(projectsList, todoList);
+  //   // setupEventListeners(todoList, projectsList);
 
-    setupEventListeners(todoList, projectsList);
-    if (todoList.length == 0) {
-      handleEmptyProjectPage();
-    }
-  }
+  //   if (todoList.length === 0) {
+  //     handleEmptyProjectPage();
+  //   }
+  // }
 }
 
 export {
