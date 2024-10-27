@@ -151,7 +151,9 @@ function deleteProject(idToDelete, projectsList, todoList) {
   const projectIndex = projectsList.findIndex(
     (project) => project.id == idToDelete,
   );
-
+  console.log(idToDelete)
+  console.table(projectsList)
+  console.log("todoList",todoList)
   const projectToDelete = projectsList.find(
     (project) => project.id == idToDelete,
   ).name;
