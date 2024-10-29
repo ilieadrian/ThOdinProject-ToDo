@@ -12,7 +12,7 @@ import { deleteProject } from "./handleproject";
 import { setupEventListeners } from "./manipulateDOM";
 
 function renderUI(projectsList, todoList) {
-  console.log("renderUI");
+  console.log("renderUI FIRED");
   let container = document.querySelector(".container");
   const headerTodoIcon = new Image();
   headerTodoIcon.src = TodoIcon;
@@ -71,7 +71,7 @@ function renderUI(projectsList, todoList) {
 }
 
 function renderTodoContainer(filteredTodos, errorMessage) {
-  console.log("Fired renderTodoContainer");
+  console.log("renderTodoContainer FIRED");
   let container = document.querySelector(".todo-container");
 
   container.innerHTML = "";
@@ -104,6 +104,7 @@ function renderTodoContainer(filteredTodos, errorMessage) {
 }
 
 function renderProjectContainer(projectsList, todoList) {
+  console.log("renderProjectContainer FIRED");
   let container = document.getElementById("projects");
 
   container.innerHTML = "";
@@ -113,6 +114,7 @@ function renderProjectContainer(projectsList, todoList) {
 }
 
 function renderHomeMenu(todoList) {
+  console.log("renderHomeMenu FIRED");
   let container = document.getElementById("todos-due");
 
   container.innerHTML = "";
@@ -122,7 +124,7 @@ function renderHomeMenu(todoList) {
 }
 
 function handleEmptyProjectPage() {
-  console.log("Fired handleEmptyProjectPage");
+  console.log("handleEmptyProjectPage FIRED");
   let container = document.querySelector(".todo-container");
 
   const { projectsList, todoList } = defaultValues;
@@ -131,7 +133,7 @@ function handleEmptyProjectPage() {
     const deleteBtn = container.querySelector(".delete-btn");
     console.log(deleteBtn);
     if (deleteBtn) {
-      console.log("Fired if(deleteBTN) in get active link", deleteBtn)
+      console.log("Fired if(deleteBTN) in get active link", deleteBtn);
       deleteBtn.addEventListener("click", function () {
         deleteProject(idToDelete, projectsList, todoList);
       });
@@ -142,7 +144,7 @@ function handleEmptyProjectPage() {
 }
 
 function getActiveLink(callback) {
-  console.log("Fired getActiveLink");
+  console.log("getActiveLink FIRED");
   const linkContainer = document.querySelector("#projects");
 
   linkContainer.addEventListener("click", function (event) {

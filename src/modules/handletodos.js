@@ -1,4 +1,9 @@
-import { renderUI, renderTodoContainer, renderProjectContainer, handleEmptyProjectPage } from "./index";
+import {
+  renderUI,
+  renderTodoContainer,
+  renderProjectContainer,
+  handleEmptyProjectPage,
+} from "./index";
 import {
   setupEventListeners,
   statusOfUI,
@@ -9,6 +14,7 @@ import Todo from "./todo";
 import { format } from "date-fns";
 
 function displayToDods(todoList) {
+  console.log("displayToDods FIRED");
   let ulContent = "";
 
   todoList.forEach((element) => {
@@ -33,6 +39,7 @@ function displayToDods(todoList) {
 }
 
 function getTodosByProject(todoList, curentElement) {
+  console.log("getTodosByProject FIRED");
   return todoList.filter((taskList) => taskList.project === curentElement);
 }
 
@@ -45,6 +52,7 @@ function addNewTodo(
   todoList,
   projectsList,
 ) {
+  console.log("addNewTodo FIRED");
   const newTodo = new Todo(
     todoTitle,
     todoDescription,
@@ -93,6 +101,7 @@ function checkForDuplicateTitle(newTodo, todoList) {
 
 function deleteTodoItem(todoIndex, todoList, projectsList) {
   console.log("Attempting to delete todo at index:", todoIndex);
+  console.table(todoList);
 
   // Safely remove the todo item at the calculated index
   if (todoIndex >= 0 && todoIndex < todoList.length) {
@@ -100,32 +109,25 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
     localStorage.setItem("todoList", JSON.stringify(todoList));
   } else {
     console.error("Invalid todo index:", todoIndex);
-    return; // Exit if index is invalid
+    return;
   }
 
   if (statusOfUI) {
-    // Retrieve project name from filteredTodos if filtering by project
     const projectName = filteredTodos[0]?.project;
     const filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
 
-    // Update the UI with the filtered todos after deletion
     renderTodoContainer(filteredTodosAfterDeletion);
     renderProjectContainer(projectsList, todoList);
     handleProjectCountNumber();
-    setupEventListeners(filteredTodosAfterDeletion, projectsList); // Use filtered list
-
+    setupEventListeners(todoList, projectsList);
   } else {
-    // For non-filtered view, render all projects and todos
     renderUI(projectsList, todoList);
-    setupEventListeners(todoList, projectsList); // Use complete list
+    setupEventListeners(todoList, projectsList);
   }
 
-  // Display empty project page if todoList is now empty
   if (todoList.length === 0) {
     handleEmptyProjectPage();
   }
-
-
 
   //   todoList.splice(todoIndex, 1);
   //   localStorage.setItem("todoList", JSON.stringify(todoList));
@@ -138,7 +140,7 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
   //       renderTodoContainer(filteredTodosAfterDeletion);
   //       renderProjectContainer(projectsList, filteredTodosAfterDeletion);
   //       setupEventListeners(todoList, projectsList);
-  //       handleProjectCountNumber(); 
+  //       handleProjectCountNumber();
   //   } else {
   //       renderUI(projectsList, todoList);
   //       setupEventListeners(todoList, projectsList)
@@ -147,7 +149,6 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
   //   if(todoList.length == 0) {
   //     handleEmptyProjectPage();
   // }
-
 }
 
 export {
@@ -157,4 +158,3 @@ export {
   editTodo,
   deleteTodoItem,
 };
-

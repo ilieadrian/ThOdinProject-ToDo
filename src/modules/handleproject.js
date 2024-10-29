@@ -55,8 +55,8 @@ function processProject(projectName, projectsList) {
 }
 
 function getProjects(projectsList, todoList = null, currentProject) {
-  console.log("getProjects fired")
-  
+  console.log("getProjects fired");
+
   if (!todoList) {
     let selectContent = "";
 
@@ -84,6 +84,7 @@ function getProjects(projectsList, todoList = null, currentProject) {
 }
 
 function getProjetsByDueDate(todoList) {
+  console.log("getProjetsByDueDate FIRED");
   const dueTodayTodos = todoList.filter(
     (todo) => isToday(new Date(todo.dueDate)) && !todo._status,
   );
@@ -95,6 +96,7 @@ function getProjetsByDueDate(todoList) {
 }
 
 function renderDueTodosContainer(todoList) {
+  console.log("renderDueTodosContainer FIRED");
   const { dueTodayTodos, dueThisWeekTodos } = getProjetsByDueDate(todoList);
 
   let ulContent = "";
@@ -119,11 +121,11 @@ function countIncompleteTodos(todoList) {
 }
 
 function countTodoinProject(element, todoList) {
-  console.log("countTodoinProject fired")
   let count = 0;
 
   for (let i = 0; i < todoList.length; i++) {
     if (todoList[i].project === element && !todoList[i].status) {
+      console.log("countTodoinProject fired", todoList[i].project, count);
       count++;
     }
   }
@@ -151,22 +153,26 @@ function deleteProject(idToDelete, projectsList, todoList) {
   const projectIndex = projectsList.findIndex(
     (project) => project.id == idToDelete,
   );
-  console.log(idToDelete)
-  console.table(projectsList)
-  console.log("todoList",todoList)
+  console.log(idToDelete);
+  console.table(projectsList);
+  console.log("todoList", todoList);
   const projectToDelete = projectsList.find(
     (project) => project.id == idToDelete,
   ).name;
-  
+
   const todosInProject = countTodoinProject(projectToDelete, todoList);
-  console.log("projectToDelete, todosInProject", projectToDelete, todosInProject);
-  
+  console.log(
+    "projectToDelete, todosInProject",
+    projectToDelete,
+    todosInProject,
+  );
+
   if (projectIndex !== -1 && todosInProject == 0) {
     projectsList.splice(projectIndex, 1);
     localStorage.setItem("projectsList", JSON.stringify(projectsList));
     renderUI(projectsList, todoList);
     setupEventListeners(todoList, projectsList);
-    }
+  }
 }
 
 export {

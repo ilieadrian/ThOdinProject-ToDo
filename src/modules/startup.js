@@ -4,7 +4,10 @@ import { handleProject } from "./handleproject";
 import { renderUI } from "./index";
 
 const defaultValues = (function () {
+  console.log("defaultValues FIRED");
   let todoList = JSON.parse(localStorage.getItem("todoList")) || [];
+
+  // console.log(todoList)
   let projectsList = JSON.parse(localStorage.getItem("projectsList")) || [];
   let renderOnlyContainer = false;
 
@@ -92,22 +95,8 @@ const defaultValues = (function () {
         "Zee",
       ),
       new Todo("Zee projects", "lorem20", "2024-10-13", "high", true, "Zee"),
-      new Todo(
-        "Zee3 projects",
-        "lorem20",
-        "2024-10-15",
-        "low",
-        false,
-        "Zee",
-      ),
-      new Todo(
-        "Zee4 projects",
-        "lorem20",
-        "2024-10-15",
-        "high",
-        true,
-        "Zee",
-      ),
+      new Todo("Zee3 projects", "lorem20", "2024-10-15", "low", false, "Zee"),
+      new Todo("Zee4 projects", "lorem20", "2024-10-15", "high", true, "Zee"),
       new Todo("Zee5projects", "lorem20", "2024-10-16", "low", true, "Zee"),
       new Todo("Zee6 projects", "lorem20", "2024-10-17", "high", false, "Zee"),
       new Todo("Zee7 projects", "lorem20", "2024-10-18", "high", true, "Zee"),
