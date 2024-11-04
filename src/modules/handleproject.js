@@ -1,6 +1,7 @@
 import Project from "./project";
-import { renderUI, renderProjectContainer } from "./index";
-import { setupEventListeners } from "./manipulateDOM";
+import { renderUI, renderProjectContainer, renderTodoContainer } from "./index";
+import { setupEventListeners, filteredTodos } from "./manipulateDOM";
+import { getTodosByProject } from "./handletodos";
 import { isThisWeek, isToday } from "date-fns";
 
 function handleProject(
@@ -55,7 +56,7 @@ function processProject(projectName, projectsList) {
 }
 
 function getProjects(projectsList, todoList = null, currentProject) {
-  console.log("getProjects fired");
+  // console.log("getProjects fired");
 
   if (!todoList) {
     let selectContent = "";
@@ -84,7 +85,7 @@ function getProjects(projectsList, todoList = null, currentProject) {
 }
 
 function getProjetsByDueDate(todoList) {
-  console.log("getProjetsByDueDate FIRED");
+  // console.log("getProjetsByDueDate FIRED");
   const dueTodayTodos = todoList.filter(
     (todo) => isToday(new Date(todo.dueDate)) && !todo._status,
   );
@@ -96,7 +97,7 @@ function getProjetsByDueDate(todoList) {
 }
 
 function renderDueTodosContainer(todoList) {
-  console.log("renderDueTodosContainer FIRED");
+  // console.log("renderDueTodosContainer FIRED");
   const { dueTodayTodos, dueThisWeekTodos } = getProjetsByDueDate(todoList);
 
   let ulContent = "";
@@ -125,7 +126,7 @@ function countTodoinProject(element, todoList) {
 
   for (let i = 0; i < todoList.length; i++) {
     if (todoList[i].project === element && !todoList[i].status) {
-      console.log("countTodoinProject fired", todoList[i].project, count);
+      // console.log("countTodoinProject fired", todoList[i].project, count);
       count++;
     }
   }
@@ -149,31 +150,54 @@ function handleProjectCountNumber() {
 }
 
 function deleteProject(idToDelete, projectsList, todoList) {
-  console.log("Fired deleteProject");
+  console.log("idToDelete in deleteProject:", idToDelete)
+  // console.log("Fired deleteProject");
   const projectIndex = projectsList.findIndex(
     (project) => project.id == idToDelete,
   );
-  console.log(idToDelete);
-  console.table(projectsList);
-  console.log("todoList", todoList);
+  // console.log(idToDelete);
+  // console.table(projectsList);
+  // console.log("todoList", todoList);
+  
   const projectToDelete = projectsList.find(
     (project) => project.id == idToDelete,
   ).name;
 
   const todosInProject = countTodoinProject(projectToDelete, todoList);
-  console.log(
-    "projectToDelete, todosInProject",
-    projectToDelete,
-    todosInProject,
-  );
+  // console.log(
+  //   "projectToDelete, todosInProject",
+  //   projectToDelete,
+  //   todosInProject,
+  // );
 
   if (projectIndex !== -1 && todosInProject == 0) {
+    console.log("projectIndex", projectIndex)
     projectsList.splice(projectIndex, 1);
     localStorage.setItem("projectsList", JSON.stringify(projectsList));
+
+    const jumpToProject = projectIndex+1;
+    console.log("jumpToProject", jumpToProject)
+
+
+    
+    renderTodoContainer(filteredTodos, null, jumpToProject)
+
+    
+    
+  } else {
     renderUI(projectsList, todoList);
-    setupEventListeners(todoList, projectsList);
+
+    // setupEventListeners(todoList, projectsList);
   }
+
+  setupEventListeners(todoList, projectsList);
+//   if(statusOfUI) {
+//     console.log("Filtered wiev") 
+//    } else {
+//      console.log("Unfiltered wiev") 
+//  }
 }
+
 
 export {
   handleProject,

@@ -190,7 +190,7 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
 }
 
 function modifyTodoStatus(elementId, target, projectsList, todoList) {
-  console.log("modifyTodoStatus FIRED");
+  // console.log("modifyTodoStatus FIRED");
   const todoItem = todoList.find((todo) => todo.id == elementId);
   todoItem.status = target.checked;
 
@@ -200,7 +200,7 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
 
   if (statusOfUI) {
     displayToDods(todoList);
-    console.log(todoList);
+    // console.log(todoList);
     getTodosByProject(todoList, todoItem.project);
     renderProjectContainer(projectsList, todoList);
     renderHomeMenu(todoList);
@@ -221,7 +221,7 @@ function addCloseEventListeners(modalContainer) {
 }
 
 function setupEventListeners(todoList, projectsList) {
-  console.log("Fired setupEventListeners");
+  // console.log("Fired setupEventListeners");
   const todoListContainer = document.querySelector(".todo-container");
   let modalContainer = document.getElementById("modal-container");
 
@@ -272,8 +272,8 @@ function setupEventListeners(todoList, projectsList) {
   });
 
   function adUIListeners(event) {
-    console.log("adUIListeners FIRED");
-    console.table(todoList);
+    // console.log("adUIListeners FIRED");
+    // console.table(todoList);
 
     const target = event.target;
     const listItem = target.closest(".item");
@@ -281,13 +281,13 @@ function setupEventListeners(todoList, projectsList) {
 
     const elementId = listItem ? +listItem.id.split("-")[1] : null;
     const todoIndex = todoList.findIndex((todo) => todo._id === elementId);
-    console.log(
-      "In adUIListeners",
-      "elementId",
-      elementId,
-      "todoIndex",
-      todoIndex,
-    );
+    // console.log(
+    //   "In adUIListeners",
+    //   "elementId",
+    //   elementId,
+    //   "todoIndex",
+    //   todoIndex,
+    // );
 
     if (todoIndex === -1) {
       console.error(
@@ -306,10 +306,10 @@ function setupEventListeners(todoList, projectsList) {
         console.error(`Todo with ID ${elementId} does not exist.`);
       }
     } else if (target.closest(".delete-btn")) {
-      console.log(
-        "adUIListeners about to call delete with todoIndex:",
-        todoIndex,
-      );
+      // console.log(
+      //   "adUIListeners about to call delete with todoIndex:",
+      //   todoIndex,
+      // );
       deleteTodoItem(todoIndex, todoList, projectsList);
       todoListContainer.removeEventListener("click", adUIListeners);
     } else if (target.classList.contains("todo-checkbox")) {
@@ -329,7 +329,9 @@ function setupEventListeners(todoList, projectsList) {
 
       filteredTodos = getTodosByProject(todoList, projectName);
 
-      renderTodoContainer(filteredTodos);
+      console.log("calling renderTodoContainer from event listener", projectName)
+
+      renderTodoContainer(filteredTodos, null, projectName);
       handleProjectCountNumber();
 
       projectList.forEach((item) => {

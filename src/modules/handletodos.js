@@ -2,6 +2,7 @@ import {
   renderUI,
   renderTodoContainer,
   renderProjectContainer,
+  renderHomeMenu,
   handleEmptyProjectPage,
 } from "./index";
 import {
@@ -14,7 +15,7 @@ import Todo from "./todo";
 import { format } from "date-fns";
 
 function displayToDods(todoList) {
-  console.log("displayToDods FIRED");
+  // console.log("displayToDods FIRED");
   let ulContent = "";
 
   todoList.forEach((element) => {
@@ -39,7 +40,7 @@ function displayToDods(todoList) {
 }
 
 function getTodosByProject(todoList, curentElement) {
-  console.log("getTodosByProject FIRED");
+  // console.log("getTodosByProject FIRED");
   return todoList.filter((taskList) => taskList.project === curentElement);
 }
 
@@ -52,7 +53,7 @@ function addNewTodo(
   todoList,
   projectsList,
 ) {
-  console.log("addNewTodo FIRED");
+  // console.log("addNewTodo FIRED");
   const newTodo = new Todo(
     todoTitle,
     todoDescription,
@@ -100,10 +101,14 @@ function checkForDuplicateTitle(newTodo, todoList) {
 }
 
 function deleteTodoItem(todoIndex, todoList, projectsList) {
-  console.log("Attempting to delete todo at index:", todoIndex);
-  console.table(todoList);
+  // console.log("Attempting to delete todo at index:", todoIndex);
+  // console.table(todoList);
 
-  // Safely remove the todo item at the calculated index
+  if (todoList.length < 1){
+    console.table(todoList)
+    return;
+  }
+
   if (todoIndex >= 0 && todoIndex < todoList.length) {
     todoList.splice(todoIndex, 1);
     localStorage.setItem("todoList", JSON.stringify(todoList));
@@ -114,41 +119,25 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
 
   if (statusOfUI) {
     const projectName = filteredTodos[0]?.project;
+    console.log("projectName in status of UI", projectName)
     const filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
 
-    renderTodoContainer(filteredTodosAfterDeletion);
+    renderTodoContainer(filteredTodosAfterDeletion, null, projectName);
     renderProjectContainer(projectsList, todoList);
     handleProjectCountNumber();
-    setupEventListeners(todoList, projectsList);
+    renderHomeMenu(todoList);
+    handleProjectCountNumber();
   } else {
     renderUI(projectsList, todoList);
-    setupEventListeners(todoList, projectsList);
   }
+
+  setupEventListeners(todoList, projectsList);
+
 
   if (todoList.length === 0) {
+    console.log("(todoList.length === 0) case")
     handleEmptyProjectPage();
   }
-
-  //   todoList.splice(todoIndex, 1);
-  //   localStorage.setItem("todoList", JSON.stringify(todoList));
-
-  //   if(statusOfUI) {
-  //       const projectName = filteredTodos[0].project;
-  //       let filteredTodosAfterDeletion = getTodosByProject(todoList, projectName)
-  //       console.table(filteredTodosAfterDeletion)
-  //       console.table(todoList)
-  //       renderTodoContainer(filteredTodosAfterDeletion);
-  //       renderProjectContainer(projectsList, filteredTodosAfterDeletion);
-  //       setupEventListeners(todoList, projectsList);
-  //       handleProjectCountNumber();
-  //   } else {
-  //       renderUI(projectsList, todoList);
-  //       setupEventListeners(todoList, projectsList)
-  //   }
-
-  //   if(todoList.length == 0) {
-  //     handleEmptyProjectPage();
-  // }
 }
 
 export {

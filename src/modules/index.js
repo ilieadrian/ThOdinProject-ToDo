@@ -12,7 +12,7 @@ import { deleteProject } from "./handleproject";
 import { setupEventListeners } from "./manipulateDOM";
 
 function renderUI(projectsList, todoList) {
-  console.log("renderUI FIRED");
+  // console.log("renderUI FIRED");
   let container = document.querySelector(".container");
   const headerTodoIcon = new Image();
   headerTodoIcon.src = TodoIcon;
@@ -67,11 +67,11 @@ function renderUI(projectsList, todoList) {
   //---!!!---//
   const headerIconContainer = document.getElementById("header-icon-container");
   headerIconContainer.appendChild(headerTodoIcon);
-  handleProjectCountNumber(todoList);
+  handleProjectCountNumber();
 }
 
-function renderTodoContainer(filteredTodos, errorMessage) {
-  console.log("renderTodoContainer FIRED");
+function renderTodoContainer(filteredTodos, errorMessage = null, projectName = null) {
+  // console.log("renderTodoContainer FIRED");
   let container = document.querySelector(".todo-container");
 
   container.innerHTML = "";
@@ -94,12 +94,13 @@ function renderTodoContainer(filteredTodos, errorMessage) {
             <div class="items-list">
                 <h2>Empty Project!</h2>
                 <p>Create a new to-do item or delete project.</p>
-                <button class="delete-btn">Delete project</button>
+                <button class="project-delete-btn">Delete project</button>
             </div>
             `;
+            console.log("!errorMessage runned and button added to page")
     }
-
-    handleEmptyProjectPage();
+    console.log("calling handleEmptyProjectPage(projectName) with the project:", projectName)
+    handleEmptyProjectPage(projectName);
   }
 }
 
@@ -113,8 +114,57 @@ function renderProjectContainer(projectsList, todoList) {
     `;
 }
 
+function handleEmptyProjectPage(projectName) {
+  console.log(" handleEmptyProjectPage called on project name: ", projectName)
+
+  if(projectName == null) {
+    return;
+  }
+  let container = document.querySelector(".todo-container");
+
+  const { projectsList, todoList } = defaultValues;
+
+  const deleteBtn = container.querySelector(".project-delete-btn");
+
+  console.log("Project name in handleEmptyProjectPage:", projectName);
+console.log("projectsList in handleEmptyProjectPage:", projectsList);
+let idToDelete = getActiveId(projectName, projectsList);
+console.log("ID to delete:", idToDelete);
+
+  // console.log("idToDelete in handleEmptyProjectPage", idToDelete)
+
+console.log("Delete button:", deleteBtn);
+
+  if (deleteBtn) {
+      console.log("Fired if(deleteBTN) in get active link", deleteBtn);
+      deleteBtn.addEventListener("click", function () {
+        console.log("Clicked on delete project")
+        deleteProject(idToDelete, projectsList, todoList);
+      });
+    } else {
+      console.log("RenderUI case");
+    }
+
+}
+
+function getActiveId(projectName, projectsList ) {
+  // console.table(projectsList)
+
+  if(projectsList.length === 1) {
+    // console.log("Project list is 1", projectsList[0]._id)
+  }
+
+  let activeId =  projectsList.find(
+    (project) => project.name == projectName,
+  )._id
+  // console.log("Active id: ", activeId)
+  return activeId;
+  // console.log(projectName, projectsList)
+
+}
+
 function renderHomeMenu(todoList) {
-  console.log("renderHomeMenu FIRED");
+  // console.log("renderHomeMenu FIRED");
   let container = document.getElementById("todos-due");
 
   container.innerHTML = "";
@@ -123,41 +173,41 @@ function renderHomeMenu(todoList) {
     `;
 }
 
-function handleEmptyProjectPage() {
-  console.log("handleEmptyProjectPage FIRED");
-  let container = document.querySelector(".todo-container");
+// function handleEmptyProjectPage() {
+//   // console.log("handleEmptyProjectPage FIRED");
+//   let container = document.querySelector(".todo-container");
 
-  const { projectsList, todoList } = defaultValues;
+//   const { projectsList, todoList } = defaultValues;
 
-  getActiveLink(function (idToDelete) {
-    const deleteBtn = container.querySelector(".delete-btn");
-    console.log(deleteBtn);
-    if (deleteBtn) {
-      console.log("Fired if(deleteBTN) in get active link", deleteBtn);
-      deleteBtn.addEventListener("click", function () {
-        deleteProject(idToDelete, projectsList, todoList);
-      });
-    } else {
-      console.log("RenderUI case");
-    }
-  });
-}
+//   getActiveLink(function (idToDelete) {
+//     const deleteBtn = container.querySelector(".delete-btn");
+//     // console.log(deleteBtn);
+//     if (deleteBtn) {
+//       // console.log("Fired if(deleteBTN) in get active link", deleteBtn);
+//       deleteBtn.addEventListener("click", function () {
+//         deleteProject(idToDelete, projectsList, todoList);
+//       });
+//     } else {
+//       console.log("RenderUI case");
+//     }
+//   });
+// }
 
-function getActiveLink(callback) {
-  console.log("getActiveLink FIRED");
-  const linkContainer = document.querySelector("#projects");
+// function getActiveLink(callback) {
+//   // console.log("getActiveLink FIRED");
+//   const linkContainer = document.querySelector("#projects");
 
-  linkContainer.addEventListener("click", function (event) {
-    const target = event.target;
-    const activeProjectId =
-      target.parentElement.getAttribute("data-project-id");
+//   linkContainer.addEventListener("click", function (event) {
+//     const target = event.target;
+//     const activeProjectId =
+//       target.parentElement.getAttribute("data-project-id");
 
-    // Pass the activeProjectId to the callback function
-    if (callback && typeof callback === "function") {
-      callback(activeProjectId);
-    }
-  });
-}
+//     // Pass the activeProjectId to the callback function
+//     if (callback && typeof callback === "function") {
+//       callback(activeProjectId);
+//     }
+//   });
+// }
 
 //Until i figure out async-await i use these function to add the eventlisteners
 //after the UI is rendered. Adding the call to setupEventListeners in renderUI returned a webpack module error
