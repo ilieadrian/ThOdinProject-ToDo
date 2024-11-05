@@ -20,6 +20,9 @@ import { getProjects } from "./handleproject";
 import { format } from "date-fns";
 
 let statusOfUI = false;
+export function setStatusOfUI(newStatus) {
+  statusOfUI = newStatus;
+}
 let filteredTodos = [];
 
 export default (function () {

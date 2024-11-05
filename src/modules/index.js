@@ -68,6 +68,7 @@ function renderUI(projectsList, todoList) {
   const headerIconContainer = document.getElementById("header-icon-container");
   headerIconContainer.appendChild(headerTodoIcon);
   handleProjectCountNumber();
+  // console.log("statusOfUI in renderUI", statusOfUI)
 }
 
 function renderTodoContainer(filteredTodos, errorMessage = null, projectName = null) {

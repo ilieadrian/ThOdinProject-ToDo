@@ -3,7 +3,7 @@ import Project from "./project";
 import { renderUI, renderProjectContainer } from "./index";
 
 // import { setupEventListeners, filteredTodos } from "./manipulateDOM";
-import { setupEventListeners, } from "./manipulateDOM";
+import { setupEventListeners, statusOfUI, setStatusOfUI } from "./manipulateDOM";
 
 // import { getTodosByProject } from "./handletodos";
 import { isThisWeek, isToday } from "date-fns";
@@ -130,7 +130,6 @@ function countTodoinProject(element, todoList) {
 
   for (let i = 0; i < todoList.length; i++) {
     if (todoList[i].project === element && !todoList[i].status) {
-      // console.log("countTodoinProject fired", todoList[i].project, count);
       count++;
     }
   }
@@ -154,58 +153,27 @@ function handleProjectCountNumber() {
 }
 
 function deleteProject(idToDelete, projectsList, todoList) {
-  
-  console.log("idToDelete in deleteProject:", idToDelete, typeof projectsList)
-  // console.log("Fired deleteProject");
-
-  console.log("About to call projectsList.findIndex with id To Delete:", idToDelete)
   const projectIndex = projectsList.findIndex(
     (project) => project.id == idToDelete,
   );
-  // console.log(idToDelete);
-  // console.table(projectsList);
-  // console.log("todoList", todoList);
   
   const projectToDelete = projectsList.find(
     (project) => project.id == idToDelete,
   ).name;
 
   const todosInProject = countTodoinProject(projectToDelete, todoList);
-  // console.log(
-  //   "projectToDelete, todosInProject",
-  //   projectToDelete,
-  //   todosInProject,
-  // );
 
   if (projectIndex !== -1 && todosInProject == 0) {
     console.log("projectIndex", projectIndex)
     projectsList.splice(projectIndex, 1);
     localStorage.setItem("projectsList", JSON.stringify(projectsList));
-
-    const jumpToProject = projectIndex+1;
-    console.log("jumpToProject", jumpToProject)
-    console.table(projectsList)
-
-
-    
-    // renderTodoContainer(filteredTodos, null, jumpToProject)
-
-    
-    
+    setStatusOfUI(false);   
   } else {
-    
-
-    // setupEventListeners(todoList, projectsList);
+    return
   }
   renderUI(projectsList, todoList);
   setupEventListeners(todoList, projectsList);
-//   if(statusOfUI) {
-//     console.log("Filtered wiev") 
-//    } else {
-//      console.log("Unfiltered wiev") 
-//  }
 }
-
 
 export {
   handleProject,
