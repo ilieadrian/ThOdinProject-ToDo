@@ -1,7 +1,11 @@
 import Project from "./project";
-import { renderUI, renderProjectContainer, renderTodoContainer } from "./index";
-import { setupEventListeners, filteredTodos } from "./manipulateDOM";
-import { getTodosByProject } from "./handletodos";
+// import { renderUI, renderProjectContainer, renderTodoContainer } from "./index";
+import { renderUI, renderProjectContainer } from "./index";
+
+// import { setupEventListeners, filteredTodos } from "./manipulateDOM";
+import { setupEventListeners, } from "./manipulateDOM";
+
+// import { getTodosByProject } from "./handletodos";
 import { isThisWeek, isToday } from "date-fns";
 
 function handleProject(
@@ -150,8 +154,11 @@ function handleProjectCountNumber() {
 }
 
 function deleteProject(idToDelete, projectsList, todoList) {
-  console.log("idToDelete in deleteProject:", idToDelete)
+  
+  console.log("idToDelete in deleteProject:", idToDelete, typeof projectsList)
   // console.log("Fired deleteProject");
+
+  console.log("About to call projectsList.findIndex with id To Delete:", idToDelete)
   const projectIndex = projectsList.findIndex(
     (project) => project.id == idToDelete,
   );
@@ -177,19 +184,20 @@ function deleteProject(idToDelete, projectsList, todoList) {
 
     const jumpToProject = projectIndex+1;
     console.log("jumpToProject", jumpToProject)
+    console.table(projectsList)
 
 
     
-    renderTodoContainer(filteredTodos, null, jumpToProject)
+    // renderTodoContainer(filteredTodos, null, jumpToProject)
 
     
     
   } else {
-    renderUI(projectsList, todoList);
+    
 
     // setupEventListeners(todoList, projectsList);
   }
-
+  renderUI(projectsList, todoList);
   setupEventListeners(todoList, projectsList);
 //   if(statusOfUI) {
 //     console.log("Filtered wiev") 
