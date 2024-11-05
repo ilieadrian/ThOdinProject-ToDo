@@ -3,7 +3,7 @@ import Project from "./project";
 import { renderUI, renderProjectContainer } from "./index";
 
 // import { setupEventListeners, filteredTodos } from "./manipulateDOM";
-import { setupEventListeners, statusOfUI, setStatusOfUI } from "./manipulateDOM";
+import { setupEventListeners, setStatusOfUI } from "./manipulateDOM";
 
 // import { getTodosByProject } from "./handletodos";
 import { isThisWeek, isToday } from "date-fns";

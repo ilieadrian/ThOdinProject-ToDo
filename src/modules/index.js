@@ -113,6 +113,7 @@ function renderProjectContainer(projectsList, todoList) {
   container.innerHTML = `
         ${getProjects(projectsList, todoList)}
     `;
+    handleProjectCountNumber()
 }
 
 function handleEmptyProjectPage(projectName) {

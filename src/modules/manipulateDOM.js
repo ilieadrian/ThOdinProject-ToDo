@@ -380,9 +380,7 @@ function setupEventListeners(todoList, projectsList) {
     if (event.target && event.target.id === "create-todo") {
       event.preventDefault();
       const todoTitle = document.getElementById("title").value.trim();
-      const todoDescription = document
-        .getElementById("description")
-        .value.trim();
+      const todoDescription = document.getElementById("description").value.trim();
       const projectsDropdown = document.getElementById("projects-select");
       const selectedProject = projectsDropdown.value;
       const selecteDate = document.querySelector('input[type="date"]').value;
