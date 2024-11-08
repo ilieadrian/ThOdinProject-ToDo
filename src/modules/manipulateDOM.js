@@ -20,10 +20,12 @@ import { getProjects } from "./handleproject";
 import { format } from "date-fns";
 
 let statusOfUI = false;
+let activeProjectLink = null; 
+let filteredTodos = [];
+
 export function setStatusOfUI(newStatus) {
   statusOfUI = newStatus;
 }
-let filteredTodos = [];
 
 export default (function () {
   document.addEventListener("DOMContentLoaded", function () {
@@ -193,7 +195,7 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
 }
 
 function modifyTodoStatus(elementId, target, projectsList, todoList) {
-  // console.log("modifyTodoStatus FIRED");
+  console.log("modifyTodoStatus FIRED");
   const todoItem = todoList.find((todo) => todo.id == elementId);
   todoItem.status = target.checked;
 
@@ -202,9 +204,7 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
   }
 
   if (statusOfUI) {
-    displayToDods(todoList);
-    // console.log(todoList);
-    getTodosByProject(todoList, todoItem.project);
+    renderTodoContainer(filteredTodos);
     renderProjectContainer(projectsList, todoList);
     renderHomeMenu(todoList);
     handleProjectCountNumber();
@@ -212,6 +212,11 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
     renderUI(projectsList, todoList);
   }
   setupEventListeners(todoList, projectsList);
+  //
+  if (activeProjectLink) {
+    activeProjectLink = true;
+  }
+  //
 }
 
 function addCloseEventListeners(modalContainer) {
@@ -255,7 +260,6 @@ function setupEventListeners(todoList, projectsList) {
     return (statusOfUI = true);
   });
 
-  //
   const homeLink = document.getElementById("home-link");
   const addProjectBTN = document.querySelector(".addproject");
   const addToDoBTN = document.querySelector(".addtodo");
@@ -275,23 +279,13 @@ function setupEventListeners(todoList, projectsList) {
   });
 
   function adUIListeners(event) {
-    // console.log("adUIListeners FIRED");
-    // console.table(todoList);
-
     const target = event.target;
     const listItem = target.closest(".item");
     if (!listItem) return;
 
     const elementId = listItem ? +listItem.id.split("-")[1] : null;
     const todoIndex = todoList.findIndex((todo) => todo._id === elementId);
-    // console.log(
-    //   "In adUIListeners",
-    //   "elementId",
-    //   elementId,
-    //   "todoIndex",
-    //   todoIndex,
-    // );
-
+  
     if (todoIndex === -1) {
       console.error(
         "Todo item not found in todoList for elementId:",
@@ -309,10 +303,6 @@ function setupEventListeners(todoList, projectsList) {
         console.error(`Todo with ID ${elementId} does not exist.`);
       }
     } else if (target.closest(".delete-btn")) {
-      // console.log(
-      //   "adUIListeners about to call delete with todoIndex:",
-      //   todoIndex,
-      // );
       deleteTodoItem(todoIndex, todoList, projectsList);
       todoListContainer.removeEventListener("click", adUIListeners);
     } else if (target.classList.contains("todo-checkbox")) {
@@ -323,13 +313,15 @@ function setupEventListeners(todoList, projectsList) {
   todoListContainer.addEventListener("click", adUIListeners);
 
   const projectList = document.querySelectorAll("#projects li");
+  
 
   projectList.forEach((li) => {
     const anchor = li.querySelector("a");
+
     anchor.addEventListener("click", function (event) {
       event.preventDefault();
       const projectName = anchor.textContent;
-
+      
       filteredTodos = getTodosByProject(todoList, projectName);
 
       console.log("calling renderTodoContainer from event listener", projectName)
@@ -340,9 +332,24 @@ function setupEventListeners(todoList, projectsList) {
       projectList.forEach((item) => {
         const link = item.querySelector("a");
         link.classList.remove("active");
+        activeProjectLink = false;
       });
 
-      anchor.classList.add("active");
+   
+        anchor.classList.add("active");
+        activeProjectLink = true;
+
+        //
+      if (activeProjectLink) {
+        console.log("activeProjectLink in modify anchor.", activeProjectLink)
+        anchor.classList.add("active");
+      }
+      
+      //
+        
+      
+      
+      
       statusOfUI = true;
       return statusOfUI, filteredTodos;
     });
@@ -436,4 +443,4 @@ function setupEventListeners(todoList, projectsList) {
   });
 }
 
-export { setupEventListeners, statusOfUI, filteredTodos };
+export { setupEventListeners, statusOfUI, filteredTodos, activeProjectLink };

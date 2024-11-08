@@ -128,7 +128,7 @@ function handleEmptyProjectPage(projectName) {
 
   const deleteBtn = container.querySelector(".project-delete-btn");
 
-  console.log("Project name in handleEmptyProjectPage:", projectName);
+console.log("Project name in handleEmptyProjectPage:", projectName);
 console.log("projectsList in handleEmptyProjectPage:", projectsList);
 let idToDelete = getActiveId(projectName, projectsList);
 console.log("ID to delete:", idToDelete);
@@ -175,45 +175,6 @@ function renderHomeMenu(todoList) {
     `;
 }
 
-// function handleEmptyProjectPage() {
-//   // console.log("handleEmptyProjectPage FIRED");
-//   let container = document.querySelector(".todo-container");
-
-//   const { projectsList, todoList } = defaultValues;
-
-//   getActiveLink(function (idToDelete) {
-//     const deleteBtn = container.querySelector(".delete-btn");
-//     // console.log(deleteBtn);
-//     if (deleteBtn) {
-//       // console.log("Fired if(deleteBTN) in get active link", deleteBtn);
-//       deleteBtn.addEventListener("click", function () {
-//         deleteProject(idToDelete, projectsList, todoList);
-//       });
-//     } else {
-//       console.log("RenderUI case");
-//     }
-//   });
-// }
-
-// function getActiveLink(callback) {
-//   // console.log("getActiveLink FIRED");
-//   const linkContainer = document.querySelector("#projects");
-
-//   linkContainer.addEventListener("click", function (event) {
-//     const target = event.target;
-//     const activeProjectId =
-//       target.parentElement.getAttribute("data-project-id");
-
-//     // Pass the activeProjectId to the callback function
-//     if (callback && typeof callback === "function") {
-//       callback(activeProjectId);
-//     }
-//   });
-// }
-
-//Until i figure out async-await i use these function to add the eventlisteners
-//after the UI is rendered. Adding the call to setupEventListeners in renderUI returned a webpack module error
-//because the UI was not fully rendered.
 function callEvents() {
   const { projectsList, todoList } = defaultValues;
 

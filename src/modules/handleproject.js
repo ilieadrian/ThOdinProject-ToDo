@@ -3,7 +3,7 @@ import Project from "./project";
 import { renderUI, renderProjectContainer } from "./index";
 
 // import { setupEventListeners, filteredTodos } from "./manipulateDOM";
-import { setupEventListeners, setStatusOfUI } from "./manipulateDOM";
+import { setupEventListeners, setStatusOfUI, activeProjectLink } from "./manipulateDOM";
 
 // import { getTodosByProject } from "./handletodos";
 import { isThisWeek, isToday } from "date-fns";
@@ -76,6 +76,7 @@ function getProjects(projectsList, todoList = null, currentProject) {
     let ulContent = "";
 
     projectsList.forEach((element) => {
+      // console.log("activeProjectLink", activeProjectLink)
       ulContent += `
                 <li data-project-id="${element.id}">
                     <a href="#" class="project-link">${element.name}</a>

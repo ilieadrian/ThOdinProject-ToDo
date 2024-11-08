@@ -15,10 +15,11 @@ import Todo from "./todo";
 import { format } from "date-fns";
 
 function displayToDods(todoList) {
-  // console.log("displayToDods FIRED");
+  console.log("displayToDods FIRED");
   let ulContent = "";
 
   todoList.forEach((element) => {
+    // console.log(element.status)
     ulContent += `
             <li class="item" id="item-${element.id}">
                 <div class="name-grup ${element.status ? "finished" : ""}">
@@ -130,7 +131,7 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
   } else {
     renderUI(projectsList, todoList);
   }
-
+  
   setupEventListeners(todoList, projectsList);
 
 
