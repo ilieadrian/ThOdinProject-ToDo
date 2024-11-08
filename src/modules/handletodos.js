@@ -19,7 +19,6 @@ function displayToDods(todoList) {
   let ulContent = "";
 
   todoList.forEach((element) => {
-    // console.log(element.status)
     ulContent += `
             <li class="item" id="item-${element.id}">
                 <div class="name-grup ${element.status ? "finished" : ""}">

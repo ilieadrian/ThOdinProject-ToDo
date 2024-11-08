@@ -5,6 +5,7 @@ export default class Project {
     this._id = Project.calcId();
     this._name = name;
     this._items = 0;
+    this._active = false;
   }
 
   static calcId() {
@@ -23,11 +24,15 @@ export default class Project {
     return this._items;
   }
 
+  get active() {
+    return this._active;
+  }
+
   set name(value) {
     this._name = value;
   }
 
-  calcItem() {
+    calcItem() {
     this._items += 1;
   }
 

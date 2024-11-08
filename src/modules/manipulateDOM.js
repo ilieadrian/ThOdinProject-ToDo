@@ -5,7 +5,6 @@ import {
 } from "./index";
 import {
   getTodosByProject,
-  displayToDods,
   addNewTodo,
   editTodo,
   deleteTodoItem,
@@ -330,12 +329,23 @@ function setupEventListeners(todoList, projectsList) {
       handleProjectCountNumber();
 
       projectList.forEach((item) => {
+
+///
         const link = item.querySelector("a");
+        console.log("Item in for each", projectList)
+        
+
         link.classList.remove("active");
-        activeProjectLink = false;
       });
 
-   
+      const theProject = projectsList.find(
+        (project) => project.name === projectName,
+      );
+
+      theProject._active = true;
+
+      console.log(theProject)
+
         anchor.classList.add("active");
         activeProjectLink = true;
 
@@ -345,13 +355,10 @@ function setupEventListeners(todoList, projectsList) {
         anchor.classList.add("active");
       }
       
-      //
-        
-      
-      
       
       statusOfUI = true;
       return statusOfUI, filteredTodos;
+      ////////////////
     });
   });
 
@@ -443,4 +450,4 @@ function setupEventListeners(todoList, projectsList) {
   });
 }
 
-export { setupEventListeners, statusOfUI, filteredTodos, activeProjectLink };
+export { setupEventListeners, statusOfUI, filteredTodos };

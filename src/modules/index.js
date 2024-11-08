@@ -150,7 +150,6 @@ console.log("Delete button:", deleteBtn);
 }
 
 function getActiveId(projectName, projectsList ) {
-  // console.table(projectsList)
 
   if(projectsList.length === 1) {
     // console.log("Project list is 1", projectsList[0]._id)
