@@ -19,7 +19,7 @@ import { getProjects } from "./handleproject";
 import { format } from "date-fns";
 
 let statusOfUI = false;
-let activeProjectLink = null; 
+let activeProjectLink = null;
 let filteredTodos = [];
 
 export function setStatusOfUI(newStatus) {
@@ -284,7 +284,7 @@ function setupEventListeners(todoList, projectsList) {
 
     const elementId = listItem ? +listItem.id.split("-")[1] : null;
     const todoIndex = todoList.findIndex((todo) => todo._id === elementId);
-  
+
     if (todoIndex === -1) {
       console.error(
         "Todo item not found in todoList for elementId:",
@@ -312,7 +312,6 @@ function setupEventListeners(todoList, projectsList) {
   todoListContainer.addEventListener("click", adUIListeners);
 
   const projectList = document.querySelectorAll("#projects li");
-  
 
   projectList.forEach((li) => {
     const anchor = li.querySelector("a");
@@ -320,45 +319,33 @@ function setupEventListeners(todoList, projectsList) {
     anchor.addEventListener("click", function (event) {
       event.preventDefault();
       const projectName = anchor.textContent;
-      
+
       filteredTodos = getTodosByProject(todoList, projectName);
 
-      console.log("calling renderTodoContainer from event listener", projectName)
+      console.log(
+        "calling renderTodoContainer from event listener",
+        projectName,
+      );
 
       renderTodoContainer(filteredTodos, null, projectName);
       handleProjectCountNumber();
 
       projectList.forEach((item) => {
-
-///
         const link = item.querySelector("a");
-        console.log("Item in for each", projectList)
-        
-
         link.classList.remove("active");
       });
 
-      const theProject = projectsList.find(
-        (project) => project.name === projectName,
-      );
+      anchor.classList.add("active");
+      activeProjectLink = true;
 
-      theProject._active = true;
-
-      console.log(theProject)
-
-        anchor.classList.add("active");
-        activeProjectLink = true;
-
-        //
       if (activeProjectLink) {
-        console.log("activeProjectLink in modify anchor.", activeProjectLink)
         anchor.classList.add("active");
       }
       
-      
+      handleSelectedLink(projectsList, projectName);
+
       statusOfUI = true;
       return statusOfUI, filteredTodos;
-      ////////////////
     });
   });
 
@@ -394,7 +381,9 @@ function setupEventListeners(todoList, projectsList) {
     if (event.target && event.target.id === "create-todo") {
       event.preventDefault();
       const todoTitle = document.getElementById("title").value.trim();
-      const todoDescription = document.getElementById("description").value.trim();
+      const todoDescription = document
+        .getElementById("description")
+        .value.trim();
       const projectsDropdown = document.getElementById("projects-select");
       const selectedProject = projectsDropdown.value;
       const selecteDate = document.querySelector('input[type="date"]').value;
@@ -448,6 +437,18 @@ function setupEventListeners(todoList, projectsList) {
       );
     }
   });
+}
+
+function handleSelectedLink(projectsList, projectName) {
+  const selectedProject = projectsList.find(
+    (project) => project.name === projectName,
+  );
+
+  for (let i = 0; i < projectsList.length; i++) {
+    projectsList[i]._active = false;
+  }
+
+  selectedProject._active = true;
 }
 
 export { setupEventListeners, statusOfUI, filteredTodos };

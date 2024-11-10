@@ -76,10 +76,9 @@ function getProjects(projectsList, todoList = null, currentProject) {
     let ulContent = "";
 
     projectsList.forEach((element) => {
-      console.log(element.name, element.active)
       ulContent += `
                 <li data-project-id="${element.id}">
-                    <a href="#" class="project-link ${element.active ? "active" : ""}">${element.name}</a>
+                    <a href="#" class="project-link ${element._active ? "active" : ""}">${element.name}</a>
                     <span class="number-of-tasks">${countTodoinProject(element.name, todoList)}</span>
                 </li>
             `;
@@ -157,7 +156,7 @@ function deleteProject(idToDelete, projectsList, todoList) {
   const projectIndex = projectsList.findIndex(
     (project) => project.id == idToDelete,
   );
-  
+
   const projectToDelete = projectsList.find(
     (project) => project.id == idToDelete,
   ).name;
@@ -165,12 +164,12 @@ function deleteProject(idToDelete, projectsList, todoList) {
   const todosInProject = countTodoinProject(projectToDelete, todoList);
 
   if (projectIndex !== -1 && todosInProject == 0) {
-    console.log("projectIndex", projectIndex)
+    console.log("projectIndex", projectIndex);
     projectsList.splice(projectIndex, 1);
     localStorage.setItem("projectsList", JSON.stringify(projectsList));
-    setStatusOfUI(false);   
+    setStatusOfUI(false);
   } else {
-    return
+    return;
   }
   renderUI(projectsList, todoList);
   setupEventListeners(todoList, projectsList);

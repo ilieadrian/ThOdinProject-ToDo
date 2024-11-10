@@ -104,8 +104,8 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
   // console.log("Attempting to delete todo at index:", todoIndex);
   // console.table(todoList);
 
-  if (todoList.length < 1){
-    console.table(todoList)
+  if (todoList.length < 1) {
+    console.table(todoList);
     return;
   }
 
@@ -119,7 +119,7 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
 
   if (statusOfUI) {
     const projectName = filteredTodos[0]?.project;
-    console.log("projectName in status of UI", projectName)
+    console.log("projectName in status of UI", projectName);
     const filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
 
     renderTodoContainer(filteredTodosAfterDeletion, null, projectName);
@@ -130,12 +130,11 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
   } else {
     renderUI(projectsList, todoList);
   }
-  
+
   setupEventListeners(todoList, projectsList);
 
-
   if (todoList.length === 0) {
-    console.log("(todoList.length === 0) case")
+    console.log("(todoList.length === 0) case");
     handleEmptyProjectPage();
   }
 }

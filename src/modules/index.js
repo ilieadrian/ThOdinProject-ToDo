@@ -71,7 +71,11 @@ function renderUI(projectsList, todoList) {
   // console.log("statusOfUI in renderUI", statusOfUI)
 }
 
-function renderTodoContainer(filteredTodos, errorMessage = null, projectName = null) {
+function renderTodoContainer(
+  filteredTodos,
+  errorMessage = null,
+  projectName = null,
+) {
   // console.log("renderTodoContainer FIRED");
   let container = document.querySelector(".todo-container");
 
@@ -98,9 +102,12 @@ function renderTodoContainer(filteredTodos, errorMessage = null, projectName = n
                 <button class="project-delete-btn">Delete project</button>
             </div>
             `;
-            console.log("!errorMessage runned and button added to page")
+      console.log("!errorMessage runned and button added to page");
     }
-    console.log("calling handleEmptyProjectPage(projectName) with the project:", projectName)
+    console.log(
+      "calling handleEmptyProjectPage(projectName) with the project:",
+      projectName,
+    );
     handleEmptyProjectPage(projectName);
   }
 }
@@ -113,13 +120,13 @@ function renderProjectContainer(projectsList, todoList) {
   container.innerHTML = `
         ${getProjects(projectsList, todoList)}
     `;
-    handleProjectCountNumber()
+  handleProjectCountNumber();
 }
 
 function handleEmptyProjectPage(projectName) {
-  console.log(" handleEmptyProjectPage called on project name: ", projectName)
+  console.log(" handleEmptyProjectPage called on project name: ", projectName);
 
-  if(projectName == null) {
+  if (projectName == null) {
     return;
   }
   let container = document.querySelector(".todo-container");
@@ -128,40 +135,37 @@ function handleEmptyProjectPage(projectName) {
 
   const deleteBtn = container.querySelector(".project-delete-btn");
 
-console.log("Project name in handleEmptyProjectPage:", projectName);
-console.log("projectsList in handleEmptyProjectPage:", projectsList);
-let idToDelete = getActiveId(projectName, projectsList);
-console.log("ID to delete:", idToDelete);
+  console.log("Project name in handleEmptyProjectPage:", projectName);
+  console.log("projectsList in handleEmptyProjectPage:", projectsList);
+  let idToDelete = getActiveId(projectName, projectsList);
+  console.log("ID to delete:", idToDelete);
 
   // console.log("idToDelete in handleEmptyProjectPage", idToDelete)
 
-console.log("Delete button:", deleteBtn);
+  console.log("Delete button:", deleteBtn);
 
   if (deleteBtn) {
-      console.log("Fired if(deleteBTN) in get active link", deleteBtn);
-      deleteBtn.addEventListener("click", function () {
-        console.log("Clicked on delete project")
-        deleteProject(idToDelete, projectsList, todoList);
-      });
-    } else {
-      console.log("RenderUI case");
-    }
-
+    console.log("Fired if(deleteBTN) in get active link", deleteBtn);
+    deleteBtn.addEventListener("click", function () {
+      console.log("Clicked on delete project");
+      deleteProject(idToDelete, projectsList, todoList);
+    });
+  } else {
+    console.log("RenderUI case");
+  }
 }
 
-function getActiveId(projectName, projectsList ) {
-
-  if(projectsList.length === 1) {
+function getActiveId(projectName, projectsList) {
+  if (projectsList.length === 1) {
     // console.log("Project list is 1", projectsList[0]._id)
   }
 
-  let activeId =  projectsList.find(
+  let activeId = projectsList.find(
     (project) => project.name == projectName,
-  )._id
+  )._id;
   // console.log("Active id: ", activeId)
   return activeId;
   // console.log(projectName, projectsList)
-
 }
 
 function renderHomeMenu(todoList) {

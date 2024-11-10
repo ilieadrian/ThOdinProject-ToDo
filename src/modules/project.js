@@ -32,7 +32,7 @@ export default class Project {
     this._name = value;
   }
 
-    calcItem() {
+  calcItem() {
     this._items += 1;
   }
 
