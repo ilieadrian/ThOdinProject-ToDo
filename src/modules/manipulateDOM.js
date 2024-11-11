@@ -378,9 +378,11 @@ function setupEventListeners(todoList, projectsList) {
       });
     });
 
-    if (event.target && event.target.id === "create-todo") {
+    if (event.target && event.target.id === "add-modal-todo") {
       event.preventDefault();
+      
       const todoTitle = document.getElementById("title").value.trim();
+      console.log(todoTitle)
       const todoDescription = document
         .getElementById("description")
         .value.trim();
