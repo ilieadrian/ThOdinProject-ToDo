@@ -238,22 +238,24 @@ function setupEventListeners(todoList, projectsList) {
   const thisWeekTodosLink = document.getElementById("week-link");
 
   todayTodosLink.addEventListener("click", function () {
+    console.log("dueTodayTodos", dueTodayTodos)
     if (dueTodayTodos.length !== 0) {
       renderTodoContainer(dueTodayTodos);
     } else {
       const errorMessage = `<p class="emptyPageNotification">There are no todos with due date today.</p>`;
-      renderTodoContainer(dueTodayTodos, errorMessage);
+      renderTodoContainer(dueTodayTodos, errorMessage, null);
     }
 
     return (statusOfUI = true);
   });
 
   thisWeekTodosLink.addEventListener("click", function () {
+    console.log("dueThisWeekTodos", dueThisWeekTodos)
     if (dueThisWeekTodos.length !== 0) {
       renderTodoContainer(dueThisWeekTodos);
     } else {
       const errorMessage = `<p class="emptyPageNotification">There are no todos with due date this week.</p>`;
-      renderTodoContainer(dueThisWeekTodos, errorMessage);
+      renderTodoContainer(dueThisWeekTodos, errorMessage, null);
     }
 
     return (statusOfUI = true);
@@ -272,8 +274,11 @@ function setupEventListeners(todoList, projectsList) {
   });
 
   homeLink.addEventListener("click", function () {
+    console.log("Clicked in HomeLink")
     renderUI(projectsList, todoList);
     setupEventListeners(todoList, projectsList);
+    resetSelectedLink(projectsList);
+    renderProjectContainer(projectsList, todoList)
     statusOfUI = false;
   });
 
@@ -342,7 +347,7 @@ function setupEventListeners(todoList, projectsList) {
         anchor.classList.add("active");
       }
       
-      handleSelectedLink(projectsList, projectName);
+      handleSelectedLink(projectsList, projectName, todoList);
 
       statusOfUI = true;
       return statusOfUI, filteredTodos;
@@ -446,11 +451,15 @@ function handleSelectedLink(projectsList, projectName) {
     (project) => project.name === projectName,
   );
 
+  resetSelectedLink(projectsList)
+
+  selectedProject._active = true;
+}
+
+function resetSelectedLink(projectsList) {
   for (let i = 0; i < projectsList.length; i++) {
     projectsList[i]._active = false;
   }
-
-  selectedProject._active = true;
 }
 
 export { setupEventListeners, statusOfUI, filteredTodos };

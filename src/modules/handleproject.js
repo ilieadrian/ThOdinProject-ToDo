@@ -101,7 +101,7 @@ function getProjetsByDueDate(todoList) {
 }
 
 function renderDueTodosContainer(todoList) {
-  // console.log("renderDueTodosContainer FIRED");
+  console.log("renderDueTodosContainer FIRED");
   const { dueTodayTodos, dueThisWeekTodos } = getProjetsByDueDate(todoList);
 
   let ulContent = "";
