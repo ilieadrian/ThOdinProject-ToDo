@@ -21,6 +21,7 @@ import { format } from "date-fns";
 let statusOfUI = false;
 let activeProjectLink = null;
 let filteredTodos = [];
+let currentView = 'index';
 
 export function setStatusOfUI(newStatus) {
   statusOfUI = newStatus;
@@ -194,28 +195,45 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
 }
 
 function modifyTodoStatus(elementId, target, projectsList, todoList) {
+  console.log("currentView", currentView)
   console.log("modifyTodoStatus FIRED");
   const todoItem = todoList.find((todo) => todo.id == elementId);
+  // const { dueTodayTodos, dueThisWeekTodos } = getProjetsByDueDate(todoList);
+
   todoItem.status = target.checked;
 
   if (!todoItem) {
     return;
   }
 
+  if(currentView == "thisWeekTodosLink"){
+    const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
+
+    console.log('we are in currentView = "thisWeekTodosLink')
+    renderTodoContainer(dueThisWeekTodos);
+    console.log(dueThisWeekTodos)
+    renderProjectContainer(projectsList, todoList);
+    renderHomeMenu(todoList);
+    handleProjectCountNumber();
+    handleEmptyWeekPage(dueThisWeekTodos)
+    console.log("statusOfUI", statusOfUI)
+    } else {
+      console.log("statusOfUI in else  currentView about to fire")
+      renderUI(projectsList, todoList);
+    }
+
+    console.log("Status of UI after the code dueThisWeek", statusOfUI)
+
   if (statusOfUI) {
     renderTodoContainer(filteredTodos);
     renderProjectContainer(projectsList, todoList);
     renderHomeMenu(todoList);
     handleProjectCountNumber();
-  } else {
+  } else if(!currentView == "thisWeekTodosLink") {
+    console.log("statusOfUI in else statusOfUI about to fire")
     renderUI(projectsList, todoList);
   }
   setupEventListeners(todoList, projectsList);
-  //
-  if (activeProjectLink) {
-    activeProjectLink = true;
-  }
-  //
 }
 
 function addCloseEventListeners(modalContainer) {
@@ -246,19 +264,21 @@ function setupEventListeners(todoList, projectsList) {
       renderTodoContainer(dueTodayTodos, errorMessage, null);
     }
 
-    return (statusOfUI = true);
+    // return (statusOfUI = true);
   });
 
   thisWeekTodosLink.addEventListener("click", function () {
+    currentView = "thisWeekTodosLink";
     console.log("dueThisWeekTodos", dueThisWeekTodos)
     if (dueThisWeekTodos.length !== 0) {
       renderTodoContainer(dueThisWeekTodos);
     } else {
-      const errorMessage = `<p class="emptyPageNotification">There are no todos with due date this week.</p>`;
-      renderTodoContainer(dueThisWeekTodos, errorMessage, null);
+      handleEmptyWeekPage(dueThisWeekTodos)
+      // const errorMessage = `<p class="emptyPageNotification">There are no todos with due date this week.</p>`;
+      // renderTodoContainer(dueThisWeekTodos, errorMessage, null);
     }
 
-    return (statusOfUI = true);
+    return statusOfUI = false;
   });
 
   const homeLink = document.getElementById("home-link");
@@ -276,9 +296,9 @@ function setupEventListeners(todoList, projectsList) {
   homeLink.addEventListener("click", function () {
     console.log("Clicked in HomeLink")
     renderUI(projectsList, todoList);
-    setupEventListeners(todoList, projectsList);
     resetSelectedLink(projectsList);
     renderProjectContainer(projectsList, todoList)
+    setupEventListeners(todoList, projectsList);
     statusOfUI = false;
   });
 
@@ -444,6 +464,12 @@ function setupEventListeners(todoList, projectsList) {
       );
     }
   });
+}
+
+function handleEmptyWeekPage(dueThisWeekTodos){
+
+  const errorMessage = `<p class="emptyPageNotification">There are no todos with due date this week.</p>`;
+      renderTodoContainer(dueThisWeekTodos, errorMessage, null);
 }
 
 function handleSelectedLink(projectsList, projectName) {

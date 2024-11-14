@@ -75,7 +75,7 @@ function renderTodoContainer(
   filteredTodos,
   errorMessage = null,
   projectName = null,
-) {
+  ) {
   // console.log("renderTodoContainer FIRED");
   let container = document.querySelector(".todo-container");
 
@@ -102,8 +102,7 @@ function renderTodoContainer(
                 <button class="project-delete-btn">Delete project</button>
             </div>
             `;
-      console.log("!errorMessage runned and button added to page");
-    }
+      }
     console.log(
       "calling handleEmptyProjectPage(projectName) with the project:",
       projectName,
