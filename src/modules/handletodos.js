@@ -15,7 +15,7 @@ import Todo from "./todo";
 import { format } from "date-fns";
 
 function displayToDods(todoList) {
-  console.log("displayToDods FIRED");
+  console.log("displayToDods FIRED with: ", todoList);
   let ulContent = "";
 
   todoList.forEach((element) => {

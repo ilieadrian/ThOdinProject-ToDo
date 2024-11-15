@@ -206,23 +206,26 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
     return;
   }
 
-  if(currentView == "thisWeekTodosLink"){
-    const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
+  if(currentView == "todayTodosLink"){
+    console.log(currentView)
+      const { dueTodayTodos } = getProjetsByDueDate(todoList);
+      renderTodoContainer(dueTodayTodos);
+      renderProjectContainer(projectsList, todoList);
+      renderHomeMenu(todoList);
+      handleProjectCountNumber();
+      handleEmptyTodayPage(dueTodayTodos);
+      } 
+    
 
-    console.log('we are in currentView = "thisWeekTodosLink')
+  if(currentView == "thisWeekTodosLink"){
+    console.log(currentView)
+    const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
     renderTodoContainer(dueThisWeekTodos);
-    console.log(dueThisWeekTodos)
     renderProjectContainer(projectsList, todoList);
     renderHomeMenu(todoList);
     handleProjectCountNumber();
     handleEmptyWeekPage(dueThisWeekTodos)
-    console.log("statusOfUI", statusOfUI)
-    } else {
-      console.log("statusOfUI in else  currentView about to fire")
-      renderUI(projectsList, todoList);
-    }
-
-    console.log("Status of UI after the code dueThisWeek", statusOfUI)
+    } 
 
   if (statusOfUI) {
     renderTodoContainer(filteredTodos);
@@ -232,7 +235,12 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
   } else if(!currentView == "thisWeekTodosLink") {
     console.log("statusOfUI in else statusOfUI about to fire")
     renderUI(projectsList, todoList);
-  }
+  } else if(!currentView == "todayTodosLink") {
+    console.log(currentView)
+    console.log("statusOfUI in else statusOfUI about to fire")
+    renderUI(projectsList, todoList);
+  } 
+
   setupEventListeners(todoList, projectsList);
 }
 
@@ -256,26 +264,29 @@ function setupEventListeners(todoList, projectsList) {
   const thisWeekTodosLink = document.getElementById("week-link");
 
   todayTodosLink.addEventListener("click", function () {
+    currentView = "todayTodosLink";
+
     console.log("dueTodayTodos", dueTodayTodos)
     if (dueTodayTodos.length !== 0) {
+      console.log("calling renderTodoContainer in !if", dueTodayTodos)
       renderTodoContainer(dueTodayTodos);
     } else {
-      const errorMessage = `<p class="emptyPageNotification">There are no todos with due date today.</p>`;
-      renderTodoContainer(dueTodayTodos, errorMessage, null);
+      console.log("calling handleEmptyTodayPage in !if - else", dueTodayTodos)
+      handleEmptyTodayPage(dueTodayTodos);
     }
 
-    // return (statusOfUI = true);
+    return statusOfUI = false;
   });
 
   thisWeekTodosLink.addEventListener("click", function () {
     currentView = "thisWeekTodosLink";
     console.log("dueThisWeekTodos", dueThisWeekTodos)
     if (dueThisWeekTodos.length !== 0) {
+      console.log("calling renderTodoContainer in !if", dueThisWeekTodos)
       renderTodoContainer(dueThisWeekTodos);
     } else {
+      console.log("calling handleEmptyTodayPage in !if - else", dueThisWeekTodos)
       handleEmptyWeekPage(dueThisWeekTodos)
-      // const errorMessage = `<p class="emptyPageNotification">There are no todos with due date this week.</p>`;
-      // renderTodoContainer(dueThisWeekTodos, errorMessage, null);
     }
 
     return statusOfUI = false;
@@ -466,10 +477,16 @@ function setupEventListeners(todoList, projectsList) {
   });
 }
 
-function handleEmptyWeekPage(dueThisWeekTodos){
+function handleEmptyTodayPage(dueTodayTodos) {
+  console.log("handleEmptyTodayPage for today")
+  const errorMessage = `<p class="emptyPageNotification">There are no todos with due date today.</p>`;
+  renderTodoContainer(dueTodayTodos, errorMessage, null);
+}
 
+function handleEmptyWeekPage(dueThisWeekTodos){
+  console.log("handleEmptyTodayPage for week")
   const errorMessage = `<p class="emptyPageNotification">There are no todos with due date this week.</p>`;
-      renderTodoContainer(dueThisWeekTodos, errorMessage, null);
+  renderTodoContainer(dueThisWeekTodos, errorMessage, null);
 }
 
 function handleSelectedLink(projectsList, projectName) {

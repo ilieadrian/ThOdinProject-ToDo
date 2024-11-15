@@ -12,7 +12,7 @@ import { deleteProject } from "./handleproject";
 import { setupEventListeners } from "./manipulateDOM";
 
 function renderUI(projectsList, todoList) {
-  // console.log("renderUI FIRED");
+  console.log("renderUI FIRED");
   let container = document.querySelector(".container");
   const headerTodoIcon = new Image();
   headerTodoIcon.src = TodoIcon;
@@ -76,7 +76,7 @@ function renderTodoContainer(
   errorMessage = null,
   projectName = null,
   ) {
-  // console.log("renderTodoContainer FIRED");
+  console.log("renderTodoContainer FIRED with todos:", filteredTodos);
   let container = document.querySelector(".todo-container");
 
   container.innerHTML = "";
@@ -168,7 +168,7 @@ function getActiveId(projectName, projectsList) {
 }
 
 function renderHomeMenu(todoList) {
-  // console.log("renderHomeMenu FIRED");
+  console.log("renderHomeMenu FIRED");
   let container = document.getElementById("todos-due");
 
   container.innerHTML = "";

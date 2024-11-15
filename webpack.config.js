@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 // import html from "./file.html";
 
 module.exports = {
+  cache: false,
   watch: true,
   mode: "development",
   entry: {
