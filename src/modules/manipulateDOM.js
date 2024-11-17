@@ -241,7 +241,7 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
     renderUI(projectsList, todoList);
   } 
 
-  setupEventListeners(todoList, projectsList);
+  // setupEventListeners(todoList, projectsList);
 }
 
 function addCloseEventListeners(modalContainer) {
