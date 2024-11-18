@@ -32,7 +32,7 @@ const defaultValues = (function () {
       new Todo(
         "New Odin Chapter",
         "Start a new OdinProjectChapter",
-        "2024-10-16",
+        "2024-11-19",
         "medium",
         true,
         "Learning",
@@ -40,7 +40,7 @@ const defaultValues = (function () {
       new Todo(
         "Repair blog",
         "Fix social links on blog header",
-        "2024-11-17",
+        "2024-11-18",
         "high",
         false,
         "Learning",
@@ -48,7 +48,7 @@ const defaultValues = (function () {
       new Todo(
         "Read daily a pattern",
         "https://www.patterns.dev/vanilla/import-on-interaction",
-        "2024-11-14",
+        "2024-11-18",
         "high",
         false,
         "Learning",

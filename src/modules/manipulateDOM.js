@@ -225,7 +225,7 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
     renderHomeMenu(todoList);
     handleProjectCountNumber();
     handleEmptyWeekPage(dueThisWeekTodos)
-    } 
+        } 
 
   if (statusOfUI) {
     renderTodoContainer(filteredTodos);
@@ -241,7 +241,7 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
     renderUI(projectsList, todoList);
   } 
 
-  // setupEventListeners(todoList, projectsList);
+  setupEventListeners(todoList, projectsList);
 }
 
 function addCloseEventListeners(modalContainer) {
@@ -278,7 +278,24 @@ function setupEventListeners(todoList, projectsList) {
     return statusOfUI = false;
   });
 
-  thisWeekTodosLink.addEventListener("click", function () {
+  // thisWeekTodosLink.addEventListener("click", function () {
+  //   currentView = "thisWeekTodosLink";
+  //   console.log("dueThisWeekTodos", dueThisWeekTodos)
+  //   if (dueThisWeekTodos.length !== 0) {
+  //     console.log("calling renderTodoContainer in !if", dueThisWeekTodos)
+  //     renderTodoContainer(dueThisWeekTodos);
+  //   } else {
+  //     console.log("calling handleEmptyTodayPage in !if - else", dueThisWeekTodos)
+  //     handleEmptyWeekPage(dueThisWeekTodos)
+  //   }
+
+  //   return statusOfUI = false;
+  // });
+
+  thisWeekTodosLink.removeEventListener("click", addThisWeekTodosLink)
+  thisWeekTodosLink.addEventListener("click", addThisWeekTodosLink)
+
+  function addThisWeekTodosLink() {
     currentView = "thisWeekTodosLink";
     console.log("dueThisWeekTodos", dueThisWeekTodos)
     if (dueThisWeekTodos.length !== 0) {
@@ -290,7 +307,7 @@ function setupEventListeners(todoList, projectsList) {
     }
 
     return statusOfUI = false;
-  });
+  }
 
   const homeLink = document.getElementById("home-link");
   const addProjectBTN = document.querySelector(".addproject");
