@@ -7,17 +7,21 @@ import {
 import { displayToDods } from "./handletodos";
 //correct typo above: should be displayTodos
 import { defaultValues } from "./startup";
-import TodoIcon from "../images/to-do-list.svg";
+import Icon from "../images/edit.svg";
 import { deleteProject } from "./handleproject";
 import { setupEventListeners } from "./manipulateDOM";
 
+
+
 function renderUI(projectsList, todoList) {
+
+
   console.log("renderUI FIRED");
   let container = document.querySelector(".container");
-  const headerTodoIcon = new Image();
-  headerTodoIcon.src = TodoIcon;
+  
 
   if (!container) {
+    
     container = document.createElement("div");
     container.classList.add("container");
     document.body.appendChild(container);
@@ -25,10 +29,9 @@ function renderUI(projectsList, todoList) {
 
   container.innerHTML = "";
   container.innerHTML = `
-        <section class="header">
+        <section class="header" id="section-header">
             <h1>// To do</h1>
-                <img src="../src/images/to-do-list.svg" alt="" srcset="">
-                <div id="header-icon-container"></div>
+                
         </section>
         <div class="content-container">
             <section class="menu">
@@ -63,13 +66,36 @@ function renderUI(projectsList, todoList) {
     renderTodoContainer(todoList, errorMessage);
     localStorage.setItem("todoList", JSON.stringify(todoList));
   }
-
-  //---!!!---//
-  const headerIconContainer = document.getElementById("header-icon-container");
-  headerIconContainer.appendChild(headerTodoIcon);
   handleProjectCountNumber();
-  // console.log("statusOfUI in renderUI", statusOfUI)
+
+  //
+  const Icon = require("../images/edit.svg");
+  //
+
+
+  const headerIconContainer = document.getElementById("section-header");
+const headerTodoIcon = new Image();
+headerTodoIcon.src = Icon;
+headerIconContainer.appendChild(headerTodoIcon);
+  //---!!!---//
+ // console.log("statusOfUI in renderUI", statusOfUI)
+
 }
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   console.log("DOM fully loaded and parsed");
+//   const headerIconContainer = document.getElementById("section-header");
+
+//   if (headerIconContainer) {
+//     const headerTodoIcon = new Image();
+//     headerTodoIcon.src = Icon;
+//     console.log("Appended Icon Source:", headerTodoIcon.src);
+//     headerIconContainer.appendChild(headerTodoIcon);
+//   } else {
+//     console.error("Header icon container not found!");
+//   }
+// });
+
 
 function renderTodoContainer(
   filteredTodos,

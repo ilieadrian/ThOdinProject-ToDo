@@ -437,9 +437,8 @@ function setupEventListeners(todoList, projectsList) {
       event.preventDefault();
       
       const todoTitle = document.getElementById("title").value.trim();
-      console.log(todoTitle)
       const todoDescription = document
-        .getElementById("description")
+        .getElementById("title")
         .value.trim();
       const projectsDropdown = document.getElementById("projects-select");
       const selectedProject = projectsDropdown.value;
