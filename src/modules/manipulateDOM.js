@@ -214,6 +214,7 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
       renderHomeMenu(todoList);
       handleProjectCountNumber();
       handleEmptyTodayPage(dueTodayTodos);
+      // setupEventListeners(todoList, projectsList);
       } 
     
 
@@ -225,6 +226,7 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
     renderHomeMenu(todoList);
     handleProjectCountNumber();
     handleEmptyWeekPage(dueThisWeekTodos)
+    // setupEventListeners(todoList, projectsList);
         } 
 
   if (statusOfUI) {
@@ -431,7 +433,7 @@ function setupEventListeners(todoList, projectsList) {
       });
     });
 
-    if (event.target && event.target.id === "add-modal-todo") {
+    if (event.target && event.target.id === "create-todo") {
       event.preventDefault();
       
       const todoTitle = document.getElementById("title").value.trim();
