@@ -28,15 +28,29 @@ function displayToDods(todoList) {
                 </div>
                 <div class="action-grup ${element.status ? "finished" : ""}">
                     <p id="due-date">${format(new Date(element.dueDate), "MMM do")}</p>
-                    <button class="view-btn" id="view-btn-${element.id}"><img src="../src/images/view.svg" alt="" srcset=""></button>
-                    <button class="edit-btn" id="edit-btn-${element.id}"><img src="../src/images/edit.svg" alt="" srcset=""></button>
-                    <button class="delete-btn" id="delete-btn-${element.id}"><img src="../src/images/delete.svg" alt="" srcset=""></button>
+                    <button class="view-btn" id="view-btn-${element.id}"><img src="${addViewImages()}"></button>
+                    <button class="edit-btn" id="edit-btn-${element.id}"><img src="${addEditImages()}"></button>
+                    <button class="delete-btn" id="delete-btn-${element.id}"><img src="${addDeleteImages()}"></button>
                 </div>
             </li>
         `;
   });
-
   return ulContent;
+}
+
+function addViewImages() {
+  const viewIcon = require("../images/view.svg");
+  return viewIcon;
+}
+
+function addEditImages(){
+  const editIcon = require("../images/edit.svg");
+  return editIcon;
+}
+
+function addDeleteImages(){
+  const deleteIcon = require("../images/delete.svg");
+  return deleteIcon
 }
 
 function getTodosByProject(todoList, curentElement) {

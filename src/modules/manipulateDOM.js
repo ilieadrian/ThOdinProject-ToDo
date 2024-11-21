@@ -200,11 +200,11 @@ function addCloseElipseWhiteBg() {
   const closeIconWhiteBg = require("../images/close-ellipse-white-bg.svg");
 
   const headerIconContainer = document.getElementById("modal-header");
-  const headerTodoIcon = new Image();
-  headerTodoIcon.src = closeIconWhiteBg;
-  headerTodoIcon.classList.add("close-todo-modal-button")
-  headerTodoIcon.classList.add("close-btn")
-  headerIconContainer.appendChild(headerTodoIcon);
+  const headerIcon = new Image();
+  headerIcon.src = closeIconWhiteBg;
+  headerIcon.classList.add("close-todo-modal-button")
+  headerIcon.classList.add("close-btn")
+  headerIconContainer.appendChild(headerIcon);
 }
 
 function addCloseElipse() {
@@ -212,8 +212,6 @@ function addCloseElipse() {
   const iconContainer = document.getElementById("close-elipse");
   iconContainer.src = closeIcon;
 }
-
-//add project close btn in coresponding modal
 
 function modifyTodoStatus(elementId, target, projectsList, todoList) {
   console.log("currentView", currentView)
