@@ -22,7 +22,7 @@ let statusOfUI = false;
 let activeProjectLink = null;
 let filteredTodos = [];
 let currentView = 'index';
-const closeIcon = require("../images/close-ellipse.svg");
+
 
 export function setStatusOfUI(newStatus) {
   statusOfUI = newStatus;
@@ -166,23 +166,14 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
   addCloseEventListeners(modalContainer);
 }
 
-function addCloseElipseWhiteBg() {
-  const closeIconWhiteBg = require("../images/close-ellipse-white-bg.svg");
 
-  const headerIconContainer = document.getElementById("modal-header");
-  const headerTodoIcon = new Image();
-  headerTodoIcon.src = closeIconWhiteBg;
-  headerTodoIcon.classList.add("close-todo-modal-button")
-  headerTodoIcon.classList.add("close-btn")
-  headerIconContainer.appendChild(headerTodoIcon);
-}
 
 function openViewModal(elementId, todoList, modalContainer) {
   modalContainer.innerHTML = "";
   modalContainer.innerHTML = `
     <div id="view-modal" class="modal active">
         <div class="modal-content">
-            <img src="../src/images/close-ellipse.svg" class="close-modal-button close-btn">
+            <img id="close-elipse" class="close-modal-button close-btn">
             <h2>${todoList[elementId].title}</h2>
             <div class="detail">
                 <p class="detail-title">Project: </p>
@@ -203,10 +194,28 @@ function openViewModal(elementId, todoList, modalContainer) {
         </div>    
     </div>
     `;
+  addCloseElipse()
   addCloseEventListeners(modalContainer);
 }
 
+function addCloseElipseWhiteBg() {
+  const closeIconWhiteBg = require("../images/close-ellipse-white-bg.svg");
 
+  const headerIconContainer = document.getElementById("modal-header");
+  const headerTodoIcon = new Image();
+  headerTodoIcon.src = closeIconWhiteBg;
+  headerTodoIcon.classList.add("close-todo-modal-button")
+  headerTodoIcon.classList.add("close-btn")
+  headerIconContainer.appendChild(headerTodoIcon);
+}
+
+function addCloseElipse() {
+  const closeIcon = require("../images/close-ellipse.svg");
+  const iconContainer = document.getElementById("close-elipse");
+  iconContainer.src = closeIcon;
+}
+
+//add project close btn in coresponding modal
 
 function modifyTodoStatus(elementId, target, projectsList, todoList) {
   console.log("currentView", currentView)
