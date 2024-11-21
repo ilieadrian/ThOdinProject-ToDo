@@ -48,9 +48,8 @@ function openProjectModal(modalContainer) {
   modalContainer.innerHTML = `
     <div id="add-project-modal" class="modal active">
         <div class="modal-content">
-            <div class="modal-header">
+            <div id="modal-header">
                 <p>Create a new Project</p>
-                <img src="../src/images/close-ellipse-white-bg.svg" class="close-project-modal-button close-btn">
             </div>
             <form>
                 <div class="input-container">
@@ -63,7 +62,7 @@ function openProjectModal(modalContainer) {
         </div>
     </div>
     `;
-
+  addCloseElipseWhiteBg()
   addCloseEventListeners(modalContainer);
 }
 
@@ -165,7 +164,6 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
   addCloseElipseWhiteBg()
   addCloseEventListeners(modalContainer);
 }
-
 
 
 function openViewModal(elementId, todoList, modalContainer) {
