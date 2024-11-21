@@ -43,11 +43,11 @@ function renderUI(projectsList, todoList) {
                 </ul>
                 <div class="buttons-container">
                     <div class="addtodo">
-                        <img src="../src/images/add-plus-circle.svg" alt="" srcset="">
+                        <img id="addtodo-img">
                         <p>New To do</p>
                     </div>
                     <div class="addproject">
-                        <img src="../src/images/add-plus-circle.svg" alt="" srcset="">
+                        <img id="addproject-img">
                         <p>New Project</p>
                     </div>
                 </div>
@@ -75,9 +75,17 @@ function renderUI(projectsList, todoList) {
   headerIconContainer.appendChild(headerTodoIcon);
 
   handleProjectCountNumber();
+  addPlusCircle()
   //---!!!---//
  // console.log("statusOfUI in renderUI", statusOfUI)
+}
 
+function addPlusCircle() {
+  const plusCircleIcon = require("../images/add-plus-circle.svg")
+  const addTodoImg = document.getElementById("addtodo-img")
+  const addProjectImg = document.getElementById("addproject-img")  
+  addTodoImg.src = plusCircleIcon;
+  addProjectImg.src = plusCircleIcon;
 }
 
 function renderTodoContainer(
