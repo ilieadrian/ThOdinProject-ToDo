@@ -22,6 +22,7 @@ let statusOfUI = false;
 let activeProjectLink = null;
 let filteredTodos = [];
 let currentView = 'index';
+const closeIcon = require("../images/close-ellipse.svg");
 
 export function setStatusOfUI(newStatus) {
   statusOfUI = newStatus;
@@ -68,12 +69,12 @@ function openProjectModal(modalContainer) {
 
 function openToDoModal(modalContainer, projectsList) {
   modalContainer.innerHTML = "";
+
   modalContainer.innerHTML = `
     <div id="add-modal-todo" class="modal active">
         <div class="modal-content">
-            <div class="modal-header">
+            <div id="modal-header">
                 <p>Create a new To Do</p>
-                <img src="../src/images/close-ellipse-white-bg.svg" class="close-todo-modal-button close-btn">
             </div>
             <form action="">
                 <ul class="input-container">
@@ -112,36 +113,8 @@ function openToDoModal(modalContainer, projectsList) {
         </div>
     </div>
     `;
-  addCloseEventListeners(modalContainer);
-}
-
-function openViewModal(elementId, todoList, modalContainer) {
-  modalContainer.innerHTML = "";
-  modalContainer.innerHTML = `
-    <div id="view-modal" class="modal active">
-        <div class="modal-content">
-            <img src="../src/images/close-ellipse.svg" class="close-modal-button close-btn">
-            <h2>${todoList[elementId].title}</h2>
-            <div class="detail">
-                <p class="detail-title">Project: </p>
-                <p>${todoList[elementId].project}</p>
-            </div>
-            <div class="detail">
-                <p class="detail-title">Priority: </p>
-                <p>${todoList[elementId].priority}</p>
-            </div>
-            <div class="detail">
-                <p class="detail-title">Due Date: </p>
-                <p>${format(new Date(todoList[elementId].dueDate), "do MMM yyy")}</p>
-            </div>
-            <div class="detail">
-                <p class="detail-title">Details: </p>
-                <p>${todoList[elementId].description}</p>
-            </div>
-        </div>    
-    </div>
-    `;
-  addCloseEventListeners(modalContainer);
+    addCloseElipseWhiteBg();
+    addCloseEventListeners(modalContainer);
 }
 
 function openEditModal(elementId, todoList, projectsList, modalContainer) {
@@ -149,9 +122,8 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
   modalContainer.innerHTML = `
     <div id="edit-modal-todo" class="modal active">
         <div class="modal-content">
-            <div class="modal-header">
+            <div id="modal-header">
                 <p>Edit To Do</p>
-                <img src="../src/images/close-ellipse-white-bg.svg" class="close-project-modal-button close-btn">
             </div>
             <form data-formid="${todoList[elementId].id}">
                 <ul class="input-container">
@@ -190,9 +162,51 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
         </div>
     </div>
     `;
-
+  addCloseElipseWhiteBg()
   addCloseEventListeners(modalContainer);
 }
+
+function addCloseElipseWhiteBg() {
+  const closeIconWhiteBg = require("../images/close-ellipse-white-bg.svg");
+
+  const headerIconContainer = document.getElementById("modal-header");
+  const headerTodoIcon = new Image();
+  headerTodoIcon.src = closeIconWhiteBg;
+  headerTodoIcon.classList.add("close-todo-modal-button")
+  headerTodoIcon.classList.add("close-btn")
+  headerIconContainer.appendChild(headerTodoIcon);
+}
+
+function openViewModal(elementId, todoList, modalContainer) {
+  modalContainer.innerHTML = "";
+  modalContainer.innerHTML = `
+    <div id="view-modal" class="modal active">
+        <div class="modal-content">
+            <img src="../src/images/close-ellipse.svg" class="close-modal-button close-btn">
+            <h2>${todoList[elementId].title}</h2>
+            <div class="detail">
+                <p class="detail-title">Project: </p>
+                <p>${todoList[elementId].project}</p>
+            </div>
+            <div class="detail">
+                <p class="detail-title">Priority: </p>
+                <p>${todoList[elementId].priority}</p>
+            </div>
+            <div class="detail">
+                <p class="detail-title">Due Date: </p>
+                <p>${format(new Date(todoList[elementId].dueDate), "do MMM yyy")}</p>
+            </div>
+            <div class="detail">
+                <p class="detail-title">Details: </p>
+                <p>${todoList[elementId].description}</p>
+            </div>
+        </div>    
+    </div>
+    `;
+  addCloseEventListeners(modalContainer);
+}
+
+
 
 function modifyTodoStatus(elementId, target, projectsList, todoList) {
   console.log("currentView", currentView)
@@ -522,5 +536,7 @@ function resetSelectedLink(projectsList) {
     projectsList[i]._active = false;
   }
 }
+
+
 
 export { setupEventListeners, statusOfUI, filteredTodos };

@@ -7,7 +7,7 @@ import {
 import { displayToDods } from "./handletodos";
 //correct typo above: should be displayTodos
 import { defaultValues } from "./startup";
-import Icon from "../images/edit.svg";
+// import Icon from "../images/to-do-list.svg";
 import { deleteProject } from "./handleproject";
 import { setupEventListeners } from "./manipulateDOM";
 
@@ -66,36 +66,19 @@ function renderUI(projectsList, todoList) {
     renderTodoContainer(todoList, errorMessage);
     localStorage.setItem("todoList", JSON.stringify(todoList));
   }
-  handleProjectCountNumber();
+  
 
-  //
-  const Icon = require("../images/edit.svg");
-  //
-
-
+  const icon = require("../images/to-do-list.svg");
   const headerIconContainer = document.getElementById("section-header");
-const headerTodoIcon = new Image();
-headerTodoIcon.src = Icon;
-headerIconContainer.appendChild(headerTodoIcon);
+  const headerTodoIcon = new Image();
+  headerTodoIcon.src = icon;
+  headerIconContainer.appendChild(headerTodoIcon);
+
+  handleProjectCountNumber();
   //---!!!---//
  // console.log("statusOfUI in renderUI", statusOfUI)
 
 }
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   console.log("DOM fully loaded and parsed");
-//   const headerIconContainer = document.getElementById("section-header");
-
-//   if (headerIconContainer) {
-//     const headerTodoIcon = new Image();
-//     headerTodoIcon.src = Icon;
-//     console.log("Appended Icon Source:", headerTodoIcon.src);
-//     headerIconContainer.appendChild(headerTodoIcon);
-//   } else {
-//     console.error("Header icon container not found!");
-//   }
-// });
-
 
 function renderTodoContainer(
   filteredTodos,
