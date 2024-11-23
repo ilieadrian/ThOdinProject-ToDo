@@ -9,26 +9,21 @@ import { displayToDods } from "./handletodos";
 import { defaultValues } from "./startup";
 // import Icon from "../images/to-do-list.svg";
 import { deleteProject } from "./handleproject";
-import { setupEventListeners } from "./manipulateDOM";
+import { setupEventListeners, currentView } from "./manipulateDOM";
 
 
 
 function renderUI(projectsList, todoList) {
-
-
   console.log("renderUI FIRED");
   let container = document.querySelector(".container");
-  
 
   if (!container) {
-    
     container = document.createElement("div");
     container.classList.add("container");
     document.body.appendChild(container);
   }
 
-  container.innerHTML = "";
-  container.innerHTML = `
+  const html = `
         <section class="header" id="section-header">
             <h1>// To do</h1>
                 
@@ -61,13 +56,51 @@ function renderUI(projectsList, todoList) {
         <div id="modal-container"></div>
     `;
 
+    container.innerHTML = html;
+
+    const homeLink = document.getElementById("home-link");
+    homeLink.addEventListener("click", addIndexEventListener)
+
+  // container.innerHTML = "";
+  // container.innerHTML = `
+  //       <section class="header" id="section-header">
+  //           <h1>// To do</h1>
+                
+  //       </section>
+  //       <div class="content-container">
+  //           <section class="menu">
+  //               <ul id="todos-due" class="menu-links">
+  //                   ${renderDueTodosContainer(todoList)}
+  //               </ul>
+  //               <ul id="projects" class="menu-links">
+  //                   ${getProjects(projectsList, todoList)}
+  //               </ul>
+  //               <div class="buttons-container">
+  //                   <div class="addtodo">
+  //                       <img id="addtodo-img">
+  //                       <p>New To do</p>
+  //                   </div>
+  //                   <div class="addproject">
+  //                       <img id="addproject-img">
+  //                       <p>New Project</p>
+  //                   </div>
+  //               </div>
+  //           </section>
+  //           <section class="todo-container">
+  //               <ul class="items-list" id="item-list-X-X">
+  //                   ${displayToDods(todoList)}
+  //               </ul>
+  //           </section>
+  //       </div>
+  //       <div id="modal-container"></div>
+  //   `;
+
   if (todoList.length == 0) {
     const errorMessage = `<p class="emptyPageNotification">There are no more todos.</p>`;
     renderTodoContainer(todoList, errorMessage);
     localStorage.setItem("todoList", JSON.stringify(todoList));
   }
   
-
   const icon = require("../images/to-do-list.svg");
   const headerIconContainer = document.getElementById("section-header");
   const headerTodoIcon = new Image();
@@ -78,6 +111,17 @@ function renderUI(projectsList, todoList) {
   addPlusCircle()
   //---!!!---//
  // console.log("statusOfUI in renderUI", statusOfUI)
+}
+
+console.log("First", currentView)
+
+function addIndexEventListener(){
+  let currentView = 'index';
+  const { projectsList, todoList } = defaultValues;
+  console.log("ia uite ba")
+  console.log(projectsList, todoList)
+  renderUI(projectsList, todoList);
+  console.log(currentView)
 }
 
 function addPlusCircle() {

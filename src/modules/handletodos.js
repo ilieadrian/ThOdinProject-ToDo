@@ -54,7 +54,6 @@ function addDeleteImages(){
 }
 
 function getTodosByProject(todoList, curentElement) {
-  // console.log("getTodosByProject FIRED");
   return todoList.filter((taskList) => taskList.project === curentElement);
 }
 

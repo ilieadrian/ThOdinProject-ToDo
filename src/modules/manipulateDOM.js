@@ -165,7 +165,6 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
   addCloseEventListeners(modalContainer);
 }
 
-
 function openViewModal(elementId, todoList, modalContainer) {
   modalContainer.innerHTML = "";
   modalContainer.innerHTML = `
@@ -212,6 +211,7 @@ function addCloseElipse() {
   const iconContainer = document.getElementById("close-elipse");
   iconContainer.src = closeIcon;
 }
+
 
 function modifyTodoStatus(elementId, target, projectsList, todoList) {
   console.log("currentView", currentView)
@@ -265,7 +265,46 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
   setupEventListeners(todoList, projectsList);
 }
 
+
+//Revamp setupEventListeners
+// index 
+const homeLink = document.getElementById("home-link");
+
+// if(homeLink) {
+//   homeLink.addEventListener("click", addIndexEventListener)
+// } else {
+//   console.error("homeLink not yet rendered");
+// }
+
+//https://stackoverflow.com/questions/66092392/how-to-add-eventlistener-to-elemen-in-webpack-modules
+
+
+//I decided to rewrite my code and made with document.creatreElement instead of innerHTML. 
+//And it works. A little bit more lines of code but works and conceptual right. Thanks for the help.
+
+
+// function addIndexEventListener() {
+//     //here the bugfix for the status
+//     const { projectsList, todoList } = defaultValues;
+//     console.log("Clicked in HomeLink!!!!!!!!!!")
+//     renderUI(projectsList, todoList);
+//     resetSelectedLink(projectsList);
+//     renderProjectContainer(projectsList, todoList)
+//     setupEventListeners(todoList, projectsList);
+//     statusOfUI = false;
+// }
+// due today
+// due this week
+// Projects contanier
+// New to do
+// New project
+// Check list
+// todo actions
+// Modals
+
+//Close modals
 function addCloseEventListeners(modalContainer) {
+  
   const closeButtons = modalContainer.querySelectorAll(".close-btn");
   closeButtons.forEach((button) => {
     button.addEventListener("click", function () {
@@ -330,7 +369,7 @@ function setupEventListeners(todoList, projectsList) {
     return statusOfUI = false;
   }
 
-  const homeLink = document.getElementById("home-link");
+  // const homeLink = document.getElementById("home-link"); //addIndexEventListener
   const addProjectBTN = document.querySelector(".addproject");
   const addToDoBTN = document.querySelector(".addtodo");
 
@@ -342,14 +381,16 @@ function setupEventListeners(todoList, projectsList) {
     openToDoModal(modalContainer, projectsList);
   });
 
-  homeLink.addEventListener("click", function () {
-    console.log("Clicked in HomeLink")
-    renderUI(projectsList, todoList);
-    resetSelectedLink(projectsList);
-    renderProjectContainer(projectsList, todoList)
-    setupEventListeners(todoList, projectsList);
-    statusOfUI = false;
-  });
+  // homeLink.addEventListener("click", function () {
+
+  //   //here the bugfix for the status
+  //   console.log("Clicked in HomeLink")
+  //   renderUI(projectsList, todoList);
+  //   resetSelectedLink(projectsList);
+  //   renderProjectContainer(projectsList, todoList)
+  //   setupEventListeners(todoList, projectsList);
+  //   statusOfUI = false;
+  // });
 
   function adUIListeners(event) {
     const target = event.target;
@@ -542,6 +583,4 @@ function resetSelectedLink(projectsList) {
   }
 }
 
-
-
-export { setupEventListeners, statusOfUI, filteredTodos };
+export { setupEventListeners, statusOfUI, filteredTodos, currentView };
