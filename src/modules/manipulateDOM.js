@@ -268,13 +268,11 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
 
 //Revamp setupEventListeners
 // index 
-const homeLink = document.getElementById("home-link");
+function addIndexEventListener(){
+  console.log("Call me addIndexEventListener" )
+}
 
-// if(homeLink) {
-//   homeLink.addEventListener("click", addIndexEventListener)
-// } else {
-//   console.error("homeLink not yet rendered");
-// }
+
 
 //https://stackoverflow.com/questions/66092392/how-to-add-eventlistener-to-elemen-in-webpack-modules
 
@@ -313,8 +311,16 @@ function addCloseEventListeners(modalContainer) {
   });
 }
 
+
+
 function setupEventListeners(todoList, projectsList) {
-  // console.log("Fired setupEventListeners");
+  console.log("Fired setupEventListeners");
+
+  const homeLink = document.getElementById("home-link");
+  homeLink.removeEventListener("click",addIndexEventListener)
+  homeLink.addEventListener("click",addIndexEventListener)
+
+
   const todoListContainer = document.querySelector(".todo-container");
   let modalContainer = document.getElementById("modal-container");
 
@@ -323,20 +329,20 @@ function setupEventListeners(todoList, projectsList) {
   const todayTodosLink = document.getElementById("today-link");
   const thisWeekTodosLink = document.getElementById("week-link");
 
-  todayTodosLink.addEventListener("click", function () {
-    currentView = "todayTodosLink";
+  // todayTodosLink.addEventListener("click", function () {
+  //   currentView = "todayTodosLink";
 
-    console.log("dueTodayTodos", dueTodayTodos)
-    if (dueTodayTodos.length !== 0) {
-      console.log("calling renderTodoContainer in !if", dueTodayTodos)
-      renderTodoContainer(dueTodayTodos);
-    } else {
-      console.log("calling handleEmptyTodayPage in !if - else", dueTodayTodos)
-      handleEmptyTodayPage(dueTodayTodos);
-    }
+  //   console.log("dueTodayTodos", dueTodayTodos)
+  //   if (dueTodayTodos.length !== 0) {
+  //     console.log("calling renderTodoContainer in !if", dueTodayTodos)
+  //     renderTodoContainer(dueTodayTodos);
+  //   } else {
+  //     console.log("calling handleEmptyTodayPage in !if - else", dueTodayTodos)
+  //     handleEmptyTodayPage(dueTodayTodos);
+  //   }
 
-    return statusOfUI = false;
-  });
+  //   return statusOfUI = false;
+  // });
 
   // thisWeekTodosLink.addEventListener("click", function () {
   //   currentView = "thisWeekTodosLink";
@@ -583,4 +589,4 @@ function resetSelectedLink(projectsList) {
   }
 }
 
-export { setupEventListeners, statusOfUI, filteredTodos, currentView };
+export { setupEventListeners, statusOfUI, filteredTodos };

@@ -9,9 +9,7 @@ import { displayToDods } from "./handletodos";
 import { defaultValues } from "./startup";
 // import Icon from "../images/to-do-list.svg";
 import { deleteProject } from "./handleproject";
-import { setupEventListeners, currentView } from "./manipulateDOM";
-
-
+import { setupEventListeners } from "./manipulateDOM";
 
 function renderUI(projectsList, todoList) {
   console.log("renderUI FIRED");
@@ -58,9 +56,6 @@ function renderUI(projectsList, todoList) {
 
     container.innerHTML = html;
 
-    const homeLink = document.getElementById("home-link");
-    homeLink.addEventListener("click", addIndexEventListener)
-
   // container.innerHTML = "";
   // container.innerHTML = `
   //       <section class="header" id="section-header">
@@ -95,6 +90,14 @@ function renderUI(projectsList, todoList) {
   //       <div id="modal-container"></div>
   //   `;
 
+
+    // const homeLink = document.getElementById("home-link");
+    // const todayTodosLink = document.getElementById("today-link");
+    // homeLink.addEventListener("click", addIndexEventListener)
+
+
+
+
   if (todoList.length == 0) {
     const errorMessage = `<p class="emptyPageNotification">There are no more todos.</p>`;
     renderTodoContainer(todoList, errorMessage);
@@ -113,16 +116,14 @@ function renderUI(projectsList, todoList) {
  // console.log("statusOfUI in renderUI", statusOfUI)
 }
 
-console.log("First", currentView)
-
-function addIndexEventListener(){
-  let currentView = 'index';
-  const { projectsList, todoList } = defaultValues;
-  console.log("ia uite ba")
-  console.log(projectsList, todoList)
-  renderUI(projectsList, todoList);
-  console.log(currentView)
-}
+// function addIndexEventListener(){
+//   let currentView = 'index';
+//   const { projectsList, todoList } = defaultValues;
+//   console.log("ia uite ba")
+//   console.log(projectsList, todoList)
+//   renderUI(projectsList, todoList);
+//   console.log(currentView)
+// }
 
 function addPlusCircle() {
   const plusCircleIcon = require("../images/add-plus-circle.svg")
