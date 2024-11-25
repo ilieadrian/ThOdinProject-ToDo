@@ -268,8 +268,17 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
 
 //Revamp setupEventListeners
 // index 
+
+const username = "Andrew";
+
+
 function addIndexEventListener(){
-  console.log("Call me addIndexEventListener" )
+  console.log("Call me addIndexEventListener", username )
+    // renderUI(projectsList, todoList);
+    // resetSelectedLink(projectsList);
+//     renderProjectContainer(projectsList, todoList)
+//     setupEventListeners(todoList, projectsList);
+//     statusOfUI = false;
 }
 
 
