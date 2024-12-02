@@ -265,10 +265,8 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
   setupEventListeners(todoList, projectsList);
 }
 
-
 //Revamp setupEventListeners
 // index 
-
 const username = "Andrew";
 
 
@@ -284,7 +282,6 @@ function addIndexEventListener(){
 
 
 //https://stackoverflow.com/questions/66092392/how-to-add-eventlistener-to-elemen-in-webpack-modules
-
 
 //I decided to rewrite my code and made with document.creatreElement instead of innerHTML. 
 //And it works. A little bit more lines of code but works and conceptual right. Thanks for the help.
