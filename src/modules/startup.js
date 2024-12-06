@@ -16,7 +16,7 @@ const defaultValues = (function () {
       new Todo(
         "Write on blog",
         "Write about last part from TicTacToe game",
-        "2024-10-15",
+        "2024-12-15",
         "low",
         false,
         "Home",
@@ -24,7 +24,7 @@ const defaultValues = (function () {
       new Todo(
         "TheOdinProject chapter 2",
         "Finish theOdinProject chapter 2",
-        "2024-10-17",
+        "2024-12-17",
         "low",
         true,
         "Home",
@@ -32,7 +32,7 @@ const defaultValues = (function () {
       new Todo(
         "New Odin Chapter",
         "Start a new OdinProjectChapter",
-        "2024-12-03",
+        "2024-12-06",
         "medium",
         true,
         "Learning",
@@ -40,7 +40,7 @@ const defaultValues = (function () {
       new Todo(
         "Repair blog",
         "Fix social links on blog header",
-        "2024-12-04",
+        "2024-12-07",
         "high",
         false,
         "Learning",
@@ -48,7 +48,7 @@ const defaultValues = (function () {
       new Todo(
         "Read daily a pattern",
         "https://www.patterns.dev/vanilla/import-on-interaction",
-        "2024-12-03",
+        "2024-12-06",
         "high",
         false,
         "Learning",
@@ -56,7 +56,7 @@ const defaultValues = (function () {
       new Todo(
         "App implementation",
         "Add ability to extract the projects from the array",
-        "2024-12-09",
+        "2024-12-07",
         "low",
         true,
         "Active learning",
@@ -64,7 +64,7 @@ const defaultValues = (function () {
       new Todo(
         "Xyx",
         "Some random text",
-        "2024-03-12",
+        "2024-12-12",
         "low",
         true,
         "Active learning",
@@ -72,7 +72,7 @@ const defaultValues = (function () {
       new Todo(
         "ABC",
         "First three letters from the alphabet",
-        "2024-12-03",
+        "2024-12-13",
         "high",
         false,
         "Active learning",
@@ -95,8 +95,8 @@ const defaultValues = (function () {
       //   "Zee",
       // ),
       new Todo("Zee projects", "lorem20", "2024-12-06", "high", false, "Zee"),
-      new Todo("Zee3 projects", "lorem20", "2024-12-05", "low", false, "Zee"),
-      new Todo("Zee4 projects", "lorem20", "2024-12-04", "high", false, "Zee"),
+      new Todo("Zee3 projects", "lorem20", "2024-12-07", "low", false, "Zee"),
+      new Todo("Zee4 projects", "lorem20", "2024-12-08", "high", false, "Zee"),
       // new Todo("Zee5projects", "lorem20", "2024-10-16", "low", true, "Zee"),
       // new Todo("Zee6 projects", "lorem20", "2024-10-17", "high", false, "Zee"),
       // new Todo("Zee7 projects", "lorem20", "2024-10-18", "high", true, "Zee"),
