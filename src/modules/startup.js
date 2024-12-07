@@ -32,7 +32,7 @@ const defaultValues = (function () {
       new Todo(
         "New Odin Chapter",
         "Start a new OdinProjectChapter",
-        "2024-12-06",
+        "2024-12-08",
         "medium",
         true,
         "Learning",
@@ -40,7 +40,7 @@ const defaultValues = (function () {
       new Todo(
         "Repair blog",
         "Fix social links on blog header",
-        "2024-12-07",
+        "2024-12-08",
         "high",
         false,
         "Learning",
@@ -48,7 +48,7 @@ const defaultValues = (function () {
       new Todo(
         "Read daily a pattern",
         "https://www.patterns.dev/vanilla/import-on-interaction",
-        "2024-12-06",
+        "2024-12-08",
         "high",
         false,
         "Learning",
@@ -56,7 +56,7 @@ const defaultValues = (function () {
       new Todo(
         "App implementation",
         "Add ability to extract the projects from the array",
-        "2024-12-07",
+        "2024-12-08",
         "low",
         true,
         "Active learning",
@@ -94,7 +94,7 @@ const defaultValues = (function () {
       //   true,
       //   "Zee",
       // ),
-      new Todo("Zee projects", "lorem20", "2024-12-06", "high", false, "Zee"),
+      new Todo("Zee projects", "lorem20", "2024-12-07", "high", false, "Zee"),
       new Todo("Zee3 projects", "lorem20", "2024-12-07", "low", false, "Zee"),
       new Todo("Zee4 projects", "lorem20", "2024-12-08", "high", false, "Zee"),
       // new Todo("Zee5projects", "lorem20", "2024-10-16", "low", true, "Zee"),
