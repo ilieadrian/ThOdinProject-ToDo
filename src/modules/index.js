@@ -96,8 +96,6 @@ function renderUI(projectsList, todoList) {
     // homeLink.addEventListener("click", addIndexEventListener)
 
 
-
-
   if (todoList.length == 0) {
     const errorMessage = `<p class="emptyPageNotification">There are no more todos.</p>`;
     renderTodoContainer(todoList, errorMessage);
@@ -116,14 +114,14 @@ function renderUI(projectsList, todoList) {
  // console.log("statusOfUI in renderUI", statusOfUI)
 }
 
-// function addIndexEventListener(){
-//   let currentView = 'index';
-//   const { projectsList, todoList } = defaultValues;
-//   console.log("ia uite ba")
-//   console.log(projectsList, todoList)
-//   renderUI(projectsList, todoList);
-//   console.log(currentView)
-// }
+function addIndexEventListener(){
+  let currentView = 'index';
+  const { projectsList, todoList } = defaultValues;
+  console.log("ia uite ba")
+  console.log(projectsList, todoList)
+  renderUI(projectsList, todoList);
+  console.log(currentView)
+}
 
 function addPlusCircle() {
   const plusCircleIcon = require("../images/add-plus-circle.svg")
