@@ -20,21 +20,24 @@ import { format } from "date-fns";
 
 let filteredTodos = [];
 
-export default (function () {
-  document.addEventListener("DOMContentLoaded", function () {
-    const menuLinks = document.querySelectorAll(".menu-links a");
 
-    menuLinks.forEach(function (link) {
-      link.addEventListener("click", function () {
-        menuLinks.forEach(function (link) {
-          link.classList.remove("active");
-        });
-        this.classList.add("active");
-      });
-    });
-  });
-})();
 
+
+
+
+
+//index 
+//due today
+// due this week
+// Projects contanier
+// New to do
+// New project
+// Check list
+// todo actions
+  //View
+  //Edit
+  //Delete
+// Modals
 function openProjectModal(modalContainer) {
   modalContainer.innerHTML = "";
   modalContainer.innerHTML = `
@@ -186,7 +189,7 @@ function openViewModal(elementId, todoList, modalContainer) {
   addCloseElipse()
   addCloseEventListeners(modalContainer);
 }
-
+//Buttons in modals
 function addCloseElipseWhiteBg() {
   const closeIconWhiteBg = require("../images/close-ellipse-white-bg.svg");
 
@@ -204,15 +207,6 @@ function addCloseElipse() {
   iconContainer.src = closeIcon;
 }
 
-// due today
-// due this week
-// Projects contanier
-// New to do
-// New project
-// Check list
-// todo actions
-// Modals
-
 //Close modals
 function addCloseEventListeners(modalContainer) {
   
@@ -224,6 +218,23 @@ function addCloseEventListeners(modalContainer) {
   });
 }
 
+//Active CSS class handler on menu items
+export default (function () {
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuLinks = document.querySelectorAll(".menu-links a");
+
+    menuLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        menuLinks.forEach(function (link) {
+          link.classList.remove("active");
+        });
+        this.classList.add("active");
+      });
+    });
+  });
+})();
+
+//handlers for empty pages and selected link
 function handleEmptyTodayPage(dueTodayTodos) {
   console.log("handleEmptyTodayPage for today")
   const errorMessage = `<p class="emptyPageNotification">There are no todos with due date today.</p>`;
