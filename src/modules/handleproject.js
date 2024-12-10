@@ -2,8 +2,6 @@ import Project from "./project";
 // import { renderUI, renderProjectContainer, renderTodoContainer } from "./index";
 import { renderUI, renderProjectContainer } from "./index";
 
-// import { setupEventListeners, filteredTodos } from "./manipulateDOM";
-import { setupEventListeners, setStatusOfUI } from "./manipulateDOM";
 
 // import { getTodosByProject } from "./handletodos";
 import { isThisWeek, isToday } from "date-fns";
@@ -172,7 +170,6 @@ function deleteProject(idToDelete, projectsList, todoList) {
     return;
   }
   renderUI(projectsList, todoList);
-  setupEventListeners(todoList, projectsList);
 }
 
 export {

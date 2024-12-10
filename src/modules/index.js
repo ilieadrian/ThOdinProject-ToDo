@@ -9,7 +9,6 @@ import { displayToDods } from "./handletodos";
 import { defaultValues } from "./startup";
 // import Icon from "../images/to-do-list.svg";
 import { deleteProject } from "./handleproject";
-import { setupEventListeners } from "./manipulateDOM";
 
 function renderUI(projectsList, todoList) {
   console.log("renderUI FIRED");
@@ -111,7 +110,6 @@ function renderUI(projectsList, todoList) {
   handleProjectCountNumber();
   addPlusCircle()
   //---!!!---//
- // console.log("statusOfUI in renderUI", statusOfUI)
 }
 
 function addIndexEventListener(){
@@ -241,7 +239,7 @@ function callEvents() {
   const { projectsList, todoList } = defaultValues;
 
   try {
-    setupEventListeners(todoList, projectsList);
+    // setupEventListeners(todoList, projectsList);
   } catch (error) {
     console.error("Error calling callEvents:", error);
   }

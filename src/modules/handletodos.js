@@ -6,8 +6,6 @@ import {
   handleEmptyProjectPage,
 } from "./index";
 import {
-  setupEventListeners,
-  statusOfUI,
   filteredTodos,
 } from "./manipulateDOM";
 import { handleProjectCountNumber } from "./handleproject";
@@ -80,7 +78,6 @@ function addNewTodo(
     todoList.push(newTodo);
     localStorage.setItem("todoList", JSON.stringify(todoList));
     renderUI(projectsList, todoList);
-    setupEventListeners(todoList, projectsList);
   } else {
     alert("Title needs to be unique");
     return;
@@ -106,7 +103,6 @@ function editTodo(
 
   localStorage.setItem("todoList", JSON.stringify(todoList));
   renderUI(projectsList, todoList);
-  setupEventListeners(todoList, projectsList);
 }
 
 function checkForDuplicateTitle(newTodo, todoList) {
@@ -114,7 +110,6 @@ function checkForDuplicateTitle(newTodo, todoList) {
 }
 
 function deleteTodoItem(todoIndex, todoList, projectsList) {
-  // console.log("Attempting to delete todo at index:", todoIndex);
   // console.table(todoList);
 
   if (todoList.length < 1) {
