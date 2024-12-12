@@ -24,7 +24,7 @@ const defaultValues = (function () {
       new Todo(
         "TheOdinProject chapter 2",
         "Finish theOdinProject chapter 2",
-        "2024-12-11",
+        "2024-12-12",
         "low",
         true,
         "Home",
@@ -32,7 +32,7 @@ const defaultValues = (function () {
       new Todo(
         "New Odin Chapter",
         "Start a new OdinProjectChapter",
-        "2024-12-10",
+        "2024-12-14",
         "medium",
         true,
         "Learning",
@@ -40,7 +40,7 @@ const defaultValues = (function () {
       new Todo(
         "Repair blog",
         "Fix social links on blog header",
-        "2024-12-09",
+        "2024-12-13",
         "high",
         false,
         "Learning",
@@ -48,7 +48,7 @@ const defaultValues = (function () {
       new Todo(
         "Read daily a pattern",
         "https://www.patterns.dev/vanilla/import-on-interaction",
-        "2024-12-09",
+        "2024-12-12",
         "high",
         false,
         "Learning",
@@ -56,7 +56,7 @@ const defaultValues = (function () {
       new Todo(
         "App implementation",
         "Add ability to extract the projects from the array",
-        "2024-12-09",
+        "2024-12-14",
         "low",
         true,
         "Active learning",
@@ -94,9 +94,9 @@ const defaultValues = (function () {
       //   true,
       //   "Zee",
       // ),
-      new Todo("Zee projects", "lorem20", "2024-12-10", "high", false, "Zee"),
-      new Todo("Zee3 projects", "lorem20", "2024-12-11", "low", false, "Zee"),
-      new Todo("Zee4 projects", "lorem20", "2024-12-09", "high", false, "Zee"),
+      new Todo("Zee projects", "lorem20", "2024-12-12", "high", false, "Zee"),
+      new Todo("Zee3 projects", "lorem20", "2024-12-13", "low", false, "Zee"),
+      new Todo("Zee4 projects", "lorem20", "2024-12-12", "high", false, "Zee"),
       // new Todo("Zee5projects", "lorem20", "2024-10-16", "low", true, "Zee"),
       // new Todo("Zee6 projects", "lorem20", "2024-10-17", "high", false, "Zee"),
       // new Todo("Zee7 projects", "lorem20", "2024-10-18", "high", true, "Zee"),

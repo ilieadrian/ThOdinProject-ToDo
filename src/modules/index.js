@@ -3,6 +3,7 @@ import {
   getProjects,
   renderDueTodosContainer,
   handleProjectCountNumber,
+  getProjetsByDueDate,
 } from "./handleproject";
 import { displayToDods } from "./handletodos";
 //correct typo above: should be displayTodos
@@ -89,7 +90,6 @@ function renderUI(projectsList, todoList) {
   //       <div id="modal-container"></div>
   //   `;
 
-
     // const homeLink = document.getElementById("home-link");
     // const todayTodosLink = document.getElementById("today-link");
     // homeLink.addEventListener("click", addIndexEventListener)
@@ -112,14 +112,6 @@ function renderUI(projectsList, todoList) {
   //---!!!---//
 }
 
-function addIndexEventListener(){
-  let currentView = 'index';
-  const { projectsList, todoList } = defaultValues;
-  console.log("ia uite ba")
-  console.log(projectsList, todoList)
-  renderUI(projectsList, todoList);
-  console.log(currentView)
-}
 
 function addPlusCircle() {
   const plusCircleIcon = require("../images/add-plus-circle.svg")
@@ -245,6 +237,25 @@ function callEvents() {
   }
 }
 callEvents();
+
+////---!!!---// Events listeners
+const homeLink = document.getElementById('home-link');
+const todayLink = document.getElementById('today-link');
+
+
+function todayLinkF(){
+  const { todoList } = defaultValues;
+  const { dueTodayTodos } = getProjetsByDueDate(todoList);
+  renderTodoContainer(dueTodayTodos)
+  console.log("todayLinkF clicked", dueTodayTodos)
+}
+
+  todayLink.addEventListener('click', todayLinkF)
+
+
+
+
+//---!!!---//
 
 export {
   renderUI,
