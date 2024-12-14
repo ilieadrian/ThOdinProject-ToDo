@@ -242,15 +242,20 @@ callEvents();
 const homeLink = document.getElementById('home-link');
 const todayLink = document.getElementById('today-link');
 
+//Correct the name of todayLinkF
+todayLink.addEventListener('click', todayLinkF)
+//Correct the name of todayLinkF
+const { todoList, projectsList } = defaultValues;
+todayLink.addEventListener('click', )
+
 
 function todayLinkF(){
-  const { todoList } = defaultValues;
+  // const { todoList } = defaultValues;
   const { dueTodayTodos } = getProjetsByDueDate(todoList);
   renderTodoContainer(dueTodayTodos)
   console.log("todayLinkF clicked", dueTodayTodos)
 }
 
-  todayLink.addEventListener('click', todayLinkF)
 
 
 
