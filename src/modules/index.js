@@ -227,29 +227,28 @@ function renderHomeMenu(todoList) {
     `;
 }
 
-function callEvents() {
-  const { projectsList, todoList } = defaultValues;
+// To be removed
+// function callEvents() {
+//   const { projectsList, todoList } = defaultValues;
 
-  try {
-    // setupEventListeners(todoList, projectsList);
-  } catch (error) {
-    console.error("Error calling callEvents:", error);
-  }
-}
-callEvents();
+//   try {
+//     // setupEventListeners(todoList, projectsList);
+//   } catch (error) {
+//     console.error("Error calling callEvents:", error);
+//   }
+// }
+// callEvents();
 
 ////---!!!---// Events listeners
 const homeLink = document.getElementById('home-link');
 const todayLink = document.getElementById('today-link');
-
-//Correct the name of todayLinkF
-todayLink.addEventListener('click', todayLinkF)
-//Correct the name of todayLinkF
 const { todoList, projectsList } = defaultValues;
-todayLink.addEventListener('click', )
+
+todayLink.addEventListener('click', dueTodayTodosLink)
+homeLink.addEventListener('click', () => renderUI(projectsList, todoList))
 
 
-function todayLinkF(){
+function dueTodayTodosLink(){
   // const { todoList } = defaultValues;
   const { dueTodayTodos } = getProjetsByDueDate(todoList);
   renderTodoContainer(dueTodayTodos)
