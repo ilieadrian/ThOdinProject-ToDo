@@ -110,6 +110,8 @@ function renderUI(projectsList, todoList) {
   handleProjectCountNumber();
   addPlusCircle()
   //---!!!---//
+
+  setupEventListeners(todoList, projectsList);
 }
 
 
@@ -240,16 +242,22 @@ function renderHomeMenu(todoList) {
 // callEvents();
 
 ////---!!!---// Events listeners
-const homeLink = document.getElementById('home-link');
-const todayLink = document.getElementById('today-link');
-const { todoList, projectsList } = defaultValues;
+function setupEventListeners(todoList, projectsList) {
+  const homeLink = document.getElementById('home-link');
+  const todayLink = document.getElementById('today-link');
 
-todayLink.addEventListener('click', dueTodayTodosLink)
-homeLink.addEventListener('click', () => renderUI(projectsList, todoList))
+  if (todayLink) {
+    todayLink.addEventListener('click', () => dueTodayTodosLink(todoList));
+  }
+
+  if (homeLink) {
+    homeLink.addEventListener('click', () => renderUI(projectsList, todoList));
+  }
+}
 
 
 function dueTodayTodosLink(){
-  // const { todoList } = defaultValues;
+  const { todoList } = defaultValues;
   const { dueTodayTodos } = getProjetsByDueDate(todoList);
   renderTodoContainer(dueTodayTodos)
   console.log("todayLinkF clicked", dueTodayTodos)
