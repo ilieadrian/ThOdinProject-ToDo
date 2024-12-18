@@ -20,8 +20,6 @@ import { format } from "date-fns";
 
 let filteredTodos = [];
 
-//index 
-//due today
 
 // due this week
 // Projects contanier

@@ -109,8 +109,6 @@ function renderUI(projectsList, todoList) {
 
   handleProjectCountNumber();
   addPlusCircle()
-  //---!!!---//
-
   setupEventListeners(todoList, projectsList);
 }
 
@@ -229,7 +227,7 @@ function renderHomeMenu(todoList) {
     `;
 }
 
-// To be removed
+// To be removed ??
 // function callEvents() {
 //   const { projectsList, todoList } = defaultValues;
 
@@ -242,28 +240,38 @@ function renderHomeMenu(todoList) {
 // callEvents();
 
 ////---!!!---// Events listeners
+//  5
+
 function setupEventListeners(todoList, projectsList) {
   const homeLink = document.getElementById('home-link');
   const todayLink = document.getElementById('today-link');
-
-  if (todayLink) {
-    todayLink.addEventListener('click', () => dueTodayTodosLink(todoList));
-  }
+  const weekLink = document.getElementById('week-link');
 
   if (homeLink) {
     homeLink.addEventListener('click', () => renderUI(projectsList, todoList));
   }
+  
+  if (todayLink) {
+    todayLink.addEventListener('click', () => dueTodayTodosLink(todoList));
+  }
+
+  if(weekLink){
+    weekLink.addEventListener('click', () => dueThisWeekTodosLink(todoList));
+  }
 }
 
 
-function dueTodayTodosLink(){
-  const { todoList } = defaultValues;
+function dueTodayTodosLink(todoList){
   const { dueTodayTodos } = getProjetsByDueDate(todoList);
   renderTodoContainer(dueTodayTodos)
-  console.log("todayLinkF clicked", dueTodayTodos)
 }
 
 
+function dueThisWeekTodosLink(todoList){
+  const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
+  renderTodoContainer(dueThisWeekTodos)
+  console.log("week link clicked", dueThisWeekTodos)
+}
 
 
 
