@@ -21,7 +21,6 @@ import { format } from "date-fns";
 let filteredTodos = [];
 
 
-// New to do
 // New project
 // Check list
 // todo actions
@@ -258,4 +257,4 @@ function resetSelectedLink(projectsList) {
 }
 
 
-export { filteredTodos };
+export { filteredTodos, openToDoModal  };

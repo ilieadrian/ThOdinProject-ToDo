@@ -13,6 +13,8 @@ import { defaultValues } from "./startup";
 // import Icon from "../images/to-do-list.svg";
 import { deleteProject } from "./handleproject";
 
+import { openToDoModal } from "./manipulateDOM";
+
 function renderUI(projectsList, todoList) {
   console.log("renderUI FIRED");
   let container = document.querySelector(".container");
@@ -249,6 +251,10 @@ function setupEventListeners(todoList, projectsList) {
   const todayLink = document.getElementById('today-link');
   const weekLink = document.getElementById('week-link');
   const projectContainer = document.getElementById('projects');
+  const addProjectBTN = document.querySelector(".addproject");
+  const addToDoBTN = document.querySelector(".addtodo");
+  
+  let modalContainer = document.getElementById("modal-container");
 
 
   if (homeLink) {
@@ -268,6 +274,16 @@ function setupEventListeners(todoList, projectsList) {
   }
   
   // New to do
+
+  
+
+  addProjectBTN.addEventListener("click", function () {
+    openProjectModal(modalContainer, projectsList);
+  });
+
+  addToDoBTN.addEventListener("click", function () {
+    openToDoModal(modalContainer, projectsList);
+  });
 }
 
 function dueTodayTodosLink(todoList){
