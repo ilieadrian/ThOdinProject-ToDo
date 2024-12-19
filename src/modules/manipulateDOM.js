@@ -21,8 +21,6 @@ import { format } from "date-fns";
 let filteredTodos = [];
 
 
-// due this week
-// Projects contanier
 // New to do
 // New project
 // Check list
@@ -255,8 +253,6 @@ function resetSelectedLink(projectsList) {
     projectsList[i]._active = false;
   }
 }
-
-
 
 
 export { filteredTodos };

@@ -246,6 +246,8 @@ function setupEventListeners(todoList, projectsList) {
   const homeLink = document.getElementById('home-link');
   const todayLink = document.getElementById('today-link');
   const weekLink = document.getElementById('week-link');
+  const projectContainer = document.getElementById('projects');
+
 
   if (homeLink) {
     homeLink.addEventListener('click', () => renderUI(projectsList, todoList));
@@ -258,19 +260,51 @@ function setupEventListeners(todoList, projectsList) {
   if(weekLink){
     weekLink.addEventListener('click', () => dueThisWeekTodosLink(todoList));
   }
-}
 
+  if (projectContainer) {
+    projectContainer.addEventListener('click', handleProjectList);
+  }
+  
+  // if (projectContainer) {
+  //   projectContainer.addEventListener('click', (event) => {
+  //     // const target = event.target;
+
+  //     // // Check if the clicked element is a project link (anchor tag)
+  //     // if (target.tagName === 'A') {
+  //     //   event.preventDefault();
+  //     //   const projectName = target.textContent.trim();
+  //     //   console.log(projectName);
+        
+  //       // Handle project selection logic here
+  //     }
+  //   });
+  // }
+
+
+}
 
 function dueTodayTodosLink(todoList){
   const { dueTodayTodos } = getProjetsByDueDate(todoList);
   renderTodoContainer(dueTodayTodos)
 }
 
-
 function dueThisWeekTodosLink(todoList){
   const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
   renderTodoContainer(dueThisWeekTodos)
   console.log("week link clicked", dueThisWeekTodos)
+}
+
+function handleProjectList(event) {
+  const target = event.target;
+
+  // Check if the clicked element is a project link (anchor tag)
+  if (target.tagName === 'A') {
+    event.preventDefault();
+    const projectName = target.textContent.trim();
+    console.log(projectName);
+
+    // Handle project selection logic here
+  }
 }
 
 
