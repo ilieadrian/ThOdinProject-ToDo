@@ -29,6 +29,9 @@ let filteredTodos = [];
   //Edit
   //Delete
 // Modals
+//Delete project on empty page
+
+
 function openProjectModal(modalContainer) {
   modalContainer.innerHTML = "";
   modalContainer.innerHTML = `

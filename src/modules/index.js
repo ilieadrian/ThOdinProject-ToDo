@@ -5,7 +5,9 @@ import {
   handleProjectCountNumber,
   getProjetsByDueDate,
 } from "./handleproject";
-import { displayToDods } from "./handletodos";
+import { displayToDods, 
+  getTodosByProject,
+} from "./handletodos";
 //correct typo above: should be displayTodos
 import { defaultValues } from "./startup";
 // import Icon from "../images/to-do-list.svg";
@@ -262,25 +264,10 @@ function setupEventListeners(todoList, projectsList) {
   }
 
   if (projectContainer) {
-    projectContainer.addEventListener('click', handleProjectList);
+    projectContainer.addEventListener('click', getClickedProjectName);
   }
   
-  // if (projectContainer) {
-  //   projectContainer.addEventListener('click', (event) => {
-  //     // const target = event.target;
-
-  //     // // Check if the clicked element is a project link (anchor tag)
-  //     // if (target.tagName === 'A') {
-  //     //   event.preventDefault();
-  //     //   const projectName = target.textContent.trim();
-  //     //   console.log(projectName);
-        
-  //       // Handle project selection logic here
-  //     }
-  //   });
-  // }
-
-
+  // New to do
 }
 
 function dueTodayTodosLink(todoList){
@@ -291,22 +278,22 @@ function dueTodayTodosLink(todoList){
 function dueThisWeekTodosLink(todoList){
   const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
   renderTodoContainer(dueThisWeekTodos)
-  console.log("week link clicked", dueThisWeekTodos)
 }
 
-function handleProjectList(event) {
+function getClickedProjectName(event) {
+  const { todoList } = defaultValues;
   const target = event.target;
 
-  // Check if the clicked element is a project link (anchor tag)
   if (target.tagName === 'A') {
     event.preventDefault();
     const projectName = target.textContent.trim();
-    console.log(projectName);
+    const filteredTodos = getTodosByProject(todoList, projectName)
 
-    // Handle project selection logic here
+    renderTodoContainer(filteredTodos)
   }
 }
 
+// New to do
 
 
 //---!!!---//
