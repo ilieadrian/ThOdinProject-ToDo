@@ -28,6 +28,8 @@ let filteredTodos = [];
   //Edit
   //Delete
 // Modals
+  //add
+  //actions
 //Delete project on empty page
 
 
@@ -257,4 +259,4 @@ function resetSelectedLink(projectsList) {
 }
 
 
-export { filteredTodos, openToDoModal  };
+export { filteredTodos, openToDoModal, openProjectModal };

@@ -13,7 +13,7 @@ import { defaultValues } from "./startup";
 // import Icon from "../images/to-do-list.svg";
 import { deleteProject } from "./handleproject";
 
-import { openToDoModal } from "./manipulateDOM";
+import { openToDoModal, openProjectModal } from "./manipulateDOM";
 
 function renderUI(projectsList, todoList) {
   console.log("renderUI FIRED");
@@ -273,17 +273,12 @@ function setupEventListeners(todoList, projectsList) {
     projectContainer.addEventListener('click', getClickedProjectName);
   }
   
-  // New to do
+  if(addToDoBTN){
+    addToDoBTN.addEventListener('click', () => openToDoModal(modalContainer, projectsList));
+  }
 
-  
+  addProjectBTN.addEventListener('click', () => openProjectModal(modalContainer, projectsList));
 
-  addProjectBTN.addEventListener("click", function () {
-    openProjectModal(modalContainer, projectsList);
-  });
-
-  addToDoBTN.addEventListener("click", function () {
-    openToDoModal(modalContainer, projectsList);
-  });
 }
 
 function dueTodayTodosLink(todoList){
