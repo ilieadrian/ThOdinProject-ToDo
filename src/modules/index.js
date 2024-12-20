@@ -13,7 +13,7 @@ import { defaultValues } from "./startup";
 // import Icon from "../images/to-do-list.svg";
 import { deleteProject } from "./handleproject";
 
-import { openToDoModal, openProjectModal, openViewModal } from "./manipulateDOM";
+import { openToDoModal, openProjectModal, openViewModal, openEditModal } from "./manipulateDOM";
 
 function renderUI(projectsList, todoList) {
   console.log("renderUI FIRED");

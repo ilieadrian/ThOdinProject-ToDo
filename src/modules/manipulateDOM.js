@@ -257,4 +257,4 @@ function resetSelectedLink(projectsList) {
 }
 
 
-export { filteredTodos, openToDoModal, openProjectModal, openViewModal };
+export { filteredTodos, openToDoModal, openProjectModal, openViewModal, openEditModal };
