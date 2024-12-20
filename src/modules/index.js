@@ -13,7 +13,7 @@ import { defaultValues } from "./startup";
 // import Icon from "../images/to-do-list.svg";
 import { deleteProject } from "./handleproject";
 
-import { openToDoModal, openProjectModal } from "./manipulateDOM";
+import { openToDoModal, openProjectModal, openViewModal } from "./manipulateDOM";
 
 function renderUI(projectsList, todoList) {
   console.log("renderUI FIRED");
@@ -253,9 +253,9 @@ function setupEventListeners(todoList, projectsList) {
   const projectContainer = document.getElementById('projects');
   const addProjectBTN = document.querySelector(".addproject");
   const addToDoBTN = document.querySelector(".addtodo");
-  
-  let modalContainer = document.getElementById("modal-container");
+  const todoListContainer = document.querySelector(".todo-container");
 
+  let modalContainer = document.getElementById("modal-container");
 
   if (homeLink) {
     homeLink.addEventListener('click', () => renderUI(projectsList, todoList));
@@ -277,7 +277,15 @@ function setupEventListeners(todoList, projectsList) {
     addToDoBTN.addEventListener('click', () => openToDoModal(modalContainer, projectsList));
   }
 
-  addProjectBTN.addEventListener('click', () => openProjectModal(modalContainer, projectsList));
+  if(addProjectBTN){
+    addProjectBTN.addEventListener('click', () => openProjectModal(modalContainer, projectsList));
+  }
+
+  if(todoListContainer){
+    todoListContainer.addEventListener('click', () => handleToDoListActions(todoList, projectsList, modalContainer, event));
+  }
+  
+  // Check list
 
 }
 
@@ -302,6 +310,38 @@ function getClickedProjectName(event) {
 
     renderTodoContainer(filteredTodos)
   }
+}
+
+function handleToDoListActions(todoList, projectsList, modalContainer, event){
+  const target = event.target;
+  const listItem = target.closest(".item");
+
+  const elementId = listItem ? +listItem.id.split("-")[1] : null;
+  const todoIndex = todoList.findIndex((todo) => todo._id === elementId);
+
+  if (todoIndex === -1) {
+    console.error(
+      "Todo item not found in todoList for elementId:",
+      elementId,
+    );
+    return;
+  }
+
+  if (target.closest(".view-btn")) {
+    openViewModal(todoIndex, todoList, modalContainer);
+  } else if (target.closest(".edit-btn")) {
+    if (todoList[todoIndex]) {
+      openEditModal(todoIndex, todoList, projectsList, modalContainer);
+    } else {
+      console.error(`Todo with ID ${elementId} does not exist.`);
+    }
+  } else if (target.closest(".delete-btn")) {
+    deleteTodoItem(todoIndex, todoList, projectsList);
+    // todoListContainer.removeEventListener("click", adUIListeners);
+  } else if (target.classList.contains("todo-checkbox")) {
+    modifyTodoStatus(elementId, target, projectsList, todoList);
+  }
+
 }
 
 // New to do
