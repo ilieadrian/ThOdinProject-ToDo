@@ -7,6 +7,7 @@ import {
 } from "./handleproject";
 import { displayToDods, 
   getTodosByProject,
+  deleteTodoItem,
 } from "./handletodos";
 //correct typo above: should be displayTodos
 import { defaultValues } from "./startup";
@@ -14,6 +15,11 @@ import { defaultValues } from "./startup";
 import { deleteProject } from "./handleproject";
 
 import { openToDoModal, openProjectModal, openViewModal, openEditModal } from "./manipulateDOM";
+
+const currentView = {
+  mode: "all", 
+  project: null, 
+};
 
 function renderUI(projectsList, todoList) {
   console.log("renderUI FIRED");
@@ -356,4 +362,6 @@ export {
   renderProjectContainer,
   renderHomeMenu,
   handleEmptyProjectPage,
+  setupEventListeners,
+  currentView,
 };

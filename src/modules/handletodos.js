@@ -4,6 +4,8 @@ import {
   renderProjectContainer,
   renderHomeMenu,
   handleEmptyProjectPage,
+  setupEventListeners,
+  currentView,
 } from "./index";
 import {
   filteredTodos,

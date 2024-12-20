@@ -96,7 +96,7 @@ const defaultValues = (function () {
       // ),
       new Todo("Zee projects", "lorem20", "2024-12-21", "high", false, "Zee"),
       new Todo("Zee3 projects", "lorem20", "2024-12-22", "low", false, "Zee"),
-      new Todo("Zee4 projects", "lorem20", "2024-12-23", "high", false, "Zee"),
+      new Todo("Zee4 projects", "lorem20", "2024-12-20", "high", false, "Zee"),
       // new Todo("Zee5projects", "lorem20", "2024-10-16", "low", true, "Zee"),
       // new Todo("Zee6 projects", "lorem20", "2024-10-17", "high", false, "Zee"),
       // new Todo("Zee7 projects", "lorem20", "2024-10-18", "high", true, "Zee"),

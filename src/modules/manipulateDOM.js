@@ -21,14 +21,7 @@ import { format } from "date-fns";
 let filteredTodos = [];
 
 
-// todo actions
-  //View
-  //Edit
-  //Delete
-// Modals
-  //add
-  //actions
-//Delete project on empty page
+
 
 
 function openProjectModal(modalContainer) {
@@ -258,3 +251,13 @@ function resetSelectedLink(projectsList) {
 
 
 export { filteredTodos, openToDoModal, openProjectModal, openViewModal, openEditModal };
+
+
+// todo actions
+  //
+  //
+  //Delete
+// Modals
+  //add
+  //actions
+//Delete project on empty page
