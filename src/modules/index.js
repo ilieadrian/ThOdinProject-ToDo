@@ -306,13 +306,17 @@ function dueThisWeekTodosLink(todoList){
 }
 
 function getClickedProjectName(event) {
+  currentView.mode = "project"
   const { todoList } = defaultValues;
   const target = event.target;
 
   if (target.tagName === 'A') {
     event.preventDefault();
     const projectName = target.textContent.trim();
+    currentView.project = projectName;
     const filteredTodos = getTodosByProject(todoList, projectName)
+
+    console.log("currentView.project", currentView.project)
 
     renderTodoContainer(filteredTodos)
   }

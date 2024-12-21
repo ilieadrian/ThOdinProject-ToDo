@@ -127,8 +127,10 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
     return;
   }
 
-  if (statusOfUI) {
-    const projectName = filteredTodos[0]?.project;
+  console.log(currentView.mode, currentView.project)
+
+  if (currentView.mode === "project") {
+    const projectName = currentView.project;
     console.log("projectName in status of UI", projectName);
     const filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
 
