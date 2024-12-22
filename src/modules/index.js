@@ -22,8 +22,11 @@ const currentView = {
 };
 
 function renderUI(projectsList, todoList) {
-  console.log("renderUI FIRED");
+  // console.log("renderUI FIRED");
   let container = document.querySelector(".container");
+
+  // currentView.mode = "all";
+  
 
   if (!container) {
     container = document.createElement("div");
@@ -136,7 +139,7 @@ function renderTodoContainer(
   errorMessage = null,
   projectName = null,
   ) {
-  console.log("renderTodoContainer FIRED with todos:", filteredTodos);
+  // console.log("renderTodoContainer FIRED with todos:", filteredTodos);
   let container = document.querySelector(".todo-container");
 
   container.innerHTML = "";
@@ -172,7 +175,7 @@ function renderTodoContainer(
 }
 
 function renderProjectContainer(projectsList, todoList) {
-  console.log("renderProjectContainer FIRED");
+  // console.log("renderProjectContainer FIRED");
   let container = document.getElementById("projects");
 
   container.innerHTML = "";
@@ -183,7 +186,7 @@ function renderProjectContainer(projectsList, todoList) {
 }
 
 function handleEmptyProjectPage(projectName) {
-  console.log(" handleEmptyProjectPage called on project name: ", projectName);
+  // console.log(" handleEmptyProjectPage called on project name: ", projectName);
 
   if (projectName == null) {
     return;
@@ -194,14 +197,14 @@ function handleEmptyProjectPage(projectName) {
 
   const deleteBtn = container.querySelector(".project-delete-btn");
 
-  console.log("Project name in handleEmptyProjectPage:", projectName);
-  console.log("projectsList in handleEmptyProjectPage:", projectsList);
+  // console.log("Project name in handleEmptyProjectPage:", projectName);
+  // console.log("projectsList in handleEmptyProjectPage:", projectsList);
   let idToDelete = getActiveId(projectName, projectsList);
-  console.log("ID to delete:", idToDelete);
+  // console.log("ID to delete:", idToDelete);
 
   // console.log("idToDelete in handleEmptyProjectPage", idToDelete)
 
-  console.log("Delete button:", deleteBtn);
+  // console.log("Delete button:", deleteBtn);
 
   if (deleteBtn) {
     console.log("Fired if(deleteBTN) in get active link", deleteBtn);
@@ -228,7 +231,7 @@ function getActiveId(projectName, projectsList) {
 }
 
 function renderHomeMenu(todoList) {
-  console.log("renderHomeMenu FIRED");
+  // console.log("renderHomeMenu FIRED");
   let container = document.getElementById("todos-due");
 
   container.innerHTML = "";
@@ -297,16 +300,18 @@ function setupEventListeners(todoList, projectsList) {
 
 function dueTodayTodosLink(todoList){
   const { dueTodayTodos } = getProjetsByDueDate(todoList);
+  currentView.mode = "todayView"
   renderTodoContainer(dueTodayTodos)
 }
 
 function dueThisWeekTodosLink(todoList){
   const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
+  currentView.mode = "weekView"
   renderTodoContainer(dueThisWeekTodos)
 }
 
 function getClickedProjectName(event) {
-  currentView.mode = "project"
+  currentView.mode = "projectView"
   const { todoList } = defaultValues;
   const target = event.target;
 
@@ -325,6 +330,8 @@ function getClickedProjectName(event) {
 function handleToDoListActions(todoList, projectsList, modalContainer, event){
   const target = event.target;
   const listItem = target.closest(".item");
+
+  
 
   const elementId = listItem ? +listItem.id.split("-")[1] : null;
   const todoIndex = todoList.findIndex((todo) => todo._id === elementId);

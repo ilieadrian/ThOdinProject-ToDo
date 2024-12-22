@@ -112,6 +112,10 @@ function checkForDuplicateTitle(newTodo, todoList) {
 }
 
 function deleteTodoItem(todoIndex, todoList, projectsList) {
+  console.log("Mode", currentView.mode)
+  console.log("Project", currentView.project)
+
+
   // console.table(todoList);
 
   if (todoList.length < 1) {
@@ -127,11 +131,9 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
     return;
   }
 
-  console.log(currentView.mode, currentView.project)
 
   if (currentView.mode === "project") {
     const projectName = currentView.project;
-    console.log("projectName in status of UI", projectName);
     const filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
 
     renderTodoContainer(filteredTodosAfterDeletion, null, projectName);
