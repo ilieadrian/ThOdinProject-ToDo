@@ -15,7 +15,7 @@ import Todo from "./todo";
 import { format } from "date-fns";
 
 function displayToDods(todoList) {
-  console.log("displayToDods FIRED with: ", todoList);
+  // console.log("displayToDods FIRED with: ", todoList);
   let ulContent = "";
 
   todoList.forEach((element) => {
@@ -132,7 +132,7 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
   }
 
 
-  if (currentView.mode === "project") {
+  if (currentView.mode === "projectView") {
     const projectName = currentView.project;
     const filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
 
@@ -141,6 +141,10 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
     handleProjectCountNumber();
     renderHomeMenu(todoList);
     handleProjectCountNumber();
+  } else if(currentView.mode === "todayView"){
+    console.log("todayView")
+  } else if(currentView.mode === "weekView"){
+console.log("weekview")
   } else {
     renderUI(projectsList, todoList);
   }

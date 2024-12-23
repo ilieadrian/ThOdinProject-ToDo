@@ -222,13 +222,13 @@ export default (function () {
 
 //handlers for empty pages and selected link
 function handleEmptyTodayPage(dueTodayTodos) {
-  console.log("handleEmptyTodayPage for today")
+  // console.log("handleEmptyTodayPage for today")
   const errorMessage = `<p class="emptyPageNotification">There are no todos with due date today.</p>`;
   renderTodoContainer(dueTodayTodos, errorMessage, null);
 }
 
 function handleEmptyWeekPage(dueThisWeekTodos){
-  console.log("handleEmptyTodayPage for week")
+  // console.log("handleEmptyTodayPage for week")
   const errorMessage = `<p class="emptyPageNotification">There are no todos with due date this week.</p>`;
   renderTodoContainer(dueThisWeekTodos, errorMessage, null);
 }

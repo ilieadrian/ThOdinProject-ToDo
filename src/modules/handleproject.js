@@ -99,7 +99,7 @@ function getProjetsByDueDate(todoList) {
 }
 
 function renderDueTodosContainer(todoList) {
-  console.log("renderDueTodosContainer FIRED");
+  // console.log("renderDueTodosContainer FIRED");
   const { dueTodayTodos, dueThisWeekTodos } = getProjetsByDueDate(todoList);
 
   let ulContent = "";
@@ -162,7 +162,7 @@ function deleteProject(idToDelete, projectsList, todoList) {
   const todosInProject = countTodoinProject(projectToDelete, todoList);
 
   if (projectIndex !== -1 && todosInProject == 0) {
-    console.log("projectIndex", projectIndex);
+    // console.log("projectIndex", projectIndex);
     projectsList.splice(projectIndex, 1);
     localStorage.setItem("projectsList", JSON.stringify(projectsList));
     setStatusOfUI(false);

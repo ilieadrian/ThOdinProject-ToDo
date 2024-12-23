@@ -16,7 +16,7 @@ const defaultValues = (function () {
       new Todo(
         "Write on blog",
         "Write about last part from TicTacToe game",
-        "2024-12-21",
+        "2024-12-23",
         "low",
         false,
         "Home",
@@ -24,7 +24,7 @@ const defaultValues = (function () {
       new Todo(
         "TheOdinProject chapter 2",
         "Finish theOdinProject chapter 2",
-        "2024-12-21",
+        "2024-12-23",
         "low",
         true,
         "Home",
@@ -32,7 +32,7 @@ const defaultValues = (function () {
       new Todo(
         "New Odin Chapter",
         "Start a new OdinProjectChapter",
-        "2024-12-21",
+        "2024-12-23",
         "medium",
         true,
         "Learning",
@@ -56,7 +56,7 @@ const defaultValues = (function () {
       new Todo(
         "App implementation",
         "Add ability to extract the projects from the array",
-        "2024-12-22",
+        "2024-12-23",
         "low",
         true,
         "Active learning",

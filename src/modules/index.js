@@ -166,10 +166,10 @@ function renderTodoContainer(
             </div>
             `;
       }
-    console.log(
-      "calling handleEmptyProjectPage(projectName) with the project:",
-      projectName,
-    );
+    // console.log(
+    //   "calling handleEmptyProjectPage(projectName) with the project:",
+    //   projectName,
+    // );
     handleEmptyProjectPage(projectName);
   }
 }
@@ -207,13 +207,13 @@ function handleEmptyProjectPage(projectName) {
   // console.log("Delete button:", deleteBtn);
 
   if (deleteBtn) {
-    console.log("Fired if(deleteBTN) in get active link", deleteBtn);
+    // console.log("Fired if(deleteBTN) in get active link", deleteBtn);
     deleteBtn.addEventListener("click", function () {
-      console.log("Clicked on delete project");
+      // console.log("Clicked on delete project");
       deleteProject(idToDelete, projectsList, todoList);
     });
   } else {
-    console.log("RenderUI case");
+    // console.log("RenderUI case");
   }
 }
 
@@ -321,7 +321,7 @@ function getClickedProjectName(event) {
     currentView.project = projectName;
     const filteredTodos = getTodosByProject(todoList, projectName)
 
-    console.log("currentView.project", currentView.project)
+    // console.log("currentView.project", currentView.project)
 
     renderTodoContainer(filteredTodos)
   }
