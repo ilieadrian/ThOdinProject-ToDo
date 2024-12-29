@@ -130,11 +130,11 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
     console.error("Invalid todo index:", todoIndex);
     return;
   }
-
+  const projectName = currentView.project;
+    const filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
 
   if (currentView.mode === "projectView") {
-    const projectName = currentView.project;
-    const filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
+    
 
     renderTodoContainer(filteredTodosAfterDeletion, null, projectName);
     renderProjectContainer(projectsList, todoList);
@@ -142,6 +142,12 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
     renderHomeMenu(todoList);
     handleProjectCountNumber();
   } else if(currentView.mode === "todayView"){
+    console.log(filteredTodosAfterDeletion)
+    renderTodoContainer(filteredTodosAfterDeletion, null, null);
+    renderProjectContainer(projectsList, todoList);
+    handleProjectCountNumber();
+    renderHomeMenu(todoList);
+    handleProjectCountNumber();
     console.log("todayView")
   } else if(currentView.mode === "weekView"){
 console.log("weekview")

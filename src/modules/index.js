@@ -301,13 +301,13 @@ function setupEventListeners(todoList, projectsList) {
 function dueTodayTodosLink(todoList){
   const { dueTodayTodos } = getProjetsByDueDate(todoList);
   currentView.mode = "todayView"
-  renderTodoContainer(dueTodayTodos)
+  renderTodoContainer(dueTodayTodos, null, null)
 }
 
 function dueThisWeekTodosLink(todoList){
   const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
   currentView.mode = "weekView"
-  renderTodoContainer(dueThisWeekTodos)
+  renderTodoContainer(dueThisWeekTodos, null, null)
 }
 
 function getClickedProjectName(event) {
