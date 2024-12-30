@@ -10,7 +10,7 @@ import {
 import {
   filteredTodos,
 } from "./manipulateDOM";
-import { handleProjectCountNumber } from "./handleproject";
+import { handleProjectCountNumber, getProjetsByDueDate } from "./handleproject";
 import Todo from "./todo";
 import { format } from "date-fns";
 
@@ -130,12 +130,10 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
     console.error("Invalid todo index:", todoIndex);
     return;
   }
-  const projectName = currentView.project;
-    const filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
 
   if (currentView.mode === "projectView") {
-    
-
+    const projectName = currentView.project;
+    const filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
     renderTodoContainer(filteredTodosAfterDeletion, null, projectName);
     renderProjectContainer(projectsList, todoList);
     handleProjectCountNumber();
