@@ -256,6 +256,7 @@ function renderHomeMenu(todoList) {
 //  5
 
 function setupEventListeners(todoList, projectsList) {
+  console.log("setupEventListeners called");
   const homeLink = document.getElementById('home-link');
   const todayLink = document.getElementById('today-link');
   const weekLink = document.getElementById('week-link');
@@ -267,18 +268,22 @@ function setupEventListeners(todoList, projectsList) {
   let modalContainer = document.getElementById("modal-container");
 
   if (homeLink) {
+    homeLink.removeEventListener('click', renderUI);
     homeLink.addEventListener('click', () => renderUI(projectsList, todoList));
   }
   
   if (todayLink) {
+    todayLink.removeEventListener('click', dueTodayTodosLink);
     todayLink.addEventListener('click', () => dueTodayTodosLink(todoList));
   }
 
-  if(weekLink){
+  if (weekLink) {
+    weekLink.removeEventListener('click', dueThisWeekTodosLink);
     weekLink.addEventListener('click', () => dueThisWeekTodosLink(todoList));
   }
 
   if (projectContainer) {
+    projectContainer.removeEventListener('click', getClickedProjectName);
     projectContainer.addEventListener('click', getClickedProjectName);
   }
   
@@ -290,8 +295,11 @@ function setupEventListeners(todoList, projectsList) {
     addProjectBTN.addEventListener('click', () => openProjectModal(modalContainer, projectsList));
   }
 
-  if(todoListContainer){
-    todoListContainer.addEventListener('click', () => handleToDoListActions(todoList, projectsList, modalContainer, event));
+  if (todoListContainer) {
+    todoListContainer.removeEventListener('click', handleToDoListActions);
+    todoListContainer.addEventListener('click', (event) =>
+      handleToDoListActions(todoList, projectsList, modalContainer, event)
+    );
   }
   
   // Check list
@@ -329,6 +337,7 @@ function getClickedProjectName(event) {
 
 function handleToDoListActions(todoList, projectsList, modalContainer, event){
   const target = event.target;
+  console.log(target)
   const listItem = target.closest(".item");
 
   
@@ -336,7 +345,10 @@ function handleToDoListActions(todoList, projectsList, modalContainer, event){
   const elementId = listItem ? +listItem.id.split("-")[1] : null;
   const todoIndex = todoList.findIndex((todo) => todo._id === elementId);
 
+  
+
   if (todoIndex === -1) {
+    console.log(todoIndex)
     console.error(
       "Todo item not found in todoList for elementId:",
       elementId,
