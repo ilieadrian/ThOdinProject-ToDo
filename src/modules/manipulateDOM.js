@@ -20,10 +20,6 @@ import { format } from "date-fns";
 
 let filteredTodos = [];
 
-
-
-
-
 function openProjectModal(modalContainer) {
   modalContainer.innerHTML = "";
   modalContainer.innerHTML = `
@@ -248,7 +244,6 @@ function resetSelectedLink(projectsList) {
     projectsList[i]._active = false;
   }
 }
-
 
 export { filteredTodos, openToDoModal, openProjectModal, openViewModal, openEditModal };
 

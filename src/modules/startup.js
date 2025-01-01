@@ -1,9 +1,13 @@
 import Todo from "./todo";
 import Project from "./project";
 import { handleProject } from "./handleproject";
-import { renderUI } from "./index";
+import { initializeCurrentView, renderUI } from "./index";
+
 
 const defaultValues = (function () {
+  console.log("Default values fired")
+
+ 
   // console.log("defaultValues FIRED");
   let todoList = JSON.parse(localStorage.getItem("todoList")) || [];
 
@@ -16,7 +20,7 @@ const defaultValues = (function () {
       new Todo(
         "Write on blog",
         "Write about last part from TicTacToe game",
-        "2024-12-31",
+        "2025-01-03",
         "low",
         false,
         "Home",
@@ -24,7 +28,7 @@ const defaultValues = (function () {
       new Todo(
         "TheOdinProject chapter 2",
         "Finish theOdinProject chapter 2",
-        "2024-12-31",
+        "2025-01-01",
         "low",
         false,
         "Home",
@@ -32,7 +36,7 @@ const defaultValues = (function () {
       new Todo(
         "New Odin Chapter",
         "Start a new OdinProjectChapter",
-        "2024-12-31",
+        "2025-01-02",
         "medium",
         false,
         "Learning",
@@ -40,7 +44,7 @@ const defaultValues = (function () {
       new Todo(
         "Repair blog",
         "Fix social links on blog header",
-        "2024-12-31",
+        "2025-02-03",
         "high",
         false,
         "Learning",
@@ -48,7 +52,7 @@ const defaultValues = (function () {
       new Todo(
         "Read daily a pattern",
         "https://www.patterns.dev/vanilla/import-on-interaction",
-        "2024-12-31",
+        "2025-01-01",
         "high",
         true,
         "Learning",
@@ -56,7 +60,7 @@ const defaultValues = (function () {
       new Todo(
         "App implementation",
         "Add ability to extract the projects from the array",
-        "2024-12-31",
+        "2025-01-02",
         "low",
         true,
         "Active learning",
@@ -94,9 +98,9 @@ const defaultValues = (function () {
       //   true,
       //   "Zee",
       // ),
-      new Todo("Zee projects", "lorem20", "2025-12-31", "high", false, "Zee"),
-      new Todo("Zee3 projects", "lorem20", "2025-12-31", "low", false, "Zee"),
-      new Todo("Zee4 projects", "lorem20", "2025-12-31", "high", false, "Zee"),
+      new Todo("Zee projects", "lorem20", "2025-01-02", "high", false, "Zee"),
+      new Todo("Zee3 projects", "lorem20", "2025-12-03", "low", false, "Zee"),
+      new Todo("Zee4 projects", "lorem20", "2025-12-02", "high", false, "Zee"),
       // new Todo("Zee5projects", "lorem20", "2024-10-16", "low", true, "Zee"),
       // new Todo("Zee6 projects", "lorem20", "2024-10-17", "high", false, "Zee"),
       // new Todo("Zee7 projects", "lorem20", "2024-10-18", "high", true, "Zee"),
@@ -127,13 +131,17 @@ const defaultValues = (function () {
   localStorage.setItem("todoList", JSON.stringify(todoList));
   localStorage.setItem("projectsList", JSON.stringify(projectsList));
 
+
+  // initializeCurrentView()
   renderUI(projectsList, todoList);
+
 
   return {
     todoList,
     projectsList,
     renderOnlyContainer,
-  };
+    };
 })();
+
 
 export { defaultValues };

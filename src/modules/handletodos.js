@@ -5,7 +5,6 @@ import {
   renderHomeMenu,
   handleEmptyProjectPage,
   setupEventListeners,
-  currentView,
 } from "./index";
 import {
   filteredTodos,
@@ -15,6 +14,7 @@ import Todo from "./todo";
 import { format } from "date-fns";
 
 function displayToDods(todoList) {
+  console.log("displayToDods values fired")
   // console.log("displayToDods FIRED with: ", todoList);
   let ulContent = "";
 
@@ -141,7 +141,8 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
     handleProjectCountNumber();
   } else if(currentView.mode === "todayView"){
     //
-
+    const { dueTodayTodos } = getProjetsByDueDate(todoList);
+    console.table(dueTodayTodos)
     //
     renderProjectContainer(projectsList, todoList);
     handleProjectCountNumber();

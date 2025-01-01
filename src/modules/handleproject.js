@@ -99,7 +99,8 @@ function getProjetsByDueDate(todoList) {
 }
 
 function renderDueTodosContainer(todoList) {
-  // console.log("renderDueTodosContainer FIRED");
+  console.log("renderDueTodosContainer FIRED");
+
   const { dueTodayTodos, dueThisWeekTodos } = getProjetsByDueDate(todoList);
 
   let ulContent = "";
@@ -108,7 +109,7 @@ function renderDueTodosContainer(todoList) {
         <li><a href="#" id="today-link">Due Today</a><span class="number-of-tasks">${dueTodayTodos.length}</span></li>
         <li><a href="#" id="week-link">Due This Week</a><span class="number-of-tasks">${dueThisWeekTodos.length}</span></li>
     `;
-
+    console.log("renderDueTodosContainer Links Generated");
   return ulContent;
 }
 

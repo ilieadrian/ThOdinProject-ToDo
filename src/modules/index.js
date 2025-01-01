@@ -13,16 +13,28 @@ import { displayToDods,
 import { defaultValues } from "./startup";
 // import Icon from "../images/to-do-list.svg";
 import { deleteProject } from "./handleproject";
-
 import { openToDoModal, openProjectModal, openViewModal, openEditModal } from "./manipulateDOM";
 
-const currentView = {
-  mode: "all", 
-  project: null, 
-};
+function initializeCurrentView(){
+  console.log("initializeCurrentView FIRED");
+
+    let currentView = {
+    mode: "all", 
+    project: null, 
+  };
+
+  return currentView ;
+}
+
+console.log(initializeCurrentView())
 
 function renderUI(projectsList, todoList) {
-  // console.log("renderUI FIRED");
+  console.log("renderUI FIRED");
+
+  let currentView = initializeCurrentView()
+  console.log("SomeCV in renderUI:", currentView.mode)
+  currentView.mode = "Blabls"
+  console.log("SomeCV in renderUI222:", currentView.mode)
   let container = document.querySelector(".container");
 
   // currentView.mode = "all";
@@ -69,45 +81,7 @@ function renderUI(projectsList, todoList) {
 
     container.innerHTML = html;
 
-  // container.innerHTML = "";
-  // container.innerHTML = `
-  //       <section class="header" id="section-header">
-  //           <h1>// To do</h1>
-                
-  //       </section>
-  //       <div class="content-container">
-  //           <section class="menu">
-  //               <ul id="todos-due" class="menu-links">
-  //                   ${renderDueTodosContainer(todoList)}
-  //               </ul>
-  //               <ul id="projects" class="menu-links">
-  //                   ${getProjects(projectsList, todoList)}
-  //               </ul>
-  //               <div class="buttons-container">
-  //                   <div class="addtodo">
-  //                       <img id="addtodo-img">
-  //                       <p>New To do</p>
-  //                   </div>
-  //                   <div class="addproject">
-  //                       <img id="addproject-img">
-  //                       <p>New Project</p>
-  //                   </div>
-  //               </div>
-  //           </section>
-  //           <section class="todo-container">
-  //               <ul class="items-list" id="item-list-X-X">
-  //                   ${displayToDods(todoList)}
-  //               </ul>
-  //           </section>
-  //       </div>
-  //       <div id="modal-container"></div>
-  //   `;
-
-    // const homeLink = document.getElementById("home-link");
-    // const todayTodosLink = document.getElementById("today-link");
-    // homeLink.addEventListener("click", addIndexEventListener)
-
-
+  
   if (todoList.length == 0) {
     const errorMessage = `<p class="emptyPageNotification">There are no more todos.</p>`;
     renderTodoContainer(todoList, errorMessage);
@@ -256,7 +230,7 @@ function renderHomeMenu(todoList) {
 //  5
 
 function setupEventListeners(todoList, projectsList) {
-  console.log("setupEventListeners called");
+  console.log("SetupEventListener fired")
   const homeLink = document.getElementById('home-link');
   const todayLink = document.getElementById('today-link');
   const weekLink = document.getElementById('week-link');
@@ -267,7 +241,12 @@ function setupEventListeners(todoList, projectsList) {
 
   let modalContainer = document.getElementById("modal-container");
 
+  
+
   if (homeLink) {
+    // console.log(typeof currentView)
+
+    // currentView.mode = "all";
     homeLink.removeEventListener('click', renderUI);
     homeLink.addEventListener('click', () => renderUI(projectsList, todoList));
   }
@@ -339,13 +318,9 @@ function handleToDoListActions(todoList, projectsList, modalContainer, event){
   const target = event.target;
   console.log(target)
   const listItem = target.closest(".item");
-
   
-
   const elementId = listItem ? +listItem.id.split("-")[1] : null;
   const todoIndex = todoList.findIndex((todo) => todo._id === elementId);
-
-  
 
   if (todoIndex === -1) {
     console.log(todoIndex)
@@ -376,6 +351,8 @@ function handleToDoListActions(todoList, projectsList, modalContainer, event){
 // New to do
 
 
+
+
 //---!!!---//
 
 export {
@@ -386,5 +363,5 @@ export {
   renderHomeMenu,
   handleEmptyProjectPage,
   setupEventListeners,
-  currentView,
+  initializeCurrentView,
 };
