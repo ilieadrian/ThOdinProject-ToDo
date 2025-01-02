@@ -1,13 +1,11 @@
 import Todo from "./todo";
 import Project from "./project";
 import { handleProject } from "./handleproject";
-import { initializeCurrentView, renderUI } from "./index";
-
+import { renderUI } from "./index";
 
 const defaultValues = (function () {
-  console.log("Default values fired")
+  console.log("Default values fired");
 
- 
   // console.log("defaultValues FIRED");
   let todoList = JSON.parse(localStorage.getItem("todoList")) || [];
 
@@ -131,17 +129,13 @@ const defaultValues = (function () {
   localStorage.setItem("todoList", JSON.stringify(todoList));
   localStorage.setItem("projectsList", JSON.stringify(projectsList));
 
-
-  // initializeCurrentView()
   renderUI(projectsList, todoList);
-
 
   return {
     todoList,
     projectsList,
     renderOnlyContainer,
-    };
+  };
 })();
-
 
 export { defaultValues };

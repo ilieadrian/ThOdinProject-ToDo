@@ -14,16 +14,17 @@ import { defaultValues } from "./startup";
 // import Icon from "../images/to-do-list.svg";
 import { deleteProject } from "./handleproject";
 import { openToDoModal, openProjectModal, openViewModal, openEditModal } from "./manipulateDOM";
+import sharedState from "./sharedState";
 
 function initializeCurrentView(){
-  console.log("initializeCurrentView FIRED");
+  console.log("initializeCurrentView FIRED sharedState.mode", sharedState.mode);
 
-    let currentView = {
-    mode: "all", 
-    project: null, 
-  };
+  //   let currentView = {
+  //   mode: "all", 
+  //   project: null, 
+  // };
 
-  return currentView ;
+  // return currentView ;
 }
 
 console.log(initializeCurrentView())
@@ -31,10 +32,10 @@ console.log(initializeCurrentView())
 function renderUI(projectsList, todoList) {
   console.log("renderUI FIRED");
 
-  let currentView = initializeCurrentView()
-  console.log("SomeCV in renderUI:", currentView.mode)
-  currentView.mode = "Blabls"
-  console.log("SomeCV in renderUI222:", currentView.mode)
+  // let currentView = initializeCurrentView()
+  // console.log("SomeCV in renderUI:", currentView.mode)
+  // currentView.mode = "Blabls"
+  // console.log("SomeCV in renderUI222:", currentView.mode)
   let container = document.querySelector(".container");
 
   // currentView.mode = "all";
@@ -363,5 +364,4 @@ export {
   renderHomeMenu,
   handleEmptyProjectPage,
   setupEventListeners,
-  initializeCurrentView,
 };

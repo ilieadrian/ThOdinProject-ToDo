@@ -20,8 +20,7 @@ import { format } from "date-fns";
 
 let activeProjectLink = null;
 let filteredTodos = [];
-let currentView = 'index';
-
+let currentView = "index";
 
 export function setStatusOfUI(newStatus) {
   statusOfUI = newStatus;
@@ -61,7 +60,7 @@ function openProjectModal(modalContainer) {
         </div>
     </div>
     `;
-  addCloseElipseWhiteBg()
+  addCloseElipseWhiteBg();
   addCloseEventListeners(modalContainer);
 }
 
@@ -111,8 +110,8 @@ function openToDoModal(modalContainer, projectsList) {
         </div>
     </div>
     `;
-    addCloseElipseWhiteBg();
-    addCloseEventListeners(modalContainer);
+  addCloseElipseWhiteBg();
+  addCloseEventListeners(modalContainer);
 }
 
 function openEditModal(elementId, todoList, projectsList, modalContainer) {
@@ -160,7 +159,7 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
         </div>
     </div>
     `;
-  addCloseElipseWhiteBg()
+  addCloseElipseWhiteBg();
   addCloseEventListeners(modalContainer);
 }
 
@@ -190,7 +189,7 @@ function openViewModal(elementId, todoList, modalContainer) {
         </div>    
     </div>
     `;
-  addCloseElipse()
+  addCloseElipse();
   addCloseEventListeners(modalContainer);
 }
 
@@ -200,8 +199,8 @@ function addCloseElipseWhiteBg() {
   const headerIconContainer = document.getElementById("modal-header");
   const headerIcon = new Image();
   headerIcon.src = closeIconWhiteBg;
-  headerIcon.classList.add("close-todo-modal-button")
-  headerIcon.classList.add("close-btn")
+  headerIcon.classList.add("close-todo-modal-button");
+  headerIcon.classList.add("close-btn");
   headerIconContainer.appendChild(headerIcon);
 }
 
@@ -211,9 +210,8 @@ function addCloseElipse() {
   iconContainer.src = closeIcon;
 }
 
-
 function modifyTodoStatus(elementId, target, projectsList, todoList) {
-  console.log("currentView", currentView)
+  console.log("currentView", currentView);
   console.log("modifyTodoStatus FIRED");
   const todoItem = todoList.find((todo) => todo.id == elementId);
   // const { dueTodayTodos, dueThisWeekTodos } = getProjetsByDueDate(todoList);
@@ -224,70 +222,63 @@ function modifyTodoStatus(elementId, target, projectsList, todoList) {
     return;
   }
 
-  if(currentView == "todayTodosLink"){
-    console.log(currentView)
-      const { dueTodayTodos } = getProjetsByDueDate(todoList);
-      renderTodoContainer(dueTodayTodos);
-      renderProjectContainer(projectsList, todoList);
-      renderHomeMenu(todoList);
-      handleProjectCountNumber();
-      handleEmptyTodayPage(dueTodayTodos);
-      // setupEventListeners(todoList, projectsList);
-      } 
-    
+  if (currentView == "todayTodosLink") {
+    console.log(currentView);
+    const { dueTodayTodos } = getProjetsByDueDate(todoList);
+    renderTodoContainer(dueTodayTodos);
+    renderProjectContainer(projectsList, todoList);
+    renderHomeMenu(todoList);
+    handleProjectCountNumber();
+    handleEmptyTodayPage(dueTodayTodos);
+    // setupEventListeners(todoList, projectsList);
+  }
 
-  if(currentView == "thisWeekTodosLink"){
-    console.log(currentView)
+  if (currentView == "thisWeekTodosLink") {
+    console.log(currentView);
     const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
     renderTodoContainer(dueThisWeekTodos);
     renderProjectContainer(projectsList, todoList);
     renderHomeMenu(todoList);
     handleProjectCountNumber();
-    handleEmptyWeekPage(dueThisWeekTodos)
+    handleEmptyWeekPage(dueThisWeekTodos);
     // setupEventListeners(todoList, projectsList);
-        } 
+  }
 
   if (statusOfUI) {
     renderTodoContainer(filteredTodos);
     renderProjectContainer(projectsList, todoList);
     renderHomeMenu(todoList);
     handleProjectCountNumber();
-  } else if(!currentView == "thisWeekTodosLink") {
-    console.log("statusOfUI in else statusOfUI about to fire")
+  } else if (!currentView == "thisWeekTodosLink") {
+    console.log("statusOfUI in else statusOfUI about to fire");
     renderUI(projectsList, todoList);
-  } else if(!currentView == "todayTodosLink") {
-    console.log(currentView)
-    console.log("statusOfUI in else statusOfUI about to fire")
+  } else if (!currentView == "todayTodosLink") {
+    console.log(currentView);
+    console.log("statusOfUI in else statusOfUI about to fire");
     renderUI(projectsList, todoList);
-  } 
+  }
 
   setupEventListeners(todoList, projectsList);
 }
 
 //Revamp setupEventListeners
-// index 
+// index
 const username = "Andrew";
 
+function addIndexEventListener(todoList, projectsList) {
+  console.log("Call me addIndexEventListener fired", projectsList, todoList);
+  renderUI(projectsList, todoList);
 
-function addIndexEventListener(todoList, projectsList){
-
-
-  console.log("Call me addIndexEventListener fired", projectsList, todoList )
-    renderUI(projectsList, todoList);
-    
-    // resetSelectedLink(projectsList);
-//     renderProjectContainer(projectsList, todoList)
-//     setupEventListeners(todoList, projectsList);
-//     statusOfUI = false;
+  // resetSelectedLink(projectsList);
+  //     renderProjectContainer(projectsList, todoList)
+  //     setupEventListeners(todoList, projectsList);
+  //     statusOfUI = false;
 }
-
-
 
 //https://stackoverflow.com/questions/66092392/how-to-add-eventlistener-to-elemen-in-webpack-modules
 
-//I decided to rewrite my code and made with document.creatreElement instead of innerHTML. 
+//I decided to rewrite my code and made with document.creatreElement instead of innerHTML.
 //And it works. A little bit more lines of code but works and conceptual right. Thanks for the help.
-
 
 // function addIndexEventListener() {
 //     //here the bugfix for the status
@@ -310,7 +301,6 @@ function addIndexEventListener(todoList, projectsList){
 
 //Close modals
 function addCloseEventListeners(modalContainer) {
-  
   const closeButtons = modalContainer.querySelectorAll(".close-btn");
   closeButtons.forEach((button) => {
     button.addEventListener("click", function () {
@@ -319,17 +309,14 @@ function addCloseEventListeners(modalContainer) {
   });
 }
 
-
-
 function setupEventListeners(todoList, projectsList) {
   console.log("Fired setupEventListeners");
 
   const homeLink = document.getElementById("home-link");
   const listener = () => addIndexEventListener(todoList, projectsList);
 
-  homeLink.removeEventListener("click",listener)
-  homeLink.addEventListener("click",listener)
-
+  homeLink.removeEventListener("click", listener);
+  homeLink.addEventListener("click", listener);
 
   const todoListContainer = document.querySelector(".todo-container");
   let modalContainer = document.getElementById("modal-container");
@@ -368,21 +355,24 @@ function setupEventListeners(todoList, projectsList) {
   //   return statusOfUI = false;
   // });
 
-  thisWeekTodosLink.removeEventListener("click", addThisWeekTodosLink)
-  thisWeekTodosLink.addEventListener("click", addThisWeekTodosLink)
+  thisWeekTodosLink.removeEventListener("click", addThisWeekTodosLink);
+  thisWeekTodosLink.addEventListener("click", addThisWeekTodosLink);
 
   function addThisWeekTodosLink() {
     currentView = "thisWeekTodosLink";
-    console.log("dueThisWeekTodos", dueThisWeekTodos)
+    console.log("dueThisWeekTodos", dueThisWeekTodos);
     if (dueThisWeekTodos.length !== 0) {
-      console.log("calling renderTodoContainer in !if", dueThisWeekTodos)
+      console.log("calling renderTodoContainer in !if", dueThisWeekTodos);
       renderTodoContainer(dueThisWeekTodos);
     } else {
-      console.log("calling handleEmptyTodayPage in !if - else", dueThisWeekTodos)
-      handleEmptyWeekPage(dueThisWeekTodos)
+      console.log(
+        "calling handleEmptyTodayPage in !if - else",
+        dueThisWeekTodos,
+      );
+      handleEmptyWeekPage(dueThisWeekTodos);
     }
 
-    return statusOfUI = false;
+    return (statusOfUI = false);
   }
 
   // const homeLink = document.getElementById("home-link"); //addIndexEventListener
@@ -472,9 +462,8 @@ function setupEventListeners(todoList, projectsList) {
       if (activeProjectLink) {
         anchor.classList.add("active");
       }
-      
-      handleSelectedLink(projectsList, projectName, todoList);
 
+      handleSelectedLink(projectsList, projectName, todoList);
     });
   });
 
@@ -509,11 +498,9 @@ function setupEventListeners(todoList, projectsList) {
 
     if (event.target && event.target.id === "create-todo") {
       event.preventDefault();
-      
+
       const todoTitle = document.getElementById("title").value.trim();
-      const todoDescription = document
-        .getElementById("title")
-        .value.trim();
+      const todoDescription = document.getElementById("title").value.trim();
       const projectsDropdown = document.getElementById("projects-select");
       const selectedProject = projectsDropdown.value;
       const selecteDate = document.querySelector('input[type="date"]').value;
@@ -570,13 +557,13 @@ function setupEventListeners(todoList, projectsList) {
 }
 
 function handleEmptyTodayPage(dueTodayTodos) {
-  console.log("handleEmptyTodayPage for today")
+  console.log("handleEmptyTodayPage for today");
   const errorMessage = `<p class="emptyPageNotification">There are no todos with due date today.</p>`;
   renderTodoContainer(dueTodayTodos, errorMessage, null);
 }
 
-function handleEmptyWeekPage(dueThisWeekTodos){
-  console.log("handleEmptyTodayPage for week")
+function handleEmptyWeekPage(dueThisWeekTodos) {
+  console.log("handleEmptyTodayPage for week");
   const errorMessage = `<p class="emptyPageNotification">There are no todos with due date this week.</p>`;
   renderTodoContainer(dueThisWeekTodos, errorMessage, null);
 }
@@ -586,7 +573,7 @@ function handleSelectedLink(projectsList, projectName) {
     (project) => project.name === projectName,
   );
 
-  resetSelectedLink(projectsList)
+  resetSelectedLink(projectsList);
 
   selectedProject._active = true;
 }

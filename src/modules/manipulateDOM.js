@@ -19,6 +19,10 @@ import { getProjects } from "./handleproject";
 import { format } from "date-fns";
 
 let filteredTodos = [];
+let currentView = {
+  mode: "all", 
+  project: null, 
+};
 
 function openProjectModal(modalContainer) {
   modalContainer.innerHTML = "";
@@ -39,7 +43,7 @@ function openProjectModal(modalContainer) {
         </div>
     </div>
     `;
-  addCloseElipseWhiteBg()
+  addCloseElipseWhiteBg();
   addCloseEventListeners(modalContainer);
 }
 
@@ -89,8 +93,8 @@ function openToDoModal(modalContainer, projectsList) {
         </div>
     </div>
     `;
-    addCloseElipseWhiteBg();
-    addCloseEventListeners(modalContainer);
+  addCloseElipseWhiteBg();
+  addCloseEventListeners(modalContainer);
 }
 
 function openEditModal(elementId, todoList, projectsList, modalContainer) {
@@ -138,7 +142,7 @@ function openEditModal(elementId, todoList, projectsList, modalContainer) {
         </div>
     </div>
     `;
-  addCloseElipseWhiteBg()
+  addCloseElipseWhiteBg();
   addCloseEventListeners(modalContainer);
 }
 
@@ -168,7 +172,7 @@ function openViewModal(elementId, todoList, modalContainer) {
         </div>    
     </div>
     `;
-  addCloseElipse()
+  addCloseElipse();
   addCloseEventListeners(modalContainer);
 }
 //Buttons in modals
@@ -178,8 +182,8 @@ function addCloseElipseWhiteBg() {
   const headerIconContainer = document.getElementById("modal-header");
   const headerIcon = new Image();
   headerIcon.src = closeIconWhiteBg;
-  headerIcon.classList.add("close-todo-modal-button")
-  headerIcon.classList.add("close-btn")
+  headerIcon.classList.add("close-todo-modal-button");
+  headerIcon.classList.add("close-btn");
   headerIconContainer.appendChild(headerIcon);
 }
 
@@ -191,7 +195,6 @@ function addCloseElipse() {
 
 //Close modals
 function addCloseEventListeners(modalContainer) {
-  
   const closeButtons = modalContainer.querySelectorAll(".close-btn");
   closeButtons.forEach((button) => {
     button.addEventListener("click", function () {
@@ -223,7 +226,7 @@ function handleEmptyTodayPage(dueTodayTodos) {
   renderTodoContainer(dueTodayTodos, errorMessage, null);
 }
 
-function handleEmptyWeekPage(dueThisWeekTodos){
+function handleEmptyWeekPage(dueThisWeekTodos) {
   // console.log("handleEmptyTodayPage for week")
   const errorMessage = `<p class="emptyPageNotification">There are no todos with due date this week.</p>`;
   renderTodoContainer(dueThisWeekTodos, errorMessage, null);
@@ -234,7 +237,7 @@ function handleSelectedLink(projectsList, projectName) {
     (project) => project.name === projectName,
   );
 
-  resetSelectedLink(projectsList)
+  resetSelectedLink(projectsList);
 
   selectedProject._active = true;
 }
@@ -245,14 +248,20 @@ function resetSelectedLink(projectsList) {
   }
 }
 
-export { filteredTodos, openToDoModal, openProjectModal, openViewModal, openEditModal };
-
+export {
+  filteredTodos,
+  currentView,
+  openToDoModal,
+  openProjectModal,
+  openViewModal,
+  openEditModal,
+};
 
 // todo actions
-  //
-  //
-  //Delete
+//
+//
+//Delete
 // Modals
-  //add
-  //actions
+//add
+//actions
 //Delete project on empty page

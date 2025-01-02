@@ -6,15 +6,13 @@ import {
   handleEmptyProjectPage,
   setupEventListeners,
 } from "./index";
-import {
-  filteredTodos,
-} from "./manipulateDOM";
+import { filteredTodos } from "./manipulateDOM";
 import { handleProjectCountNumber, getProjetsByDueDate } from "./handleproject";
 import Todo from "./todo";
 import { format } from "date-fns";
 
 function displayToDods(todoList) {
-  console.log("displayToDods values fired")
+  console.log("displayToDods values fired");
   // console.log("displayToDods FIRED with: ", todoList);
   let ulContent = "";
 
@@ -43,14 +41,14 @@ function addViewImages() {
   return viewIcon;
 }
 
-function addEditImages(){
+function addEditImages() {
   const editIcon = require("../images/edit.svg");
   return editIcon;
 }
 
-function addDeleteImages(){
+function addDeleteImages() {
   const deleteIcon = require("../images/delete.svg");
-  return deleteIcon
+  return deleteIcon;
 }
 
 function getTodosByProject(todoList, curentElement) {
@@ -112,9 +110,8 @@ function checkForDuplicateTitle(newTodo, todoList) {
 }
 
 function deleteTodoItem(todoIndex, todoList, projectsList) {
-  console.log("Mode in deleteTodoItem", currentView.mode)
-  console.log("Project in deleteTodoItem", currentView.project)
-
+  console.log("Mode in deleteTodoItem", currentView.mode);
+  console.log("Project in deleteTodoItem", currentView.project);
 
   // console.table(todoList);
 
@@ -139,18 +136,18 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
     handleProjectCountNumber();
     renderHomeMenu(todoList);
     handleProjectCountNumber();
-  } else if(currentView.mode === "todayView"){
+  } else if (currentView.mode === "todayView") {
     //
     const { dueTodayTodos } = getProjetsByDueDate(todoList);
-    console.table(dueTodayTodos)
+    console.table(dueTodayTodos);
     //
     renderProjectContainer(projectsList, todoList);
     handleProjectCountNumber();
     renderHomeMenu(todoList);
     handleProjectCountNumber();
-    console.log("todayView mode is active")
-  } else if(currentView.mode === "weekView"){
-    console.log("weekview")
+    console.log("todayView mode is active");
+  } else if (currentView.mode === "weekView") {
+    console.log("weekview");
   } else {
     renderUI(projectsList, todoList);
   }
