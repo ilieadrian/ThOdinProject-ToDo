@@ -19,16 +19,14 @@ import {
 import { renderUI } from "./index";
 import { getProjects } from "./handleproject";
 import { format } from "date-fns";
+import sharedState from "./sharedState";
 
 let filteredTodos = [];
 
 // console.log("sharedState in manipulateDOM", sharedState)
 
-let currentView = {
-  mode: "all", 
-  project: null, 
-};
-console.log("ManipulateDOM fired", currentView)
+
+console.log("ManipulateDOM fired", sharedState)
 
 function openProjectModal(modalContainer) {
   modalContainer.innerHTML = "";
@@ -256,7 +254,6 @@ function resetSelectedLink(projectsList) {
 
 export {
   filteredTodos,
-  currentView,
   openToDoModal,
   openProjectModal,
   openViewModal,

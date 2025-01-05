@@ -14,10 +14,9 @@ import { displayToDods,
 import { defaultValues } from "./startup";
 // import Icon from "../images/to-do-list.svg";
 import { deleteProject } from "./handleproject";
-import { openToDoModal, currentView, openProjectModal, openViewModal, openEditModal } from "./manipulateDOM";
+import { openToDoModal, openProjectModal, openViewModal, openEditModal } from "./manipulateDOM";
 
 console.log("index.js fired")
-console.log("index.js fired", currentView)
 console.log("sharedState in indexJS", sharedState)
 
 
@@ -25,15 +24,11 @@ console.log("sharedState in indexJS", sharedState)
 function renderUI(projectsList, todoList) {
   console.log("renderUI FIRED");
 
-  console.log("sharedState inside renderUI", sharedState)
-
-  // let currentView = initializeCurrentView()
-  // console.log("SomeCV in renderUI:", currentView.mode)
-  // currentView.mode = "Blabls"
-  // console.log("SomeCV in renderUI222:", currentView.mode)
   let container = document.querySelector(".container");
 
-  // currentView.mode = "all";
+  sharedState.mode = "all";
+  console.log("sharedState inside renderUI", sharedState)
+
   
 
   if (!container) {
@@ -283,25 +278,25 @@ function setupEventListeners(todoList, projectsList) {
 
 function dueTodayTodosLink(todoList){
   const { dueTodayTodos } = getProjetsByDueDate(todoList);
-  currentView.mode = "todayView"
+  sharedState.mode = "todayView"
   renderTodoContainer(dueTodayTodos, null, null)
 }
 
 function dueThisWeekTodosLink(todoList){
   const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
-  currentView.mode = "weekView"
+  sharedState.mode = "weekView"
   renderTodoContainer(dueThisWeekTodos, null, null)
 }
 
 function getClickedProjectName(event) {
-  currentView.mode = "projectView"
+  sharedState.mode = "projectView"
   const { todoList } = defaultValues;
   const target = event.target;
 
   if (target.tagName === 'A') {
     event.preventDefault();
     const projectName = target.textContent.trim();
-    currentView.project = projectName;
+    sharedState.project = projectName;
     const filteredTodos = getTodosByProject(todoList, projectName)
 
     // console.log("currentView.project", currentView.project)
