@@ -1,3 +1,5 @@
+// import sharedState from "./sharedState";
+
 import {
   renderTodoContainer,
   renderProjectContainer,
@@ -19,10 +21,14 @@ import { getProjects } from "./handleproject";
 import { format } from "date-fns";
 
 let filteredTodos = [];
+
+// console.log("sharedState in manipulateDOM", sharedState)
+
 let currentView = {
   mode: "all", 
   project: null, 
 };
+console.log("ManipulateDOM fired", currentView)
 
 function openProjectModal(modalContainer) {
   modalContainer.innerHTML = "";

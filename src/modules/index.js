@@ -1,4 +1,5 @@
 import "../style.css";
+import sharedState from "./sharedState";
 import {
   getProjects,
   renderDueTodosContainer,
@@ -13,24 +14,18 @@ import { displayToDods,
 import { defaultValues } from "./startup";
 // import Icon from "../images/to-do-list.svg";
 import { deleteProject } from "./handleproject";
-import { openToDoModal, openProjectModal, openViewModal, openEditModal } from "./manipulateDOM";
-import sharedState from "./sharedState";
+import { openToDoModal, currentView, openProjectModal, openViewModal, openEditModal } from "./manipulateDOM";
 
-function initializeCurrentView(){
-  console.log("initializeCurrentView FIRED sharedState.mode", sharedState.mode);
+console.log("index.js fired")
+console.log("index.js fired", currentView)
+console.log("sharedState in indexJS", sharedState)
 
-  //   let currentView = {
-  //   mode: "all", 
-  //   project: null, 
-  // };
 
-  // return currentView ;
-}
-
-console.log(initializeCurrentView())
 
 function renderUI(projectsList, todoList) {
   console.log("renderUI FIRED");
+
+  console.log("sharedState inside renderUI", sharedState)
 
   // let currentView = initializeCurrentView()
   // console.log("SomeCV in renderUI:", currentView.mode)

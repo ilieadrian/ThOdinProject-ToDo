@@ -1,3 +1,5 @@
+import sharedState from "./sharedState";
+
 import {
   renderUI,
   renderTodoContainer,
@@ -10,6 +12,8 @@ import { filteredTodos } from "./manipulateDOM";
 import { handleProjectCountNumber, getProjetsByDueDate } from "./handleproject";
 import Todo from "./todo";
 import { format } from "date-fns";
+
+console.log("handletodos.js file loaded")
 
 function displayToDods(todoList) {
   console.log("displayToDods values fired");
@@ -110,6 +114,8 @@ function checkForDuplicateTitle(newTodo, todoList) {
 }
 
 function deleteTodoItem(todoIndex, todoList, projectsList) {
+
+  console.log("sharedState in DeleteTodo", sharedState)
   console.log("Mode in deleteTodoItem", currentView.mode);
   console.log("Project in deleteTodoItem", currentView.project);
 

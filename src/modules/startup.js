@@ -3,8 +3,13 @@ import Project from "./project";
 import { handleProject } from "./handleproject";
 import { renderUI } from "./index";
 
+
+console.log("startup.js fired")
+
+
 const defaultValues = (function () {
   console.log("Default values fired");
+  // console.log("sharedState.project", sharedState.project)
 
   // console.log("defaultValues FIRED");
   let todoList = JSON.parse(localStorage.getItem("todoList")) || [];
@@ -18,7 +23,7 @@ const defaultValues = (function () {
       new Todo(
         "Write on blog",
         "Write about last part from TicTacToe game",
-        "2025-01-03",
+        "2025-01-05",
         "low",
         false,
         "Home",
@@ -26,7 +31,7 @@ const defaultValues = (function () {
       new Todo(
         "TheOdinProject chapter 2",
         "Finish theOdinProject chapter 2",
-        "2025-01-01",
+        "2025-01-05",
         "low",
         false,
         "Home",
@@ -34,7 +39,7 @@ const defaultValues = (function () {
       new Todo(
         "New Odin Chapter",
         "Start a new OdinProjectChapter",
-        "2025-01-02",
+        "2025-01-06",
         "medium",
         false,
         "Learning",
@@ -42,7 +47,7 @@ const defaultValues = (function () {
       new Todo(
         "Repair blog",
         "Fix social links on blog header",
-        "2025-02-03",
+        "2025-01-05",
         "high",
         false,
         "Learning",
@@ -50,7 +55,7 @@ const defaultValues = (function () {
       new Todo(
         "Read daily a pattern",
         "https://www.patterns.dev/vanilla/import-on-interaction",
-        "2025-01-01",
+        "2025-01-06",
         "high",
         true,
         "Learning",
@@ -58,7 +63,7 @@ const defaultValues = (function () {
       new Todo(
         "App implementation",
         "Add ability to extract the projects from the array",
-        "2025-01-02",
+        "2025-01-05",
         "low",
         true,
         "Active learning",
@@ -66,7 +71,7 @@ const defaultValues = (function () {
       new Todo(
         "Xyx",
         "Some random text",
-        "2025-01-01",
+        "2025-01-06",
         "low",
         true,
         "Active learning",
@@ -74,7 +79,7 @@ const defaultValues = (function () {
       new Todo(
         "ABC",
         "First three letters from the alphabet",
-        "2025-01-01",
+        "2025-01-05",
         "high",
         false,
         "Active learning",
@@ -96,9 +101,9 @@ const defaultValues = (function () {
       //   true,
       //   "Zee",
       // ),
-      new Todo("Zee projects", "lorem20", "2025-01-02", "high", false, "Zee"),
-      new Todo("Zee3 projects", "lorem20", "2025-12-03", "low", false, "Zee"),
-      new Todo("Zee4 projects", "lorem20", "2025-12-02", "high", false, "Zee"),
+      new Todo("Zee projects", "lorem20", "2025-01-06", "high", false, "Zee"),
+      new Todo("Zee3 projects", "lorem20", "2025-12-05", "low", false, "Zee"),
+      new Todo("Zee4 projects", "lorem20", "2025-12-06", "high", false, "Zee"),
       // new Todo("Zee5projects", "lorem20", "2024-10-16", "low", true, "Zee"),
       // new Todo("Zee6 projects", "lorem20", "2024-10-17", "high", false, "Zee"),
       // new Todo("Zee7 projects", "lorem20", "2024-10-18", "high", true, "Zee"),
@@ -135,7 +140,7 @@ const defaultValues = (function () {
     todoList,
     projectsList,
     renderOnlyContainer,
-  };
+    };
 })();
 
 export { defaultValues };

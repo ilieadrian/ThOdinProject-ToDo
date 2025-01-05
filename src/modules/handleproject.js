@@ -5,6 +5,8 @@ import { renderUI, renderProjectContainer } from "./index";
 // import { getTodosByProject } from "./handletodos";
 import { isThisWeek, isToday } from "date-fns";
 
+console.log("handleproject.js file loaded")
+
 function handleProject(
   newToDo = null,
   projectsList,
