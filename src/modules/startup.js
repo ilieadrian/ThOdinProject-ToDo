@@ -23,7 +23,7 @@ const defaultValues = (function () {
       new Todo(
         "Write on blog",
         "Write about last part from TicTacToe game",
-        "2025-01-05",
+        "2025-01-06",
         "low",
         false,
         "Home",
@@ -31,7 +31,7 @@ const defaultValues = (function () {
       new Todo(
         "TheOdinProject chapter 2",
         "Finish theOdinProject chapter 2",
-        "2025-01-05",
+        "2025-01-06",
         "low",
         false,
         "Home",
