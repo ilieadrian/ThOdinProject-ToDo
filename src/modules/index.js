@@ -220,12 +220,7 @@ function renderHomeMenu(todoList) {
 function setupEventListeners(todoList, projectsList) {
   console.log("SetupEventListener fired")
   const homeLink = document.getElementById('home-link');
-
   const todosDueContainer = document.getElementById("todos-due");
-  // const todayLink = document.getElementById('today-link');
-  // const weekLink = document.getElementById('week-link');
-
-
   const projectContainer = document.getElementById('projects');
   const addProjectBTN = document.querySelector(".addproject");
   const addToDoBTN = document.querySelector(".addtodo");
@@ -234,11 +229,7 @@ function setupEventListeners(todoList, projectsList) {
   let modalContainer = document.getElementById("modal-container");
 
   if (homeLink) {
-    // console.log(typeof currentView)
-
-    // currentView.mode = "all";
-    homeLink.removeEventListener('click', renderUI);
-    homeLink.addEventListener('click', () => renderUI(projectsList, todoList));
+   
   }
 
   if (todosDueContainer) {
@@ -248,20 +239,12 @@ function setupEventListeners(todoList, projectsList) {
         dueTodayTodosLink(todoList);
       } else if (target.id === "week-link") {
         dueThisWeekTodosLink(todoList);
+      } else if(target.id === "home-link"){
+        renderUI(projectsList, todoList);
       }
     });
   }
   
-  // if (todayLink) {
-  //   todayLink.removeEventListener('click', dueTodayTodosLink);
-  //   todayLink.addEventListener('click', () => dueTodayTodosLink(todoList));
-  // }
-
-  // if (weekLink) {
-  //   weekLink.removeEventListener('click', dueThisWeekTodosLink);
-  //   weekLink.addEventListener('click', () => dueThisWeekTodosLink(todoList));
-  // }
-
   if (projectContainer) {
     projectContainer.removeEventListener('click', getClickedProjectName);
     projectContainer.addEventListener('click', getClickedProjectName);

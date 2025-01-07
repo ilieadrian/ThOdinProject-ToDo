@@ -138,8 +138,7 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
     const projectName = sharedState.project;
     const filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
     renderTodoContainer(filteredTodosAfterDeletion, null, projectName);
-    
-    renderProjectContainer(projectsList, todoList);
+        renderProjectContainer(projectsList, todoList);
     renderHomeMenu(todoList);
   } else if (sharedState.mode === "todayView") {
     const { dueTodayTodos } = getProjetsByDueDate(todoList);
@@ -148,10 +147,9 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
     renderHomeMenu(todoList);
   } else if (sharedState.mode === "weekView") {
     const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
-    renderUI(projectsList, dueThisWeekTodos);
-    // renderTodoContainer(dueThisWeekTodos, null, null);
-    // renderProjectContainer(projectsList, todoList);
-    // renderHomeMenu(todoList);
+    renderTodoContainer(dueThisWeekTodos, null, null);
+    renderProjectContainer(projectsList, todoList);
+    renderHomeMenu(todoList);
   } else {
     renderUI(projectsList, todoList);
   }
