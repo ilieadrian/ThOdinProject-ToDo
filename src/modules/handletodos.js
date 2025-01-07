@@ -16,7 +16,7 @@ import { format } from "date-fns";
 console.log("handletodos.js file loaded")
 
 function displayToDods(todoList) {
-  console.log("displayToDods values fired");
+  console.log("displayToDods fired");
   // console.log("displayToDods FIRED with: ", todoList);
   let ulContent = "";
 
@@ -138,27 +138,26 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
     const projectName = sharedState.project;
     const filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
     renderTodoContainer(filteredTodosAfterDeletion, null, projectName);
-    handleProjectCountNumber();
+    
     renderProjectContainer(projectsList, todoList);
     renderHomeMenu(todoList);
   } else if (sharedState.mode === "todayView") {
-    //
     const { dueTodayTodos } = getProjetsByDueDate(todoList);
-    console.table(dueTodayTodos);
-    //
     renderTodoContainer(dueTodayTodos, null, null);
-    handleProjectCountNumber();
     renderProjectContainer(projectsList, todoList);
     renderHomeMenu(todoList);
-    console.log("todayView mode is active");
   } else if (sharedState.mode === "weekView") {
-    console.log("weekview");
+    const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
+    renderUI(projectsList, dueThisWeekTodos);
+    // renderTodoContainer(dueThisWeekTodos, null, null);
+    // renderProjectContainer(projectsList, todoList);
+    // renderHomeMenu(todoList);
   } else {
     renderUI(projectsList, todoList);
   }
 
   // setupEventListeners(todoList, projectsList);
-
+  handleProjectCountNumber();
   if (todoList.length === 0) {
     console.log("(todoList.length === 0) case");
     handleEmptyProjectPage();

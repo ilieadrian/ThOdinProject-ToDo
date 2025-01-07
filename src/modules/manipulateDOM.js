@@ -179,6 +179,7 @@ function openViewModal(elementId, todoList, modalContainer) {
   addCloseElipse();
   addCloseEventListeners(modalContainer);
 }
+
 //Buttons in modals
 function addCloseElipseWhiteBg() {
   const closeIconWhiteBg = require("../images/close-ellipse-white-bg.svg");

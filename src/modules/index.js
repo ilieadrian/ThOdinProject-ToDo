@@ -19,17 +19,15 @@ import { openToDoModal, openProjectModal, openViewModal, openEditModal } from ".
 console.log("index.js fired")
 console.log("sharedState in indexJS", sharedState)
 
-
-
 function renderUI(projectsList, todoList) {
   console.log("renderUI FIRED");
+  console.log("sharedState inside renderUI", sharedState)
 
   let container = document.querySelector(".container");
 
-  sharedState.mode = "all";
-  console.log("sharedState inside renderUI", sharedState)
-
-  
+  if(sharedState.mode === "all" && sharedState.project === null){
+    console.log("Base case")
+  }
 
   if (!container) {
     container = document.createElement("div");
@@ -70,9 +68,8 @@ function renderUI(projectsList, todoList) {
         <div id="modal-container"></div>
     `;
 
-    container.innerHTML = html;
+  container.innerHTML = html;
 
-  
   if (todoList.length == 0) {
     const errorMessage = `<p class="emptyPageNotification">There are no more todos.</p>`;
     renderTodoContainer(todoList, errorMessage);
@@ -90,7 +87,6 @@ function renderUI(projectsList, todoList) {
   setupEventListeners(todoList, projectsList);
 }
 
-
 function addPlusCircle() {
   const plusCircleIcon = require("../images/add-plus-circle.svg")
   const addTodoImg = document.getElementById("addtodo-img")
@@ -106,7 +102,6 @@ function renderTodoContainer(
   ) {
   // console.log("renderTodoContainer FIRED with todos:", filteredTodos);
   let container = document.querySelector(".todo-container");
-
   container.innerHTML = "";
 
   if (filteredTodos.length > 0) {
@@ -137,6 +132,9 @@ function renderTodoContainer(
     // );
     handleEmptyProjectPage(projectName);
   }
+
+  // const { todoList, projectsList } = defaultValues;
+  // setupEventListeners(todoList, projectsList)
 }
 
 function renderProjectContainer(projectsList, todoList) {
@@ -218,21 +216,22 @@ function renderHomeMenu(todoList) {
 // callEvents();
 
 ////---!!!---// Events listeners
-//  5
 
 function setupEventListeners(todoList, projectsList) {
   console.log("SetupEventListener fired")
   const homeLink = document.getElementById('home-link');
-  const todayLink = document.getElementById('today-link');
-  const weekLink = document.getElementById('week-link');
+
+  const todosDueContainer = document.getElementById("todos-due");
+  // const todayLink = document.getElementById('today-link');
+  // const weekLink = document.getElementById('week-link');
+
+
   const projectContainer = document.getElementById('projects');
   const addProjectBTN = document.querySelector(".addproject");
   const addToDoBTN = document.querySelector(".addtodo");
   const todoListContainer = document.querySelector(".todo-container");
 
   let modalContainer = document.getElementById("modal-container");
-
-  
 
   if (homeLink) {
     // console.log(typeof currentView)
@@ -241,16 +240,27 @@ function setupEventListeners(todoList, projectsList) {
     homeLink.removeEventListener('click', renderUI);
     homeLink.addEventListener('click', () => renderUI(projectsList, todoList));
   }
-  
-  if (todayLink) {
-    todayLink.removeEventListener('click', dueTodayTodosLink);
-    todayLink.addEventListener('click', () => dueTodayTodosLink(todoList));
-  }
 
-  if (weekLink) {
-    weekLink.removeEventListener('click', dueThisWeekTodosLink);
-    weekLink.addEventListener('click', () => dueThisWeekTodosLink(todoList));
+  if (todosDueContainer) {
+    todosDueContainer.addEventListener("click", (event) => {
+      const target = event.target;
+      if (target.id === "today-link") {
+        dueTodayTodosLink(todoList);
+      } else if (target.id === "week-link") {
+        dueThisWeekTodosLink(todoList);
+      }
+    });
   }
+  
+  // if (todayLink) {
+  //   todayLink.removeEventListener('click', dueTodayTodosLink);
+  //   todayLink.addEventListener('click', () => dueTodayTodosLink(todoList));
+  // }
+
+  // if (weekLink) {
+  //   weekLink.removeEventListener('click', dueThisWeekTodosLink);
+  //   weekLink.addEventListener('click', () => dueThisWeekTodosLink(todoList));
+  // }
 
   if (projectContainer) {
     projectContainer.removeEventListener('click', getClickedProjectName);
@@ -288,6 +298,8 @@ function dueThisWeekTodosLink(todoList){
   renderTodoContainer(dueThisWeekTodos, null, null)
 }
 
+
+
 function getClickedProjectName(event) {
   sharedState.mode = "projectView"
   const { todoList } = defaultValues;
@@ -314,7 +326,6 @@ function handleToDoListActions(todoList, projectsList, modalContainer, event){
   const todoIndex = todoList.findIndex((todo) => todo._id === elementId);
 
   if (todoIndex === -1) {
-    console.log(todoIndex)
     console.error(
       "Todo item not found in todoList for elementId:",
       elementId,
