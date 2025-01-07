@@ -25,10 +25,7 @@ function renderUI(projectsList, todoList) {
 
   let container = document.querySelector(".container");
 
-  if(sharedState.mode === "all" && sharedState.project === null){
-    console.log("Base case")
-  }
-
+  
   if (!container) {
     container = document.createElement("div");
     container.classList.add("container");
@@ -219,7 +216,6 @@ function renderHomeMenu(todoList) {
 
 function setupEventListeners(todoList, projectsList) {
   console.log("SetupEventListener fired")
-  const homeLink = document.getElementById('home-link');
   const todosDueContainer = document.getElementById("todos-due");
   const projectContainer = document.getElementById('projects');
   const addProjectBTN = document.querySelector(".addproject");
@@ -227,10 +223,6 @@ function setupEventListeners(todoList, projectsList) {
   const todoListContainer = document.querySelector(".todo-container");
 
   let modalContainer = document.getElementById("modal-container");
-
-  if (homeLink) {
-   
-  }
 
   if (todosDueContainer) {
     todosDueContainer.addEventListener("click", (event) => {
@@ -240,6 +232,8 @@ function setupEventListeners(todoList, projectsList) {
       } else if (target.id === "week-link") {
         dueThisWeekTodosLink(todoList);
       } else if(target.id === "home-link"){
+        sharedState.mode = "all";
+        sharedState.project = null;
         renderUI(projectsList, todoList);
       }
     });
