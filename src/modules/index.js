@@ -16,15 +16,8 @@ import { defaultValues } from "./startup";
 import { deleteProject } from "./handleproject";
 import { openToDoModal, openProjectModal, openViewModal, openEditModal } from "./manipulateDOM";
 
-console.log("index.js fired")
-console.log("sharedState in indexJS", sharedState)
-
 function renderUI(projectsList, todoList) {
-  console.log("renderUI FIRED");
-  console.log("sharedState inside renderUI", sharedState)
-
   let container = document.querySelector(".container");
-
   
   if (!container) {
     container = document.createElement("div");
@@ -263,6 +256,42 @@ function setupEventListeners(todoList, projectsList) {
 
 }
 
+function modifyTodoStatus(elementId, target, projectsList, todoList){
+  // console.log("elementId", elementId, "target", target)
+  console.log("currentView", sharedState);
+  console.log("modifyTodoStatus FIRED");
+  // console.table(todoList)
+
+  const todoItem = todoList.find((todo) => todo.id == elementId);
+
+
+  todoItem.status = target.checked;
+
+  if (!todoItem) {
+    return;
+  }
+
+  console.log(todoItem)
+  // console.table(todoList)
+  renderUI(projectsList, todoList)
+  // localStorage.setItem("todoList", JSON.stringify(todoList));
+
+  // if (sharedState.mode !== "all") {
+  //     renderTodoContainer(filteredTodos);
+  //     renderProjectContainer(projectsList, todoList);
+  //     renderHomeMenu(todoList);
+  //     handleProjectCountNumber();
+  //   } else if (!currentView == "thisWeekTodosLink") {
+  //     console.log("statusOfUI in else statusOfUI about to fire");
+  //     renderUI(projectsList, todoList);
+  //   } else if (!currentView == "todayTodosLink") {
+  //     console.log(currentView);
+  //     console.log("statusOfUI in else statusOfUI about to fire");
+  //     renderUI(projectsList, todoList);
+  //   }
+
+}
+
 function dueTodayTodosLink(todoList){
   const { dueTodayTodos } = getProjetsByDueDate(todoList);
   sharedState.mode = "todayView"
@@ -274,8 +303,6 @@ function dueThisWeekTodosLink(todoList){
   sharedState.mode = "weekView"
   renderTodoContainer(dueThisWeekTodos, null, null)
 }
-
-
 
 function getClickedProjectName(event) {
   sharedState.mode = "projectView"
@@ -290,19 +317,19 @@ function getClickedProjectName(event) {
 
     // console.log("currentView.project", currentView.project)
 
-    renderTodoContainer(filteredTodos)
+    renderTodoContainer(filteredTodos, null, null)
   }
 }
 
 function handleToDoListActions(todoList, projectsList, modalContainer, event){
   const target = event.target;
-  console.log(target)
   const listItem = target.closest(".item");
   
   const elementId = listItem ? +listItem.id.split("-")[1] : null;
   const todoIndex = todoList.findIndex((todo) => todo._id === elementId);
 
   if (todoIndex === -1) {
+    
     console.error(
       "Todo item not found in todoList for elementId:",
       elementId,
