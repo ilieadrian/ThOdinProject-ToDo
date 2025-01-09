@@ -2,7 +2,7 @@ import Project from "./project";
 // import { renderUI, renderProjectContainer, renderTodoContainer } from "./index";
 import { renderUI, renderProjectContainer } from "./index";
 
-// import { getTodosByProject } from "./handletodos";
+// import { getTodosByProject }    from "./handletodos";
 import { isThisWeek, isToday } from "date-fns";
 
 console.log("handleproject.js file loaded")

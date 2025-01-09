@@ -260,7 +260,6 @@ function modifyTodoStatus(elementId, target, projectsList, todoList){
   // console.log("elementId", elementId, "target", target)
   console.log("currentView", sharedState);
   console.log("modifyTodoStatus FIRED");
-  // console.table(todoList)
 
   const todoItem = todoList.find((todo) => todo.id == elementId);
 
@@ -272,23 +271,13 @@ function modifyTodoStatus(elementId, target, projectsList, todoList){
   }
 
   console.log(todoItem)
-  // console.table(todoList)
   renderUI(projectsList, todoList)
-  // localStorage.setItem("todoList", JSON.stringify(todoList));
+  localStorage.setItem("todoList", JSON.stringify(todoList));
 
-  // if (sharedState.mode !== "all") {
-  //     renderTodoContainer(filteredTodos);
-  //     renderProjectContainer(projectsList, todoList);
-  //     renderHomeMenu(todoList);
-  //     handleProjectCountNumber();
-  //   } else if (!currentView == "thisWeekTodosLink") {
-  //     console.log("statusOfUI in else statusOfUI about to fire");
-  //     renderUI(projectsList, todoList);
-  //   } else if (!currentView == "todayTodosLink") {
-  //     console.log(currentView);
-  //     console.log("statusOfUI in else statusOfUI about to fire");
-  //     renderUI(projectsList, todoList);
-  //   }
+  if(sharedState.mode === "weekView"){
+    const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
+  renderTodoContainer(dueThisWeekTodos, null, null)
+  }
 
 }
 
