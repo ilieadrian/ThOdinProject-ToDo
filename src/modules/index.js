@@ -272,9 +272,13 @@ function modifyTodoStatus(elementId, target, projectsList, todoList){
 
   console.log(todoItem)
   renderUI(projectsList, todoList)
+  
   localStorage.setItem("todoList", JSON.stringify(todoList));
-
-  if(sharedState.mode === "weekView"){
+  
+  if(sharedState.mode === "todayView") {
+    const { dueTodayTodos } = getProjetsByDueDate(todoList);
+    renderTodoContainer(dueTodayTodos, null, null)
+  } else if(sharedState.mode === "weekView"){
     const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
   renderTodoContainer(dueThisWeekTodos, null, null)
   }
