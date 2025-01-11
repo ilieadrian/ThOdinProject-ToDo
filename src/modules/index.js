@@ -274,11 +274,13 @@ function modifyTodoStatus(elementId, target, projectsList, todoList){
     renderTodoContainer(dueTodayTodos, null, null)
   } else if(sharedState.mode === "weekView"){
     const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
-  renderTodoContainer(dueThisWeekTodos, null, null)
+    renderTodoContainer(dueThisWeekTodos, null, null)
   } else if(sharedState.mode === "projectView"){
-    console.log(sharedState.project)
+    const filteredTodos = getTodosByProject(todoList, sharedState.project)
+    renderTodoContainer(filteredTodos, null, sharedState.project)
   } else {
     renderUI(projectsList, todoList)
+    
   }
 
   localStorage.setItem("todoList", JSON.stringify(todoList));
@@ -358,7 +360,6 @@ function handleToDoListActions(todoList, projectsList, modalContainer, event){
 export {
   renderUI,
   renderTodoContainer,
-  displayToDods,
   renderProjectContainer,
   renderHomeMenu,
   handleEmptyProjectPage,
