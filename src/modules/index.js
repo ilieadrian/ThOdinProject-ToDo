@@ -263,25 +263,26 @@ function modifyTodoStatus(elementId, target, projectsList, todoList){
 
   const todoItem = todoList.find((todo) => todo.id == elementId);
 
-
   todoItem.status = target.checked;
 
   if (!todoItem) {
     return;
   }
 
-  console.log(todoItem)
-  renderUI(projectsList, todoList)
-  
-  localStorage.setItem("todoList", JSON.stringify(todoList));
-  
   if(sharedState.mode === "todayView") {
     const { dueTodayTodos } = getProjetsByDueDate(todoList);
     renderTodoContainer(dueTodayTodos, null, null)
   } else if(sharedState.mode === "weekView"){
     const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
   renderTodoContainer(dueThisWeekTodos, null, null)
+  } else if(sharedState.mode === "projectView"){
+    console.log(sharedState.project)
+  } else {
+    renderUI(projectsList, todoList)
   }
+
+  localStorage.setItem("todoList", JSON.stringify(todoList));
+
 
 }
 
