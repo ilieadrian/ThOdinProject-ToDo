@@ -279,13 +279,14 @@ function modifyTodoStatus(elementId, target, projectsList, todoList){
     const filteredTodos = getTodosByProject(todoList, sharedState.project)
     renderTodoContainer(filteredTodos, null, sharedState.project)
   } else {
-    renderUI(projectsList, todoList)
+    renderUI(projectsList, todoList);
     
   }
 
   localStorage.setItem("todoList", JSON.stringify(todoList));
-
-
+  // handleProjectCountNumber();
+  // addPlusCircle()
+  
 }
 
 function dueTodayTodosLink(todoList){
