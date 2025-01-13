@@ -114,12 +114,9 @@ function checkForDuplicateTitle(newTodo, todoList) {
 }
 
 function deleteTodoItem(todoIndex, todoList, projectsList) {
-
   console.log("sharedState in DeleteTodo", sharedState)
   console.log("Mode in deleteTodoItem", sharedState.mode);
   console.log("Project in deleteTodoItem", sharedState.project);
-
-  // console.table(todoList);
 
   if (todoList.length < 1) {
     console.table(todoList);
@@ -138,23 +135,16 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
     const projectName = sharedState.project;
     const filteredTodosAfterDeletion = getTodosByProject(todoList, projectName);
     renderTodoContainer(filteredTodosAfterDeletion, null, projectName);
-    // renderProjectContainer(projectsList, todoList);
-    // renderHomeMenu(todoList);
   } else if (sharedState.mode === "todayView") {
     const { dueTodayTodos } = getProjetsByDueDate(todoList);
     renderTodoContainer(dueTodayTodos, null, null);
-    // renderProjectContainer(projectsList, todoList);
-    // renderHomeMenu(todoList);
   } else if (sharedState.mode === "weekView") {
     const { dueThisWeekTodos } = getProjetsByDueDate(todoList);
     renderTodoContainer(dueThisWeekTodos, null, null);
-    // renderProjectContainer(projectsList, todoList);
-    // renderHomeMenu(todoList);
   } else {
     renderUI(projectsList, todoList);
   }
-
-  // setupEventListeners(todoList, projectsList);
+  
   renderProjectContainer(projectsList, todoList);
   renderHomeMenu(todoList);
   handleProjectCountNumber();

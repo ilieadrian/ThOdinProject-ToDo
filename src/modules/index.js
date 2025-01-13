@@ -116,15 +116,8 @@ function renderTodoContainer(
             </div>
             `;
       }
-    // console.log(
-    //   "calling handleEmptyProjectPage(projectName) with the project:",
-    //   projectName,
-    // );
     handleEmptyProjectPage(projectName);
   }
-
-  // const { todoList, projectsList } = defaultValues;
-  // setupEventListeners(todoList, projectsList)
 }
 
 function renderProjectContainer(projectsList, todoList) {
@@ -154,9 +147,7 @@ function handleEmptyProjectPage(projectName) {
   // console.log("projectsList in handleEmptyProjectPage:", projectsList);
   let idToDelete = getActiveId(projectName, projectsList);
   // console.log("ID to delete:", idToDelete);
-
   // console.log("idToDelete in handleEmptyProjectPage", idToDelete)
-
   // console.log("Delete button:", deleteBtn);
 
   if (deleteBtn) {
@@ -193,17 +184,6 @@ function renderHomeMenu(todoList) {
     `;
 }
 
-// To be removed ??
-// function callEvents() {
-//   const { projectsList, todoList } = defaultValues;
-
-//   try {
-//     // setupEventListeners(todoList, projectsList);
-//   } catch (error) {
-//     console.error("Error calling callEvents:", error);
-//   }
-// }
-// callEvents();
 
 ////---!!!---// Events listeners
 
@@ -284,9 +264,8 @@ function modifyTodoStatus(elementId, target, projectsList, todoList){
   }
 
   localStorage.setItem("todoList", JSON.stringify(todoList));
-  // handleProjectCountNumber();
-  // addPlusCircle()
-  
+  renderHomeMenu(todoList)
+  handleProjectCountNumber()
 }
 
 function dueTodayTodosLink(todoList){
