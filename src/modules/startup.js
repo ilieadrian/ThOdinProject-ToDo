@@ -4,11 +4,11 @@ import { handleProject } from "./handleproject";
 import { renderUI } from "./index";
 
 
-console.log("startup.js fired")
+// console.log("startup.js fired")
 
 
 const defaultValues = (function () {
-  console.log("Default values fired");
+  // console.log("Default values fired");
   // console.log("sharedState.project", sharedState.project)
 
   // console.log("defaultValues FIRED");

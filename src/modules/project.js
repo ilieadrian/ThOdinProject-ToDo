@@ -38,6 +38,5 @@ export default class Project {
 
   set items(value) {
     console.log(value);
-    // this._items = value;
   }
 }

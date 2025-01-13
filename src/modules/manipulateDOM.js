@@ -26,7 +26,7 @@ let filteredTodos = [];
 // console.log("sharedState in manipulateDOM", sharedState)
 
 
-console.log("ManipulateDOM fired", sharedState)
+// console.log("ManipulateDOM fired", sharedState)
 
 function openProjectModal(modalContainer) {
   modalContainer.innerHTML = "";
@@ -90,7 +90,7 @@ function openToDoModal(modalContainer, projectsList) {
                         <button type="button" id="high" type="button">High</button>
                     </div>
 
-                    <button id="create-todo">Create project</button> 
+                    <button id="create-todo">Create To do</button> 
                 </div> 
             </form>
             
@@ -261,11 +261,3 @@ export {
   openEditModal,
 };
 
-// todo actions
-//
-//
-//Delete
-// Modals
-//add
-//actions
-//Delete project on empty page

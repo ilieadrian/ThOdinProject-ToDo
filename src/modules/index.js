@@ -7,6 +7,7 @@ import {
   getProjetsByDueDate,
 } from "./handleproject";
 import { displayToDods, 
+  addNewTodo,
   getTodosByProject,
   deleteTodoItem,
 } from "./handletodos";
@@ -188,7 +189,7 @@ function renderHomeMenu(todoList) {
 ////---!!!---// Events listeners
 
 function setupEventListeners(todoList, projectsList) {
-  console.log("SetupEventListener fired")
+  // console.log("SetupEventListener fired")
   const todosDueContainer = document.getElementById("todos-due");
   const projectContainer = document.getElementById('projects');
   const addProjectBTN = document.querySelector(".addproject");
@@ -231,8 +232,95 @@ function setupEventListeners(todoList, projectsList) {
       handleToDoListActions(todoList, projectsList, modalContainer, event)
     );
   }
-  
-  // Check list
+  //form events
+
+  modalContainer.addEventListener("click", function (event) {
+    // if (event.target && event.target.id === "create-project") {
+    //   event.preventDefault();
+
+    //   const passedProjectName = document.querySelector("#name").value.trim();
+    //   if (passedProjectName.length === 0) {
+    //     alert("Project name cannot be empty");
+    //     return;
+    //   } else {
+    //     handleProject(null, projectsList, todoList, passedProjectName);
+    //     modalContainer.innerHTML = "";
+    //   }
+    // }
+
+    // const priorityBTNS = document.querySelectorAll(".priority-btn-grup button");
+
+    // priorityBTNS.forEach((btn) => {
+    //   btn.addEventListener("click", function (event) {
+    //     event.preventDefault();
+
+    //     priorityBTNS.forEach((button) =>
+    //       button.classList.remove("active-priority"),
+    //     );
+
+    //     this.classList.add("active-priority");
+    //   });
+    // });
+
+    if (event.target && event.target.id === "create-todo") {
+      event.preventDefault();
+
+      const todoTitle = document.getElementById("title").value.trim();
+      const todoDescription = document.getElementById("title").value.trim();
+      const projectsDropdown = document.getElementById("projects-select");
+      const selectedProject = projectsDropdown.value;
+      const selecteDate = document.querySelector('input[type="date"]').value;
+      const activePriorityBtn = document.querySelector(
+        ".priority-btn-grup .active-priority",
+      );
+      const selectedPriority = activePriorityBtn ? activePriorityBtn.id : null;
+
+      if (todoTitle && selectedProject && selecteDate && selectedPriority) {
+        addNewTodo(
+          todoTitle,
+          todoDescription,
+          selectedProject,
+          selecteDate,
+          selectedPriority,
+          todoList,
+          projectsList,
+        );
+        modalContainer.innerHTML = "";
+      } else {
+        alert("Required fields: Title and Date");
+        return;
+      }
+    }
+    // if (event.target && event.target.id === "edit-modal-todo") {
+    //   event.preventDefault();
+
+    //   const form = document.getElementsByTagName("form");
+    //   const projectId = form[0].dataset.formid;
+    //   const todoTitle = document.getElementById("title").value.trim();
+    //   const todoDescription = document
+    //     .getElementById("description")
+    //     .value.trim();
+    //   const projectsDropdown = document.getElementById("projects-select");
+    //   const selectedProject = projectsDropdown.value;
+    //   const selecteDate = document.querySelector('input[type="date"]').value;
+    //   const activePriorityBtn = document.querySelector(
+    //     ".priority-btn-grup .active-priority",
+    //   );
+    //   const selectedPriority = activePriorityBtn ? activePriorityBtn.id : null;
+
+    //   editTodo(
+    //     projectId,
+    //     todoTitle,
+    //     todoDescription,
+    //     selectedProject,
+    //     selecteDate,
+    //     selectedPriority,
+    //     todoList,
+    //     projectsList,
+    //   );
+    // }
+  });
+  //
 
 }
 
@@ -328,15 +416,7 @@ function handleToDoListActions(todoList, projectsList, modalContainer, event){
   } else if (target.classList.contains("todo-checkbox")) {
     modifyTodoStatus(elementId, target, projectsList, todoList);
   }
-
 }
-
-// New to do
-
-
-
-
-//---!!!---//
 
 export {
   renderUI,
