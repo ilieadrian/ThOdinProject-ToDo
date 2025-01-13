@@ -264,8 +264,9 @@ function modifyTodoStatus(elementId, target, projectsList, todoList){
   }
 
   localStorage.setItem("todoList", JSON.stringify(todoList));
-  renderHomeMenu(todoList)
-  handleProjectCountNumber()
+  renderHomeMenu(todoList);
+  renderProjectContainer(projectsList, todoList);
+  handleProjectCountNumber();
 }
 
 function dueTodayTodosLink(todoList){
