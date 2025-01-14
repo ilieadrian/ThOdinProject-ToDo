@@ -5,6 +5,7 @@ import {
   renderDueTodosContainer,
   handleProjectCountNumber,
   getProjetsByDueDate,
+  handleProject,
 } from "./handleproject";
 import { displayToDods, 
   addNewTodo,
@@ -232,35 +233,22 @@ function setupEventListeners(todoList, projectsList) {
       handleToDoListActions(todoList, projectsList, modalContainer, event)
     );
   }
-  //form events
-
+  //modals events
   modalContainer.addEventListener("click", function (event) {
-    // if (event.target && event.target.id === "create-project") {
-    //   event.preventDefault();
+    const priorityBTNS = document.querySelectorAll(".priority-btn-grup button");
 
-    //   const passedProjectName = document.querySelector("#name").value.trim();
-    //   if (passedProjectName.length === 0) {
-    //     alert("Project name cannot be empty");
-    //     return;
-    //   } else {
-    //     handleProject(null, projectsList, todoList, passedProjectName);
-    //     modalContainer.innerHTML = "";
-    //   }
-    // }
+    priorityBTNS.forEach((btn) => {
+      btn.addEventListener("click", function (event) {
+        event.preventDefault();
 
-    // const priorityBTNS = document.querySelectorAll(".priority-btn-grup button");
+        priorityBTNS.forEach((button) =>
+          button.classList.remove("active-priority"),
+        );
 
-    // priorityBTNS.forEach((btn) => {
-    //   btn.addEventListener("click", function (event) {
-    //     event.preventDefault();
+        this.classList.add("active-priority");
+      });
+    });
 
-    //     priorityBTNS.forEach((button) =>
-    //       button.classList.remove("active-priority"),
-    //     );
-
-    //     this.classList.add("active-priority");
-    //   });
-    // });
 
     if (event.target && event.target.id === "create-todo") {
       event.preventDefault();
@@ -291,6 +279,24 @@ function setupEventListeners(todoList, projectsList) {
         return;
       }
     }
+
+
+    if (event.target && event.target.id === "create-project") {
+      event.preventDefault();
+
+      const passedProjectName = document.querySelector("#name").value.trim();
+      if (passedProjectName.length === 0) {
+        alert("Project name cannot be empty");
+        return;
+      } else {
+        handleProject(null, projectsList, todoList, passedProjectName);
+        modalContainer.innerHTML = "";
+      }
+    }
+
+    
+
+    
     // if (event.target && event.target.id === "edit-modal-todo") {
     //   event.preventDefault();
 
@@ -324,13 +330,15 @@ function setupEventListeners(todoList, projectsList) {
 
 }
 
+function functyFuncty() {
+  
+}
+
 function modifyTodoStatus(elementId, target, projectsList, todoList){
   // console.log("elementId", elementId, "target", target)
   console.log("currentView", sharedState);
   console.log("modifyTodoStatus FIRED");
-
   const todoItem = todoList.find((todo) => todo.id == elementId);
-
   todoItem.status = target.checked;
 
   if (!todoItem) {
