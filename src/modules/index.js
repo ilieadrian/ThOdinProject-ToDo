@@ -9,6 +9,7 @@ import {
 } from "./handleproject";
 import { displayToDods, 
   addNewTodo,
+  editTodo,
   getTodosByProject,
   deleteTodoItem,
 } from "./handletodos";
@@ -293,46 +294,39 @@ function setupEventListeners(todoList, projectsList) {
         modalContainer.innerHTML = "";
       }
     }
-
     
+    if (event.target && event.target.id === "edit-modal-todo") {
+      event.preventDefault();
 
-    
-    // if (event.target && event.target.id === "edit-modal-todo") {
-    //   event.preventDefault();
+      const form = document.getElementsByTagName("form");
+      const projectId = form[0].dataset.formid;
+      const todoTitle = document.getElementById("title").value.trim();
+      const todoDescription = document
+        .getElementById("description")
+        .value.trim();
+      const projectsDropdown = document.getElementById("projects-select");
+      const selectedProject = projectsDropdown.value;
+      const selecteDate = document.querySelector('input[type="date"]').value;
+      const activePriorityBtn = document.querySelector(
+        ".priority-btn-grup .active-priority",
+      );
+      const selectedPriority = activePriorityBtn ? activePriorityBtn.id : null;
 
-    //   const form = document.getElementsByTagName("form");
-    //   const projectId = form[0].dataset.formid;
-    //   const todoTitle = document.getElementById("title").value.trim();
-    //   const todoDescription = document
-    //     .getElementById("description")
-    //     .value.trim();
-    //   const projectsDropdown = document.getElementById("projects-select");
-    //   const selectedProject = projectsDropdown.value;
-    //   const selecteDate = document.querySelector('input[type="date"]').value;
-    //   const activePriorityBtn = document.querySelector(
-    //     ".priority-btn-grup .active-priority",
-    //   );
-    //   const selectedPriority = activePriorityBtn ? activePriorityBtn.id : null;
-
-    //   editTodo(
-    //     projectId,
-    //     todoTitle,
-    //     todoDescription,
-    //     selectedProject,
-    //     selecteDate,
-    //     selectedPriority,
-    //     todoList,
-    //     projectsList,
-    //   );
-    // }
+      editTodo(
+        projectId,
+        todoTitle,
+        todoDescription,
+        selectedProject,
+        selecteDate,
+        selectedPriority,
+        todoList,
+        projectsList,
+      );
+    }
   });
   //
-
 }
-
-function functyFuncty() {
   
-}
 
 function modifyTodoStatus(elementId, target, projectsList, todoList){
   // console.log("elementId", elementId, "target", target)
