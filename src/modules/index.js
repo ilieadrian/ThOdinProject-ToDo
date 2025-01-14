@@ -98,9 +98,6 @@ function renderTodoContainer(
   let container = document.querySelector(".todo-container");
   container.innerHTML = "";
 
-  console.log("sharedState.mode in renderTodoContainer", sharedState.mode)
-
-
   if (filteredTodos.length > 0) {
     container.innerHTML = `
         <ul class="items-list">
@@ -140,7 +137,7 @@ function renderTodoContainer(
       `;
     }  
 
-    handleEmptyProjectPage(projectName);
+    handleEmptyProjectPage();
   }
 }
 
@@ -154,24 +151,32 @@ function renderProjectContainer(projectsList, todoList) {
   handleProjectCountNumber();
 }
 
-function handleEmptyProjectPage(projectName) {
+function handleEmptyProjectPage() {
   // console.log(" handleEmptyProjectPage called on project name: ", projectName);
+  console.log("sharedState.project in handleEmptyProjectPage", sharedState.project)
 
-  if (projectName == null) {
-    return;
-  }
+  // if (projectName == null) {
+  //   return;
+  // }
   let container = document.querySelector(".todo-container");
 
   const { projectsList, todoList } = defaultValues;
 
+
   const deleteBtn = container.querySelector(".project-delete-btn");
+
+  deleteBtn.addEventListener("click", somefunc)
+
+  function somefunc(){
+    console.log("Somefunk clicked")
+  }
 
   // console.log("Project name in handleEmptyProjectPage:", projectName);
   // console.log("projectsList in handleEmptyProjectPage:", projectsList);
-  let idToDelete = getActiveId(projectName, projectsList);
-  // console.log("ID to delete:", idToDelete);
+  let idToDelete = getActiveId(sharedState.project, projectsList);
+  console.log("ID to delete:", idToDelete);
   // console.log("idToDelete in handleEmptyProjectPage", idToDelete)
-  // console.log("Delete button:", deleteBtn);
+  console.log("Delete button:", deleteBtn);
 
   if (deleteBtn) {
     // console.log("Fired if(deleteBTN) in get active link", deleteBtn);
@@ -180,11 +185,13 @@ function handleEmptyProjectPage(projectName) {
       deleteProject(idToDelete, projectsList, todoList);
     });
   } else {
+    return
     // console.log("RenderUI case");
   }
 }
 
 function getActiveId(projectName, projectsList) {
+  console.log("getActiveId projectsList", projectsList)
   if (projectsList.length === 1) {
     // console.log("Project list is 1", projectsList[0]._id)
   }
@@ -206,9 +213,6 @@ function renderHomeMenu(todoList) {
         ${renderDueTodosContainer(todoList)}
     `;
 }
-
-
-////---!!!---// Events listeners
 
 function setupEventListeners(todoList, projectsList) {
   // console.log("SetupEventListener fired")
@@ -346,7 +350,6 @@ function setupEventListeners(todoList, projectsList) {
   });
   //
 }
-  
 
 function modifyTodoStatus(elementId, target, projectsList, todoList){
   // console.log("elementId", elementId, "target", target)
@@ -415,8 +418,7 @@ function handleToDoListActions(todoList, projectsList, modalContainer, event){
   const todoIndex = todoList.findIndex((todo) => todo._id === elementId);
 
   if (todoIndex === -1) {
-    
-    console.error(
+      console.error(
       "Todo item not found in todoList for elementId:",
       elementId,
     );
