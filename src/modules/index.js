@@ -68,6 +68,7 @@ function renderUI(projectsList, todoList) {
     renderTodoContainer(todoList, errorMessage);
     localStorage.setItem("todoList", JSON.stringify(todoList));
   }
+
   
   const icon = require("../images/to-do-list.svg");
   const headerIconContainer = document.getElementById("section-header");
@@ -97,6 +98,9 @@ function renderTodoContainer(
   let container = document.querySelector(".todo-container");
   container.innerHTML = "";
 
+  console.log("sharedState.mode in renderTodoContainer", sharedState.mode)
+
+
   if (filteredTodos.length > 0) {
     container.innerHTML = `
         <ul class="items-list">
@@ -119,12 +123,28 @@ function renderTodoContainer(
             </div>
             `;
       }
+
+    if(sharedState.mode === "todayView"){
+      container.innerHTML = `
+      <div class="items-list">
+          <p>No todos with the due date today.</p>
+      </div>
+      `;
+    }
+    
+    if(sharedState.mode === "weekView"){
+      container.innerHTML = `
+      <div class="items-list">
+          <p>No todos with the due date this week.</p>
+      </div>
+      `;
+    }  
+
     handleEmptyProjectPage(projectName);
   }
 }
 
 function renderProjectContainer(projectsList, todoList) {
-  // console.log("renderProjectContainer FIRED");
   let container = document.getElementById("projects");
 
   container.innerHTML = "";
@@ -330,8 +350,8 @@ function setupEventListeners(todoList, projectsList) {
 
 function modifyTodoStatus(elementId, target, projectsList, todoList){
   // console.log("elementId", elementId, "target", target)
-  console.log("currentView", sharedState);
-  console.log("modifyTodoStatus FIRED");
+  // console.log("currentView", sharedState);
+  // console.log("modifyTodoStatus FIRED");
   const todoItem = todoList.find((todo) => todo.id == elementId);
   todoItem.status = target.checked;
 
@@ -350,7 +370,6 @@ function modifyTodoStatus(elementId, target, projectsList, todoList){
     renderTodoContainer(filteredTodos, null, sharedState.project)
   } else {
     renderUI(projectsList, todoList);
-    
   }
 
   localStorage.setItem("todoList", JSON.stringify(todoList));
