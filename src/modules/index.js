@@ -214,7 +214,28 @@ function renderHomeMenu(todoList) {
     `;
 }
 
+
+
 function setupEventListeners(todoList, projectsList) {
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuLinks = document.querySelectorAll(".menu-links a");
+
+    console.log(menuLinks)
+  
+    menuLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        
+        // Remove the "active" class from all links
+        menuLinks.forEach(function (link) {
+          console.log(link.classList)
+          link.classList.remove("active");
+        });
+        // Add the "active" class to the clicked link
+        this.classList.add("active");
+      });
+    });
+  });
   // console.log("SetupEventListener fired")
   const todosDueContainer = document.getElementById("todos-due");
   const projectContainer = document.getElementById('projects');
@@ -225,42 +246,7 @@ function setupEventListeners(todoList, projectsList) {
   let modalContainer = document.getElementById("modal-container");
   const projectList = document.querySelectorAll("#projects li");
 
-  console.log(projectList)
-
-
-projectList.forEach((li) => {
-    const anchor = li.querySelector("a");
-
-    anchor.addEventListener("click", function (event) {
-      event.preventDefault();
-      const projectName = anchor.textContent;
-
-      filteredTodos = getTodosByProject(todoList, projectName);
-
-      console.log(
-        "calling renderTodoContainer from event listener",
-        projectName,
-      );
-
-      renderTodoContainer(filteredTodos, null, projectName);
-      handleProjectCountNumber();
-
-      projectList.forEach((item) => {
-        const link = item.querySelector("a");
-        link.classList.remove("active");
-      });
-
-      anchor.classList.add("active");
-      activeProjectLink = true;
-
-      if (activeProjectLink) {
-        anchor.classList.add("active");
-      }
-
-      // handleSelectedLink(projectsList, projectName, todoList);
-    });
-  });
-
+  
 
   if (todosDueContainer) {
     todosDueContainer.addEventListener("click", (event) => {

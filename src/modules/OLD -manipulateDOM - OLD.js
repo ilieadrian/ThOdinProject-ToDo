@@ -568,15 +568,7 @@ function handleEmptyWeekPage(dueThisWeekTodos) {
   renderTodoContainer(dueThisWeekTodos, errorMessage, null);
 }
 
-function handleSelectedLink(projectsList, projectName) {
-  const selectedProject = projectsList.find(
-    (project) => project.name === projectName,
-  );
 
-  resetSelectedLink(projectsList);
-
-  selectedProject._active = true;
-}
 
 function resetSelectedLink(projectsList) {
   for (let i = 0; i < projectsList.length; i++) {
