@@ -214,28 +214,28 @@ function renderHomeMenu(todoList) {
     `;
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  const menuLinks = document.querySelectorAll(".menu-links a");
 
+  console.log(menuLinks)
+
+  menuLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+      
+      // Remove the "active" class from all links
+      menuLinks.forEach(function (link) {
+        console.log(link.classList)
+        link.classList.remove("active");
+      });
+      // Add the "active" class to the clicked link
+      this.classList.add("active");
+    });
+  });
+});
 
 function setupEventListeners(todoList, projectsList) {
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const menuLinks = document.querySelectorAll(".menu-links a");
-
-    console.log(menuLinks)
   
-    menuLinks.forEach(function (link) {
-      link.addEventListener("click", function () {
-        
-        // Remove the "active" class from all links
-        menuLinks.forEach(function (link) {
-          console.log(link.classList)
-          link.classList.remove("active");
-        });
-        // Add the "active" class to the clicked link
-        this.classList.add("active");
-      });
-    });
-  });
   // console.log("SetupEventListener fired")
   const todosDueContainer = document.getElementById("todos-due");
   const projectContainer = document.getElementById('projects');
