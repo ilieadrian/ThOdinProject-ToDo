@@ -79,6 +79,7 @@ function renderUI(projectsList, todoList) {
   handleProjectCountNumber();
   addPlusCircle()
   setupEventListeners(todoList, projectsList);
+
 }
 
 function addPlusCircle() {
@@ -214,27 +215,23 @@ function renderHomeMenu(todoList) {
     `;
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const menuLinks = document.querySelectorAll(".menu-links a");
+const menuLinksContainer = document.getElementById('projects');
 
-  console.log(menuLinks)
+  menuLinksContainer.addEventListener('click', (event) => {
+    // Check if the clicked element is a menu link
+    const clickedLink = event.target.closest('li'); // Adjust if your links are not in <li> elements
+    if (!clickedLink) return;
 
-  menuLinks.forEach(function (link) {
-    link.addEventListener("click", function () {
-      
-      // Remove the "active" class from all links
-      menuLinks.forEach(function (link) {
-        console.log(link.classList)
-        link.classList.remove("active");
-      });
-      // Add the "active" class to the clicked link
-      this.classList.add("active");
-    });
-  });
+    // Remove 'active' class from all menu links
+    const allLinks = menuLinksContainer.querySelectorAll('li'); // Adjust if needed
+    allLinks.forEach(link => link.classList.remove('active'));
+
+    // Add 'active' class to the clicked link
+    clickedLink.classList.add('active');
 });
 
 function setupEventListeners(todoList, projectsList) {
-
+  
   
   // console.log("SetupEventListener fired")
   const todosDueContainer = document.getElementById("todos-due");
@@ -244,7 +241,6 @@ function setupEventListeners(todoList, projectsList) {
   const todoListContainer = document.querySelector(".todo-container");
 
   let modalContainer = document.getElementById("modal-container");
-  const projectList = document.querySelectorAll("#projects li");
 
   
 
