@@ -26,20 +26,7 @@ export function setStatusOfUI(newStatus) {
   statusOfUI = newStatus;
 }
 
-export default (function () {
-  document.addEventListener("DOMContentLoaded", function () {
-    const menuLinks = document.querySelectorAll(".menu-links a");
 
-    menuLinks.forEach(function (link) {
-      link.addEventListener("click", function () {
-        menuLinks.forEach(function (link) {
-          link.classList.remove("active");
-        });
-        this.classList.add("active");
-      });
-    });
-  });
-})();
 
 function openProjectModal(modalContainer) {
   modalContainer.innerHTML = "";

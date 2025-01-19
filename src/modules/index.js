@@ -166,18 +166,18 @@ function handleEmptyProjectPage() {
 
   const deleteBtn = container.querySelector(".project-delete-btn");
 
-  deleteBtn.addEventListener("click", somefunc)
+  // deleteBtn.addEventListener("click", somefunc)
 
-  function somefunc(){
-    console.log("Somefunk clicked")
-  }
+  // function somefunc(){
+  //   console.log("Somefunk clicked")
+  // }
 
   // console.log("Project name in handleEmptyProjectPage:", projectName);
   // console.log("projectsList in handleEmptyProjectPage:", projectsList);
   let idToDelete = getActiveId(sharedState.project, projectsList);
-  console.log("ID to delete:", idToDelete);
+  // console.log("ID to delete:", idToDelete);
   // console.log("idToDelete in handleEmptyProjectPage", idToDelete)
-  console.log("Delete button:", deleteBtn);
+  // console.log("Delete button:", deleteBtn);
 
   if (deleteBtn) {
     // console.log("Fired if(deleteBTN) in get active link", deleteBtn);
@@ -192,7 +192,7 @@ function handleEmptyProjectPage() {
 }
 
 function getActiveId(projectName, projectsList) {
-  console.log("getActiveId projectsList", projectsList)
+  // console.log("getActiveId projectsList", projectsList)
   if (projectsList.length === 1) {
     // console.log("Project list is 1", projectsList[0]._id)
   }
@@ -214,23 +214,30 @@ function renderHomeMenu(todoList) {
         ${renderDueTodosContainer(todoList)}
     `;
 }
+//!//
 
-const menuLinksContainer = document.getElementById('projects');
+    document.addEventListener("DOMContentLoaded", function () {
+    const menuLinks = document.querySelectorAll(".menu-links a");
 
-  menuLinksContainer.addEventListener('click', (event) => {
-    // Check if the clicked element is a menu link
-    const clickedLink = event.target.closest('li'); // Adjust if your links are not in <li> elements
-    if (!clickedLink) return;
+    menuLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        menuLinks.forEach(function (link) {
+          link.classList.remove("active");
+        });
+        this.classList.add("active");
 
-    // Remove 'active' class from all menu links
-    const allLinks = menuLinksContainer.querySelectorAll('li'); // Adjust if needed
-    allLinks.forEach(link => link.classList.remove('active'));
 
-    // Add 'active' class to the clicked link
-    clickedLink.classList.add('active');
-});
+        console.log(this)
+        
+      });
+    });
+  });
+
+
+//!//
 
 function setupEventListeners(todoList, projectsList) {
+  
   
   
   // console.log("SetupEventListener fired")

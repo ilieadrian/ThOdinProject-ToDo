@@ -209,20 +209,22 @@ function addCloseEventListeners(modalContainer) {
 }
 
 //Active CSS class handler on menu items
-export default (function () {
-  document.addEventListener("DOMContentLoaded", function () {
-    const menuLinks = document.querySelectorAll(".menu-links a");
 
-    menuLinks.forEach(function (link) {
-      link.addEventListener("click", function () {
-        menuLinks.forEach(function (link) {
-          link.classList.remove("active");
-        });
-        this.classList.add("active");
-      });
-    });
-  });
-})();
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   const menuLinks = document.querySelectorAll(".menu-links a");
+
+  //   menuLinks.forEach(function (link) {
+  //     link.addEventListener("click", function () {
+  //       menuLinks.forEach(function (link) {
+  //         link.classList.remove("active");
+  //       });
+  //       this.classList.add("active");
+
+        
+  //     });
+  //   });
+  // });
+
 
 //handlers for empty pages and selected link
 function handleEmptyTodayPage(dueTodayTodos) {

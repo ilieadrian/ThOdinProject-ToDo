@@ -73,9 +73,11 @@ function getProjects(projectsList, todoList = null, currentProject) {
     let ulContent = "";
 
     projectsList.forEach((element) => {
+
+    // this is is suplimental in a hreg id="${element.id}"
       ulContent += `
                 <li data-project-id="${element.id}">
-                    <a href="#" class="project-link ${element._active ? "active" : ""}">${element.name}</a>
+                    <a href="#" id="${element.id}" class="project-link ${element._active ? "active" : ""}">${element.name}</a>
                     <span class="number-of-tasks">${countTodoinProject(element.name, todoList)}</span>
                 </li>
             `;
