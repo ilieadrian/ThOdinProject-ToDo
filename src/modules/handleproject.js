@@ -74,7 +74,7 @@ function getProjects(projectsList, todoList = null, currentProject) {
 
     projectsList.forEach((element) => {
 
-    // this is is suplimental in a hreg id="${element.id}"
+    // this is is suplimental in a href id="${element.id}"
       ulContent += `
                 <li data-project-id="${element.id}">
                     <a href="#" id="${element.id}" class="project-link ${element._active ? "active" : ""}">${element.name}</a>

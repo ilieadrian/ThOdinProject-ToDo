@@ -19,6 +19,9 @@ import { defaultValues } from "./startup";
 import { deleteProject } from "./handleproject";
 import { openToDoModal, openProjectModal, openViewModal, openEditModal } from "./manipulateDOM";
 
+let activeLink = null;
+
+
 function renderUI(projectsList, todoList) {
   let container = document.querySelector(".container");
   
@@ -226,8 +229,10 @@ function renderHomeMenu(todoList) {
         });
         this.classList.add("active");
 
-
         console.log(this)
+
+        activeLink = this.id;
+        console.log("activeLink", activeLink)
         
       });
     });
