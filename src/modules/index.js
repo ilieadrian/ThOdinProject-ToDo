@@ -19,7 +19,7 @@ import { defaultValues } from "./startup";
 import { deleteProject } from "./handleproject";
 import { openToDoModal, openProjectModal, openViewModal, openEditModal } from "./manipulateDOM";
 
-let activeLink = null;
+// let activeLink = null;
 
 
 function renderUI(projectsList, todoList) {
@@ -82,7 +82,6 @@ function renderUI(projectsList, todoList) {
   handleProjectCountNumber();
   addPlusCircle()
   setupEventListeners(todoList, projectsList);
-
 }
 
 function addPlusCircle() {
@@ -219,32 +218,82 @@ function renderHomeMenu(todoList) {
 }
 //!//
 
-    document.addEventListener("DOMContentLoaded", function () {
-    const menuLinks = document.querySelectorAll(".menu-links a");
+    // document.addEventListener("DOMContentLoaded", function () {
+    // const menuLinks = document.querySelectorAll(".menu-links a");
 
-    menuLinks.forEach(function (link) {
-      link.addEventListener("click", function () {
-        menuLinks.forEach(function (link) {
-          link.classList.remove("active");
-        });
-        this.classList.add("active");
+    // menuLinks.forEach(function (link) {
+    //   link.addEventListener("click", function () {
+    //     menuLinks.forEach(function (link) {
+    //       link.classList.remove("active");
+    //     });
+    //     this.classList.add("active");
 
-        console.log(this)
+    //     console.log(this)
 
-        activeLink = this.id;
-        console.log("activeLink", activeLink)
+    //     activeLink = this.id;
+    //     console.log("activeLink", activeLink)
         
-      });
-    });
-  });
+    //   });
+    // });
+  // });
 
 
 //!//
 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const menuContainer = document.querySelector(".menu"); // Parent container
+  let activeLinkId = null; // Variable to store the active link's unique ID
+
+
+
+  // Add event listener to the parent container
+  menuContainer.addEventListener("click", function (event) {
+    const clickedLink = event.target;
+
+
+    // Ensure the clicked element is a menu link
+    if (clickedLink.tagName === "A") {
+      // Remove 'active' class from all links
+      document.querySelectorAll(".menu-links a").forEach(function (link) {
+        console.log(link)
+        link.classList.remove("active");
+      });
+
+      // Add 'active' class to the clicked link
+      clickedLink.classList.add("active");
+
+      // Store the unique ID of the active link
+      activeLinkId = clickedLink.dataset.id;
+      console.log("Active Link ID:", activeLinkId);
+    }
+  });
+
+  // Example re-render function
+  function reRenderMenu() {
+    // Simulate menu re-render
+    console.log("Menu re-rendered");
+
+    // Reapply 'active' class to the previously selected link
+    if (activeLinkId) {
+      const activeLink = document.querySelector(`.menu-links a[data-id="${activeLinkId}"]`);
+      if (activeLink) activeLink.classList.add("active");
+    }
+  }
+
+  // // Simulate re-rendering after a delay
+  // setTimeout(reRenderMenu, 2000); // Reapply active class after 2 seconds
+});
+
+
+
+
+//!//
+
+
+
 function setupEventListeners(todoList, projectsList) {
-  
-  
-  
   // console.log("SetupEventListener fired")
   const todosDueContainer = document.getElementById("todos-due");
   const projectContainer = document.getElementById('projects');
@@ -254,8 +303,28 @@ function setupEventListeners(todoList, projectsList) {
 
   let modalContainer = document.getElementById("modal-container");
 
+
+
+  // const menuLinks = document.querySelectorAll(".menu-links a");
+
+  // menuLinks.forEach(function (link) {
+  //   link.addEventListener("click", function () {
+  //     menuLinks.forEach(function (link) {
+  //       link.classList.remove("active");
+  //     });
+  //     this.classList.add("active");
+
+  //     console.log(this)
+
+  //     activeLink = this.id;
+  //     console.log("activeLink", activeLink)
+      
+  //   });
+  // });
   
 
+
+  
   if (todosDueContainer) {
     todosDueContainer.addEventListener("click", (event) => {
       const target = event.target;
