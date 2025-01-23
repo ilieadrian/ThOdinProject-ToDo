@@ -1,9 +1,7 @@
 import Project from "./project";
 import { renderUI, renderProjectContainer } from "./index";
-
 import { isThisWeek, isToday } from "date-fns";
 
-// console.log("handleproject.js file loaded")
 
 function handleProject(
   newToDo = null,

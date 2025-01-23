@@ -242,49 +242,6 @@ function renderHomeMenu(todoList) {
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  const menuContainer = document.querySelector(".menu"); // Parent container
-  let activeLinkId = null; // Variable to store the active link's unique ID
-
-
-
-  // Add event listener to the parent container
-  menuContainer.addEventListener("click", function (event) {
-    const clickedLink = event.target;
-
-
-    // Ensure the clicked element is a menu link
-    if (clickedLink.tagName === "A") {
-      // Remove 'active' class from all links
-      document.querySelectorAll(".menu-links a").forEach(function (link) {
-        console.log(link)
-        link.classList.remove("active");
-      });
-
-      // Add 'active' class to the clicked link
-      clickedLink.classList.add("active");
-
-      // Store the unique ID of the active link
-      activeLinkId = clickedLink.dataset.id;
-      console.log("Active Link ID:", activeLinkId);
-    }
-  });
-
-  // Example re-render function
-  function reRenderMenu() {
-    // Simulate menu re-render
-    console.log("Menu re-rendered");
-
-    // Reapply 'active' class to the previously selected link
-    if (activeLinkId) {
-      const activeLink = document.querySelector(`.menu-links a[data-id="${activeLinkId}"]`);
-      if (activeLink) activeLink.classList.add("active");
-    }
-  }
-
-  // // Simulate re-rendering after a delay
-  // setTimeout(reRenderMenu, 2000); // Reapply active class after 2 seconds
-});
 
 
 
@@ -302,6 +259,9 @@ function setupEventListeners(todoList, projectsList) {
   const todoListContainer = document.querySelector(".todo-container");
 
   let modalContainer = document.getElementById("modal-container");
+
+
+  
 
 
 
