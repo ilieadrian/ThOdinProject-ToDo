@@ -265,22 +265,22 @@ function setupEventListeners(todoList, projectsList) {
 
 
 
-  // const menuLinks = document.querySelectorAll(".menu-links a");
+  const menuLinks = document.querySelectorAll(".menu-links a");
 
-  // menuLinks.forEach(function (link) {
-  //   link.addEventListener("click", function () {
-  //     menuLinks.forEach(function (link) {
-  //       link.classList.remove("active");
-  //     });
-  //     this.classList.add("active");
+  menuLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+      menuLinks.forEach(function (link) {
+        link.classList.remove("active");
+      });
+      this.classList.add("active");
 
-  //     console.log(this)
+      // console.log(this)
 
-  //     activeLink = this.id;
-  //     console.log("activeLink", activeLink)
+      // activeLink = this.id;
+      // console.log("activeLink", activeLink)
       
-  //   });
-  // });
+    });
+  });
   
 
 
@@ -296,6 +296,7 @@ function setupEventListeners(todoList, projectsList) {
         sharedState.mode = "all";
         sharedState.project = null;
         renderUI(projectsList, todoList);
+        setupEventListeners(todoList, projectsList)
       }
     });
   }
