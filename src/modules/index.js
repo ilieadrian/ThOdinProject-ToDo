@@ -267,6 +267,8 @@ function setupEventListeners(todoList, projectsList) {
 
   const menuLinks = document.querySelectorAll(".menu-links a");
 
+  console.log(menuLinks)
+
   menuLinks.forEach(function (link) {
     link.addEventListener("click", function () {
       menuLinks.forEach(function (link) {
