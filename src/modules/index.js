@@ -19,9 +19,6 @@ import { defaultValues } from "./startup";
 import { deleteProject } from "./handleproject";
 import { openToDoModal, openProjectModal, openViewModal, openEditModal } from "./manipulateDOM";
 
-// let activeLink = null;
-
-
 function renderUI(projectsList, todoList) {
   let container = document.querySelector(".container");
   
@@ -261,9 +258,6 @@ function setupEventListeners(todoList, projectsList) {
   let modalContainer = document.getElementById("modal-container");
 
 
-  
-
-
 
   const menuLinks = document.querySelectorAll(".menu-links a");
 
@@ -298,7 +292,7 @@ function setupEventListeners(todoList, projectsList) {
         sharedState.mode = "all";
         sharedState.project = null;
         renderUI(projectsList, todoList);
-        setupEventListeners(todoList, projectsList)
+        // setupEventListeners(todoList, projectsList)
       }
     });
   }
