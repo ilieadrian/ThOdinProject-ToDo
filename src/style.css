@@ -238,6 +238,18 @@ button:hover {
   scrollbar-color: #c38d9e #eeeeee;
 }
 
+#current-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(238, 238, 238);
+  padding: 0.35rem ;
+}
+
+#current-section p{
+  font-size: 1rem;
+}
+
 .item {
   background-color: #eeeeee;
   padding: 0.5rem 0.5rem 0.5rem 0;

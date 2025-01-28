@@ -21,6 +21,7 @@ function displayToDods(todoList) {
 
   todoList.forEach((element) => {
     ulContent += `
+            
             <li class="item" id="item-${element.id}">
                 <div class="name-grup ${element.status ? "finished" : ""}">
                     <div class="priority ${element.priority}"></div>

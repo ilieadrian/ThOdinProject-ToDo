@@ -53,9 +53,10 @@ function renderUI(projectsList, todoList) {
                 </div>
             </section>
             <section class="todo-container">
-                <ul class="items-list" id="item-list-X-X">
-                    ${displayToDods(todoList)}
-                </ul>
+              <div id="current-section"><p>${currentPage()}</p></div>
+              <ul class="items-list" id="item-list-X-X">
+                  ${displayToDods(todoList)}
+              </ul>
             </section>
         </div>
         <div id="modal-container"></div>
@@ -81,6 +82,15 @@ function renderUI(projectsList, todoList) {
   setupEventListeners(todoList, projectsList);
 }
 
+function currentPage(){
+  const zatext = "This is the current page";
+
+  console.log("sharedState.mode", sharedState.mode)
+  console.log("sharedState.project", sharedState.project)
+
+  return zatext;
+}
+
 function addPlusCircle() {
   const plusCircleIcon = require("../images/add-plus-circle.svg")
   const addTodoImg = document.getElementById("addtodo-img")
@@ -94,12 +104,13 @@ function renderTodoContainer(
   errorMessage = null,
   projectName = null,
   ) {
-  // console.log("renderTodoContainer FIRED with todos:", filteredTodos);
+  console.log("renderTodoContainer FIRED");
   let container = document.querySelector(".todo-container");
   container.innerHTML = "";
 
   if (filteredTodos.length > 0) {
     container.innerHTML = `
+        <div id="current-section"><p>${currentPage()}</p></div>
         <ul class="items-list">
             ${displayToDods(filteredTodos)}  
         </ul>
@@ -259,24 +270,24 @@ function setupEventListeners(todoList, projectsList) {
 
 
 
-  const menuLinks = document.querySelectorAll(".menu-links a");
+  // const menuLinks = document.querySelectorAll(".menu-links a");
 
-  console.log(menuLinks)
+  // console.log(menuLinks)
 
-  menuLinks.forEach(function (link) {
-    link.addEventListener("click", function () {
-      menuLinks.forEach(function (link) {
-        link.classList.remove("active");
-      });
-      this.classList.add("active");
+  // menuLinks.forEach(function (link) {
+  //   link.addEventListener("click", function () {
+  //     menuLinks.forEach(function (link) {
+  //       link.classList.remove("active");
+  //     });
+  //     this.classList.add("active");
 
-      // console.log(this)
+  //     console.log(this)
 
-      // activeLink = this.id;
-      // console.log("activeLink", activeLink)
+  //     // activeLink = this.id;
+  //     // console.log("activeLink", activeLink)
       
-    });
-  });
+  //   });
+  // });
   
 
 
@@ -292,6 +303,7 @@ function setupEventListeners(todoList, projectsList) {
         sharedState.mode = "all";
         sharedState.project = null;
         renderUI(projectsList, todoList);
+        //Here is the cause for multiple event adding
         // setupEventListeners(todoList, projectsList)
       }
     });
