@@ -1,5 +1,6 @@
 import Project from "./project";
 import { renderUI, renderProjectContainer } from "./index";
+import sharedState from "./sharedState";
 import { isThisWeek, isToday } from "date-fns";
 
 
@@ -164,6 +165,8 @@ function deleteProject(idToDelete, projectsList, todoList) {
   if (projectIndex !== -1 && todosInProject == 0) {
     // console.log("projectIndex", projectIndex);
     projectsList.splice(projectIndex, 1);
+    sharedState.mode = "all"
+    sharedState.project = null;
     localStorage.setItem("projectsList", JSON.stringify(projectsList));
     } else {
     return;

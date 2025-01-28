@@ -83,12 +83,20 @@ function renderUI(projectsList, todoList) {
 }
 
 function currentPage(){
-  const zatext = "This is the current page";
+  let returnedText;
 
-  console.log("sharedState.mode", sharedState.mode)
-  console.log("sharedState.project", sharedState.project)
+  if(sharedState.mode === "todayView"){
+    returnedText = "Due today";
+  } else if(sharedState.mode === "weekView")
+  {
+    returnedText = "Due this week";
+  } else if(sharedState.mode === "projectView"){
+    returnedText = `Project: ${sharedState.project}`;
+  } else {
+      returnedText = "Index";
+  }
 
-  return zatext;
+  return returnedText;
 }
 
 function addPlusCircle() {

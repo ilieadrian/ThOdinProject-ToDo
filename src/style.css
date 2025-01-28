@@ -240,10 +240,12 @@ button:hover {
 
 #current-section {
   position: absolute;
+  width: 150px;
+  max-width: 100%;
   top: 0;
   left: 0;
   background-color: rgb(238, 238, 238);
-  padding: 0.35rem ;
+  padding: 0.4rem ;
 }
 
 #current-section p{
