@@ -171,7 +171,6 @@ function renderProjectContainer(projectsList, todoList) {
 
 function handleEmptyProjectPage() {
   // console.log(" handleEmptyProjectPage called on project name: ", projectName);
-  console.log("sharedState.project in handleEmptyProjectPage", sharedState.project)
 
   let container = document.querySelector(".todo-container");
   const { projectsList, todoList } = defaultValues;
@@ -180,7 +179,6 @@ function handleEmptyProjectPage() {
   if(sharedState.mode === "projectView") {
     let idToDelete = getActiveId(sharedState.project, projectsList);
   } else{
-    console.log("log in zi ritarn")
     return
   }
   
@@ -455,9 +453,16 @@ function getClickedProjectName(event) {
 function handleToDoListActions(todoList, projectsList, modalContainer, event){
   const target = event.target;
   const listItem = target.closest(".item");
+
+  if(listItem === null) {
+    return;
+  }
+  console.log("listItem", listItem)
   
   const elementId = listItem ? +listItem.id.split("-")[1] : null;
   const todoIndex = todoList.findIndex((todo) => todo._id === elementId);
+
+  console.log("todoIndex", todoIndex)
 
   if (todoIndex === -1) {
       console.error(
