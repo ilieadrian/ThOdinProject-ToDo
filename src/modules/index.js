@@ -95,7 +95,6 @@ function currentPage(){
   } else {
       returnedText = "Index";
   }
-
   return returnedText;
 }
 
@@ -174,25 +173,17 @@ function handleEmptyProjectPage() {
   // console.log(" handleEmptyProjectPage called on project name: ", projectName);
   console.log("sharedState.project in handleEmptyProjectPage", sharedState.project)
 
-  // if (projectName == null) {
-  //   return;
-  // }
   let container = document.querySelector(".todo-container");
-
   const { projectsList, todoList } = defaultValues;
-
-
   const deleteBtn = container.querySelector(".project-delete-btn");
 
-  // deleteBtn.addEventListener("click", somefunc)
-
-  // function somefunc(){
-  //   console.log("Somefunk clicked")
-  // }
-
-  // console.log("Project name in handleEmptyProjectPage:", projectName);
-  // console.log("projectsList in handleEmptyProjectPage:", projectsList);
-  let idToDelete = getActiveId(sharedState.project, projectsList);
+  if(sharedState.mode === "projectView") {
+    let idToDelete = getActiveId(sharedState.project, projectsList);
+  } else{
+    console.log("log in zi ritarn")
+    return
+  }
+  
   // console.log("ID to delete:", idToDelete);
   // console.log("idToDelete in handleEmptyProjectPage", idToDelete)
   // console.log("Delete button:", deleteBtn);
@@ -218,7 +209,7 @@ function getActiveId(projectName, projectsList) {
   let activeId = projectsList.find(
     (project) => project.name == projectName,
   )._id;
-  // console.log("Active id: ", activeId)
+  console.log("Active id: ", activeId)
   return activeId;
   // console.log(projectName, projectsList)
 }
@@ -275,30 +266,6 @@ function setupEventListeners(todoList, projectsList) {
   const todoListContainer = document.querySelector(".todo-container");
 
   let modalContainer = document.getElementById("modal-container");
-
-
-
-  // const menuLinks = document.querySelectorAll(".menu-links a");
-
-  // console.log(menuLinks)
-
-  // menuLinks.forEach(function (link) {
-  //   link.addEventListener("click", function () {
-  //     menuLinks.forEach(function (link) {
-  //       link.classList.remove("active");
-  //     });
-  //     this.classList.add("active");
-
-  //     console.log(this)
-
-  //     // activeLink = this.id;
-  //     // console.log("activeLink", activeLink)
-      
-  //   });
-  // });
-  
-
-
   
   if (todosDueContainer) {
     todosDueContainer.addEventListener("click", (event) => {
@@ -311,8 +278,6 @@ function setupEventListeners(todoList, projectsList) {
         sharedState.mode = "all";
         sharedState.project = null;
         renderUI(projectsList, todoList);
-        //Here is the cause for multiple event adding
-        // setupEventListeners(todoList, projectsList)
       }
     });
   }
@@ -482,7 +447,6 @@ function getClickedProjectName(event) {
     sharedState.project = projectName;
     const filteredTodos = getTodosByProject(todoList, projectName)
 
-    // console.log("currentView.project", currentView.project)
 
     renderTodoContainer(filteredTodos, null, null)
   }
