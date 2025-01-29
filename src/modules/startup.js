@@ -3,18 +3,8 @@ import Project from "./project";
 import { handleProject } from "./handleproject";
 import { renderUI } from "./index";
 
-
-// console.log("startup.js fired")
-
-
 const defaultValues = (function () {
-  // console.log("Default values fired");
-  // console.log("sharedState.project", sharedState.project)
-
-  // console.log("defaultValues FIRED");
   let todoList = JSON.parse(localStorage.getItem("todoList")) || [];
-
-  // console.log(todoList)
   let projectsList = JSON.parse(localStorage.getItem("projectsList")) || [];
   let renderOnlyContainer = false;
 
@@ -84,29 +74,6 @@ const defaultValues = (function () {
         false,
         "Active learning",
       ),
-      //surplus
-      // new Todo(
-      //   "XYZ",
-      //   "Some letters from the alphabet",
-      //   "2024-10-18",
-      //   "high",
-      //   false,
-      //   "Zee",
-      // ),
-      // new Todo(
-      //   "TheOdinProject chapter 15",
-      //   "Finish theOdinProject chapter 15",
-      //   "2024-10-17",
-      //   "medium",
-      //   true,
-      //   "Zee",
-      // ),
-      new Todo("Zee projects", "lorem20", "2025-01-27", "high", false, "Zee"),
-      new Todo("Zee3 projects", "lorem20", "2025-01-28", "low", false, "Zee"),
-      new Todo("Zee4 projects", "lorem20", "2025-01-28", "high", false, "Zee"),
-      // new Todo("Zee5projects", "lorem20", "2024-10-16", "low", true, "Zee"),
-      // new Todo("Zee6 projects", "lorem20", "2024-10-17", "high", false, "Zee"),
-      // new Todo("Zee7 projects", "lorem20", "2024-10-18", "high", true, "Zee"),
     ];
 
     projectsList = [];

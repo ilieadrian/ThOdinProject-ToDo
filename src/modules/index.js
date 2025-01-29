@@ -13,9 +13,7 @@ import { displayTodos,
   getTodosByProject,
   deleteTodoItem,
 } from "./handletodos";
-//correct typo above: should be displayTodos
 import { defaultValues } from "./startup";
-// import Icon from "../images/to-do-list.svg";
 import { deleteProject } from "./handleproject";
 import { openToDoModal, openProjectModal, openViewModal, openEditModal } from "./manipulateDOM";
 
@@ -69,8 +67,7 @@ function renderUI(projectsList, todoList) {
     renderTodoContainer(todoList, errorMessage);
     localStorage.setItem("todoList", JSON.stringify(todoList));
   }
-
-  
+ 
   const icon = require("../images/to-do-list.svg");
   const headerIconContainer = document.getElementById("section-header");
   const headerTodoIcon = new Image();
@@ -111,7 +108,6 @@ function renderTodoContainer(
   errorMessage = null,
   projectName = null,
   ) {
-  console.log("renderTodoContainer FIRED");
   let container = document.querySelector(".todo-container");
   container.innerHTML = "";
 
@@ -154,7 +150,6 @@ function renderTodoContainer(
       </div>
       `;
     }  
-
     handleEmptyProjectPage();
   }
 }
@@ -170,8 +165,6 @@ function renderProjectContainer(projectsList, todoList) {
 }
 
 function handleEmptyProjectPage() {
-  // console.log(" handleEmptyProjectPage called on project name: ", projectName);
-
   let container = document.querySelector(".todo-container");
   const { projectsList, todoList } = defaultValues;
   const deleteBtn = container.querySelector(".project-delete-btn");
@@ -181,39 +174,28 @@ function handleEmptyProjectPage() {
   } else{
     return
   }
-  
-  // console.log("ID to delete:", idToDelete);
-  // console.log("idToDelete in handleEmptyProjectPage", idToDelete)
-  // console.log("Delete button:", deleteBtn);
 
   if (deleteBtn) {
-    // console.log("Fired if(deleteBTN) in get active link", deleteBtn);
     deleteBtn.addEventListener("click", function () {
-      // console.log("Clicked on delete project");
       deleteProject(idToDelete, projectsList, todoList);
     });
   } else {
     return
-    // console.log("RenderUI case");
   }
 }
 
 function getActiveId(projectName, projectsList) {
-  // console.log("getActiveId projectsList", projectsList)
   if (projectsList.length === 1) {
-    // console.log("Project list is 1", projectsList[0]._id)
+    return;
   }
 
   let activeId = projectsList.find(
     (project) => project.name == projectName,
   )._id;
-  console.log("Active id: ", activeId)
   return activeId;
-  // console.log(projectName, projectsList)
 }
 
 function renderHomeMenu(todoList) {
-  // console.log("renderHomeMenu FIRED");
   let container = document.getElementById("todos-due");
 
   container.innerHTML = "";
@@ -221,48 +203,13 @@ function renderHomeMenu(todoList) {
         ${renderDueTodosContainer(todoList)}
     `;
 }
-//!//
-
-    // document.addEventListener("DOMContentLoaded", function () {
-    // const menuLinks = document.querySelectorAll(".menu-links a");
-
-    // menuLinks.forEach(function (link) {
-    //   link.addEventListener("click", function () {
-    //     menuLinks.forEach(function (link) {
-    //       link.classList.remove("active");
-    //     });
-    //     this.classList.add("active");
-
-    //     console.log(this)
-
-    //     activeLink = this.id;
-    //     console.log("activeLink", activeLink)
-        
-    //   });
-    // });
-  // });
-
-
-//!//
-
-
-
-
-
-
-
-//!//
-
-
 
 function setupEventListeners(todoList, projectsList) {
-  // console.log("SetupEventListener fired")
   const todosDueContainer = document.getElementById("todos-due");
   const projectContainer = document.getElementById('projects');
   const addProjectBTN = document.querySelector(".addproject");
   const addToDoBTN = document.querySelector(".addtodo");
   const todoListContainer = document.querySelector(".todo-container");
-
   let modalContainer = document.getElementById("modal-container");
   
   if (todosDueContainer) {
@@ -346,7 +293,6 @@ function setupEventListeners(todoList, projectsList) {
       }
     }
 
-
     if (event.target && event.target.id === "create-project") {
       event.preventDefault();
 
@@ -389,13 +335,9 @@ function setupEventListeners(todoList, projectsList) {
       );
     }
   });
-  //
 }
 
 function modifyTodoStatus(elementId, target, projectsList, todoList){
-  // console.log("elementId", elementId, "target", target)
-  // console.log("currentView", sharedState);
-  // console.log("modifyTodoStatus FIRED");
   const todoItem = todoList.find((todo) => todo.id == elementId);
   todoItem.status = target.checked;
 
@@ -445,7 +387,6 @@ function getClickedProjectName(event) {
     sharedState.project = projectName;
     const filteredTodos = getTodosByProject(todoList, projectName)
 
-
     renderTodoContainer(filteredTodos, null, null)
   }
 }
@@ -454,15 +395,12 @@ function handleToDoListActions(todoList, projectsList, modalContainer, event){
   const target = event.target;
   const listItem = target.closest(".item");
 
-  if(listItem === null) {
+  if (listItem === null) {
     return;
   }
-  console.log("listItem", listItem)
   
   const elementId = listItem ? +listItem.id.split("-")[1] : null;
   const todoIndex = todoList.findIndex((todo) => todo._id === elementId);
-
-  console.log("todoIndex", todoIndex)
 
   if (todoIndex === -1) {
       console.error(
@@ -482,7 +420,6 @@ function handleToDoListActions(todoList, projectsList, modalContainer, event){
     }
   } else if (target.closest(".delete-btn")) {
     deleteTodoItem(todoIndex, todoList, projectsList);
-    // todoListContainer.removeEventListener("click", adUIListeners);
   } else if (target.classList.contains("todo-checkbox")) {
     modifyTodoStatus(elementId, target, projectsList, todoList);
   }

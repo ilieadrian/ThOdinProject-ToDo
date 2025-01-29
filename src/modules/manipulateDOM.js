@@ -1,32 +1,10 @@
-// import sharedState from "./sharedState";
-
 import {
   renderTodoContainer,
-  renderProjectContainer,
-  renderHomeMenu,
 } from "./index";
-import {
-  getTodosByProject,
-  addNewTodo,
-  editTodo,
-  deleteTodoItem,
-} from "./handletodos";
-import {
-  handleProject,
-  handleProjectCountNumber,
-  getProjetsByDueDate,
-} from "./handleproject";
-import { renderUI } from "./index";
 import { getProjects } from "./handleproject";
 import { format } from "date-fns";
-import sharedState from "./sharedState";
 
 let filteredTodos = [];
-
-// console.log("sharedState in manipulateDOM", sharedState)
-
-
-// console.log("ManipulateDOM fired", sharedState)
 
 function openProjectModal(modalContainer) {
   modalContainer.innerHTML = "";
@@ -208,33 +186,15 @@ function addCloseEventListeners(modalContainer) {
   });
 }
 
-//Active CSS class handler on menu items
-
-  // document.addEventListener("DOMContentLoaded", function () {
-  //   const menuLinks = document.querySelectorAll(".menu-links a");
-
-  //   menuLinks.forEach(function (link) {
-  //     link.addEventListener("click", function () {
-  //       menuLinks.forEach(function (link) {
-  //         link.classList.remove("active");
-  //       });
-  //       this.classList.add("active");
-
-        
-  //     });
-  //   });
-  // });
 
 
 //handlers for empty pages and selected link
 function handleEmptyTodayPage(dueTodayTodos) {
-  // console.log("handleEmptyTodayPage for today")
   const errorMessage = `<p class="emptyPageNotification">There are no todos with due date today.</p>`;
   renderTodoContainer(dueTodayTodos, errorMessage, null);
 }
 
 function handleEmptyWeekPage(dueThisWeekTodos) {
-  // console.log("handleEmptyTodayPage for week")
   const errorMessage = `<p class="emptyPageNotification">There are no todos with due date this week.</p>`;
   renderTodoContainer(dueThisWeekTodos, errorMessage, null);
 }
@@ -245,7 +205,6 @@ function handleSelectedLink(projectsList, projectName) {
   );
 
   resetSelectedLink(projectsList);
-
   selectedProject._active = true;
 }
 
@@ -262,4 +221,3 @@ export {
   openViewModal,
   openEditModal,
 };
-
