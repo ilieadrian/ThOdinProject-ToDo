@@ -3,7 +3,6 @@ import { renderUI, renderProjectContainer } from "./index";
 import sharedState from "./sharedState";
 import { isThisWeek, isToday } from "date-fns";
 
-
 function handleProject(
   newToDo = null,
   projectsList,
@@ -19,7 +18,6 @@ function handleProject(
     if (!existingProject) {
       processProject(passedProjectName, projectsList);
       renderProjectContainer(projectsList, todoList);
-      // setupEventListeners(todoList, projectsList);
     } else {
       alert("Project name cannot be duplicated");
       return;
@@ -56,8 +54,6 @@ function processProject(projectName, projectsList) {
 }
 
 function getProjects(projectsList, todoList = null, currentProject) {
-  // console.log("getProjects fired");
-
   if (!todoList) {
     let selectContent = "";
 
@@ -72,8 +68,6 @@ function getProjects(projectsList, todoList = null, currentProject) {
     let ulContent = "";
 
     projectsList.forEach((element) => {
-
-    // this is is suplimental in a href id="${element.id}"
       ulContent += `
                 <li data-project-id="${element.id}">
                     <a href="#" id="${element.id}" class="project-link ${element._active ? "active" : ""}">${element.name}</a>
@@ -87,7 +81,6 @@ function getProjects(projectsList, todoList = null, currentProject) {
 }
 
 function getProjetsByDueDate(todoList) {
-  // console.log("getProjetsByDueDate FIRED");
   const dueTodayTodos = todoList.filter(
     (todo) => isToday(new Date(todo.dueDate)) && !todo._status,
   );
@@ -99,8 +92,6 @@ function getProjetsByDueDate(todoList) {
 }
 
 function renderDueTodosContainer(todoList) {
-  // console.log("renderDueTodosContainer FIRED");
-
   const { dueTodayTodos, dueThisWeekTodos } = getProjetsByDueDate(todoList);
 
   let ulContent = "";
@@ -109,7 +100,6 @@ function renderDueTodosContainer(todoList) {
         <li><a href="#" id="today-link">Due Today</a><span class="number-of-tasks">${dueTodayTodos.length}</span></li>
         <li><a href="#" id="week-link">Due This Week</a><span class="number-of-tasks">${dueThisWeekTodos.length}</span></li>
     `;
-  // console.log("renderDueTodosContainer Links Generated");
   return ulContent;
 }
 
@@ -163,7 +153,6 @@ function deleteProject(idToDelete, projectsList, todoList) {
   const todosInProject = countTodoinProject(projectToDelete, todoList);
 
   if (projectIndex !== -1 && todosInProject == 0) {
-    // console.log("projectIndex", projectIndex);
     projectsList.splice(projectIndex, 1);
     sharedState.mode = "all"
     sharedState.project = null;

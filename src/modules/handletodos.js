@@ -6,22 +6,16 @@ import {
   renderProjectContainer,
   renderHomeMenu,
   handleEmptyProjectPage,
-  setupEventListeners,
-} from "./index";
+  } from "./index";
 import { handleProjectCountNumber, getProjetsByDueDate } from "./handleproject";
 import Todo from "./todo";
 import { format } from "date-fns";
 
-// console.log("handletodos.js file loaded")
-
-function displayToDods(todoList) {
-  // console.log("displayToDods fired");
-  // console.log("displayToDods FIRED with: ", todoList);
+function displayTodos(todoList) {
   let ulContent = "";
 
   todoList.forEach((element) => {
     ulContent += `
-            
             <li class="item" id="item-${element.id}">
                 <div class="name-grup ${element.status ? "finished" : ""}">
                     <div class="priority ${element.priority}"></div>
@@ -68,8 +62,7 @@ function addNewTodo(
   todoList,
   projectsList,
 ) {
-  // console.log("addNewTodo FIRED");
-  const newTodo = new Todo(
+    const newTodo = new Todo(
     todoTitle,
     todoDescription,
     selecteDate,
@@ -114,12 +107,7 @@ function checkForDuplicateTitle(newTodo, todoList) {
 }
 
 function deleteTodoItem(todoIndex, todoList, projectsList) {
-  // console.log("sharedState in DeleteTodo", sharedState)
-  // console.log("Mode in deleteTodoItem", sharedState.mode);
-  // console.log("Project in deleteTodoItem", sharedState.project);
-
   if (todoList.length < 1) {
-    console.table(todoList);
     return;
   }
 
@@ -157,7 +145,7 @@ function deleteTodoItem(todoIndex, todoList, projectsList) {
 
 export {
   getTodosByProject,
-  displayToDods,
+  displayTodos,
   addNewTodo,
   editTodo,
   deleteTodoItem,

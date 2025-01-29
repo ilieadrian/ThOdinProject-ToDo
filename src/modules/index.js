@@ -7,7 +7,7 @@ import {
   getProjetsByDueDate,
   handleProject,
 } from "./handleproject";
-import { displayToDods, 
+import { displayTodos, 
   addNewTodo,
   editTodo,
   getTodosByProject,
@@ -55,7 +55,7 @@ function renderUI(projectsList, todoList) {
             <section class="todo-container">
               <div id="current-section"><p>${currentPage()}</p></div>
               <ul class="items-list" id="item-list-X-X">
-                  ${displayToDods(todoList)}
+                  ${displayTodos(todoList)}
               </ul>
             </section>
         </div>
@@ -119,7 +119,7 @@ function renderTodoContainer(
     container.innerHTML = `
         <div id="current-section"><p>${currentPage()}</p></div>
         <ul class="items-list">
-            ${displayToDods(filteredTodos)}  
+            ${displayTodos(filteredTodos)}  
         </ul>
     `;
   } else {
